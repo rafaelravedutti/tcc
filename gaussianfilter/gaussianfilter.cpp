@@ -253,7 +253,10 @@ int main(int argc, const char *argv[]) {
 
     #endif
 
-    cv::Mat frame = cv::imread(argv[1], CV_LOAD_IMAGE_COLOR);
+    cv::Mat frame, frame_colored;
+
+    frame_colored = cv::imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE);
+    cvtColor(frame_colored, frame, CV_BGR2GRAY);
 
     const int width = frame.cols;
     const int height = frame.rows;
@@ -306,15 +309,19 @@ int main(int argc, const char *argv[]) {
     std::vector<int> compression_params;
     frame.data = output.data();
 
-    compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
-    compression_params.push_back(9);
+    compression_params.push_back(CV_IMWRITE_JPEG_QUALITY);
+    compression_params.push_back(100);
 
     try {
-      cv::imwrite("result.png", frame, compression_params);
+      cv::imwrite("result.jpg", frame, compression_params);
     } catch(std::runtime_error &ex) {
-      fprintf(stderr, "PNG compression exception: %s\n", ex.what());
+      fprintf(stderr, "JPEG compression exception: %s\n", ex.what());
       return 1;
     }
+
+    cv::namedWindow("Result", cv::WINDOW_NORMAL);
+    cv::imshow("Result", frame);
+    cv::waitKey(0);
 
     fprintf(stdout, "Done!\n");
     return 0;

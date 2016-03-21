@@ -149,8 +149,6 @@ class GaussianFilterColumn: public Kernel<uchar> {
 int main(int argc, const char *argv[]) {
     const int size_x = SIZE_X;
     const int size_y = SIZE_Y;
-    const int offset_x = size_x >> 1;
-    const int offset_y = size_y >> 1;
     const double sigma1 = ((size_x-1)*0.5 - 1)*0.3 + 0.8;
     const double sigma2 = ((size_y-1)*0.5 - 1)*0.3 + 0.8;
 

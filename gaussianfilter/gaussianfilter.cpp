@@ -8,6 +8,18 @@
 //---
 #include "hipacc.hpp"
 
+#ifndef BH_MODE
+#  define BH_MODE           CLAMP
+#endif
+
+#define PIXEL_CAST(a)       (pixel_t)(a)
+#define TMP_PIXEL_CAST(a)   (tmp_pixel_t)(a)
+
+#define pixel_t             uchar
+#define tmp_pixel_t         float
+
+#define USE_LAMBDA
+
 using namespace hipacc;
 
 // get time in milliseconds
@@ -21,14 +33,14 @@ double time_ms () {
 // Gaussian blur filter in Hipacc
 #ifdef NO_SEP
 
-class GaussianFilter : public Kernel<uchar> {
+class GaussianFilter : public Kernel<pixel_t> {
     private:
-        Accessor<uchar> &input;
+        Accessor<pixel_t> &input;
         Mask<float> &mask;
         const int size_x, size_y;
 
     public:
-        GaussianFilter(IterationSpace<uchar> &iter, Accessor<uchar>
+        GaussianFilter(IterationSpace<pixel_t> &iter, Accessor<pixel_t>
                 &input, Mask<float> &mask, const int size_x, const int size_y) :
             Kernel(iter),
             input(input),
@@ -40,7 +52,7 @@ class GaussianFilter : public Kernel<uchar> {
         #ifdef USE_LAMBDA
 
         void kernel() {
-            output() = (uchar)(convolve(mask, Reduce::SUM, [&] () -> float {
+            output() = PIXEL_CAST(convolve(mask, Reduce::SUM, [&] () -> float {
                     return mask() * input(mask);
                     }) + 0.5f);
         }
@@ -58,7 +70,7 @@ class GaussianFilter : public Kernel<uchar> {
                 }
             }
 
-            output() = (uchar) sum;
+            output() = PIXEL_CAST(sum);
         }
 
         #endif
@@ -66,14 +78,14 @@ class GaussianFilter : public Kernel<uchar> {
 
 #else
 
-class GaussianFilterRow : public Kernel<float> {
+class GaussianFilterRow : public Kernel<tmp_pixel_t> {
     private:
-        Accessor<uchar> &input;
+        Accessor<pixel_cast> &input;
         Mask<float> &mask;
         const int size;
 
     public:
-        GaussianFilterRow(IterationSpace<float> &iter, Accessor<uchar>
+        GaussianFilterRow(IterationSpace<tmp_pixel_t> &iter, Accessor<pixel_t>
                 &input, Mask<float> &mask, const int size) :
             Kernel(iter),
             input(input),
@@ -84,9 +96,9 @@ class GaussianFilterRow : public Kernel<float> {
         #ifdef USE_LAMBDA
 
         void kernel() {
-            output() = convolve(mask, Reduce::SUM, [&] () -> float {
+            output() = TMP_PIXEL_CAST(convolve(mask, Reduce::SUM, [&] () -> float {
                     return mask() * input(mask);
-                    });
+                    }));
         }
 
         #else
@@ -99,21 +111,21 @@ class GaussianFilterRow : public Kernel<float> {
                 sum += mask(xf, 0) * input(xf, 0);
             }
 
-            output() = sum;
+            output() = TMP_PIXEL_CAST(sum);
         }
 
         #endif
 };
 
-class GaussianFilterColumn: public Kernel<uchar> {
+class GaussianFilterColumn: public Kernel<pixel_t> {
     private:
-        Accessor<float> &input;
+        Accessor<tmp_pixel_t> &input;
         Mask<float> &mask;
         const int size;
 
     public:
-        GaussianFilterColumn(IterationSpace<uchar> &iter,
-                Accessor<float> &input, Mask<float> &mask, const int size) :
+        GaussianFilterColumn(IterationSpace<pixel_t> &iter,
+                Accessor<tmp_pixel_t> &input, Mask<float> &mask, const int size) :
             Kernel(iter),
             input(input),
             mask(mask),
@@ -123,7 +135,7 @@ class GaussianFilterColumn: public Kernel<uchar> {
         #ifdef USE_LAMBDA
 
         void kernel() {
-            output() = (uchar)(convolve(mask, Reduce::SUM, [&] () -> float {
+            output() = PIXEL_CAST(convolve(mask, Reduce::SUM, [&] () -> float {
                     return mask() * input(mask);
                     }) + 0.5f);
         }
@@ -138,7 +150,7 @@ class GaussianFilterColumn: public Kernel<uchar> {
                 sum += mask(0, yf) * input(0, yf);
             }
 
-            output() = (uchar) sum;
+            output() = PIXEL_CAST(sum);
         }
 
         #endif
@@ -255,7 +267,7 @@ int main(int argc, const char *argv[]) {
 
     cv::Mat frame, frame_colored;
 
-    frame_colored = cv::imread(argv[1], CV_LOAD_IMAGE_GRAYSCALE);
+    frame_colored = cv::imread(argv[1], CV_LOAD_IMAGE_COLOR);
     cvtColor(frame_colored, frame, CV_BGR2GRAY);
 
     const int width = frame.cols;
@@ -263,9 +275,9 @@ int main(int argc, const char *argv[]) {
     float timing = 0;
 
     // input and output image of width x height pixels
-    Image<uchar> input(width, height);
-    Image<uchar> output(width, height);
-    Image<float> tmp(width, height);
+    Image<pixel_t> input(width, height);
+    Image<pixel_t> output(width, height);
+    Image<tmp_pixel_t> tmp(width, height);
 
     input = frame.data;
 
@@ -274,13 +286,13 @@ int main(int argc, const char *argv[]) {
     Mask<float> mask_x(filter_x);
     Mask<float> mask_y(filter_y);
 
-    IterationSpace<uchar> iter_out(output);
-    IterationSpace<float> iter_tmp(tmp);
+    IterationSpace<pixel_t> iter_out(output);
+    IterationSpace<tmp_pixel_t> iter_tmp(tmp);
 
     #ifdef NO_SEP
 
-    BoundaryCondition<uchar> cond(input, mask, Boundary::CLAMP);
-    Accessor<uchar> acc(cond);
+    BoundaryCondition<pixel_t> cond(input, mask, Boundary::BH_MODE);
+    Accessor<pixel_t> acc(cond);
     GaussianFilter XY(iter_out, acc, mask, size_x, size_y);
 
     XY.execute();
@@ -288,12 +300,12 @@ int main(int argc, const char *argv[]) {
 
     #else
 
-    BoundaryCondition<uchar> cond_in(input, mask_x, Boundary::CLAMP);
-    Accessor<uchar> acc(cond_in);
+    BoundaryCondition<pixel_t> cond_in(input, mask_x, Boundary::BH_MODE);
+    Accessor<pixel_t> acc(cond_in);
     GaussianFilterRow X(iter_tmp, acc, mask_x, size_x);
 
-    BoundaryCondition<float> cond_tmp(tmp, mask_y, Boundary::CLAMP);
-    Accessor<float> acc_tmp(cond_tmp);
+    BoundaryCondition<tmp_pixel_t> cond_tmp(tmp, mask_y, Boundary::BH_MODE);
+    Accessor<tmp_pixel_t> acc_tmp(cond_tmp);
     GaussianFilterColumn Y(iter_out, acc_tmp, mask_y, size_y);
 
     X.execute();
@@ -306,14 +318,17 @@ int main(int argc, const char *argv[]) {
     std::cerr << "Timing: " << timing << " ms, " << (width*height/timing)/1000 << " Mpixel/s" << std::endl;
 
     // OpenCV display image
+    std::string outputfn;
     std::vector<int> compression_params;
-    frame.data = output.data();
 
+    frame.data = output.data();
+    outputfn = argv[1];
+    outputfn = outputfn.substr(0, outputfn.find_last_of(".")) + "-filtered.jpg";
     compression_params.push_back(CV_IMWRITE_JPEG_QUALITY);
     compression_params.push_back(100);
 
     try {
-      cv::imwrite("result.jpg", frame, compression_params);
+      cv::imwrite(outputfn, frame, compression_params);
     } catch(std::runtime_error &ex) {
       fprintf(stderr, "JPEG compression exception: %s\n", ex.what());
       return 1;

@@ -80,7 +80,7 @@ class GaussianFilter : public Kernel<pixel_t> {
 
 class GaussianFilterRow : public Kernel<tmp_pixel_t> {
     private:
-        Accessor<pixel_cast> &input;
+        Accessor<pixel_t> &input;
         Mask<float> &mask;
         const int size;
 

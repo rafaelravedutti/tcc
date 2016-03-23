@@ -211,8 +211,8 @@ int main(int argc, const char *argv[]) {
 
     // filter mask
     
-    hipaccWriteSymbol<float>((const void *)&_constmask_xX, (float *)filter_x, 7, 1);
-    hipaccWriteSymbol<float>((const void *)&_constmask_yY, (float *)filter_y, 1, 7);
+    
+    
 
     HipaccAccessor iter_out(output);
     HipaccAccessor iter_tmp(tmp);
@@ -236,8 +236,8 @@ int main(int argc, const char *argv[]) {
     HipaccAccessor acc_tmp(tmp);
     
 
-    hipacc_launch_info X_info0(3, 0, iter_tmp, 8, 1);
-    dim3 block0(32, 1);
+    hipacc_launch_info X_info0(2, 0, iter_tmp, 8, 1);
+    dim3 block0(64, 1);
     dim3 grid0(hipaccCalcGridFromBlock(X_info0, block0));
 
     hipaccPrepareKernelLaunch(X_info0, block0);
@@ -260,8 +260,8 @@ int main(int argc, const char *argv[]) {
     
     hipaccLaunchKernel((const void *)&cuGaussianFilterRowXKernel, "cuGaussianFilterRowXKernel", grid0, block0);
     timing = hipacc_last_kernel_timing();
-    hipacc_launch_info Y_info0(0, 3, iter_out, 8, 1);
-    dim3 block1(32, 1);
+    hipacc_launch_info Y_info0(0, 2, iter_out, 8, 1);
+    dim3 block1(32, 2);
     dim3 grid1(hipaccCalcGridFromBlock(Y_info0, block1));
 
     hipaccPrepareKernelLaunch(Y_info0, block1);
@@ -311,8 +311,8 @@ int main(int argc, const char *argv[]) {
     cv::waitKey(0);
 
     fprintf(stdout, "Done!\n");
-    hipaccReleaseMemory<uchar>(output);
     hipaccReleaseMemory<uchar>(input);
+    hipaccReleaseMemory<uchar>(output);
     hipaccReleaseMemory<float>(tmp);
     return 0;
 }

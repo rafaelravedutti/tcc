@@ -211,8 +211,8 @@ int main(int argc, const char *argv[]) {
 
     // filter mask
     
-    hipaccWriteSymbol<float>((const void *)&_constmask_xX, (float *)filter_x, 7, 1);
-    hipaccWriteSymbol<float>((const void *)&_constmask_yY, (float *)filter_y, 1, 7);
+    
+    
 
     HipaccAccessor iter_out(output);
     HipaccAccessor iter_tmp(tmp);

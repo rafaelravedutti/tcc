@@ -8,18 +8,26 @@
 //---
 #include "hipacc.hpp"
 
+/* Modo de tratamento das fronteiras */
 #ifndef BH_MODE
-#  define BH_MODE           CLAMP
+#   define BH_MODE          CLAMP
 #endif
 
-#define PIXEL_CAST(a)       (pixel_t)(a)
-#define TMP_PIXEL_CAST(a)   (tmp_pixel_t)(a)
+/* Tamanho das dimensões filtro */
+#ifndef FILTER_SIZE
+#   define FILTER_SIZE      3
+#endif
 
+/* Tipo dos pixels */
 #define pixel_t             uchar
-#define tmp_pixel_t         float
 
-#define USE_LAMBDA
+/* Casting do tipo de pixel */
+#define PIXEL_CAST(a)       (pixel_t)(a)
 
+/* Se definida, usa lambda functions */
+//#define USE_LAMBDA
+
+/* HIPACC namespace */
 using namespace hipacc;
 
 // Obtêm o timestamp
@@ -37,44 +45,65 @@ class SobelFilter : public Kernel<pixel_t> {
     Mask<float> &mask_y;
 
   public:
+    /* Construtor e definição de parâmetros */
     SobelFilter(IterationSpace<pixel_t> &iter, Accessor<pixel_t> &input, Mask<float> &mask_x, Mask<float> &mask_y) : Kernel(iter), input(input), mask_x(mask_x), mask_y(mask_y) {
+      /* Adiciona a imagem de entrada na lista de "acessadores" */
       add_accessor(&input);
     }
 
     #ifdef USE_LAMBDA
 
+    /* Kernel utilizando lambda functions */
     void kernel() {
       float sum_x, sum_y;
 
+      /* Faz a redução com todos os parâmetros passados por referência,
+         somando todos os produtos dos coeficientes do filtro horizontal
+         com a imagem de entrada */
       sum_x = PIXEL_CAST(convolve(mask_x, Reduce::SUM, [&] () -> float {
         return mask_x() * input(mask_x);
       }));
 
+      /* Faz a redução com todos os parâmetros passados por referência,
+         somando todos os produtos dos coeficientes do filtro vertical
+         com a imagem de entrada */
       sum_y = PIXEL_CAST(convolve(mask_y, Reduce::SUM, [&] () -> float {
         return mask_y() * input(mask_y);
       }));
 
+      /* Armazena na imagem de saida o valor da raiz quadrada da soma
+         dos quadrados dos resultados encontrados anteriormente, desta
+         maneira os gradientes horizontais e verticais são "combinados"
+         na imagem de saída */
       output() = PIXEL_CAST(sqrt(sum_x * sum_x + sum_y * sum_y));
     }
 
     #else
 
     void kernel() {
-      const int anchor = SIZE >> 1;
+      /* Âncora, centro de referência da janela deslizante */
+      const int anchor = FILTER_SIZE >> 1;
       float sum_x = 0.0f, sum_y = 0.0f;
 
+      /* Calcula os gradientes horizontais conforme comentário anterior,
+         mas sem lambda functions (ao invés de reduções são usados laços,
+         o que implica na execução pela mesma unidade de processamento) */
       for (int yf = -anchor; yf <= anchor; ++yf) {
-        for (int xf = -anchor_x; xf <= anchor; ++xf) {
+        for (int xf = -anchor; xf <= anchor; ++xf) {
           sum_x += mask_x(xf, yf) * input(xf, yf);
         }
       }
 
+      /* Calcula os gradientes verticais conforme comentário anterior,
+         mas sem lambda functions (ao invés de reduções são usados laços,
+         o que implica na execução pela mesma unidade de processamento) */
       for (int yf = -anchor; yf <= anchor; ++yf) {
         for (int xf = -anchor; xf <= anchor; ++xf) {
           sum_y += mask_y(xf, yf) * input(xf, yf);
         }
       }
 
+      /* Armazena resultado na imagem de saida conforme comentário anterior */
       output() = PIXEL_CAST(sqrt(sum_x * sum_x + sum_y * sum_y));
     }
 
@@ -95,13 +124,13 @@ int main(int argc, const char *argv[]) {
     }
 
     /* Coeficientes de filtros */
-    float filter_x[3][3] = {
+    float filter_x[FILTER_SIZE][FILTER_SIZE] = {
       {-1,   0,   1},
       {-2,   0,   2},
       {-1,   0,   1}
     };
 
-    float filter_y[3][3] = {
+    float filter_y[FILTER_SIZE][FILTER_SIZE] = {
       {-1,  -2,  -1},
       { 0,   0,   0},
       { 1,   2,   1}

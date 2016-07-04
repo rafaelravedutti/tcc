@@ -1,0 +1,17 @@
+struct Img {
+  data: [float],
+  width: int,
+  height: int
+}
+
+fn field_indices(img: Img, body: fn(int) -> ()) -> () {
+  let dim = (img.width, img.height, 1);
+  let block = (32, 4, 1);
+
+  nvvm(dim, block, || -> () {
+    let tid_x = nvvm_tid_x() + nvvm_ntid_x() * nvvm_ctaid_x();
+    let tid_y = nvvm_tid_y() + nvvm_ntid_y() * nvvm_ctaid_y();
+    let index = tid_y * img.width + tid_x;
+    body(index);
+  });
+}

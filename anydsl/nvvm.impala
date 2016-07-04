@@ -1,17 +1,27 @@
+// Estrutura da imagem
 struct Img {
   data: [float],
   width: int,
   height: int
 }
 
+// Funções de índices para NVVM
 fn field_indices(img: Img, body: fn(int) -> ()) -> () {
+  // Dimensões da imagem
   let dim = (img.width, img.height, 1);
+  // Dimensões dos grids (blocos de threads)
   let block = (32, 4, 1);
 
+  // Código a ser executado na GPU, utilizando os parâmetros
+  // definidos acima
   nvvm(dim, block, || -> () {
+    // Obtêm o índice atual
     let tid_x = nvvm_tid_x() + nvvm_ntid_x() * nvvm_ctaid_x();
     let tid_y = nvvm_tid_y() + nvvm_ntid_y() * nvvm_ctaid_y();
     let index = tid_y * img.width + tid_x;
+
+    // Executa a função passada como parâmetro na arquitetura alvo
+    // Nesse exemplo, a função é a convolução do filtro gaussiano
     body(index);
   });
 }

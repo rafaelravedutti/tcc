@@ -1,8 +1,11 @@
+// Funções externas implementadas em C para leitura e escrita
+// de imagens utilizando OpenCV
 extern "C" {
   fn read_image(image_path : &[u8]) -> Img;
   fn show_image(image_path : Img) -> ();
 }
 
+// Função que executa no intervalo de a até b
 fn range(mut a: int, b: int, body: fn (int) -> ()) -> () {
   while a < b {
     body(a);
@@ -10,33 +13,41 @@ fn range(mut a: int, b: int, body: fn (int) -> ()) -> () {
   }
 }
 
+// Filtro gaussiano
 fn gaussian_blur(img: Img) -> Img {
+  // Imagem de saida
   let mut out = Img {
     data: [img.width * img.height : float],
     width: img.width,
     height: img.height
   };
 
+  // Máscara fixa 3x3
   let mask = [[0.057118f, 0.124758f, 0.057118f],
               [0.124758f, 0.272496f, 0.124758f],
               [0.057118f, 0.124758f, 0.057118f]];
 
+  // Percorre todos os indíces (função especificada conforme arquitetura)
   field_indices(img, |i| -> () {
     out.data(i) = apply_convolution(mask, img, i);
   }); 
 
+  // Retorna saída
   out
 } 
 
+// Realiza uma convolução em um ponto específico de uma imagem
 fn apply_convolution(mask: [[float * 3] * 3], img: Img, idx: int) -> float {
   let mut sum = 0.0f;
   let anchor = 3 / 2;
 
+  // Percorre as regiões vizinhas e faz o somatório usando a máscara
   for i in range(-anchor, anchor + 1) {
     for j in range(-anchor, anchor + 1) {
       sum += img.data(j * img.width + i) * mask(i)(j);
     }
   }
 
+  // Retorna o somatório
   sum
 } 

@@ -1,3 +1,4 @@
+// Programa principal
 fn main() -> () {
   let img = read_image("lena.pgm");
   let result = gaussian_blur(img);

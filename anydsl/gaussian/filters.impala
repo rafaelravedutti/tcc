@@ -1,0 +1,7 @@
+fn gaussian_blur(img : Image) -> () {
+  let mask = [[0.057118f, 0.124758f, 0.057118f],
+              [0.124758f, 0.272496f, 0.124758f],
+              [0.057118f, 0.124758f, 0.057118f]];
+
+  apply_2d_convolution(img, mask, 3);
+}

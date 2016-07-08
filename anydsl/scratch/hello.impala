@@ -1,0 +1,12 @@
+extern "C" {
+  fn print(text : [u8]) -> ();
+  fn print_integer(n : int) -> ();
+  fn read_integer() -> int;
+}
+
+fn main() -> () {
+  let mut i = 0;
+
+  i = read_integer();
+  print_integer(i);
+}

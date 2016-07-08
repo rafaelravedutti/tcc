@@ -1,0 +1,7 @@
+fn device_get_id() -> i32 {
+  0
+}
+
+fn device_get_2d_block_config() -> (i32, i32, i32) {
+  (32, 4, 1)
+}

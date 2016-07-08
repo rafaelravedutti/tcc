@@ -1,0 +1,136 @@
+; ModuleID = 'intrinsics_nvvm'
+target datalayout = "e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v16:16:16-v32:32:32-v64:64:64-v128:128:128-n16:32:64"
+target triple = "nvptx64-unknown-cuda"
+
+%0 = type { [0 x float], i32, i32 }
+
+define ptx_kernel void @lambda_crit_2842(%0 %_2845_3012, [0 x float]* %_2846_3013, i32 %_2847_3014) {
+lambda_crit_2842_start:
+  br label %lambda_crit_2842
+
+lambda_crit_2842:                                 ; preds = %lambda_crit_2842_start
+  %0 = call ptx_device i32 @llvm.nvvm.read.ptx.sreg.tid.x()
+  br label %lambda
+
+lambda:                                           ; preds = %lambda_crit_2842
+  %llvm.nvvm.read.ptx.sreg.tid.x = phi i32 [ %0, %lambda_crit_2842 ]
+  %1 = call ptx_device i32 @llvm.nvvm.read.ptx.sreg.ntid.x()
+  br label %lambda1
+
+lambda1:                                          ; preds = %lambda
+  %llvm.nvvm.read.ptx.sreg.ntid.x = phi i32 [ %1, %lambda ]
+  %2 = call ptx_device i32 @llvm.nvvm.read.ptx.sreg.ctaid.x()
+  br label %lambda2
+
+lambda2:                                          ; preds = %lambda1
+  %llvm.nvvm.read.ptx.sreg.ctaid.x = phi i32 [ %2, %lambda1 ]
+  %3 = call ptx_device i32 @llvm.nvvm.read.ptx.sreg.tid.y()
+  br label %lambda3
+
+lambda3:                                          ; preds = %lambda2
+  %llvm.nvvm.read.ptx.sreg.tid.y = phi i32 [ %3, %lambda2 ]
+  %4 = call ptx_device i32 @llvm.nvvm.read.ptx.sreg.ntid.y()
+  br label %lambda4
+
+lambda4:                                          ; preds = %lambda3
+  %llvm.nvvm.read.ptx.sreg.ntid.y = phi i32 [ %4, %lambda3 ]
+  %5 = call ptx_device i32 @llvm.nvvm.read.ptx.sreg.ctaid.y()
+  br label %lambda5
+
+lambda5:                                          ; preds = %lambda4
+  %llvm.nvvm.read.ptx.sreg.ctaid.y = phi i32 [ %5, %lambda4 ]
+  %6 = call float @apply_convolution_3051([3 x [3 x float]] [[3 x float] [float 0x3FAD3E9200000000, float 0x3FBFF023E0000000, float 0x3FAD3E9200000000], [3 x float] [float 0x3FBFF023E0000000, float 0x3FD1709320000000, float 0x3FBFF023E0000000], [3 x float] [float 0x3FAD3E9200000000, float 0x3FBFF023E0000000, float 0x3FAD3E9200000000]], %0 %_2845_3012)
+  br label %lambda6
+
+lambda6:                                          ; preds = %lambda5
+  %apply_convolution = phi float [ %6, %lambda5 ]
+  %7 = mul nsw i32 %llvm.nvvm.read.ptx.sreg.ntid.y, %llvm.nvvm.read.ptx.sreg.ctaid.y
+  %tid_y = add nsw i32 %llvm.nvvm.read.ptx.sreg.tid.y, %7
+  %8 = mul nsw i32 %tid_y, %_2847_3014
+  %9 = mul nsw i32 %llvm.nvvm.read.ptx.sreg.ntid.x, %llvm.nvvm.read.ptx.sreg.ctaid.x
+  %tid_x = add nsw i32 %llvm.nvvm.read.ptx.sreg.tid.x, %9
+  %index = add nsw i32 %8, %tid_x
+  %10 = getelementptr inbounds [0 x float]* %_2846_3013, i64 0, i32 %index
+  store float %apply_convolution, float* %10
+  ret void
+}
+
+declare i64 @llvm.nvvm.texsurf.handle.p1i64(metadata, i64 addrspace(1)*)
+
+; Function Attrs: nounwind readnone
+declare ptx_device i32 @llvm.nvvm.read.ptx.sreg.tid.x() #0
+
+; Function Attrs: nounwind readnone
+declare ptx_device i32 @llvm.nvvm.read.ptx.sreg.ntid.x() #0
+
+; Function Attrs: nounwind readnone
+declare ptx_device i32 @llvm.nvvm.read.ptx.sreg.ctaid.x() #0
+
+; Function Attrs: nounwind readnone
+declare ptx_device i32 @llvm.nvvm.read.ptx.sreg.tid.y() #0
+
+; Function Attrs: nounwind readnone
+declare ptx_device i32 @llvm.nvvm.read.ptx.sreg.ntid.y() #0
+
+; Function Attrs: nounwind readnone
+declare ptx_device i32 @llvm.nvvm.read.ptx.sreg.ctaid.y() #0
+
+define internal float @apply_convolution_3051([3 x [3 x float]] %mask_3053, %0 %img_3054) {
+apply_convolution_3051_start:
+  %0 = alloca [3 x float]
+  %1 = alloca [0 x float]
+  %2 = alloca [3 x [3 x float]]
+  br label %apply_convolution
+
+apply_convolution:                                ; preds = %apply_convolution_3051_start
+  %3 = extractvalue %0 %img_3054, 0
+  %4 = extractvalue %0 %img_3054, 1
+  br label %while_head
+
+while_head:                                       ; preds = %next4, %apply_convolution
+  %a = phi i32 [ %9, %next4 ], [ -1, %apply_convolution ]
+  %sum = phi float [ %sum3, %next4 ], [ 0.000000e+00, %apply_convolution ]
+  %5 = icmp slt i32 %a, 2
+  br i1 %5, label %while_body, label %next
+
+next:                                             ; preds = %while_head
+  ret float %sum
+
+while_body:                                       ; preds = %while_head
+  store [3 x [3 x float]] %mask_3053, [3 x [3 x float]]* %2
+  %6 = getelementptr inbounds [3 x [3 x float]]* %2, i64 0, i32 %a
+  %7 = load [3 x float]* %6
+  br label %while_head1
+
+while_head1:                                      ; preds = %while_body5, %while_body
+  %a2 = phi i32 [ %18, %while_body5 ], [ -1, %while_body ]
+  %sum3 = phi float [ %17, %while_body5 ], [ %sum, %while_body ]
+  %8 = icmp slt i32 %a2, 2
+  br i1 %8, label %while_body5, label %next4
+
+next4:                                            ; preds = %while_head1
+  %9 = add nsw i32 1, %a
+  br label %while_head
+
+while_body5:                                      ; preds = %while_head1
+  %10 = mul nsw i32 %a2, %4
+  %11 = add nsw i32 %10, %a
+  store [0 x float] %3, [0 x float]* %1
+  %12 = getelementptr inbounds [0 x float]* %1, i64 0, i32 %11
+  %13 = load float* %12
+  store [3 x float] %7, [3 x float]* %0
+  %14 = getelementptr inbounds [3 x float]* %0, i64 0, i32 %a2
+  %15 = load float* %14
+  %16 = fmul float %13, %15
+  %17 = fadd float %sum3, %16
+  %18 = add nsw i32 1, %a2
+  br label %while_head1
+}
+
+attributes #0 = { nounwind readnone }
+
+!nvvmir.version = !{!0}
+!nvvm.annotations = !{!1}
+
+!0 = metadata !{i32 1, i32 2}
+!1 = metadata !{void (%0, [0 x float]*, i32)* @lambda_crit_2842, metadata !"kernel", i64 1}

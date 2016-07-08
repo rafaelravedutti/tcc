@@ -1,0 +1,6 @@
+fn main() -> () {
+  let img = generate_image(5, 10);
+  gaussian_blur(img);
+  print_image(img);
+  destroy_image(img);
+}

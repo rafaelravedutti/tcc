@@ -41,16 +41,15 @@ fn destroy_image(img : Image) -> () {
   free_image_data(img.data);
 }
 
-fn apply_2d_convolution(img : Image, mask : [[f32]], mask_size : i32) -> () {
+fn apply_2d_convolution(img : Image, mask : [[f32 * 3] * 3], mask_size : i32) -> () {
   _apply_2d_convolution(img.data, img.width, img.height, mask, mask_size);
 }
 
-fn _apply_2d_convolution(mut data : &[i32], width: i32, height: i32, mask : [[f32]], mask_size : i32) -> () {
+fn _apply_2d_convolution(mut data : &[i32], width: i32, height: i32, mask : [[f32 * 3] * 3], mask_size : i32) -> () {
   let dev_id = device_get_id();
   let block_config = device_get_2d_block_config();
   let dimensions = (width, height, 1);
   let anchor = mask_size / 2;
-
 
   acc(dev_id, dimensions, block_config, || -> () {
     let x = acc_bidx() * acc_bdimx() + acc_tidx();
@@ -60,7 +59,7 @@ fn _apply_2d_convolution(mut data : &[i32], width: i32, height: i32, mask : [[f3
     for i in range(-anchor, anchor) {
       for j in range(-anchor, anchor) {
         if x + i > (-1) && x + i < width && y + j > (-1) && y + j < height {
-          sum += mask(i + anchor)(j + anchor) * data((y + j) * width + (x + i));
+            sum += mask(i + anchor)(j + anchor) * (data((y + j) * width + (x + i)) as f32);
         }
       }
     }

@@ -1,0 +1,39 @@
+extern "C" {
+  fn print_integer(n : i32) -> ();
+  fn rand() -> i32;
+  fn srand(seed : u32) -> ();
+}
+
+fn main() -> () {
+  let mut v1 : ~[i32 * 32];
+  let mut v2 : ~[i32 * 32];
+  let mut v1size : i32;
+  let mut v2size : i32;
+  let mut i = 0;
+  let mut j = 0;
+  let n = 64;
+  let h = n / 2;
+
+  v1size = 0;
+  v2size = 0;
+
+  srand(500 as u32);
+
+  while i < n {
+    if i % 2 == 0 {
+      v1(v1size) = (rand() % 256) as i32;
+      v1size++;
+    } else {
+      v2(v2size) = (rand() % 256) as i32;
+      v2size++;
+    }
+
+    i++;
+  }
+
+  while j < h {
+    print_integer(v1(j));
+    print_integer(v2(j));
+    j++;
+  }    
+}

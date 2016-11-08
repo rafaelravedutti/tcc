@@ -1,0 +1,6 @@
+fn main() -> () {
+  acc(0, (100, 100, 1), (32, 4, 1), || -> () {
+    let x = acc_bidx() * acc_bdimx() + acc_tidx();
+    let y = acc_bidy() * acc_bdimy() * acc_tidy();
+  });
+}

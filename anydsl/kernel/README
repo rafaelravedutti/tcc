@@ -1,0 +1,5 @@
+This code was used for testing purposes, the results showed that the following procedure
+will compile it without producing any errors:
+
+impala -emit-llvm /home/rafael/Utilities/anydsl/thorin/runtime/platforms/intrinsics_opencl.impala /home/rafael/Utilities/anydsl/thorin/runtime/runtime.impala /home/rafael/Utilities/anydsl/thorin/runtime/platforms/intrinsics_thorin.impala kernel.impala
+clang++ kernel.ll -I /home/rafael/Utilities/anydsl/thorin/src/ -L /home/rafael/Utilities/anydsl/thorin/build/lib/ -lthorin -lthorin_runtime -lpthread -lOpenCL

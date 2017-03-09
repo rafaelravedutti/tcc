@@ -1,0 +1,13 @@
+fn iterate(img : Image, body: fn(int,int) -> ()) -> () {
+  let mut i = 0;
+  let mut j = 0;
+
+  while(i < img.height) {
+    while(j < img.width) {
+      body(i, j);
+      j = j + 1;
+    }
+
+    i = i + 1;
+  }
+}

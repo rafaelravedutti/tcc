@@ -1,0 +1,16 @@
+fn main() -> () {
+  let img = generate_image(5, 10);
+
+  // Print image
+  print_image(img);
+
+  // Show gaussian result
+  gaussian_blur(img);
+  print_image(img);
+
+  // Show gaussian result
+  sobel(img);
+  print_image(img);
+
+  destroy_image(img);
+}

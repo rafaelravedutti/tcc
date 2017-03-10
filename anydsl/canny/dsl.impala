@@ -134,3 +134,45 @@ fn non_maximum_supression(img : Image, directions : &[f32], output : &mut[f32]) 
     }
   }
 }
+
+fn double_threshold(img : Image, edge_strength : &mut[i32]) -> () {
+  let low_threshold = 5.0f;
+  let high_threshold = 20.0f;
+
+  for x, y in iterate(img) {
+    let value = img.data(y * img.width + x);
+
+    if(value < low_threshold) {
+      img.data(y * img.width + x) = 0.0f;
+      edge_strength(y * img.width + x) = 0; /* Supressed */
+    } else if(value < high_threshold) {
+      edge_strength(y * img.width + x) = 1; /* Weak */
+    } else {
+      edge_strength(y * img.width + x) = 2; /* Strong */
+    }
+  }
+}
+
+fn edge_tracking(img : Image, edge_strength : &[i32]) -> () {
+  let anchor = 3 / 2;
+
+  for x, y in iterate(img) {
+    if edge_strength(y * img.width + x) == 1 {
+      let mut keep = 0;
+
+      for i in range(-anchor, anchor) {
+        for j in range(-anchor, anchor) {
+          if x + i > (-1) && x + 1 < img.width && y + j > (-1) && y + j < img.height {
+            if(edge_strength((y + j) * img.width + (x + i)) == 2) {
+              keep = 1;
+            }
+          }
+        }
+      }
+
+      if keep == 0 {
+        img.data(y * img.width + x) = 0.0f;
+      }
+    }
+  }
+}

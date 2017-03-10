@@ -32,6 +32,11 @@ void print_image_data(float *data, int width, int height) {
 }
 
 /* Float sqrt */
-float float_sqrt(float value) {
+float impala_sqrtf(float value) {
   return sqrtf(value);
+}
+
+/* Float atan2 */
+float impala_atan2f(float y, float x) {
+  return atan2f(y, x);
 }

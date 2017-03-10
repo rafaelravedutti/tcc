@@ -1,5 +1,7 @@
 fn main() -> () {
   let img = generate_image(5, 10);
+  let directions = allocate_image_data(img.width, img.height);
+  let nms_result = allocate_image_data(img.width, img.height);
 
   // Print image
   print_image(img);
@@ -8,9 +10,13 @@ fn main() -> () {
   gaussian_blur(img);
   print_image(img);
 
-  // Show gaussian result
-  sobel(img);
+  // Show sobel result
+  sobel(img, directions);
   print_image(img);
+
+  // Show non-maximum supression result
+  non_maximum_supression(img, directions, nms_result);
+  print_image_data(nms_result, img.width, img.height);
 
   destroy_image(img);
 }

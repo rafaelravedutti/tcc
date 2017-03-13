@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <tgmath.h>
 
 /* Image allocation */
 float *allocate_image_data(int width, int height) {
@@ -29,14 +29,4 @@ void print_image_data(float *data, int width, int height) {
   }
 
   fprintf(stdout, "\n");
-}
-
-/* Float sqrt */
-float impala_sqrtf(float value) {
-  return sqrtf(value);
-}
-
-/* Float atan2 */
-float impala_atan2f(float y, float x) {
-  return atan2f(y, x);
 }

@@ -26,16 +26,16 @@ TARGET_PLATFORM=opencl
 PLATFORM_FLAGS=-lOpenCL
 
 # Impala files to link
-IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_thorin.impala
+IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_thorin.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_cpu.impala
 
 all: canny
 
 main.ll: ${PLATFORM_TYPE}_device.impala dsl.impala main.impala
-	clang -S -emit-llvm utils.c -ffast-math
+	clang -S -emit-llvm utils.c
 	impala -emit-llvm ${IMPALA_LINK_FILES} $^
 
 canny: main.ll utils.ll
-	clang $^ -o $@
+	clang -lm $^ -o $@
 
 clean:
 	rm -f main.bc main.cl main.cu main.ll utils.ll canny

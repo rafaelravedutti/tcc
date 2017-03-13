@@ -8,8 +8,6 @@ extern "C" {
   fn print_image_data(&[f32], width : i32, height : i32) -> ();
   fn allocate_image_data(width : i32, height : i32) -> (&mut[f32]);
   fn free_image_data(&[f32]) -> ();
-  fn impala_sqrtf(value : f32) -> (f32);
-  fn impala_atan2f(y : f32, x : f32) -> (f32);
 }
 
 fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {
@@ -94,8 +92,8 @@ fn sobel(img : Image, directions : &mut[f32]) -> () {
       }
     }
 
-    img.data(y * img.width + x) = impala_sqrtf(sum_x * sum_x + sum_y * sum_y);
-    directions(y * img.width + x) = impala_atan2f(sum_y, sum_x);
+    img.data(y * img.width + x) = sqrtf(sum_x * sum_x + sum_y * sum_y);
+    directions(y * img.width + x) = atan2f(sum_y, sum_x);
   }
 }
 

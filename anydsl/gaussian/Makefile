@@ -1,3 +1,6 @@
+# AnyDSL
+ANYDSL_RUNTIME=/home/rafael/Utilities/anydsl/runtime
+
 # Impala
 IMPALA_PATH=/home/rafael/Utilities/anydsl/impala
 IMPALA_BIN=${IMPALA_PATH}/build/bin
@@ -20,14 +23,14 @@ TARGET_PLATFORM=opencl
 PLATFORM_FLAGS=-lOpenCL
 
 # Impala files to link
-IMPALA_LINK_FILES=${THORIN_RUNTIME}/runtime.impala ${THORIN_RUNTIME}/platforms/intrinsics_thorin.impala ${THORIN_RUNTIME}/platforms/intrinsics_${TARGET_PLATFORM}.impala
+IMPALA_LINK_FILES=${ANYDSL_RUNTIME}/src/runtime.impala ${ANYDSL_RUNTIME}/platforms/intrinsics_thorin.impala ${ANYDSL_RUNTIME}/platforms/intrinsics_${TARGET_PLATFORM}.impala
 
 all: final
 
 main.bc: filters.impala image.impala test_device.impala main.impala
 	# clang++ -S -emit-llvm utils.cpp
 	clang -S -emit-llvm utils.c
-	${IMPALA_BIN}/impala -emit-llvm ${IMPALA_LINK_FILES} $^
+	impala -emit-llvm ${IMPALA_LINK_FILES} $^
 
 final: main.bc utils.ll
 	clang++ ${THORIN_FLAGS} ${PLATFORM_FLAGS} $^ -o $@

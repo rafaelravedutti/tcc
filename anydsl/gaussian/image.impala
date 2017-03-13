@@ -1,12 +1,12 @@
 struct Image {
-  data : &[i32],
+  data : &mut[i32],
   width : i32,
   height : i32
 };
 
 extern "C" {
   fn print_image_data(&[i32], width : i32, height : i32) -> ();
-  fn allocate_image_data(width : i32, height : i32) -> (&[i32]);
+  fn allocate_image_data(width : i32, height : i32) -> (&mut[i32]);
   fn free_image_data(&[i32]) -> ();
 }
 
@@ -19,7 +19,7 @@ fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {
 
 fn generate_image(width : i32, height : i32) -> Image {
   let mut i = 0;
-  let mut res = Image {
+  let res = Image {
     data: allocate_image_data(width, height),
     width: width,
     height: height
@@ -42,13 +42,9 @@ fn destroy_image(img : Image) -> () {
 }
 
 fn apply_2d_convolution(img : Image, mask : [[f32 * 3] * 3], mask_size : i32) -> () {
-  _apply_2d_convolution(img.data, img.width, img.height, mask, mask_size);
-}
-
-fn _apply_2d_convolution(mut data : &[i32], width: i32, height: i32, mask : [[f32 * 3] * 3], mask_size : i32) -> () {
   let dev_id = device_get_id();
   let block_config = device_get_2d_block_config();
-  let dimensions = (width, height, 1);
+  let dimensions = (img.width, img.height, 1);
   let anchor = mask_size / 2;
 
   acc(dev_id, dimensions, block_config, || -> () {
@@ -58,12 +54,12 @@ fn _apply_2d_convolution(mut data : &[i32], width: i32, height: i32, mask : [[f3
 
     for i in range(-anchor, anchor) {
       for j in range(-anchor, anchor) {
-        if x + i > (-1) && x + i < width && y + j > (-1) && y + j < height {
-            sum += mask(i + anchor)(j + anchor) * (data((y + j) * width + (x + i)) as f32);
+        if x + i > (-1) && x + i < img.width && y + j > (-1) && y + j < img.height {
+          sum += mask(i + anchor)(j + anchor) * (img.data((y + j) * img.width + (x + i)) as f32);
         }
       }
     }
 
-    data(y * width + x) = sum as i32;
+    img.data(y * img.width + x) = sum as i32;
   });
 }

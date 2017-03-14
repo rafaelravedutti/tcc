@@ -4,6 +4,14 @@
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
 
+struct cvmat_ptr {
+  CvMat *mat;
+  double *ptr;
+  struct cvmat_ptr *next;
+};
+
+static struct cvmat_ptr *cvmat_ptr_list = NULL;
+
 /* Image allocation */
 double *allocate_image_data(int width, int height) {
   if(width > 0 && height > 0) {
@@ -33,12 +41,35 @@ void print_image_data(double *data, int width, int height) {
   fprintf(stdout, "\n");
 }
 
+/* Gets double pointer respective CvMat */
+CvMat *find_cvmat_by_ptr(double *ptr) {
+  struct cvmat_ptr *p;
+
+  for(p = cvmat_ptr_list; p != NULL; p = p->next) {
+    if(p->ptr == ptr) {
+      return p->mat;
+    }
+  }
+
+  return NULL;
+}
+
 /* Loads image from file */
 double *load_image(const char *path, int *width, int *height) {
   CvMat *img;
+  struct cvmat_ptr *cvmat_ptr_node;
 
   img = cvLoadImage(path);
   cvCvtColor(img, img, CV_64FC1);
+
+  cvmat_ptr_node = (struct cvmat_ptr *) malloc(sizeof(struct cvmat_ptr));
+
+  if(cvmat_ptr_node != NULL) {
+    cvmat_ptr_node->mat = img;
+    cvmat_ptr_node->ptr = img->data.db;
+    cvmat_ptr_node->next = cvmat_ptr_list;
+    cvmat_ptr_list = cvmat_ptr_node;
+  }
 
   *width = img->cols;
   *height = img->rows;
@@ -46,8 +77,26 @@ double *load_image(const char *path, int *width, int *height) {
 }
 
 /* Displays image */
-void display_image(const char *title, CvMat *img) {
-  cvCvtColor(img, img, CV_8U);
-  cvShowImage(title, img);
-  cvWaitKey(0);
+void display_image(const char *title, double *ptr) {
+  CvMat *img;
+
+  if((img = find_cvmat_by_ptr(ptr)) != NULL) {
+    cvCvtColor(img, img, CV_8U);
+    cvShowImage(title, img);
+    cvWaitKey(0);
+  }
+}
+
+/* Release images */
+void release_images() {
+  struct cvmat_ptr *p, *prev;
+
+  p = cvmat_ptr_list;
+
+  while(p != NULL) {
+    prev = p;
+    p = p->next;
+    cvReleaseMat(&(prev->mat));
+    free(prev);
+  }
 }

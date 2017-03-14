@@ -3,21 +3,21 @@
 #include <tgmath.h>
 
 /* Image allocation */
-float *allocate_image_data(int width, int height) {
+double *allocate_image_data(int width, int height) {
   if(width > 0 && height > 0) {
-    return (float *) malloc(width * height * sizeof(float));
+    return (double *) malloc(width * height * sizeof(double));
   }
 
   return NULL;
 }
 
 /* Image deallocation */
-void free_image_data(float *data) {
+void free_image_data(double *data) {
   free(data);
 }
 
 /* Synthetical image printing */
-void print_image_data(float *data, int width, int height) {
+void print_image_data(double *data, int width, int height) {
   unsigned int i, j;
 
   for(j = 0; j < height; ++j) {

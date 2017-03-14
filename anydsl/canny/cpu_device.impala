@@ -12,10 +12,10 @@ fn iterate(img : Image, body: fn(int,int) -> ()) -> () {
   }
 }
 
-fn sqrtf(a : f32) -> (f32) {
-  cpu_intrinsics.sqrtf(a)
+fn sqrt(a : f64) -> (f64) {
+  cpu_intrinsics.sqrt(a)
 }
 
-fn atan2f(y : f32, x : f32) -> (f32) {
-  cpu_intrinsics.atan2f(y, x)
+fn atan2(y : f64, x : f64) -> (f64) {
+  cpu_intrinsics.atan2(y, x)
 }

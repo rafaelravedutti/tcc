@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <tgmath.h>
+//--
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
 
 /* Image allocation */
 double *allocate_image_data(int width, int height) {
@@ -29,4 +31,23 @@ void print_image_data(double *data, int width, int height) {
   }
 
   fprintf(stdout, "\n");
+}
+
+/* Loads image from file */
+double *load_image(const char *path, int *width, int *height) {
+  CvMat *img;
+
+  img = cvLoadImage(path);
+  cvCvtColor(img, img, CV_64FC1);
+
+  *width = img->cols;
+  *height = img->rows;
+  return img->data.db;
+}
+
+/* Displays image */
+void display_image(const char *title, CvMat *img) {
+  cvCvtColor(img, img, CV_8U);
+  cvShowImage(title, img);
+  cvWaitKey(0);
 }

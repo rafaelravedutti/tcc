@@ -55,8 +55,8 @@ fn destroy_image(img : Image) -> () {
   free_image_data(img.data);
 }
 
-fn apply_2d_convolution(img : Image, mask : [[f64 * 3] * 3], mask_size : i32) -> () {
-  let anchor = mask_size / 2;
+fn apply_2d_3x3_convolution(img : Image, mask : [[f64 * 3] * 3]) -> () {
+  let anchor = 3 / 2;
 
   for x, y in iterate(img) {
     let mut sum = 0.0;
@@ -78,7 +78,7 @@ fn gaussian_blur(img : Image) -> () {
               [0.124758, 0.272496, 0.124758],
               [0.057118, 0.124758, 0.057118]];
 
-  apply_2d_convolution(img, mask, 3);
+  apply_2d_3x3_convolution(img, mask);
 }
 
 fn sobel(img : Image, directions : &mut[f64]) -> () {
@@ -101,7 +101,6 @@ fn sobel(img : Image, directions : &mut[f64]) -> () {
         if x + i > (-1) && x + 1 < img.width && y + j > (-1) && y + j < img.height {
           sum_x += mask_x(i + anchor)(j + anchor) * img.data((y + j) * img.width + (x + i));
           sum_y += mask_y(i + anchor)(j + anchor) * img.data((y + j) * img.width + (x + i));
-
         }
       }
     }

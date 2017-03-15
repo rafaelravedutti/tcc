@@ -1,22 +1,22 @@
 fn main() -> () {
-  let img = generate_image(5, 10);
+  //let img = generate_image(5, 10);
+  let img = _image("teste.png");
+  print_dimensions(img.width, img.height);
   let directions = allocate_image_data(img.width, img.height);
   let nms_result = allocate_image_data(img.width, img.height);
 
-  // Print image
-  print_image(img);
 
   // Show gaussian result
   gaussian_blur(img);
-  print_image(img);
 
   // Show sobel result
-  sobel(img, directions);
-  print_image(img);
+  //sobel(img, directions);
 
   // Show non-maximum supression result
-  non_maximum_supression(img, directions, nms_result);
-  print_image_data(nms_result, img.width, img.height);
+  //non_maximum_supression(img, directions, nms_result);
 
-  destroy_image(img);
+  //destroy_image(img);
+
+  //display_image("Hello, world!", img.data);
+  //release_images();
 }

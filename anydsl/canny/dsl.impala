@@ -6,8 +6,22 @@ struct Image {
 
 extern "C" {
   fn print_image_data(&[f64], width : i32, height : i32) -> ();
+  fn print_dimensions(width : i32, height : i32) -> ();
   fn allocate_image_data(width : i32, height : i32) -> (&mut[f64]);
-  fn free_image_data(&[f64]) -> ();
+  fn free_image_data(image : &[f64]) -> ();
+  fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[f64]);
+  fn display_image(title : &[u8]) -> ();
+  fn release_images() -> ();
+}
+
+fn _image(filename : &[u8]) -> Image {
+  let mut res : Image;
+  let mut pwidth = &mut res.width;
+  let mut pheight = &mut res.height;
+
+  res.data = load_image(filename, pwidth, pheight);
+
+  res
 }
 
 fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {

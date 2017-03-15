@@ -35,10 +35,11 @@ all: canny
 
 main.ll: ${PLATFORM_TYPE}_device.impala dsl.impala main.impala
 	clang -S -emit-llvm utils.c
+	clang++ -S -emit-llvm opencv_runtime.cpp
 	impala -emit-llvm ${IMPALA_LINK_FILES} $^
 
-canny: main.ll utils.ll
+canny: main.ll utils.ll opencv_runtime.ll
 	clang -lm ${OPENCV_LIBS} $^ -o $@
 
 clean:
-	rm -f main.bc main.cl main.cu main.ll utils.ll canny
+	rm -f main.bc main.cl main.cu main.ll utils.ll opencv_runtime.ll canny

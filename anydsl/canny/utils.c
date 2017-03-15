@@ -41,6 +41,11 @@ void print_image_data(double *data, int width, int height) {
   fprintf(stdout, "\n");
 }
 
+/* Prints image dimensions */
+void print_dimensions(int width, int height) {
+  fprintf(stdout, "Width: %i - Height: %i\n", width, height);
+}
+
 /* Gets double pointer respective CvMat */
 CvMat *find_cvmat_by_ptr(double *ptr) {
   struct cvmat_ptr *p;
@@ -54,13 +59,12 @@ CvMat *find_cvmat_by_ptr(double *ptr) {
   return NULL;
 }
 
-/* Loads image from file */
+/*
 double *load_image(const char *path, int *width, int *height) {
   CvMat *img;
   struct cvmat_ptr *cvmat_ptr_node;
 
   img = cvLoadImage(path);
-  cvCvtColor(img, img, CV_64FC1);
 
   cvmat_ptr_node = (struct cvmat_ptr *) malloc(sizeof(struct cvmat_ptr));
 
@@ -71,12 +75,13 @@ double *load_image(const char *path, int *width, int *height) {
     cvmat_ptr_list = cvmat_ptr_node;
   }
 
+  fprintf(stdout, "%d %d\n", img->cols, img->rows);
+
   *width = img->cols;
   *height = img->rows;
   return img->data.db;
 }
 
-/* Displays image */
 void display_image(const char *title, double *ptr) {
   CvMat *img;
 
@@ -87,7 +92,6 @@ void display_image(const char *title, double *ptr) {
   }
 }
 
-/* Release images */
 void release_images() {
   struct cvmat_ptr *p, *prev;
 
@@ -100,3 +104,4 @@ void release_images() {
     free(prev);
   }
 }
+*/

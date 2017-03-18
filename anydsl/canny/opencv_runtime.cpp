@@ -4,19 +4,21 @@
 
 static cv::Mat img;
 
+typedef int pixel_t;
+
 extern "C" {
-  double *load_image(const char *path, int *width, int *height);
+  pixel_t *load_image(const char *path, int *width, int *height);
   void display_image(const char *title);
+  void release_images();
 }
 
-double *load_image(const char *path, int *width, int *height) {
-  img = cv::imread(path, CV_LOAD_IMAGE_COLOR);
-  //cvtColor(img, img, CV_BGR2GRAY);
+pixel_t *load_image(const char *path, int *width, int *height) {
+  img = cv::imread(path, CV_LOAD_IMAGE_GRAYSCALE);
 
   *width = img.cols;
   *height = img.rows;
 
-  return (double *) img.data;
+  return img.ptr<pixel_t>(0);
 }
 
 void display_image(const char *title) {
@@ -24,6 +26,7 @@ void display_image(const char *title) {
   cv::imshow(title, img);
   cv::waitKey(0);
 }
+
 
 void release_images() {
 

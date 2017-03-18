@@ -1,23 +1,25 @@
 struct Image {
-  data : &mut[f64],
+  data : &mut[u8],
   width : i32,
   height : i32
 };
 
 extern "C" {
-  fn print_image_data(&[f64], width : i32, height : i32) -> ();
-  fn print_dimensions(width : i32, height : i32) -> ();
-  fn allocate_image_data(width : i32, height : i32) -> (&mut[f64]);
-  fn free_image_data(image : &[f64]) -> ();
-  fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[f64]);
+  fn print_image_data(&[u8], width : i32, height : i32) -> ();
+  fn print_integer(value : i32) -> ();
+  fn allocate_double_matrix(width : i32, height : i32) -> (&mut[f64]);
+  fn free_double_matrix(&mut[f64]) -> ();
+  fn allocate_image_data(width : i32, height : i32) -> (&mut[u8]);
+  fn free_image_data(image : &[u8]) -> ();
+  fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[u8]);
   fn display_image(title : &[u8]) -> ();
   fn release_images() -> ();
 }
 
 fn _image(filename : &[u8]) -> Image {
   let mut res : Image;
-  let mut pwidth = &mut res.width;
-  let mut pheight = &mut res.height;
+  let pwidth = &mut res.width;
+  let pheight = &mut res.height;
 
   res.data = load_image(filename, pwidth, pheight);
 
@@ -25,7 +27,7 @@ fn _image(filename : &[u8]) -> Image {
 }
 
 fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {
-  while min < max {
+  while min <= max {
     body(min);
     min++;
   }
@@ -40,7 +42,7 @@ fn generate_image(width : i32, height : i32) -> Image {
   };
 
   while(i < width * height) {
-    res.data(i) = (i % 10) as f64;
+    res.data(i) = (i % 10) as u8;
     i++;
   }
 
@@ -55,21 +57,43 @@ fn destroy_image(img : Image) -> () {
   free_image_data(img.data);
 }
 
+fn set_pixel(img : Image, x : i32, y : i32, value : u8) -> () {
+  img.data(y * img.width + x) = value;
+}
+
+fn get_pixel(img : Image, x : i32, y : i32) -> (u8) {
+  img.data(y * img.width + x)
+}
+
+fn set_pixel_real(img : Image, x : i32, y : i32, value : f64) -> () {
+  img.data(y * img.width + x) = value as u8;
+}
+
+fn get_pixel_real(img : Image, x : i32, y : i32) -> (f64) {
+  img.data(y * img.width + x) as f64
+}
+
+fn copy_image_data(img : Image, output : &mut[u8]) -> () {
+  for x, y in iterate(img) {
+    output(y * img.width + x) = img.data(y * img.width + x);
+  }
+}
+
 fn apply_2d_3x3_convolution(img : Image, mask : [[f64 * 3] * 3]) -> () {
   let anchor = 3 / 2;
 
   for x, y in iterate(img) {
     let mut sum = 0.0;
 
-    for i in range(-anchor, anchor) {
-      for j in range(-anchor, anchor) {
-        if x + i > (-1) && x + 1 < img.width && y + j > (-1) && y + j < img.height {
-          sum += mask(i + anchor)(j + anchor) * img.data((y + j) * img.width + (x + i));
+    if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
+      for i in range(-anchor, anchor) {
+        for j in range(-anchor, anchor) {
+          sum += mask(i + anchor)(j + anchor) * get_pixel_real(img, x + i, y + j);
         }
       }
-    }
 
-    img.data(y * img.width + x) = sum;
+      set_pixel_real(img, x, y, sum);
+    }
   }
 }
 
@@ -96,17 +120,19 @@ fn sobel(img : Image, directions : &mut[f64]) -> () {
     let mut sum_x = 0.0;
     let mut sum_y = 0.0;
 
-    for i in range(-anchor, anchor) {
-      for j in range(-anchor, anchor) {
-        if x + i > (-1) && x + 1 < img.width && y + j > (-1) && y + j < img.height {
-          sum_x += mask_x(i + anchor)(j + anchor) * img.data((y + j) * img.width + (x + i));
-          sum_y += mask_y(i + anchor)(j + anchor) * img.data((y + j) * img.width + (x + i));
+    if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
+      for i in range(-anchor, anchor) {
+        for j in range(-anchor, anchor) {
+          let value = get_pixel_real(img, x + i, y + j);
+
+          sum_x += mask_x(i + anchor)(j + anchor) * value;
+          sum_y += mask_y(i + anchor)(j + anchor) * value;
         }
       }
-    }
 
-    img.data(y * img.width + x) = sqrt(sum_x * sum_x + sum_y * sum_y);
-    directions(y * img.width + x) = atan2(sum_y, sum_x);
+      directions(y * img.width + x) = atan2(sum_y, sum_x);
+      set_pixel_real(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
+    }
   }
 }
 
@@ -125,50 +151,48 @@ fn round_angle(angle : f64) -> (i32) {
   result
 }
 
-fn non_maximum_supression(img : Image, directions : &[f64], output : &mut[f64]) -> () {
+fn non_maximum_supression(img : Image, directions : &[f64], output : &mut[u8]) -> () {
   let offsets = [ [0, 1, 0, -1], [1, 1, -1, -1], [1, 0, -1, 0], [1, -1, -1, 1],
                   [0, 1, 0, -1], [1, 1, -1, -1], [1, 0, -1, 0], [1, -1, -1, 1]  ];
 
-  for x, y in iterate(img) {
-    output(y * img.width + x) = img.data(y * img.width + x);
-  }
+  copy_image_data(img, output);
 
   for x, y in iterate(img) {
     let angle = round_angle(directions(y * img.width + x));
     let angle_index = angle / 45;
-    let value = img.data(y * img.width + x);
+    let value = get_pixel(img, x, y);
     let nb1_x = offsets(angle_index)(0);
     let nb1_y = offsets(angle_index)(1);
     let nb2_x = offsets(angle_index)(2);
     let nb2_y = offsets(angle_index)(3);
-    let mut nb1_value = 0.0;
-    let mut nb2_value = 0.0;
+    let mut nb1_value = 0 as u8;
+    let mut nb2_value = 0 as u8;
 
     if nb1_x >= 0 && nb1_x < img.width && nb1_y >= 0 && nb1_y < img.height {
-      nb1_value = img.data(nb1_y * img.width + nb1_x);
+      nb1_value = get_pixel(img, nb1_x, nb1_y);
     }
 
     if nb2_x >= 0 && nb2_x < img.width && nb2_y >= 0 && nb2_y < img.height {
-      nb2_value = img.data(nb2_y * img.width + nb2_x);
+      nb2_value = get_pixel(img, nb2_x, nb2_y);
     }
 
     if value < nb1_value || value < nb2_value {
-      output(y * img.width + x) = 0.0;
+      set_pixel(img, x, y, 0 as u8);
     }
   }
 }
 
 fn double_threshold(img : Image, edge_strength : &mut[i32]) -> () {
-  let low_threshold = 5.0;
-  let high_threshold = 20.0;
+  let low_threshold = 5 as u8;
+  let high_threshold = 20 as u8;
 
   for x, y in iterate(img) {
-    let value = img.data(y * img.width + x);
+    let value = get_pixel(img, x, y);
 
-    if(value < low_threshold) {
-      img.data(y * img.width + x) = 0.0;
+    if value < low_threshold {
+      set_pixel(img, x, y, 0 as u8);
       edge_strength(y * img.width + x) = 0; /* Supressed */
-    } else if(value < high_threshold) {
+    } else if value < high_threshold {
       edge_strength(y * img.width + x) = 1; /* Weak */
     } else {
       edge_strength(y * img.width + x) = 2; /* Strong */
@@ -186,7 +210,7 @@ fn edge_tracking(img : Image, edge_strength : &[i32]) -> () {
       for i in range(-anchor, anchor) {
         for j in range(-anchor, anchor) {
           if x + i > (-1) && x + 1 < img.width && y + j > (-1) && y + j < img.height {
-            if(edge_strength((y + j) * img.width + (x + i)) == 2) {
+            if edge_strength((y + j) * img.width + (x + i)) == 2 {
               keep = 1;
             }
           }
@@ -194,7 +218,7 @@ fn edge_tracking(img : Image, edge_strength : &[i32]) -> () {
       }
 
       if keep == 0 {
-        img.data(y * img.width + x) = 0.0;
+        set_pixel(img, x, y, 0 as u8);
       }
     }
   }

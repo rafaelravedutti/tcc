@@ -1,9 +1,11 @@
-fn iterate(img : Image, body: fn(int,int) -> ()) -> () {
+fn iterate(img : Image, body: fn(int, int) -> ()) -> () {
   let mut i = 0;
   let mut j = 0;
 
-  while(i < img.height) {
-    while(j < img.width) {
+  while(i < img.width) {
+    j = 0;
+
+    while(j < img.height) {
       body(i, j);
       j = j + 1;
     }

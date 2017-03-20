@@ -12,6 +12,7 @@ extern "C" {
   fn allocate_image_data(width : i32, height : i32) -> (&mut[u8]);
   fn free_image_data(image : &[u8]) -> ();
   fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[u8]);
+  fn opencv_canny(threshold : u8, display : bool) -> (&mut[u8]);
   fn display_image(title : &[u8]) -> ();
   fn release_images() -> ();
 }
@@ -195,8 +196,8 @@ fn non_maximum_supression(img : Image, directions : &[f64], output : Image) -> (
 }
 
 fn double_threshold(img : Image, edge_strength : &mut[u8]) -> () {
-  let low_threshold = 32 as u8;
-  let high_threshold = 64 as u8;
+  let low_threshold = 40 as u8;
+  let high_threshold = low_threshold * (3 as u8);
 
   for x, y in iterate(img) {
     let value = get_pixel(img, x, y);

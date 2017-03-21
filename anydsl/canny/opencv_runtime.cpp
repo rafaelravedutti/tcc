@@ -4,6 +4,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 static cv::Mat img;
+static cv::Mat dest;
 
 typedef int pixel_t;
 
@@ -24,8 +25,6 @@ pixel_t *load_image(const char *path, int *width, int *height) {
 }
 
 pixel_t *opencv_canny(unsigned char threshold, bool display) {
-  cv::Mat dest;
-
   dest.create(img.size(), img.type());
 
   cv::blur(img, dest, cv::Size(3,3));

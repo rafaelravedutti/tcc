@@ -14,7 +14,7 @@ extern "C" {
   fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[u8]);
   fn opencv_canny(threshold : u8, display : bool) -> (&mut[u8]);
   fn display_image(title : &[u8]) -> ();
-  fn release_images() -> ();
+  fn show_statistics(corrects : i32, false_positives : i32, false_negatives : i32) -> ();
 }
 
 fn _image(filename : &[u8]) -> Image {
@@ -217,7 +217,9 @@ fn edge_tracking(img : Image, edge_strength : &[u8]) -> () {
   let anchor = 3 / 2;
 
   for x, y in iterate(img) {
-    if edge_strength(y * img.width + x) == 1 as u8 {
+    let strength = edge_strength(y * img.width + x);
+
+    if strength == 1 as u8 {
       let mut keep = 0;
 
       if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
@@ -231,8 +233,35 @@ fn edge_tracking(img : Image, edge_strength : &[u8]) -> () {
 
         if keep == 0 {
           set_pixel(img, x, y, 0 as u8);
+        } else {
+          set_pixel(img, x, y, 255 as u8);
         }
       }
+    } else if strength == 2 as u8 {
+      set_pixel(img, x, y, 255 as u8);
     }
   }
+}
+
+fn compare_results(img : Image, reference : &mut[u8]) -> () {
+  let mut corrects = 0;
+  let mut false_positives = 0;
+  let mut false_negatives = 0;
+
+  for x, y in iterate(img) {
+    let pixel_value = get_pixel(img, x, y) as i32;
+    let pixel_reference = reference(y * img.width + x) as i32;
+
+    if pixel_value != 0 {
+      if pixel_reference != 0 {
+        corrects++;
+      } else {
+        false_positives++;
+      }
+    } else if pixel_reference != 0 {
+      false_negatives++;
+    }
+  }
+
+  show_statistics(corrects, false_positives, false_negatives);
 }

@@ -17,6 +17,7 @@ fn main() -> () {
   edge_tracking(img, output.data);
 
   display_image("result");
+  compare_results(img, opencv_result);
 
   free_double_matrix(directions);
   destroy_image(output);

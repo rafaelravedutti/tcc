@@ -143,25 +143,24 @@ fn sobel(img : Image, directions : &mut[f64], output : Image) -> () {
         }
       }
 
-      directions(y * img.width + x) = atan2(sum_y, sum_x);
+      directions(y * img.width + x) = atan2(sum_y, sum_x) * 180.0 / 3.1415;
       set_pixel_real(output, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
     }
   }
 }
 
 fn round_angle(angle : f64) -> (i32) {
-  let mut limit = 22.5;
-  let mut result = 0;
+  let mut fixed_angle = angle + 22.5;
 
-  while limit < 360.0 {
-    if angle < limit {
-      result = ((limit - 22.5) as i32) % 360
-    }
-
-    limit = limit + 45.0;
+  while fixed_angle < 0.0 {
+    fixed_angle = fixed_angle + 360.0;
   }
 
-  result
+  while fixed_angle > 360.0 {
+    fixed_angle = fixed_angle - 360.0;
+  }
+
+  (fixed_angle as i32) - ((fixed_angle as i32) % 45)
 }
 
 fn non_maximum_supression(img : Image, directions : &[f64], output : Image) -> () {

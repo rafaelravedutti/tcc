@@ -62,13 +62,9 @@ void show_statistics(int corrects, int false_positives, int false_negatives) {
   double correct_percent, fp_percent, fn_percent;
 
   total = corrects + false_positives + false_negatives;
-  correct_percent = (double) corrects;
-  fp_percent = (double) false_positives;
-  fn_percent = (double) false_negatives;
-
-  correct_percent /= (double) total;
-  fp_percent /= (double) total;
-  fn_percent /= (double) total;
+  correct_percent = (double) corrects / (double) total;
+  fp_percent = (double) false_positives / (double) total;
+  fn_percent = (double) false_negatives / (double) total;
 
   fprintf(stdout, "-------------------------------------\n"
                   "Correct pixels: %.2f (%d/%d)\n"

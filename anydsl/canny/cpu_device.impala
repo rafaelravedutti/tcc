@@ -1,4 +1,4 @@
-fn iterate(img : Image, body: fn(int, int) -> ()) -> () {
+fn iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
   let mut i = 0;
   let mut j = 0;
 

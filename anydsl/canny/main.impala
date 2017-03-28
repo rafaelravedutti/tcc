@@ -1,5 +1,5 @@
 fn main() -> () {
-  let img = _image("teste.png");
+  let img = image("teste.png");
   let output = empty_image(img.width, img.height);
   let directions = allocate_double_matrix(img.width, img.height);
   let opencv_result = opencv_canny(40 as u8, true);

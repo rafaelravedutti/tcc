@@ -27,7 +27,7 @@ pixel_t *load_image(const char *path, int *width, int *height) {
 pixel_t *opencv_canny(unsigned char threshold, bool display) {
   dest.create(img.size(), img.type());
 
-  cv::blur(img, dest, cv::Size(3,3));
+  cv::GaussianBlur(img, dest, cv::Size(5,5), 0, 0);
   cv::Canny(dest, dest, threshold, threshold * 3, 3);
 
   if(display) {

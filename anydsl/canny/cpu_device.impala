@@ -18,6 +18,10 @@ fn sqrt(a : f64) -> (f64) {
   cpu_intrinsics.sqrt(a)
 }
 
+fn fabs(a : f64) -> (f64) {
+  cpu_intrinsics.fabs(a)
+}
+
 fn atan2(y : f64, x : f64) -> (f64) {
   cpu_intrinsics.atan2(y, x)
 }

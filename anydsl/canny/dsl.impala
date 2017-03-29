@@ -1,7 +1,10 @@
 struct image_struct {
   data : &mut[u8],
+  oper_buffer : &mut[u8],
+  directions : &mut[f64],
   width : i32,
-  height : i32
+  height : i32,
+  loaded : bool
 };
 
 struct filter_struct {
@@ -33,6 +36,9 @@ fn image(filename : &[u8]) -> image_struct {
   let pheight = &mut res.height;
 
   res.data = load_image(filename, pwidth, pheight);
+  res.oper_buffer = allocate_uchar_matrix(res.width, res.height);
+  res.directions = allocate_double_matrix(res.width, res.height);
+  res.loaded = true;
 
   res
 }
@@ -40,26 +46,15 @@ fn image(filename : &[u8]) -> image_struct {
 fn generate_image(width : i32, height : i32) -> image_struct {
   let res = image_struct {
     data: allocate_uchar_matrix(width, height),
+    oper_buffer: allocate_uchar_matrix(width, height),
+    directions: allocate_double_matrix(width, height),
     width: width,
-    height: height
+    height: height,
+    loaded: false
   };
 
   for x, y in iterate(res) {
     set_pixel(res, x, y, (x + y) as u8);
-  }
-
-  res
-}
-
-fn empty_image(width : i32, height : i32) -> image_struct {
-  let res = image_struct {
-    data: allocate_uchar_matrix(width, height),
-    width: width,
-    height: height
-  };
-
-  for x, y in iterate(res) {
-    set_pixel(res, x, y, 0 as u8);
   }
 
   res
@@ -70,7 +65,12 @@ fn print_image(img : image_struct) -> () {
 }
 
 fn destroy_image(img : image_struct) -> () {
-  free_uchar_matrix(img.data);
+  if !img.loaded {
+    free_uchar_matrix(img.data);
+  }
+
+  free_uchar_matrix(img.oper_buffer);
+  free_double_matrix(img.directions);
 }
 
 fn set_pixel(img : image_struct, x : i32, y : i32, value : u8) -> () {
@@ -89,9 +89,31 @@ fn get_pixel_real(img : image_struct, x : i32, y : i32) -> (f64) {
   img.data(y * img.width + x) as f64
 }
 
-fn copy_image_data(img : image_struct, output : &mut[u8]) -> () {
+fn set_buffer_pixel(img : image_struct, x : i32, y : i32, value : u8) -> () {
+  img.oper_buffer(y * img.width + x) = value;
+}
+
+fn get_buffer_pixel(img : image_struct, x : i32, y : i32) -> (u8) {
+  img.oper_buffer(y * img.width + x)
+}
+
+fn set_buffer_pixel_real(img : image_struct, x : i32, y : i32, value : f64) -> () {
+  img.oper_buffer(y * img.width + x) = value as u8;
+}
+
+fn get_buffer_pixel_real(img : image_struct, x : i32, y : i32) -> (f64) {
+  img.oper_buffer(y * img.width + x) as f64
+}
+
+fn sync_image_data(img : image_struct) -> () {
   for x, y in iterate(img) {
-    output(y * img.width + x) = img.data(y * img.width + x);
+    img.data(y * img.width + x) = img.oper_buffer(y * img.width + x);
+  }
+}
+
+fn sync_image_buffer(img : image_struct) -> () {
+  for x, y in iterate(img) {
+    img.oper_buffer(y * img.width + x) = img.data(y * img.width + x);
   }
 }
 
@@ -145,7 +167,7 @@ fn filter_5x1(mask : [f64 * 5]) -> filter_struct {
   result
 }
 
-fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct, output : image_struct) -> () {
+fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   for x, y in iterate(img) {
@@ -157,7 +179,7 @@ fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct, output :
       }
     }
 
-    set_pixel_real(output, x, y, sum);
+    set_buffer_pixel_real(img, x, y, sum);
   }
 
   for x, y in iterate(img) {
@@ -169,11 +191,13 @@ fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct, output :
       }
     }
 
-    set_pixel_real(output, x, y, sum);
+    set_buffer_pixel_real(img, x, y, sum);
   }
+
+  sync_image_data(img);
 }
 
-fn apply_2d_block_convolution(img : image_struct, mask : filter_struct, output : image_struct) -> () {
+fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   for x, y in iterate(img) {
@@ -186,12 +210,14 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct, output :
         }
       }
 
-      set_pixel_real(output, x, y, sum);
+      set_buffer_pixel_real(img, x, y, sum);
     }
   }
+
+  sync_image_data(img);
 }
 
-fn gaussian_blur(img : image_struct, output : image_struct) -> () {
+fn gaussian_blur(img : image_struct) -> () {
   /*
   let mask = filter_3x3([[0.057118, 0.124758, 0.057118],
                          [0.124758, 0.272496, 0.124758],
@@ -200,10 +226,10 @@ fn gaussian_blur(img : image_struct, output : image_struct) -> () {
 
   let mask = filter_5x1([0.0625, 0.25, 0.375, 0.25, 0.0625]);
 
-  apply_2d_tiled_convolution(img, mask, output);
+  apply_2d_tiled_convolution(img, mask);
 }
 
-fn sobel(img : image_struct, directions : &mut[f64], output : image_struct) -> () {
+fn sobel(img : image_struct) -> () {
   let mask_x = [[-1.0,  0.0,  1.0],
                 [-2.0,  0.0,  2.0],
                 [-1.0,  0.0,  1.0]];
@@ -228,36 +254,26 @@ fn sobel(img : image_struct, directions : &mut[f64], output : image_struct) -> (
         }
       }
 
-      directions(y * img.width + x) = atan2(sum_y, sum_x) * 180.0 / 3.1415;
-      set_pixel_real(output, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
+      img.directions(y * img.width + x) = atan2(sum_y, sum_x);
+      set_buffer_pixel_real(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
     }
   }
+
+  sync_image_data(img);
 }
 
 fn round_angle(angle : f64) -> (i32) {
-  let mut fixed_angle = angle + 22.5;
-
-  while fixed_angle < 0.0 {
-    fixed_angle = fixed_angle + 360.0;
-  }
-
-  while fixed_angle > 360.0 {
-    fixed_angle = fixed_angle - 360.0;
-  }
-
-  (fixed_angle as i32) - ((fixed_angle as i32) % 45)
+  (((fabs(angle) + 0.3926875) / 0.785375) as i32) % 4
 }
 
-fn non_maximum_supression(img : image_struct, directions : &[f64], output : image_struct) -> () {
-  let offsets = [ [0, 1, 0, -1], [1, 1, -1, -1], [1, 0, -1, 0], [1, -1, -1, 1],
-                  [0, 1, 0, -1], [1, 1, -1, -1], [1, 0, -1, 0], [1, -1, -1, 1]  ];
+fn non_maximum_supression(img : image_struct) -> () {
+  let offsets = [[0, 1, 0, -1], [1, 1, -1, -1], [1, 0, -1, 0], [1, -1, -1, 1]];
 
-  copy_image_data(img, output.data);
+  sync_image_buffer(img);
 
   for x, y in iterate(img) {
-    let angle = round_angle(directions(y * img.width + x));
-    let angle_index = angle / 45;
     let value = get_pixel(img, x, y);
+    let angle_index = round_angle(img.directions(y * img.width + x));
     let nb1_x = x + offsets(angle_index)(0);
     let nb1_y = y + offsets(angle_index)(1);
     let nb2_x = x + offsets(angle_index)(2);
@@ -274,54 +290,57 @@ fn non_maximum_supression(img : image_struct, directions : &[f64], output : imag
     }
 
     if value < nb1_value || value < nb2_value {
-      set_pixel(output, x, y, 0 as u8);
+      set_buffer_pixel(img, x, y, 0 as u8);
     }
   }
+
+  sync_image_data(img);
 }
 
-fn double_threshold(img : image_struct, edge_strength : &mut[u8]) -> () {
+fn hysteresis(img : image_struct) -> () {
   let low_threshold = 40 as u8;
   let high_threshold = low_threshold * (3 as u8);
+  let mut counter = 1;
 
   for x, y in iterate(img) {
     let value = get_pixel(img, x, y);
 
     if value < low_threshold {
       set_pixel(img, x, y, 0 as u8);
-      edge_strength(y * img.width + x) = 0 as u8; /* Supressed */
     } else if value < high_threshold {
-      edge_strength(y * img.width + x) = 1 as u8; /* Weak */
+      set_pixel(img, x, y, 1 as u8);
     } else {
-      edge_strength(y * img.width + x) = 2 as u8; /* Strong */
+      set_pixel(img, x, y, 16 as u8);
     }
   }
-}
 
-fn edge_tracking(img : image_struct, edge_strength : &[u8]) -> () {
-  let anchor = 3 / 2;
+  while counter > 0 {
+    counter = 0;
 
-  for x, y in iterate(img) {
-    let strength = edge_strength(y * img.width + x);
+    for x, y in iterate(img) {
+      if get_pixel(img, x, y) == 1 as u8 {
+        let mut sum = 0 as u8;
 
-    if strength == 1 as u8 {
-      let mut keep = 0;
-
-      if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
-        for i in range(-anchor, anchor) {
-          for j in range(-anchor, anchor) {
-            if edge_strength((y + j) * img.width + (x + i)) == 2 as u8 {
-              keep = 1;
+        if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
+          for i in range(-1, 1) {
+            for j in range(-1, 1) {
+              sum += get_pixel(img, x + i, y + j);
             }
           }
-        }
 
-        if keep == 0 {
-          set_pixel(img, x, y, 0 as u8);
-        } else {
-          set_pixel(img, x, y, 255 as u8);
+          if sum < 16 as u8 {
+            set_pixel(img, x, y, 0 as u8);
+          } else {
+            counter = counter + 1;
+            set_pixel(img, x, y, 16 as u8);
+          }
         }
       }
-    } else if strength == 2 as u8 {
+    }
+  }
+
+  for x, y in iterate(img) {
+    if get_pixel(img, x, y) == 16 as u8 {
       set_pixel(img, x, y, 255 as u8);
     }
   }

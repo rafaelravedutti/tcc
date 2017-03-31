@@ -2,11 +2,7 @@ fn main() -> () {
   let img = image("teste.png");
   let opencv_result = opencv_canny(40 as u8, true);
 
-  gaussian_blur(img);
-  sobel(img);
-  non_maximum_supression(img);
-  hysteresis(img);
-
+  canny(img);
   display_image("result");
   compare_results(img, opencv_result);
 

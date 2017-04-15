@@ -28,6 +28,7 @@ extern "C" {
   /* Printing functions */
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();
   fn print_integer(value : i32) -> ();
+  fn print_angle_test(angle : f64, result : i32) -> ();
   fn show_statistics(corrects : i32, false_positives : i32, false_negatives : i32) -> ();
 }
 
@@ -233,36 +234,35 @@ fn gaussian_blur(img : image_struct) -> () {
 }
 
 fn sobel(img : image_struct) -> () {
-  let mask_x = [[-1.0,  0.0,  1.0],
-                [-2.0,  0.0,  2.0],
-                [-1.0,  0.0,  1.0]];
-
-  let mask_y = [[-1.0, -2.0, -1.0],
-                [0.0,   0.0,  0.0],
-                [1.0,   2.0,  1.0]];
-
-  let anchor = 3 / 2;
-
   for x, y in iterate(img) {
     let mut sum_x = 0.0;
     let mut sum_y = 0.0;
 
     if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
-      for i in range(-anchor, anchor) {
-        for j in range(-anchor, anchor) {
-          let value = get_pixel_real(img, x + i, y + j);
+      sum_x -= get_pixel_real(img, x - 1, y - 1);
+      sum_x -= get_pixel_real(img, x - 1, y    ) * 2.0;
+      sum_x -= get_pixel_real(img, x - 1, y + 1);
+      sum_x += get_pixel_real(img, x + 1, y - 1);
+      sum_x += get_pixel_real(img, x + 1, y    ) * 2.0;
+      sum_x += get_pixel_real(img, x + 1, y + 1);
 
-          sum_x += mask_x(i + anchor)(j + anchor) * value;
-          sum_y += mask_y(i + anchor)(j + anchor) * value;
-        }
-      }
+      sum_y -= get_pixel_real(img, x - 1, y - 1);
+      sum_y -= get_pixel_real(img, x,     y - 1) * 2.0;
+      sum_y -= get_pixel_real(img, x + 1, y - 1);
+      sum_y += get_pixel_real(img, x - 1, y + 1);
+      sum_y += get_pixel_real(img, x,     y + 1) * 2.0;
+      sum_y += get_pixel_real(img, x + 1, y + 1);
 
-      img.directions(y * img.width + x) = atan2(sum_y, sum_x);
+      img.directions(y * img.width + x) = atan2(sum_x, sum_y);
       set_buffer_pixel_real(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
     }
   }
 
   sync_image_data(img);
+}
+
+fn radian_to_degrees(angle : f64) -> (f64) {
+  angle * 180.0 / 3.14
 }
 
 fn degrees_to_radian(angle : f64) -> (f64) {
@@ -273,6 +273,10 @@ fn round_angle(angle : f64) -> (i32) {
   (((fabs(angle) + 0.3926991) / 0.785398) as i32) % 4
 }
 
+fn test_round_angle(angle : f64) -> () {
+  print_angle_test(radian_to_degrees(angle), round_angle(angle));
+}
+
 fn non_maximum_supression(img : image_struct) -> () {
   let offsets = [[0, 1], [1, -1], [1, 0], [1, 1]];
 
@@ -280,11 +284,12 @@ fn non_maximum_supression(img : image_struct) -> () {
 
   for x, y in iterate(img) {
     let value = get_pixel(img, x, y);
-    let angle_index = round_angle(img.directions(y * img.width + x));
-    let nb1_x = x + offsets(angle_index)(0);
-    let nb1_y = y + offsets(angle_index)(1);
-    let nb2_x = x - offsets(angle_index)(0);
-    let nb2_y = y - offsets(angle_index)(1);
+    let angle = img.directions(y * img.width + x);
+    let index = round_angle(angle);
+    let nb1_x = x + offsets(index)(0);
+    let nb1_y = y + offsets(index)(1);
+    let nb2_x = x - offsets(index)(0);
+    let nb2_y = y - offsets(index)(1);
     let mut nb1_value = 0 as u8;
     let mut nb2_value = 0 as u8;
 

@@ -51,6 +51,11 @@ void print_integer(int value) {
   fprintf(stdout, "%d\n", value);
 }
 
+/* Angle test printing */
+void print_angle_test(double angle, int result) {
+  fprintf(stdout, "ROUND(%.6f) = %d\n", angle, result);
+}
+
 /* Show statistics */
 void show_statistics(int corrects, int false_positives, int false_negatives) {
   int total;

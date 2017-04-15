@@ -21,8 +21,9 @@ extern "C" {
 
   /* OpenCV functions */
   fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[u8]);
-  fn opencv_canny(threshold : u8, display : bool) -> (&mut[u8]);
-  fn display_image(title : &[u8]) -> ();
+  fn opencv_gaussian(img : &mut[u8], mask_size : u8, display : bool) -> (&mut[u8]);
+  fn opencv_canny(img : &mut[u8], threshold : u8, display : bool) -> (&mut[u8]);
+  fn display_image(img : &mut[u8], title : &[u8], wait : bool) -> ();
 
   /* Printing functions */
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();
@@ -114,6 +115,12 @@ fn sync_image_data(img : image_struct) -> () {
 fn sync_image_buffer(img : image_struct) -> () {
   for x, y in iterate(img) {
     img.oper_buffer(y * img.width + x) = img.data(y * img.width + x);
+  }
+}
+
+fn copy_data_to_image(img : image_struct, data : &mut[u8]) -> () {
+  for x, y in iterate(img) {
+    img.data(y * img.width + x) = data(y * img.width + x);
   }
 }
 
@@ -267,7 +274,7 @@ fn round_angle(angle : f64) -> (i32) {
 }
 
 fn non_maximum_supression(img : image_struct) -> () {
-  let offsets = [[0, 1, 0, -1], [1, -1, -1, 1], [1, 0, -1, 0], [1, 1, -1, -1]];
+  let offsets = [[0, 1], [1, -1], [1, 0], [1, 1]];
 
   sync_image_buffer(img);
 
@@ -276,8 +283,8 @@ fn non_maximum_supression(img : image_struct) -> () {
     let angle_index = round_angle(img.directions(y * img.width + x));
     let nb1_x = x + offsets(angle_index)(0);
     let nb1_y = y + offsets(angle_index)(1);
-    let nb2_x = x + offsets(angle_index)(2);
-    let nb2_y = y + offsets(angle_index)(3);
+    let nb2_x = x - offsets(angle_index)(0);
+    let nb2_y = y - offsets(angle_index)(1);
     let mut nb1_value = 0 as u8;
     let mut nb2_value = 0 as u8;
 
@@ -338,7 +345,7 @@ fn hysteresis(img : image_struct) -> () {
   }
 
   for x, y in iterate(img) {
-    if get_pixel(img, x, y) > 1 as u8 {
+    if get_pixel(img, x, y) >= 15 as u8 {
       set_pixel(img, x, y, 255 as u8);
     } else {
       set_pixel(img, x, y, 0 as u8);
@@ -347,7 +354,7 @@ fn hysteresis(img : image_struct) -> () {
 }
 
 fn canny(img : image_struct) -> () {
-  gaussian_blur(img);
+  //gaussian_blur(img);
   sobel(img);
   non_maximum_supression(img);
   hysteresis(img);
@@ -362,10 +369,13 @@ fn compare_results(img : image_struct, reference : &mut[u8]) -> () {
     let pixel_value = get_pixel(img, x, y) as i32;
     let pixel_reference = reference(y * img.width + x) as i32;
 
+    set_pixel(img, x, y, 0 as u8);
+
     if pixel_value != 0 {
       if pixel_reference != 0 {
         corrects++;
       } else {
+        set_pixel(img, x, y, 255 as u8);
         false_positives++;
       }
     } else if pixel_reference != 0 {

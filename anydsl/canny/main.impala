@@ -1,10 +1,14 @@
 fn main() -> () {
   let img = image("teste.png");
-  let opencv_result = opencv_canny(40 as u8, true);
+  let blurred_img = opencv_gaussian(img.data, 5 as u8, false);
+  let opencv_result = opencv_canny(blurred_img, 40 as u8, true);
 
+  copy_data_to_image(img, blurred_img);
   canny(img);
-  display_image("result");
+  display_image(img.data, "result", false);
+
   compare_results(img, opencv_result);
+  display_image(img.data, "false_positives", true);
 
   destroy_image(img);
 }

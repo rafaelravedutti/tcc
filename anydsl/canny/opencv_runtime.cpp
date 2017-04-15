@@ -21,7 +21,7 @@ cv::Mat GetImageMat(pixel_t *img, int *found) {
   *found = 0;
 
   for(mat = mat_list.begin(); mat != mat_list.end(); ++mat) {
-    if((*mat).ptr<pixel_t>(0) == img) {
+    if(mat->ptr<pixel_t>(0) == img) {
       *found = 1;
       return *mat;
     }

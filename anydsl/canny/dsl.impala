@@ -291,21 +291,21 @@ fn sobel(img : image_struct) -> () {
     let mut sum_y = 0.0;
 
     if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
-      sum_x -= get_pixel_real(img, x - 1, y - 1);
-      sum_x -= get_pixel_real(img, x - 1, y    ) * 2.0;
-      sum_x -= get_pixel_real(img, x - 1, y + 1);
-      sum_x += get_pixel_real(img, x + 1, y - 1);
-      sum_x += get_pixel_real(img, x + 1, y    ) * 2.0;
-      sum_x += get_pixel_real(img, x + 1, y + 1);
+      sum_x += get_pixel_real(img, x - 1, y - 1);
+      sum_x += get_pixel_real(img, x - 1, y    ) * 2.0;
+      sum_x += get_pixel_real(img, x - 1, y + 1);
+      sum_x -= get_pixel_real(img, x + 1, y - 1);
+      sum_x -= get_pixel_real(img, x + 1, y    ) * 2.0;
+      sum_x -= get_pixel_real(img, x + 1, y + 1);
 
-      sum_y -= get_pixel_real(img, x - 1, y - 1);
-      sum_y -= get_pixel_real(img, x,     y - 1) * 2.0;
-      sum_y -= get_pixel_real(img, x + 1, y - 1);
-      sum_y += get_pixel_real(img, x - 1, y + 1);
-      sum_y += get_pixel_real(img, x,     y + 1) * 2.0;
-      sum_y += get_pixel_real(img, x + 1, y + 1);
+      sum_y += get_pixel_real(img, x - 1, y - 1);
+      sum_y += get_pixel_real(img, x,     y - 1) * 2.0;
+      sum_y += get_pixel_real(img, x + 1, y - 1);
+      sum_y -= get_pixel_real(img, x - 1, y + 1);
+      sum_y -= get_pixel_real(img, x,     y + 1) * 2.0;
+      sum_y -= get_pixel_real(img, x + 1, y + 1);
 
-      img.directions(y * img.width + x) = atan2(sum_x, sum_y);
+      img.directions(y * img.width + x) = atan2(sum_y, sum_x);
       set_buffer_pixel_real(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
     }
   }

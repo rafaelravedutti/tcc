@@ -27,6 +27,7 @@ extern "C" {
   fn opencv_gaussian(img : &mut[u8], mask_size : u8, display : bool) -> (&mut[u8]);
   fn opencv_canny(img : &mut[u8], threshold : u8, display : bool) -> (&mut[u8]);
   fn display_image(img : &mut[u8], title : &[u8], wait : bool) -> ();
+  fn write_image(img : &mut[u8], title : &[u8]) -> ();
 
   /* Printing functions */
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();

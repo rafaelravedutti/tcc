@@ -4,21 +4,24 @@ fn main() -> () {
   /* Apply OpenCV gaussian filter to image */
   let blurred_img = opencv_gaussian(img.data, 5 as u8, false);
   /* Apply OpenCV canny to blurred image and displays it */
-  let opencv_result = opencv_canny(blurred_img, 40 as u8, true);
+  let opencv_result = opencv_canny(blurred_img, 40 as u8, false);
+
+  /* Write OpenCV result */
+  write_image(opencv_result, "opencv_result.png");
 
   /* Copy blurred image data to the image structure, then apply
      the Canny filter written in AnyDSL */ 
   copy_data_to_image(img, blurred_img);
   canny(img);
 
-  /* Display the result */
-  display_image(img.data, "result", false);
+  /* Writes the result */
+  write_image(img.data, "anydsl_result.png");
 
   /* Apply result comparison and display the statistics */
   compare_results(img, opencv_result);
 
   /* Display the false positives mask */
-  display_image(img.data, "false_positives", true);
+  write_image(img.data, "false_positives.png");
 
   /* Destroys the image structure to free memory space */
   destroy_image(img);

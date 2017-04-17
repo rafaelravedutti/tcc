@@ -1,3 +1,4 @@
+/* Iterates over an image on GPU architectures */
 fn iterate(img : Image, body: fn(int,int) -> ()) -> () {
   let grid = (img.width, img.height, 1);
   let block = (128, 1, 1);

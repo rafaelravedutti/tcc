@@ -464,6 +464,7 @@ fn compare_results(img : image_struct, reference : &mut[u8]) -> () {
     let pixel_reference = reference(y * img.width + x) as i32;
 
     set_pixel(img, x, y, 0 as u8);
+    set_buffer_pixel(img, x, y, 0 as u8);
 
     if pixel_value != 0 {
       if pixel_reference != 0 {
@@ -473,6 +474,7 @@ fn compare_results(img : image_struct, reference : &mut[u8]) -> () {
         false_positives++;
       }
     } else if pixel_reference != 0 {
+      set_buffer_pixel(img, x, y, 255 as u8);
       false_negatives++;
     }
   }

@@ -20,8 +20,10 @@ fn main() -> () {
   /* Apply result comparison and display the statistics */
   compare_results(img, opencv_result);
 
-  /* Display the false positives mask */
+  /* Display the false positives and false negatives masks */
   write_image(img.data, "false_positives.png");
+  sync_image_data(img);
+  write_image(img.data, "false_negatives.png");
 
   /* Destroys the image structure to free memory space */
   destroy_image(img);

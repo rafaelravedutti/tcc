@@ -1,6 +1,6 @@
 fn main() -> () {
   /* Load image from file */
-  let img = image("teste.png");
+  let img = image("mon1.png");
   /* Apply OpenCV gaussian filter to image */
   let blurred_img = opencv_gaussian(img.data, 5 as u8, false);
   /* Apply OpenCV canny to blurred image and displays it */

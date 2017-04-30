@@ -152,6 +152,28 @@ fn copy_data_to_image(img : image_struct, data : &mut[u8]) -> () {
   }
 }
 
+/* Converts radian to degrees */
+fn radian_to_degrees(angle : f64) -> (f64) {
+  angle * 180.0 / 3.14
+}
+
+/* Converts degrees to radian */
+fn degrees_to_radian(angle : f64) -> (f64) {
+  angle * 3.14 / 180.0
+}
+
+/* Performs angle roundness and returns the index to its offsets (non-maximum supression) */
+fn round_angle(angle : f64) -> (i32) {
+  /* In angles: ((abs(angle) + 22.5) / 45) % 4 */
+  (((fabs(angle) + 0.3926875) / 0.785375) as i32) % 4
+}
+
+/* Executes round_angle function for an angle and prints its result */
+fn test_round_angle(angle : f64) -> () {
+  print_angle_test(radian_to_degrees(angle), round_angle(angle));
+}
+
+
 /* Iterates from min to max executing the higher-order function specified */
 fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {
   while min <= max {
@@ -311,27 +333,6 @@ fn sobel(img : image_struct) -> () {
   }
 
   sync_image_data(img);
-}
-
-/* Converts radian to degrees */
-fn radian_to_degrees(angle : f64) -> (f64) {
-  angle * 180.0 / 3.14
-}
-
-/* Converts degrees to radian */
-fn degrees_to_radian(angle : f64) -> (f64) {
-  angle * 3.14 / 180.0
-}
-
-/* Performs angle roundness and returns the index to its offsets (non-maximum supression) */
-fn round_angle(angle : f64) -> (i32) {
-  /* In angles: ((abs(angle) + 22.5) / 45) % 4 */
-  (((fabs(angle) + 0.3926991) / 0.785398) as i32) % 4
-}
-
-/* Executes round_angle function for an angle and prints its result */
-fn test_round_angle(angle : f64) -> () {
-  print_angle_test(radian_to_degrees(angle), round_angle(angle));
 }
 
 /* Non-maximum supression */

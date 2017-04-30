@@ -337,7 +337,7 @@ fn test_round_angle(angle : f64) -> () {
 /* Non-maximum supression */
 fn non_maximum_supression(img : image_struct) -> () {
   /* Offsets for the angles */
-  let offsets = [[0, 1], [1, -1], [1, 0], [1, 1]];
+  let offsets = [[1, 0], [1, 1], [0, 1], [1, -1]];
 
   /* Copies image data to buffer */
   sync_image_buffer(img);

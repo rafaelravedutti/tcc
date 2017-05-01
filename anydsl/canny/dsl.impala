@@ -163,16 +163,39 @@ fn degrees_to_radian(angle : f64) -> (f64) {
 }
 
 /* Performs angle roundness and returns the index to its offsets (non-maximum supression) */
+/*
 fn round_angle(angle : f64) -> (i32) {
-  /* In angles: ((abs(angle) + 22.5) / 45) % 4 */
-  (((fabs(angle) + 0.3926875) / 0.785375) as i32) % 4
+  let mut ang = angle + 180.0 * ((angle < 0.0) as f64);
+*/
+  /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
+//  (((ang + 0.3926875) / 0.785375) as i32) % 4
+//}
+
+fn round_angle(angle : f64) -> (i32) {
+  let mut ang = radian_to_degrees(angle);
+  let mut result = 0;
+
+  if(ang < 0.0) {
+    ang = 180.0 + ang;
+  }
+
+  if ang < 22.5 {
+    result = 0;
+  } else if ang < 67.5 {
+    result = 1;
+  } else if ang < 112.5 {
+    result = 2;
+  } else if ang < 157.5 {
+    result = 3;
+  }
+
+  result
 }
 
 /* Executes round_angle function for an angle and prints its result */
 fn test_round_angle(angle : f64) -> () {
   print_angle_test(radian_to_degrees(angle), round_angle(angle));
 }
-
 
 /* Iterates from min to max executing the higher-order function specified */
 fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {
@@ -311,6 +334,7 @@ fn sobel(img : image_struct) -> () {
   for x, y in iterate(img) {
     let mut sum_x = 0.0;
     let mut sum_y = 0.0;
+    let mut result;
 
     if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
       sum_x += get_pixel_real(img, x - 1, y - 1);
@@ -328,7 +352,13 @@ fn sobel(img : image_struct) -> () {
       sum_y -= get_pixel_real(img, x + 1, y + 1);
 
       img.directions(y * img.width + x) = atan2(sum_y, sum_x);
-      set_buffer_pixel_real(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
+      result = sqrt(sum_x * sum_x + sum_y * sum_y);
+
+      if result > 255.0 {
+        result = 255.0;
+      }
+
+      set_buffer_pixel_real(img, x, y, result);
     }
   }
 
@@ -339,6 +369,7 @@ fn sobel(img : image_struct) -> () {
 fn non_maximum_supression(img : image_struct) -> () {
   /* Offsets for the angles */
   let offsets = [[1, 0], [1, 1], [0, 1], [1, -1]];
+  //let offsets = [[0, 1], [1, -1], [1, 0], [1, 1]];
 
   /* Copies image data to buffer */
   sync_image_buffer(img);
@@ -474,9 +505,13 @@ fn compare_results(img : image_struct, reference : &mut[u8]) -> () {
         set_pixel(img, x, y, 255 as u8);
         false_positives++;
       }
-    } else if pixel_reference != 0 {
-      set_buffer_pixel(img, x, y, 255 as u8);
-      false_negatives++;
+    } else {
+      if pixel_reference != 0 {
+        set_buffer_pixel(img, x, y, 255 as u8);
+        false_negatives++;
+      } else {
+        corrects++;
+      }
     }
   }
 

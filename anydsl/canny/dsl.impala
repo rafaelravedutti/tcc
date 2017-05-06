@@ -27,7 +27,7 @@ extern "C" {
     img : &mut[u8], mask_size : u8, display : bool
   ) -> (&mut[u8]);
   fn opencv_canny(
-    img : &mut[u8], threshold : u8, display : bool
+    img : &mut[u8], low_threshold : u8, high_threshold: u8, display : bool
   ) -> (&mut[u8]);
 
   /* OpenCV utils */
@@ -186,20 +186,20 @@ fn round_angle(angle : f64) -> (i32) {
 
 /* Naive implementation of round_angle (for testing purposes) */
 fn naive_round_angle(angle : f64) -> (i32) {
-  let mut ang = radian_to_degrees(angle);
+  let mut ang = angle;
   let mut result = 0;
 
   if(ang < 0.0) {
-    ang = 180.0 + ang;
+    ang += 3.14159;
   }
 
-  if ang < 22.5 {
+  if ang < 0.3926991 {
     result = 0;
-  } else if ang < 67.5 {
+  } else if ang < 1.178087 {
     result = 1;
-  } else if ang < 112.5 {
+  } else if ang < 1.9634954 {
     result = 2;
-  } else if ang < 157.5 {
+  } else if ang < 2.7488936 {
     result = 3;
   }
 
@@ -320,7 +320,7 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 
     /* Checks image boundaries */
     if( x >= anchor && x < img.width - anchor &&
-        y >= anchor && y < img.height - anchor) {
+        y >= anchor && y < img.height - anchor ) {
       for i in range(-anchor, anchor) {
         for j in range(-anchor, anchor) {
           sum += mask.data(((i + anchor) * mask.size) + j + anchor) *
@@ -386,7 +386,6 @@ fn sobel(img : image_struct) -> () {
 fn non_maximum_supression(img : image_struct) -> () {
   /* Offsets for the angles */
   let offsets = [[1, 0], [1, 1], [0, 1], [1, -1]];
-  //let offsets = [[0, 1], [1, -1], [1, 0], [1, 1]];
 
   /* Copies image data to buffer */
   sync_image_buffer(img);
@@ -413,8 +412,8 @@ fn non_maximum_supression(img : image_struct) -> () {
       nb2_value = get_pixel(img, nb2_x, nb2_y);
     }
 
-    /* If the pixel value is less than one of the neighboors' values,
-       sets it to zero */
+    /* If the pixel value is less or equal than one of the neighboors' values,
+       it's not the local maximum so sets it to zero */
     if value <= nb1_value || value <= nb2_value {
       set_buffer_pixel(img, x, y, 0 as u8);
     }
@@ -425,9 +424,7 @@ fn non_maximum_supression(img : image_struct) -> () {
 }
 
 /* Hysteresis */
-fn hysteresis(img : image_struct) -> () {
-  let low_threshold = 40 as u8;
-  let high_threshold = low_threshold * (3 as u8);
+fn hysteresis(img : image_struct, low_threshold : u8, high_threshold: u8) -> () {
   let mut counter = 1;
 
   /*
@@ -495,11 +492,11 @@ fn hysteresis(img : image_struct) -> () {
 }
 
 /* Canny */
-fn canny(img : image_struct) -> () {
+fn canny(img : image_struct, low_threshold : u8, high_threshold: u8) -> () {
   //gaussian_blur(img);
   sobel(img);
   non_maximum_supression(img);
-  hysteresis(img);
+  hysteresis(img, low_threshold, high_threshold);
 }
 
 /* Compare the result with the reference (OpenCV Canny) and display

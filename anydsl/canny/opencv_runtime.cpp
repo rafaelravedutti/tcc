@@ -11,7 +11,7 @@ typedef int pixel_t;
 extern "C" {
   pixel_t *load_image(const char *path, int *width, int *height);
   pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display);
-  pixel_t *opencv_canny(pixel_t *img, unsigned char threshold, bool display);
+  pixel_t *opencv_canny(pixel_t *img, unsigned char low_threshold, unsigned char high_threshold, bool display);
   void display_image(pixel_t *img, const char *title, bool wait);
   void write_image(pixel_t *img, const char *filename);
 }
@@ -86,7 +86,12 @@ pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display) {
   return NULL;
 }
 
-pixel_t *opencv_canny(pixel_t *img, unsigned char threshold, bool display) {
+pixel_t *opencv_canny(
+  pixel_t *img,
+  unsigned char low_threshold,
+  unsigned char high_threshold, 
+  bool display
+) {
   cv::Mat img_mat, buffer;
   int found;
 
@@ -94,7 +99,7 @@ pixel_t *opencv_canny(pixel_t *img, unsigned char threshold, bool display) {
     img_mat = GetImageMat(img, &found);
     buffer.create(img_mat.size(), img_mat.type());
 
-    cv::Canny(img_mat, buffer, threshold, threshold * 3, 3);
+    cv::Canny(img_mat, buffer, low_threshold, high_threshold, 3);
 
     if(display) {
       cv::namedWindow("canny_result", cv::WINDOW_NORMAL);

@@ -22,10 +22,16 @@ extern "C" {
   fn free_double_matrix(&mut[f64]) -> ();
   fn free_uchar_matrix(image : &[u8]) -> ();
 
-  /* OpenCV functions */
+  /* OpenCV functions for result comparison */
+  fn opencv_gaussian(
+    img : &mut[u8], mask_size : u8, display : bool
+  ) -> (&mut[u8]);
+  fn opencv_canny(
+    img : &mut[u8], threshold : u8, display : bool
+  ) -> (&mut[u8]);
+
+  /* OpenCV utils */
   fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[u8]);
-  fn opencv_gaussian(img : &mut[u8], mask_size : u8, display : bool) -> (&mut[u8]);
-  fn opencv_canny(img : &mut[u8], threshold : u8, display : bool) -> (&mut[u8]);
   fn display_image(img : &mut[u8], title : &[u8], wait : bool) -> ();
   fn write_image(img : &mut[u8], title : &[u8]) -> ();
 
@@ -33,7 +39,9 @@ extern "C" {
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();
   fn print_integer(value : i32) -> ();
   fn print_angle_test(angle : f64, result : i32) -> ();
-  fn show_statistics(corrects : i32, false_positives : i32, false_negatives : i32) -> ();
+  fn show_statistics(
+    corrects : i32, false_positives : i32, false_negatives : i32
+  ) -> ();
 }
 
 /* Load image form file and saves it into a image_struct structure */
@@ -55,7 +63,8 @@ fn image(filename : &[u8]) -> image_struct {
   res
 }
 
-/* Generates an image given its dimension (used for synthetical image experiments) */
+/* Generates an image given its dimension, this function was used only for
+   synthetical image experiments */
 fn generate_image(width : i32, height : i32) -> image_struct {
   let res = image_struct {
     data: allocate_uchar_matrix(width, height),
@@ -122,12 +131,16 @@ fn get_buffer_pixel(img : image_struct, x : i32, y : i32) -> (u8) {
 }
 
 /* Sets oper_buffer pixel at (x, y) coordinates to f64 (double) value */
-fn set_buffer_pixel_real(img : image_struct, x : i32, y : i32, value : f64) -> () {
+fn set_buffer_pixel_real(
+  img : image_struct, x : i32, y : i32, value : f64
+) -> () {
   img.oper_buffer(y * img.width + x) = value as u8;
 }
 
 /* Gets oper_buffer pixel at (x, y) coordinates as f64 (double) value */
-fn get_buffer_pixel_real(img : image_struct, x : i32, y : i32) -> (f64) {
+fn get_buffer_pixel_real(
+  img : image_struct, x : i32, y : i32
+) -> (f64) {
   img.oper_buffer(y * img.width + x) as f64
 }
 
@@ -162,16 +175,17 @@ fn degrees_to_radian(angle : f64) -> (f64) {
   angle * 3.14 / 180.0
 }
 
-/* Performs angle roundness and returns the index to its offsets (non-maximum supression) */
-/*
+/* Performs angle roundness and returns the index to its offsets, this is used
+   by the non-maximum supression algorithm */
 fn round_angle(angle : f64) -> (i32) {
-  let mut ang = angle + 180.0 * ((angle < 0.0) as f64);
-*/
-  /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
-//  (((ang + 0.3926875) / 0.785375) as i32) % 4
-//}
+  let ang = angle + 180.0 * ((angle < 0.0) as f64);
 
-fn round_angle(angle : f64) -> (i32) {
+  /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
+  (((ang + 0.3926875) / 0.785375) as i32) % 4
+}
+
+/* Naive implementation of round_angle (for testing purposes) */
+fn naive_round_angle(angle : f64) -> (i32) {
   let mut ang = radian_to_degrees(angle);
   let mut result = 0;
 
@@ -305,10 +319,12 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
-    if(x >= anchor && x < img.width - anchor && y >= anchor && y <= img.height - anchor) {
+    if( x >= anchor && x < img.width - anchor &&
+        y >= anchor && y < img.height - anchor) {
       for i in range(-anchor, anchor) {
         for j in range(-anchor, anchor) {
-          sum += mask.data(((i + anchor) * mask.size) + j + anchor) * get_pixel_real(img, x + i, y + j);
+          sum += mask.data(((i + anchor) * mask.size) + j + anchor) *
+                 get_pixel_real(img, x + i, y + j);
         }
       }
 
@@ -322,7 +338,8 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 
 /* Gaussian filter */
 fn gaussian_blur(img : image_struct) -> () {
-  /* Generates the mask for non-separable Gaussian kernel (based on OpenCV source) */
+  /* Generates the mask for non-separable Gaussian kernel based on the
+     OpenCV source code */
   let mask = filter_5x1([0.0625, 0.25, 0.375, 0.25, 0.0625]);
 
   /* Applies the separable kernel in rows and columns */
@@ -376,15 +393,15 @@ fn non_maximum_supression(img : image_struct) -> () {
 
   /* Go through the image */
   for x, y in iterate(img) {
-    let value = get_pixel(img, x, y);               /* Pixel value at (x, y) */
-    let angle = img.directions(y * img.width + x);  /* Directions angle */
-    let index = round_angle(angle);                 /* Angle index */
-    let nb1_x = x + offsets(index)(0);              /* First neighboor x coordinate */
-    let nb1_y = y + offsets(index)(1);              /* First neighboor y coordinate */
-    let nb2_x = x - offsets(index)(0);              /* Second neighboor x coordinate */
-    let nb2_y = y - offsets(index)(1);              /* Second neighboor y coordinate */
-    let mut nb1_value = 0 as u8;                    /* First neighboor value */
-    let mut nb2_value = 0 as u8;                    /* Second neighboor value */
+    let value = get_pixel(img, x, y);     /* Pixel value at (x, y) */
+    let angle = img.directions(y * img.width + x); /* Directions angle */
+    let index = naive_round_angle(angle); /* Angle index */
+    let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
+    let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
+    let nb2_x = x - offsets(index)(0);    /* Second neighboor x coordinate */
+    let nb2_y = y - offsets(index)(1);    /* Second neighboor y coordinate */
+    let mut nb1_value = 0 as u8;          /* First neighboor value */
+    let mut nb2_value = 0 as u8;          /* Second neighboor value */
 
     /* Checks if first neighboor's position is valid */
     if nb1_x >= 0 && nb1_x < img.width && nb1_y >= 0 && nb1_y < img.height {
@@ -396,8 +413,9 @@ fn non_maximum_supression(img : image_struct) -> () {
       nb2_value = get_pixel(img, nb2_x, nb2_y);
     }
 
-    /* If the pixel value is less than one of the neighboors values, sets it to zero */
-    if value < nb1_value || value < nb2_value {
+    /* If the pixel value is less than one of the neighboors' values,
+       sets it to zero */
+    if value <= nb1_value || value <= nb2_value {
       set_buffer_pixel(img, x, y, 0 as u8);
     }
   }
@@ -505,13 +523,9 @@ fn compare_results(img : image_struct, reference : &mut[u8]) -> () {
         set_pixel(img, x, y, 255 as u8);
         false_positives++;
       }
-    } else {
-      if pixel_reference != 0 {
-        set_buffer_pixel(img, x, y, 255 as u8);
-        false_negatives++;
-      } else {
-        corrects++;
-      }
+    } else if pixel_reference != 0 {
+      set_buffer_pixel(img, x, y, 255 as u8);
+      false_negatives++;
     }
   }
 

@@ -6,12 +6,12 @@
 
 static std::list<cv::Mat> mat_list;
 
-typedef int pixel_t;
+typedef double pixel_t;
 
 extern "C" {
   pixel_t *load_image(const char *path, int *width, int *height);
   pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display);
-  pixel_t *opencv_canny(pixel_t *img, unsigned char low_threshold, unsigned char high_threshold, bool display);
+  pixel_t *opencv_canny(const char *filename, pixel_t low_threshold, pixel_t high_threshold);
   void display_image(pixel_t *img, const char *title, bool wait);
   void write_image(pixel_t *img, const char *filename);
 }
@@ -37,6 +37,8 @@ pixel_t *load_image(const char *path, int *width, int *height) {
   img_mat = cv::imread(path, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
+    img_mat.convertTo(img_mat, CV_64FC1);
+
     *width = img_mat.cols;
     *height = img_mat.rows;
 
@@ -46,6 +48,18 @@ pixel_t *load_image(const char *path, int *width, int *height) {
   }
 
   return NULL;
+}
+
+pixel_t *convert_image_to_double(pixel_t *img) {
+  cv::Mat img_mat;
+  int found;
+
+  img_mat = GetImageMat(img, &found);
+
+  if(found != 0) {
+  }
+
+  return img_mat.ptr<pixel_t>(0);
 }
 
 void write_image(pixel_t *img, const char *filename) {
@@ -87,28 +101,23 @@ pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display) {
 }
 
 pixel_t *opencv_canny(
-  pixel_t *img,
-  unsigned char low_threshold,
-  unsigned char high_threshold, 
-  bool display
+  const char *filename,
+  pixel_t low_threshold,
+  pixel_t high_threshold 
 ) {
   cv::Mat img_mat, buffer;
-  int found;
 
-  if(found != 0) {
-    img_mat = GetImageMat(img, &found);
+  img_mat = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
+
+  if(img_mat.data != NULL) {
     buffer.create(img_mat.size(), img_mat.type());
 
-    cv::Canny(img_mat, buffer, low_threshold, high_threshold, 3);
+    cv::GaussianBlur(img_mat, buffer, cv::Size(5, 5), 0, 0);
+    cv::Canny(buffer, img_mat, low_threshold, high_threshold, 3);
 
-    if(display) {
-      cv::namedWindow("canny_result", cv::WINDOW_NORMAL);
-      cv::imshow("canny_result", buffer);
-    }
+    mat_list.push_back(img_mat);
 
-    mat_list.push_back(buffer);
-
-    return buffer.ptr<pixel_t>(0);
+    return img_mat.ptr<pixel_t>(0);
   }
 
   return NULL;

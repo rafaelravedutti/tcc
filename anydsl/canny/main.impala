@@ -1,16 +1,19 @@
 fn main() -> () {
+  /* Name of file to use for test */
+  let filename = "mon1.png";
   /* Load image from file */
-  let img = image("mon1.png");
+  let img = image(filename);
   /* Apply OpenCV gaussian filter to image */
   let blurred_img = opencv_gaussian(img.data, 5 as u8, false);
   /* Low threshold */
-  let low_threshold = 40 as u8;
+  let low_threshold = 40.0;
   /* High threshold */
-  let high_threshold = 120 as u8;
+  let high_threshold = 120.0;
   /* Apply OpenCV canny to blurred image */
   let opencv_result = opencv_canny(
-    blurred_img, low_threshold, high_threshold, false
+    filename, low_threshold, high_threshold
   );
+
 
   /* Write OpenCV result */
   write_image(opencv_result, "opencv_result.png");

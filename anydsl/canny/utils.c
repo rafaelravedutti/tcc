@@ -13,7 +13,7 @@ double *allocate_double_matrix(int width, int height) {
 }
 
 /* Double matrix deallocation */
-void free_double_matrix(pixel_t *data) {
+void free_double_matrix(double *data) {
   free(data);
 }
 
@@ -54,6 +54,11 @@ void print_integer(int value) {
 /* Angle test printing */
 void print_angle_test(double angle, int result) {
   fprintf(stdout, "ROUND(%.6f) = %d\n", angle, result);
+}
+
+/* Regular printing */
+void impala_print(const char *string) {
+  fprintf(stdout, "%s\n", string);
 }
 
 /* Show statistics */

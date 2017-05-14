@@ -1,6 +1,11 @@
-fn main() -> () {
+fn main(argc : i32, argv : &[&mut [u8]]) -> () {
+  /* If there's no image specified, show the command usage */
+  if argc < 2 {
+    display_usage(argv(0));
+  }
+
   /* Name of file to use for test */
-  let filename = "mon1.png";
+  let filename = argv(1);
   /* Load image from file */
   let img = image(filename);
   /* Apply OpenCV gaussian filter to image */

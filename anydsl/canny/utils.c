@@ -3,6 +3,12 @@
 
 typedef int pixel_t;
 
+/* Show command usage */
+void display_usage(const char *command) {
+  fprintf(stderr, "Usage: %s [image]\n", command);
+  exit(-1);
+}
+
 /* Double matrix allocation */
 double *allocate_double_matrix(int width, int height) {
   if(width > 0 && height > 0) {

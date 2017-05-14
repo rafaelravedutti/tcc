@@ -19,6 +19,9 @@ struct filter_struct {
 
 /* Functions implemented in C/C++ files */
 extern "C" {
+  /* Display usage function */
+  fn display_usage(command : &[u8]) -> ();
+
   /* Memory allocation functions */
   fn allocate_double_matrix(width : i32, height : i32) -> (&mut[f64]);
   fn allocate_uchar_matrix(width : i32, height : i32) -> (&mut[u8]);

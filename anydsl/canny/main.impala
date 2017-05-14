@@ -1,6 +1,6 @@
 fn main() -> () {
   /* Name of file to use for test */
-  let filename = "mon1.png";
+  let filename = "wdg1.png";
   /* Load image from file */
   let img = image(filename);
   /* Apply OpenCV gaussian filter to image */

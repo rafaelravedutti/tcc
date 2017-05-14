@@ -50,18 +50,6 @@ pixel_t *load_image(const char *path, int *width, int *height) {
   return NULL;
 }
 
-pixel_t *convert_image_to_double(pixel_t *img) {
-  cv::Mat img_mat;
-  int found;
-
-  img_mat = GetImageMat(img, &found);
-
-  if(found != 0) {
-  }
-
-  return img_mat.ptr<pixel_t>(0);
-}
-
 void write_image(pixel_t *img, const char *filename) {
   cv::Mat img_mat;
   std::vector<int> compression_params;

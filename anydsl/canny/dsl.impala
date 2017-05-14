@@ -296,6 +296,8 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
       }
 
       set_buffer_pixel(img, x, y, sum);
+    } else {
+      set_buffer_pixel(img, x, y, get_pixel(img, x, y));
     }
   }
 
@@ -305,12 +307,30 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 
 /* Gaussian filter */
 fn gaussian_blur(img : image_struct) -> () {
-  /* Generates the mask for non-separable Gaussian kernel based on the
+  /* Generates the separable Gaussian kernel based on the
      OpenCV source code */
-  let mask = filter_5x1([0.0625, 0.25, 0.375, 0.25, 0.0625]);
+  /*
+  let mut mask = [[2.0,  4.0,  5.0,  4.0,  2.0],
+                  [4.0,  9.0, 12.0,  9.0,  4.0],
+                  [5.0, 12.0, 15.0, 12.0,  5.0],
+                  [4.0,  9.0, 12.0,  9.0,  4.0],
+                  [2.0,  4.0,  5.0,  4.0,  2.0]];
+
+  for i in range(0, 4) {
+    for j in range(0, 4) {
+      mask(i)(j) *= 0.00628930817;
+    }
+  }
+  */
+
+  let mask = [[0.005865,	0.018686,	0.027481,	0.018686,	0.005865],
+              [0.018686,	0.059536,	0.087555,	0.059536,	0.018686],
+              [0.027481,	0.087555,	0.12876,	0.087555,	0.027481],
+              [0.018686,	0.059536,	0.087555,	0.059536,	0.018686],
+              [0.005865,	0.018686,	0.027481,	0.018686,	0.005865]];
 
   /* Applies the separable kernel in rows and columns */
-  apply_2d_tiled_convolution(img, mask);
+  apply_2d_block_convolution(img, filter_5x5(mask));
 }
 
 /* Sobel filter */
@@ -442,7 +462,7 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
 /* Canny */
 fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
-  //gaussian_blur(img);
+  gaussian_blur(img);
   sobel(img);
   non_maximum_supression(img);
   hysteresis(img, low_threshold, high_threshold);

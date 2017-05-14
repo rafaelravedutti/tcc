@@ -316,7 +316,7 @@ fn gaussian_blur(img : image_struct) -> () {
 /* Sobel filter */
 fn sobel(img : image_struct) -> () {
   for x, y in iterate(img) {
-    let mut sum_x = 0.1;
+    let mut sum_x = 0.0;
     let mut sum_y = 0.0;
     let condition = (x > 0 && x < img.width - 1 &&
                      y > 0 && y < img.height - 1) as f64;

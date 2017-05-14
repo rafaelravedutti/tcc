@@ -1,11 +1,14 @@
 /* Image data structure */
 struct image_struct {
-  data : &mut[f64],         /* Image data */
-  oper_buffer : &mut[f64],  /* Auxiliary buffer */
-  directions : &mut[f64],   /* Directions matrix */
-  width : i32,              /* Image width */
-  height : i32,             /* Image height */
-  loaded : bool             /* Is the image data loaded from a file? */
+  image : &mut[f64],          /* Image data */
+  data : &mut[f64],           /* Image data */
+  buffer : &mut[f64],         /* Auxiliary buffer */
+  directions : &mut[f64],     /* Directions matrix */
+  width : i32,                /* Image width */
+  height : i32,               /* Image height */
+  loaded : bool,              /* Is the image data loaded from a file? */
+  extended_data: &mut[f64],   /* Data with increased dimensions */
+  extended_buffer: &mut[f64], /* Buffer with increased dimensions */
 };
 
 /* Filter data structure */
@@ -51,15 +54,23 @@ fn image(filename : &[u8]) -> image_struct {
   let pwidth = &mut res.width;    /* Pointer to width */
   let pheight = &mut res.height;  /* Pointer to height */
 
-  /* Loads image and stores to the structure */
-  res.data = load_image(filename, pwidth, pheight);
+  /* Loads image using OpenCV */
+  res.image = load_image(filename, pwidth, pheight);
 
-  /* Knowing its size, allocates the oper_buffer and directions pointers */
-  res.oper_buffer = allocate_double_matrix(res.width, res.height);
+  /* Stores the image to structure data */
+  res.extended_data = allocate_double_matrix(res.width + 2, res.height + 2);
+  res.data = &mut res.extended_data(res.width + 3) as &mut [f64];
+
+  /* Knowing its size, allocates the buffer and directions pointers */
+  res.extended_buffer = allocate_double_matrix(res.width + 2, res.height + 2);
+  res.buffer = &mut res.extended_buffer(res.width + 3) as &mut [f64];
   res.directions = allocate_double_matrix(res.width, res.height);
 
   /* Set image as loaded */
   res.loaded = true;
+
+  /* Copy image content to data */
+  copy_image_to_data(res.image, res);
 
   res
 }
@@ -69,11 +80,12 @@ fn destroy_image(img : image_struct) -> () {
   /* If the image is loaded, then doesn't free its data (it must be free
      after the cv::Mat destructor call) */
   if !img.loaded {
-    free_double_matrix(img.data);
+    free_double_matrix(img.image);
   }
 
-  /* Free oper_buffer and directions pointers */
-  free_double_matrix(img.oper_buffer);
+  /* Free buffer and directions pointers */
+  free_double_matrix(img.extended_data);
+  free_double_matrix(img.extended_buffer);
   free_double_matrix(img.directions);
 }
 
@@ -87,34 +99,48 @@ fn get_pixel(img : image_struct, x : i32, y : i32) -> (f64) {
   img.data(y * img.width + x)
 }
 
-/* Sets oper_buffer pixel at (x, y) coordinates */
+/* Sets buffer pixel at (x, y) coordinates */
 fn set_buffer_pixel(img : image_struct, x : i32, y : i32, value : f64) -> () {
-  img.oper_buffer(y * img.width + x) = value;
+  img.buffer(y * img.width + x) = value;
 }
 
-/* Gets oper_buffer pixel at (x, y) coordinates */
+/* Gets buffer pixel at (x, y) coordinates */
 fn get_buffer_pixel(img : image_struct, x : i32, y : i32) -> (f64) {
-  img.oper_buffer(y * img.width + x)
+  img.buffer(y * img.width + x)
 }
 
-/* Copies oper_buffer data to image data */
+/* Copies buffer data to image data */
 fn sync_image_data(img : image_struct) -> () {
   for x, y in iterate(img) {
-    img.data(y * img.width + x) = img.oper_buffer(y * img.width + x);
+    img.data(y * img.width + x) = img.buffer(y * img.width + x);
   }
 }
 
-/* Copies image data to oper_buffer data */
+/* Copies image data to buffer data */
 fn sync_image_buffer(img : image_struct) -> () {
   for x, y in iterate(img) {
-    img.oper_buffer(y * img.width + x) = img.data(y * img.width + x);
+    img.buffer(y * img.width + x) = img.data(y * img.width + x);
   }
 }
 
-/* Copies data in matrix type to image structure data */
-fn copy_data_to_image(img : image_struct, data : &mut[f64]) -> () {
+/* Copies OpenCV loaded image to image structure data */
+fn copy_image_to_data(image : &mut[f64], img : image_struct) -> () {
   for x, y in iterate(img) {
-    img.data(y * img.width + x) = data(y * img.width + x);
+    img.data(y * img.width + x) = image(y * img.width + x);
+  }
+}
+
+/* Copies image structure data to OpenCV matrix */
+fn copy_data_to_image(img : image_struct, image : &mut[f64]) -> () {
+  for x, y in iterate(img) {
+    image(y * img.width + x) = img.data(y * img.width + x);
+  }
+}
+
+/* Copies image structure buffer to OpenCV matrix */
+fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
+  for x, y in iterate(img) {
+    image(y * img.width + x) = img.buffer(y * img.width + x);
   }
 }
 
@@ -287,30 +313,27 @@ fn gaussian_blur(img : image_struct) -> () {
 /* Sobel filter */
 fn sobel(img : image_struct) -> () {
   for x, y in iterate(img) {
-    let mut sum_x = 0.0;
+    let mut sum_x = 0.1;
     let mut sum_y = 0.0;
-    let mut result;
+    let condition = (x > 0 && x < img.width - 1 &&
+                     y > 0 && y < img.height - 1) as f64;
 
-    if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
-      sum_x += get_pixel(img, x + 1, y - 1);
-      sum_x += get_pixel(img, x + 1, y    ) * 2.0;
-      sum_x += get_pixel(img, x + 1, y + 1);
-      sum_x -= get_pixel(img, x - 1, y - 1);
-      sum_x -= get_pixel(img, x - 1, y    ) * 2.0;
-      sum_x -= get_pixel(img, x - 1, y + 1);
+    sum_x += condition * get_pixel(img, x + 1, y - 1);
+    sum_x += condition * get_pixel(img, x + 1, y    ) * 2.0;
+    sum_x += condition * get_pixel(img, x + 1, y + 1);
+    sum_x -= condition * get_pixel(img, x - 1, y - 1);
+    sum_x -= condition * get_pixel(img, x - 1, y    ) * 2.0;
+    sum_x -= condition * get_pixel(img, x - 1, y + 1);
 
-      sum_y += get_pixel(img, x - 1, y + 1);
-      sum_y += get_pixel(img, x,     y + 1) * 2.0;
-      sum_y += get_pixel(img, x + 1, y + 1);
-      sum_y -= get_pixel(img, x - 1, y - 1);
-      sum_y -= get_pixel(img, x,     y - 1) * 2.0;
-      sum_y -= get_pixel(img, x + 1, y - 1);
+    sum_y += condition * get_pixel(img, x - 1, y + 1);
+    sum_y += condition * get_pixel(img, x,     y + 1) * 2.0;
+    sum_y += condition * get_pixel(img, x + 1, y + 1);
+    sum_y -= condition * get_pixel(img, x - 1, y - 1);
+    sum_y -= condition * get_pixel(img, x,     y - 1) * 2.0;
+    sum_y -= condition * get_pixel(img, x + 1, y - 1);
 
-      img.directions(y * img.width + x) = atan2(sum_y, sum_x);
-      result = sqrt(sum_x * sum_x + sum_y * sum_y);
-
-      set_buffer_pixel(img, x, y, result);
-    }
+    img.directions(y * img.width + x) = atan2(sum_y, sum_x);
+    set_buffer_pixel(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
   }
 
   sync_image_data(img);
@@ -349,7 +372,7 @@ fn non_maximum_supression(img : image_struct) -> () {
                      value * ((value > nb1_value && value > nb2_value) as f64));
   }
 
-  /* Copy oper_buffer data to image data */
+  /* Copy buffer data to image data */
   sync_image_data(img);
 }
 
@@ -420,6 +443,8 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   sobel(img);
   non_maximum_supression(img);
   hysteresis(img, low_threshold, high_threshold);
+
+  copy_data_to_image(img, img.image);
 }
 
 /* Compare the result with the reference (OpenCV Canny) and display

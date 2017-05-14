@@ -1,10 +1,10 @@
 fn main() -> () {
   /* Name of file to use for test */
-  let filename = "wdg1.png";
+  let filename = "mon1.png";
   /* Load image from file */
   let img = image(filename);
   /* Apply OpenCV gaussian filter to image */
-  let blurred_img = opencv_gaussian(img.data, 5 as u8, false);
+  let blurred_img = opencv_gaussian(img.image, 5 as u8, false);
   /* Low threshold */
   let low_threshold = 40.0;
   /* High threshold */
@@ -20,19 +20,20 @@ fn main() -> () {
 
   /* Copy blurred image data to the image structure, then apply
      the Canny filter written in AnyDSL */ 
-  copy_data_to_image(img, blurred_img);
+  copy_image_to_data(blurred_img, img);
   canny(img, low_threshold, high_threshold);
 
   /* Writes the result */
-  write_image(img.data, "anydsl_result.png");
+  write_image(img.image, "anydsl_result.png");
 
   /* Apply result comparison and display the statistics */
   compare_results(img, opencv_result);
 
   /* Display the false positives and false negatives masks */
-  write_image(img.data, "false_positives.png");
-  sync_image_data(img);
-  write_image(img.data, "false_negatives.png");
+  copy_data_to_image(img, img.image);
+  write_image(img.image, "false_positives.png");
+  copy_buffer_to_image(img, img.image);
+  write_image(img.image, "false_negatives.png");
 
   /* Destroys the image structure to free memory space */
   destroy_image(img);

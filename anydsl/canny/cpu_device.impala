@@ -20,6 +20,16 @@ fn sqrt(a : f64) -> (f64) {
   cpu_intrinsics.sqrt(a)
 }
 
+/* Power function */
+fn pow(a : f64, b : f64) -> (f64) {
+  cpu_intrinsics.pow(a, b)
+}
+
+/* Base-e exponential function */
+fn exp(a : f64) -> (f64) {
+  cpu_intrinsics.exp(a)
+}
+
 /* Absolute function */
 fn fabs(a : f64) -> (f64) {
   cpu_intrinsics.fabs(a)

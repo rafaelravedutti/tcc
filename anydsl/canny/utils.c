@@ -57,6 +57,11 @@ void print_integer(int value) {
   fprintf(stdout, "%d\n", value);
 }
 
+/* Double printing */
+void print_f64(double value) {
+  fprintf(stdout, "%f\n", value);
+}
+
 /* Angle test printing */
 void print_angle_test(double angle, int result) {
   fprintf(stdout, "ROUND(%.6f) = %d\n", angle, result);

@@ -45,6 +45,7 @@ extern "C" {
   fn impala_print(string : &[u8]) -> ();
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();
   fn print_integer(value : i32) -> ();
+  fn print_f64(value : f64) -> ();
   fn print_angle_test(angle : f64, result : i32) -> ();
   fn show_statistics(
     corrects : i32, false_positives : i32, false_negatives : i32
@@ -309,25 +310,21 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 fn gaussian_blur(img : image_struct) -> () {
   /* Generates the separable Gaussian kernel based on the
      OpenCV source code */
-  /*
-  let mut mask = [[2.0,  4.0,  5.0,  4.0,  2.0],
-                  [4.0,  9.0, 12.0,  9.0,  4.0],
-                  [5.0, 12.0, 15.0, 12.0,  5.0],
-                  [4.0,  9.0, 12.0,  9.0,  4.0],
-                  [2.0,  4.0,  5.0,  4.0,  2.0]];
+  let mut mask : [[f64 * 5] * 5];
+  let anchor = 2.0;
+  let pi = 3.14159;
+  let sigma = 1.1;
+  let prod = 1.0 / (2.0 * pi * sigma * sigma);
+  let denom = 2.0 * sigma * sigma;
 
   for i in range(0, 4) {
     for j in range(0, 4) {
-      mask(i)(j) *= 0.00628930817;
+      let x = (i as f64) - anchor;
+      let y = (j as f64) - anchor;
+
+      mask(i)(j) = prod * exp(-((x * x + y * y) / denom));
     }
   }
-  */
-
-  let mask = [[0.005865,	0.018686,	0.027481,	0.018686,	0.005865],
-              [0.018686,	0.059536,	0.087555,	0.059536,	0.018686],
-              [0.027481,	0.087555,	0.12876,	0.087555,	0.027481],
-              [0.018686,	0.059536,	0.087555,	0.059536,	0.018686],
-              [0.005865,	0.018686,	0.027481,	0.018686,	0.005865]];
 
   /* Applies the separable kernel in rows and columns */
   apply_2d_block_convolution(img, filter_5x5(mask));

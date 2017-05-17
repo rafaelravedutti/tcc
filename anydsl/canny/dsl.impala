@@ -151,7 +151,7 @@ fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
 /* Performs angle roundness and returns the index to its offsets, this is used
    by the non-maximum supression algorithm */
 fn round_angle(angle : f64) -> (i32) {
-  let ang = angle + 180.0 * ((angle < 0.0) as f64);
+  let ang = angle + 3.14159 * ((angle < 0.0) as f64);
 
   /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
   (((ang + 0.3926991) / 0.785375) as i32) % 4
@@ -368,7 +368,7 @@ fn non_maximum_supression(img : image_struct) -> () {
   for x, y in iterate(img) {
     let value = get_pixel(img, x, y);     /* Pixel value at (x, y) */
     let angle = img.directions(y * img.width + x); /* Directions angle */
-    let index = naive_round_angle(angle); /* Angle index */
+    let index = round_angle(angle);       /* Angle index */
     let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
     let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
     let nb2_x = x - offsets(index)(0);    /* Second neighboor x coordinate */
@@ -430,23 +430,19 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
     for x, y in iterate(img) {
       let pixel_value = get_pixel(img, x, y);
+      let condition = ( (pixel_value > 0.0 && pixel_value < 2.0) &&
+                        (x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) ) as f64;
+      let mut sum = 0.0;
 
-      if pixel_value > 0.0 && pixel_value < 2.0 {
-        let mut sum = 0.0;
 
-        if(x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) {
-          for i in range(-1, 1) {
-            for j in range(-1, 1) {
-              sum += get_pixel(img, x + i, y + j);
-            }
-          }
-
-          if sum > 10.0 {
-            counter = counter + 1;
-            set_pixel(img, x, y, 15.0);
-          }
+      for i in range(-1, 1) {
+        for j in range(-1, 1) {
+          sum += condition * get_pixel(img, x + i, y + j);
         }
       }
+
+      counter = counter + ((sum > 10.0) as i32);
+      set_pixel(img, x, y, pixel_value + ((sum > 10.0) as f64) * 14.0);
     }
   }
 

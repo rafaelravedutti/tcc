@@ -101,7 +101,7 @@ pixel_t *opencv_canny(
     buffer.create(img_mat.size(), img_mat.type());
 
     cv::GaussianBlur(img_mat, buffer, cv::Size(5, 5), 0, 0);
-    cv::Canny(buffer, img_mat, low_threshold, high_threshold, 3);
+    cv::Canny(buffer, img_mat, low_threshold, high_threshold, 3, true);
 
     mat_list.push_back(img_mat);
 

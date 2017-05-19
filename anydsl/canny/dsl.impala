@@ -425,6 +425,7 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
      have strong edges as neighboors, if that's the case, they are
      considered edges and are set as strong edges. This procedure is
      executed repeatedly until there are no more weak edges to be updated. */
+
   while counter > 0 {
     counter = 0;
 

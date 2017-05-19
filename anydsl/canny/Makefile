@@ -34,9 +34,13 @@ IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runti
 all: canny
 
 main.ll: ${PLATFORM_TYPE}_device.impala dsl.impala main.impala
-	clang -S -emit-llvm utils.c
-	clang++ -S -emit-llvm opencv_runtime.cpp
 	impala -emit-llvm ${IMPALA_LINK_FILES} $^
+
+utils.ll: utils.c
+	clang -S -emit-llvm $^
+
+opencv_runtime.ll: opencv_runtime.cpp
+	clang++ -S -emit-llvm $^
 
 canny: main.ll utils.ll opencv_runtime.ll
 	clang++ -lm ${OPENCV_LIBS} $^ -o $@

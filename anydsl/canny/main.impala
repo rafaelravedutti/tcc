@@ -21,6 +21,10 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
   /* Write OpenCV result */
   write_image(opencv_result, "opencv_result.png");
 
+  /* Performs OpenCV gaussian */
+  //let blurred_img = opencv_gaussian(img.image, 5 as u8, false);
+  //copy_image_to_data(blurred_img, img);
+
   /* Copy blurred image data to the image structure, then apply
      the Canny filter written in AnyDSL */ 
   canny(img, low_threshold, high_threshold);

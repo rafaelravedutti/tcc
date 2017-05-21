@@ -338,19 +338,19 @@ fn sobel(img : image_struct) -> () {
     let condition = (x > 0 && x < img.width - 1 &&
                      y > 0 && y < img.height - 1) as f64;
 
-    sum_x += condition * get_pixel(img, x + 1, y - 1);
-    sum_x += condition * get_pixel(img, x + 1, y    ) * 2.0;
-    sum_x += condition * get_pixel(img, x + 1, y + 1);
-    sum_x -= condition * get_pixel(img, x - 1, y - 1);
-    sum_x -= condition * get_pixel(img, x - 1, y    ) * 2.0;
-    sum_x -= condition * get_pixel(img, x - 1, y + 1);
+    sum_x += condition * get_pixel(img, x - 1, y - 1);
+    sum_x += condition * get_pixel(img, x - 1, y    ) * 2.0;
+    sum_x += condition * get_pixel(img, x - 1, y + 1);
+    sum_x -= condition * get_pixel(img, x + 1, y - 1);
+    sum_x -= condition * get_pixel(img, x + 1, y    ) * 2.0;
+    sum_x -= condition * get_pixel(img, x + 1, y + 1);
 
-    sum_y += condition * get_pixel(img, x - 1, y + 1);
-    sum_y += condition * get_pixel(img, x,     y + 1) * 2.0;
-    sum_y += condition * get_pixel(img, x + 1, y + 1);
-    sum_y -= condition * get_pixel(img, x - 1, y - 1);
-    sum_y -= condition * get_pixel(img, x,     y - 1) * 2.0;
-    sum_y -= condition * get_pixel(img, x + 1, y - 1);
+    sum_y += condition * get_pixel(img, x - 1, y - 1);
+    sum_y += condition * get_pixel(img, x,     y - 1) * 2.0;
+    sum_y += condition * get_pixel(img, x + 1, y - 1);
+    sum_y -= condition * get_pixel(img, x - 1, y + 1);
+    sum_y -= condition * get_pixel(img, x,     y + 1) * 2.0;
+    sum_y -= condition * get_pixel(img, x + 1, y + 1);
 
     img.directions(y * img.width + x) = atan2(sum_y, sum_x);
     set_buffer_pixel(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
@@ -435,7 +435,6 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
                         (x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) ) as f64;
       let mut sum = 0.0;
 
-
       for i in range(-1, 1) {
         for j in range(-1, 1) {
           sum += condition * get_pixel(img, x + i, y + j);
@@ -450,13 +449,13 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
   /* Sets strong edges pixels to 255 and other pixels to 0 to
      get the final result */
   for x, y in iterate(img) {
-    set_pixel(img, x, y, ((get_pixel(img, x, y) > 1.0) as f64) * 255.0);
+    set_pixel(img, x, y, ((get_pixel(img, x, y) > 10.0) as f64) * 255.0);
   }
 }
 
 /* Canny */
 fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
-  gaussian_blur(img);
+  //gaussian_blur(img);
   sobel(img);
   non_maximum_supression(img);
   hysteresis(img, low_threshold, high_threshold);

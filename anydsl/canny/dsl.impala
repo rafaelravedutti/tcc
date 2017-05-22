@@ -154,7 +154,7 @@ fn round_angle(angle : f64) -> (i32) {
   let ang = angle + 3.14159 * ((angle < 0.0) as f64);
 
   /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
-  (((ang + 0.3926991) / 0.785375) as i32) % 4
+  (((ang + 0.3926991) / 0.785398) as i32) % 4
 }
 
 /* Naive implementation of round_angle (for testing purposes) */
@@ -362,7 +362,7 @@ fn sobel(img : image_struct) -> () {
 /* Non-maximum supression */
 fn non_maximum_supression(img : image_struct) -> () {
   /* Offsets for the angles */
-  let offsets = [[1, 0], [1, 1], [0, 1], [1, -1]];
+  let offsets = [[1, 0], [1, 1], [0, 1], [-1, 1]];
 
   /* Go through the image */
   for x, y in iterate(img) {

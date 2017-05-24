@@ -53,6 +53,9 @@ extern "C" {
   fn show_statistics(
     corrects : i32, false_positives : i32, false_negatives : i32
   ) -> ();
+  fn show_profile_statistics(
+    gaussian_time : f64, sobel_time : f64, nms_time : f64, hysteresis_time : f64
+  ) -> ();
   fn show_time_statistics(first_time : f64, second_time : f64) -> ();
 }
 
@@ -459,10 +462,21 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
 /* Canny */
 fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
+  let gaussian_time = impala_time();
   gaussian_blur(img);
+  let sobel_time = impala_time();
   sobel(img);
+  let nms_time = impala_time();
   non_maximum_supression(img);
+  let hysteresis_time = impala_time();
   hysteresis(img, low_threshold, high_threshold);
+
+  show_profile_statistics(
+    sobel_time - gaussian_time,
+    nms_time - sobel_time,
+    hysteresis_time - nms_time,
+    impala_time() - hysteresis_time
+  );
 
   copy_data_to_image(img, img.image);
 }

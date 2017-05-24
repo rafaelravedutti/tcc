@@ -91,14 +91,26 @@ void show_statistics(int corrects, int false_positives, int false_negatives) {
   fp_percent = (double) false_positives / (double) total;
   fn_percent = (double) false_negatives / (double) total;
 
-  fprintf(stdout, "-------------------------------------\n"
-                  "Correct pixels: %.2f (%d/%d)\n"
+  fprintf(stdout, "Correct pixels: %.2f (%d/%d)\n"
                   "False positives: %.2f (%d/%d)\n"
                   "False negatives: %.2f (%d/%d)\n"
                   "-------------------------------------\n",
                   correct_percent, corrects, total,
                   fp_percent, false_positives, total,
                   fn_percent, false_negatives, total);
+}
+
+/* Show profile */
+void show_profile_statistics(
+  double gaussian_time, double sobel_time, double nms_time, double hysteresis_time
+) {
+  fprintf(stdout, "-------------------------------------\n"
+                  "Gaussian time: %.5f\n"
+                  "Sobel time: %.5f\n"
+                  "Non-maximum supression time: %.5f\n"
+                  "Hysteresis time: %.5f\n"
+                  "-------------------------------------\n",
+                  gaussian_time, sobel_time, nms_time, hysteresis_time);
 }
 
 /* Show times comparison */

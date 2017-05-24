@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
 
 typedef int pixel_t;
 
@@ -72,6 +73,14 @@ void impala_print(const char *string) {
   fprintf(stdout, "%s\n", string);
 }
 
+/* Get current time */
+/* Obtém do tempo atual os segundos e milisegundos */
+double impala_time() {
+  struct timeval tp;
+  gettimeofday(&tp, NULL);
+  return ((double)(tp.tv_sec + tp.tv_usec / 1000000.0));
+}
+
 /* Show statistics */
 void show_statistics(int corrects, int false_positives, int false_negatives) {
   int total;
@@ -90,4 +99,12 @@ void show_statistics(int corrects, int false_positives, int false_negatives) {
                   correct_percent, corrects, total,
                   fp_percent, false_positives, total,
                   fn_percent, false_negatives, total);
+}
+
+/* Show times comparison */
+void show_time_statistics(double first_time, double second_time) {
+  fprintf(stdout, "OpenCV time: %.5f\n"
+                  "AnyDSL time: %.5f\n"
+                  "-------------------------------------\n",
+                  first_time, second_time);
 }

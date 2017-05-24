@@ -41,6 +41,9 @@ extern "C" {
   fn display_image(img : &mut[f64], title : &[u8], wait : bool) -> ();
   fn write_image(img : &mut[f64], title : &[u8]) -> ();
 
+  /* Time */
+  fn impala_time() -> f64;
+
   /* Printing functions */
   fn impala_print(string : &[u8]) -> ();
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();
@@ -50,6 +53,7 @@ extern "C" {
   fn show_statistics(
     corrects : i32, false_positives : i32, false_negatives : i32
   ) -> ();
+  fn show_time_statistics(first_time : f64, second_time : f64) -> ();
 }
 
 /* Load image form file and saves it into a image_struct structure */
@@ -455,7 +459,7 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
 /* Canny */
 fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
-  //gaussian_blur(img);
+  gaussian_blur(img);
   sobel(img);
   non_maximum_supression(img);
   hysteresis(img, low_threshold, high_threshold);

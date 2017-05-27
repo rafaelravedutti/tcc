@@ -260,15 +260,14 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
-    if(x >= anchor && x < img.width - anchor) {
-      for i in range(-anchor, anchor) {
-        sum += mask.data(i + anchor) * get_pixel(img, x + i, y);
-      }
+    let condition = (x >= anchor && x < img.width - anchor) as f64;
 
-      set_buffer_pixel(img, x, y, sum);
-    } else {
-      set_buffer_pixel(img, x, y, get_pixel(img, x, y));
+    for i in range(-anchor, anchor) {
+      sum += mask.data(i + anchor) * get_pixel(img, x + i, y);
     }
+
+    set_buffer_pixel(img, x, y, sum * condition +
+                                get_pixel(img, x, y) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -284,15 +283,14 @@ fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
-    if(y >= anchor && y < img.height - anchor) {
-      for i in range(-anchor, anchor) {
-        sum += mask.data(i + anchor) * get_pixel(img, x, y + i);
-      }
+    let condition = (y >= anchor && y < img.height - anchor) as f64;
 
-      set_buffer_pixel(img, x, y, sum);
-    } else {
-      set_buffer_pixel(img, x, y, get_pixel(img, x, y));
+    for i in range(-anchor, anchor) {
+      sum += mask.data(i + anchor) * get_pixel(img, x, y + i);
     }
+
+    set_buffer_pixel(img, x, y, sum * condition +
+                                get_pixel(img, x, y) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -308,19 +306,18 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
-    if( x >= anchor && x < img.width - anchor &&
-        y >= anchor && y < img.height - anchor ) {
-      for i in range(-anchor, anchor) {
-        for j in range(-anchor, anchor) {
-          sum += mask.data(((i + anchor) * mask.size) + j + anchor) *
-                 get_pixel(img, x + i, y + j);
-        }
-      }
+    let condition = ( x >= anchor && x < img.width - anchor &&
+                      y >= anchor && y < img.height - anchor  ) as f64;
 
-      set_buffer_pixel(img, x, y, sum);
-    } else {
-      set_buffer_pixel(img, x, y, get_pixel(img, x, y));
+    for i in range(-anchor, anchor) {
+      for j in range(-anchor, anchor) {
+        sum += mask.data(((i + anchor) * mask.size) + j + anchor) *
+               get_pixel(img, x + i, y + j);
+      }
     }
+
+    set_buffer_pixel(img, x, y, sum * condition +
+                                get_pixel(img, x, y) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */

@@ -2,7 +2,14 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
+/* Stack length */
+#define STACK_LENGTH    (2 * 2073600)
+
 typedef int pixel_t;
+
+/* Stack */
+static int stack[STACK_LENGTH];
+static int stack_size = 0;
 
 /* Show command usage */
 void display_usage(const char *command) {
@@ -119,4 +126,26 @@ void show_time_statistics(double first_time, double second_time) {
                   "AnyDSL time: %.5f\n"
                   "-------------------------------------\n",
                   first_time, second_time);
+}
+
+/* Initialize stack */
+void stack_init() {
+  stack[0] = 0;
+  stack[1] = 0;
+  stack_size = 2;
+}
+
+/* Conditional push */
+void push_conditional(int x, int y, int condition) {
+  stack[stack_size] = x;
+  stack[stack_size + 1] = y;
+  stack_size += condition * 2;
+}
+
+/* Pop */
+int pop(int *x, int *y) {
+  *x = stack[stack_size - 2];
+  *y = stack[stack_size - 1];
+  stack_size -= (stack_size > 2) * 2;
+  return stack_size > 2;
 }

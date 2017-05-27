@@ -41,6 +41,11 @@ extern "C" {
   fn display_image(img : &mut[f64], title : &[u8], wait : bool) -> ();
   fn write_image(img : &mut[f64], title : &[u8]) -> ();
 
+  /* Stack functions */
+  fn stack_init() -> ();
+  fn push_conditional(x : i32, y : i32, condition : i32) -> ();
+  fn pop(x : &i32, y : &i32) -> i32;
+
   /* Time */
   fn impala_time() -> f64;
 
@@ -405,7 +410,8 @@ fn non_maximum_supression(img : image_struct) -> () {
 
 /* Hysteresis */
 fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
-  let mut counter = 1;
+  /* Initialize the stack */
+  stack_init();
 
   /*
      Go through the image and sets pixel value according to the
@@ -426,6 +432,9 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
     set_pixel(img, x, y, ((value > low_threshold) as f64) * 1.0 +
                          ((value > high_threshold) as f64) * 14.0);
+
+    push_conditional(x, y, 
+                      (value > low_threshold && value < high_threshold) as i32);
   }
 
   /* Go through the image and looks for the weak edges to see if they
@@ -433,23 +442,31 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
      considered edges and are set as strong edges. This procedure is
      executed repeatedly until there are no more weak edges to be updated. */
 
-  while counter > 0 {
-    counter = 0;
+  let mut x = 0;
+  let mut y = 0;
 
-    for x, y in iterate(img) {
-      let pixel_value = get_pixel(img, x, y);
-      let condition = ( (pixel_value > 0.0 && pixel_value < 2.0) &&
-                        (x > 0 && x < img.width - 1 && y > 0 && y < img.height - 1) ) as f64;
-      let mut sum = 0.0;
+  while pop(&mut x, &mut y) != 0 {
+    let pixel_value = get_pixel(img, x, y);
+    let weak_condition = (pixel_value > 0.5 && pixel_value < 1.5) as f64;
+    let mut sum = 0.0;
 
-      for i in range(-1, 1) {
-        for j in range(-1, 1) {
-          sum += condition * get_pixel(img, x + i, y + j);
-        }
+    for i in range(-1, 1) {
+      for j in range(-1, 1) {
+        sum += weak_condition * get_pixel(img, x + i, y + j);
       }
+    }
 
-      counter = counter + ((sum > 10.0) as i32);
-      set_pixel(img, x, y, pixel_value + ((sum > 10.0) as f64) * 14.0);
+    let sum_condition = ((sum > 10.0) as i32);
+
+    set_pixel(img, x, y, pixel_value + (sum_condition as f64) * 14.0);
+
+    for i in range(-1, 1) {
+      for j in range(-1, 1) {
+        let nb_value = get_pixel(img, x + i, y + j);
+        let nb_weak_condition = (nb_value > 0.5 && nb_value < 1.5) as i32;
+
+        push_conditional(x + i, y + j, sum_condition & nb_weak_condition);
+      }
     }
   }
 

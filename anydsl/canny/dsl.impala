@@ -252,7 +252,7 @@ fn filter_5x1(mask : [f64 * 5]) -> filter_struct {
 }
 
 /* Apply 2D filter convolution with separable kernels (tiling) */
-fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct) -> () {
+fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   /* Applies the filter in columns */
@@ -264,13 +264,20 @@ fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct) -> () {
       for i in range(-anchor, anchor) {
         sum += mask.data(i + anchor) * get_pixel(img, x + i, y);
       }
-    }
 
-    set_buffer_pixel(img, x, y, sum);
+      set_buffer_pixel(img, x, y, sum);
+    } else {
+      set_buffer_pixel(img, x, y, get_pixel(img, x, y));
+    }
   }
 
   /* Copies result from buffer to image data */
   sync_image_data(img);
+}
+
+/* Apply 2D filter convolution with separable kernels (tiling) */
+fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
+  let anchor = mask.size / 2;
 
   /* Applies the filter in rows */
   for x, y in iterate(img) {
@@ -281,9 +288,11 @@ fn apply_2d_tiled_convolution(img : image_struct, mask : filter_struct) -> () {
       for i in range(-anchor, anchor) {
         sum += mask.data(i + anchor) * get_pixel(img, x, y + i);
       }
-    }
 
-    set_buffer_pixel(img, x, y, sum);
+      set_buffer_pixel(img, x, y, sum);
+    } else {
+      set_buffer_pixel(img, x, y, get_pixel(img, x, y));
+    }
   }
 
   /* Copies result from buffer to image data */
@@ -322,7 +331,11 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 fn gaussian_blur(img : image_struct) -> () {
   /* Generates the separable Gaussian kernel based on the
      OpenCV source code */
-  let mut mask : [[f64 * 5] * 5];
+  let mut mask_xy : [[f64 * 5] * 5];
+  let mut mask_x : [f64 * 5];
+  let mut mask_y : [f64 * 5];
+  let mut sum_x = 0.0;
+  let mut sum_y = 0.0;
   let anchor = 2.0;
   let pi = 3.14159;
   let sigma = 1.1;
@@ -330,16 +343,32 @@ fn gaussian_blur(img : image_struct) -> () {
   let denom = 2.0 * sigma * sigma;
 
   for i in range(0, 4) {
+    let x = (i as f64) - anchor;
+
     for j in range(0, 4) {
-      let x = (i as f64) - anchor;
       let y = (j as f64) - anchor;
 
-      mask(i)(j) = prod * exp(-((x * x + y * y) / denom));
+      mask_xy(i)(j) = prod * exp(-((x * x + y * y) / denom));
     }
+
+    mask_x(i) = exp(-((x * x) / denom));
+    mask_y(i) = exp(-((x * x) / denom));
+    sum_x += mask_x(i);
+    sum_y += mask_y(i);
+  }
+
+  sum_x = 1.0 / sum_x;
+  sum_y = 1.0 / sum_y;
+
+  for i in range(0, 4) {
+    mask_x(i) *= sum_x;
+    mask_y(i) *= sum_y;
   }
 
   /* Applies the separable kernel in rows and columns */
-  apply_2d_block_convolution(img, filter_5x5(mask));
+  //apply_2d_block_convolution(img, filter_5x5(mask_xy));
+  apply_2d_row_convolution(img, filter_5x1(mask_x));
+  apply_2d_column_convolution(img, filter_5x1(mask_y));
 }
 
 /* Sobel filter */

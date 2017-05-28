@@ -41,11 +41,8 @@ fn exp(a : f64) -> (f64) {
 
 /* Absolute function */
 fn abs(a : i32) -> (i32) {
-  if a < 0 {
-    -a
-  } else {
-    a
-  }
+  a * ((a >= 0) as i32) +
+  (-a) * ((a < 0) as i32)
 }
 
 /* Absolute function */

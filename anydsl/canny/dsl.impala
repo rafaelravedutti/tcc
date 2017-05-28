@@ -33,6 +33,9 @@ extern "C" {
   fn opencv_gaussian(
     img : &mut[f64], mask_size : u8, display : bool
   ) -> (&mut[f64]);
+  fn opencv_sobel(
+    img : &mut[f64], sx : i32, sy : i32, aperture_size : i32, display : bool
+  ) -> (&mut[f64]);
   fn opencv_canny(
     filename : &[u8], low_threshold : f64, high_threshold: f64
   ) -> (&mut[f64]);

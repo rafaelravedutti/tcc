@@ -11,6 +11,7 @@ typedef double pixel_t;
 extern "C" {
   pixel_t *load_image(const char *path, int *width, int *height);
   pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display);
+  pixel_t *opencv_sobel(pixel_t *img, int sx, int sy, int aperture_size, bool display);
   pixel_t *opencv_canny(const char *filename, pixel_t low_threshold, pixel_t high_threshold);
   void display_image(pixel_t *img, const char *title, bool wait);
   void write_image(pixel_t *img, const char *filename);
@@ -78,6 +79,30 @@ pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display) {
     if(display) {
       cv::namedWindow("gaussian_result", cv::WINDOW_NORMAL);
       cv::imshow("gaussian_result", buffer);
+    }
+
+    mat_list.push_back(buffer);
+
+    return buffer.ptr<pixel_t>(0);
+  }
+
+  return NULL;
+}
+
+pixel_t *opencv_sobel(pixel_t *img, int sx, int sy, int aperture_size, bool display) {
+  cv::Mat img_mat, buffer;
+  int found;
+
+  img_mat = GetImageMat(img, &found);
+
+  if(found != 0) {
+    buffer.create(img_mat.size(), img_mat.type());
+
+    cv::Sobel(img_mat, buffer, CV_64F, sx, sy, aperture_size, 1, 0, cv::BORDER_REPLICATE);
+
+    if(display) {
+      cv::namedWindow("sobel_result", cv::WINDOW_NORMAL);
+      cv::imshow("sobel_result", buffer);
     }
 
     mat_list.push_back(buffer);

@@ -1,5 +1,5 @@
 # AnyDSL
-ANYDSL_PATH=/home/rafael/Utilities/anydsl
+ANYDSL_PATH=/home/rafael/anydsl
 
 # Impala
 IMPALA_PATH=${ANYDSL_PATH}/impala
@@ -14,7 +14,7 @@ THORIN_LIB=${THORIN_PATH}/build/lib
 THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
 # OpenCV
-OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
+OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc
 
 # Clang++ options
 CLANGPP_FLAGS=
@@ -42,8 +42,11 @@ utils.ll: utils.c
 opencv_runtime.ll: opencv_runtime.cpp
 	clang++ -S -emit-llvm $^
 
-canny: main.ll utils.ll opencv_runtime.ll
-	clang++ -lm ${OPENCV_LIBS} $^ -o $@
+runtime.ll: ${ANYDSL_PATH}/runtime/src/runtime.cpp
+	clang++ -std=c++11 -S -emit-llvm $^
+
+canny: main.ll utils.ll opencv_runtime.ll runtime.ll
+	clang++ -lm ${OPENCV_LIBS} -lpthread $^ -o $@
 
 clean:
-	rm -f main.bc main.cl main.cu main.ll utils.ll opencv_runtime.ll canny
+	rm -f main.bc main.cl main.cu main.ll utils.ll runtime.ll opencv_runtime.ll canny

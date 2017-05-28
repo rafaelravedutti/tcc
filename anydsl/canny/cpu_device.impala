@@ -40,6 +40,15 @@ fn exp(a : f64) -> (f64) {
 }
 
 /* Absolute function */
+fn abs(a : i32) -> (i32) {
+  if a < 0 {
+    -a
+  } else {
+    a
+  }
+}
+
+/* Absolute function */
 fn fabs(a : f64) -> (f64) {
   cpu_intrinsics.fabs(a)
 }

@@ -380,8 +380,8 @@ fn sobel(img : image_struct) -> () {
     sum_x *= condition;
     sum_y *= condition;
 
-    //sum_x = _dx;
-    //sum_y = _dy;
+    //sum_x = _dx(y * img.width + x);
+    //sum_y = _dy(y * img.width + x);
 
     img.dx(y * img.width + x) = sum_x;
     img.dy(y * img.width + x) = sum_y;

@@ -3,6 +3,8 @@ struct image_struct {
   image : &mut[f64],          /* Image data */
   data : &mut[f64],           /* Image data */
   buffer : &mut[f64],         /* Auxiliary buffer */
+  dx : &mut[f64],             /* Gx matrix */
+  dy : &mut[f64],             /* Gy matrix */
   directions : &mut[f64],     /* Directions matrix */
   width : i32,                /* Image width */
   height : i32,               /* Image height */
@@ -81,6 +83,8 @@ fn image(filename : &[u8]) -> image_struct {
   res.extended_buffer = allocate_double_matrix(res.width + 2, res.height + 2);
   res.buffer = &mut res.extended_buffer(res.width + 3) as &mut [f64];
   res.directions = allocate_double_matrix(res.width, res.height);
+  res.dx = allocate_double_matrix(res.width, res.height);
+  res.dy = allocate_double_matrix(res.width, res.height);
 
   /* Set image as loaded */
   res.loaded = true;
@@ -103,6 +107,8 @@ fn destroy_image(img : image_struct) -> () {
   free_double_matrix(img.extended_data);
   free_double_matrix(img.extended_buffer);
   free_double_matrix(img.directions);
+  free_double_matrix(img.dx);
+  free_double_matrix(img.dy);
 }
 
 /* Sets image pixel at (x, y) coordinates */
@@ -167,28 +173,6 @@ fn round_angle(angle : f64) -> (i32) {
 
   /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
   (((ang + 0.3926991) / 0.785398) as i32) % 4
-}
-
-/* Naive implementation of round_angle (for testing purposes) */
-fn naive_round_angle(angle : f64) -> (i32) {
-  let mut ang = angle;
-  let mut result = 0;
-
-  if(ang < 0.0) {
-    ang += 3.14159;
-  }
-
-  if ang < 0.3926991 {
-    result = 0;
-  } else if ang < 1.178087 {
-    result = 1;
-  } else if ang < 1.9634954 {
-    result = 2;
-  } else if ang < 2.7488936 {
-    result = 3;
-  }
-
-  result
 }
 
 /* Iterates from min to max executing the higher-order function specified */
@@ -390,8 +374,10 @@ fn sobel(img : image_struct) -> () {
     sum_y -= condition * get_pixel(img, x,     y + 1) * 2.0;
     sum_y -= condition * get_pixel(img, x + 1, y + 1);
 
-    img.directions(y * img.width + x) = atan2(sum_y, sum_x);
-    set_buffer_pixel(img, x, y, sqrt(sum_x * sum_x + sum_y * sum_y));
+    img.dx(y * img.width + x) = sum_x;
+    img.dy(y * img.width + x) = sum_y;
+
+    set_buffer_pixel(img, x, y, sum_x * sum_x + sum_y * sum_y);
   }
 
   sync_image_data(img);
@@ -405,8 +391,42 @@ fn non_maximum_supression(img : image_struct) -> () {
   /* Go through the image */
   for x, y in iterate(img) {
     let value = get_pixel(img, x, y);     /* Pixel value at (x, y) */
-    let angle = img.directions(y * img.width + x); /* Directions angle */
-    let index = round_angle(angle);       /* Angle index */
+    let xs = img.dx(y * img.width + x) as i32;
+    let ys = img.dy(y * img.width + x) as i32;
+    let mx = abs(xs);
+    let my = abs(ys) << 15;
+
+    let tg22x = mx * 13573;
+    let tg67x = tg22x + (mx << 16);
+
+    let cond1 = (my >= tg22x) as i32;
+    let cond2 = (my > tg67x) as i32;
+    let cond3 = (xs ^ ys < 0) as i32;
+
+    /*
+    let index = cond1 * (
+                            (cond2 * 2) +
+                            ((1 - cond2) * (cond3 * 3) + (1 - cond3))
+                );
+    */
+
+    let mut index = 0;
+
+    if my < tg22x {
+      index = 0;
+    } else {
+
+      if my > tg67x {
+        index = 2;
+      } else {
+        if (xs ^ ys) < 0 {
+          index = 3;
+        } else {
+          index = 1;
+        }
+      }
+    }
+
     let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
     let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
     let nb2_x = x - offsets(index)(0);    /* Second neighboor x coordinate */
@@ -516,7 +536,7 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   let nms_time = impala_time();
   non_maximum_supression(img);
   let hysteresis_time = impala_time();
-  hysteresis(img, low_threshold, high_threshold);
+  hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
 
   show_profile_statistics(
     sobel_time - gaussian_time,

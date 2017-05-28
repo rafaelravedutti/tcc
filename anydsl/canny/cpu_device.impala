@@ -1,7 +1,7 @@
 /* Iterate over image on CPU architectures */
 fn iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
   for i in parallel(4, 0, img.width) {
-    for j in vectorize(8, 32, 0, img.height) {
+    for j in range(0, img.height - 1) {
       body(i, j);
     }
   }

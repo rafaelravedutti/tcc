@@ -403,29 +403,10 @@ fn non_maximum_supression(img : image_struct) -> () {
     let cond2 = (my > tg67x) as i32;
     let cond3 = (xs ^ ys < 0) as i32;
 
-    /*
     let index = cond1 * (
                             (cond2 * 2) +
-                            ((1 - cond2) * (cond3 * 3) + (1 - cond3))
+                            (1 - cond2) * ((cond3 * 3) + (1 - cond3))
                 );
-    */
-
-    let mut index = 0;
-
-    if my < tg22x {
-      index = 0;
-    } else {
-
-      if my > tg67x {
-        index = 2;
-      } else {
-        if (xs ^ ys) < 0 {
-          index = 3;
-        } else {
-          index = 1;
-        }
-      }
-    }
 
     let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
     let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
@@ -530,13 +511,13 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 /* Canny */
 fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   let gaussian_time = impala_time();
-  gaussian_blur(img);
+  @gaussian_blur(img);
   let sobel_time = impala_time();
-  sobel(img);
+  @sobel(img);
   let nms_time = impala_time();
-  non_maximum_supression(img);
+  @non_maximum_supression(img);
   let hysteresis_time = impala_time();
-  hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
+  @hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
 
   show_profile_statistics(
     sobel_time - gaussian_time,

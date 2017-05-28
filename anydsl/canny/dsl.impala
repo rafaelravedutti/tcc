@@ -453,14 +453,18 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
      15 (strong edge)
   */
 
-  for x, y in iterate(img) {
+  for x, y in @iterate(img) {
     let value = get_pixel(img, x, y);
 
     set_pixel(img, x, y, ((value > low_threshold) as f64) * 1.0 +
                          ((value > high_threshold) as f64) * 14.0);
+  }
+
+  for x, y in @naive_iterate(img) {
+    let value = get_pixel(img, x, y);
 
     push_conditional(x, y, 
-                      (value > low_threshold && value < high_threshold) as i32);
+                      (value > 0.5 && value < 1.5) as i32);
   }
 
   /* Go through the image and looks for the weak edges to see if they
@@ -532,7 +536,7 @@ fn compare_results(img : image_struct, reference : &mut[f64]) -> () {
   let mut false_negatives = 0;
   let uchar_reference = reference as &mut[u8];
 
-  for x, y in iterate(img) {
+  for x, y in naive_iterate(img) {
     let pixel_value = get_pixel(img, x, y) as i32;
     let pixel_reference = uchar_reference(y * img.width + x) as i32;
 

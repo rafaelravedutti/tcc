@@ -386,7 +386,8 @@ fn sobel(img : image_struct) -> () {
 /* Non-maximum supression */
 fn non_maximum_supression(img : image_struct) -> () {
   /* Offsets for the angles */
-  let offsets = [[1, 0], [1, 1], [0, 1], [-1, 1]];
+  //let offsets = [[1, 0], [1, 1], [0, 1], [-1, 1]];
+  let offsets = [[1, 1], [-1, 1], [0, 1], [0, 1], [1, 0], [1, 0], [1, 0]];
 
   /* Go through the image */
   for x, y in iterate(img) {
@@ -399,14 +400,11 @@ fn non_maximum_supression(img : image_struct) -> () {
     let tg22x = mx * 13573;
     let tg67x = tg22x + (mx << 16);
 
-    let cond1 = (my >= tg22x) as i32;
+    let cond1 = (my < tg22x) as i32;
     let cond2 = (my > tg67x) as i32;
     let cond3 = (xs ^ ys < 0) as i32;
 
-    let index = cond1 * (
-                            (cond2 * 2) +
-                            (1 - cond2) * ((cond3 * 3) + (1 - cond3))
-                );
+    let index = (cond1 << 2) + (cond2 << 1) + cond3;
 
     let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
     let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */

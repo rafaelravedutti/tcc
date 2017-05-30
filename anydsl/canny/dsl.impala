@@ -8,8 +8,8 @@ struct image_struct {
   width : i32,                /* Image width */
   height : i32,               /* Image height */
   loaded : bool,              /* Is the image data loaded from a file? */
-  extended_data: &mut[f64],   /* Data with increased dimensions */
-  extended_buffer: &mut[f64], /* Buffer with increased dimensions */
+  extended_data: Buffer,      /* Data with increased dimensions */
+  extended_buffer: Buffer,    /* Buffer with increased dimensions */
 };
 
 /* Filter data structure */
@@ -78,12 +78,14 @@ fn image(filename : &[u8]) -> image_struct {
   res.image = load_image(filename, pwidth, pheight);
 
   /* Stores the image to structure data */
-  res.extended_data = allocate_double_matrix(res.width + 2, res.height + 2);
-  res.data = &mut res.extended_data(res.width + 3) as &mut [f64];
+  res.extended_data = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
+  res.data = res.extended_data.data(res.width + 3) as &mut[f64];
 
   /* Knowing its size, allocates the buffer and directions pointers */
-  res.extended_buffer = allocate_double_matrix(res.width + 2, res.height + 2);
-  res.buffer = &mut res.extended_buffer(res.width + 3) as &mut [f64];
+  res.extended_buffer = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
+  res.buffer = res.extended_buffer.data(res.width + 3) as &mut[f64];
+
+  /* Allocate Sobel directions */
   res.dx = allocate_double_matrix(res.width, res.height);
   res.dy = allocate_double_matrix(res.width, res.height);
 
@@ -105,8 +107,8 @@ fn destroy_image(img : image_struct) -> () {
   }
 
   /* Free buffer and directions pointers */
-  free_double_matrix(img.extended_data);
-  free_double_matrix(img.extended_buffer);
+  release(img.extended_data);
+  release(img.extended_buffer);
   free_double_matrix(img.dx);
   free_double_matrix(img.dy);
 }
@@ -271,18 +273,17 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   /* Applies the filter in columns */
-  for x, y in @iterate(img) {
+  for x, y, arr_in, arr_out in @gpu_iterate(img, false) {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
     let condition = (x >= anchor && x < img.width - anchor) as f64;
 
     for i in @range(-anchor, anchor) {
-      sum += mask.data(i + anchor) * @get_pixel(img, x + i, y);
+      sum += mask.data(i + anchor) * read(arr_in, y * img.width + x + i);
     }
 
-    @set_buffer_pixel(img, x, y, sum * condition +
-                                 @get_pixel(img, x, y) * (1.0 - condition));
+    write(arr_out, y * img.width + x, sum * condition + read(arr_in, y * img.width + x) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -294,7 +295,7 @@ fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   /* Applies the filter in rows */
-  for x, y in @iterate(img) {
+  for x, y, arr_in, arr_out in @gpu_iterate(img, false) {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
@@ -500,7 +501,7 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
                          ((value > high_threshold) as f64) * 14.0);
   }
 
-  for x, y in @iterate(img) {
+  for x, y in @naive_iterate(img) {
     let value = get_pixel(img, x, y);
 
     push_conditional(x, y, 

@@ -1,5 +1,6 @@
 /* Iterates over an image on GPU architectures */
 fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
+  let dev_id = runtime_device(1, 0);
   let acc = cuda_accelerator(0);
   let grid = (img.width, img.height, 1);
   let block = (128, 1, 1);
@@ -7,7 +8,57 @@ fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   with acc.exec(grid, block) @{
     let x = acc.bidx() * acc.bdimx() + acc.tidx();
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
+
+    //body(x, y);
   }
+}
+
+fn read(buf: &[i8], i: i32) -> f64 {
+  bitcast[&[1][f64]](buf)(i)
+}
+
+fn write(buf: &[i8], i: i32, v: f64) -> () {
+  bitcast[&mut[1][f64]](buf)(i) = v
+}
+
+fn gpu_iterate(
+  img : image_struct,
+  buffer_to_data : bool,
+  body: fn(int, int, &[i8], &[i8]) -> ()) -> () {
+
+  let dev_id = runtime_device(1, 0);
+  let acc = cuda_accelerator(0);
+  let grid = (img.width, img.height, 1);
+  let block = (128, 1, 1);
+  let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
+
+  let arr_in_ext = acc.alloc(size);
+  let arr_out_ext = acc.alloc(size);
+
+  if buffer_to_data {
+    copy(img.extended_buffer, arr_in_ext, size);
+  } else {
+    copy(img.extended_data, arr_in_ext, size);
+  }
+
+  let arr_in = arr_in_ext.data(img.width + 3) as &[i8];
+  let arr_out = arr_out_ext.data(img.width + 3) as &[i8];
+
+  with acc.exec(grid, block) @{
+    let x = acc.bidx() * acc.bdimx() + acc.tidx();
+    let y = acc.bidy() * acc.bdimy() + acc.tidy();
+
+    body(x, y, arr_in, arr_out);
+  }
+
+  if buffer_to_data {
+    copy(arr_out_ext, img.extended_data, size);
+  } else {
+    copy(arr_out_ext, img.extended_buffer, size);
+  }
+
+  release(arr_in_ext);
+  release(arr_out_ext);
 }
 
 fn exp(a : f64) -> f64 {

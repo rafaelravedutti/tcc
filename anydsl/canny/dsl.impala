@@ -278,11 +278,11 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
     let condition = (x >= anchor && x < img.width - anchor) as f64;
 
     for i in @range(-anchor, anchor) {
-      sum += mask.data(i + anchor) * get_pixel(img, x + i, y);
+      sum += mask.data(i + anchor) * @get_pixel(img, x + i, y);
     }
 
-    set_buffer_pixel(img, x, y, sum * condition +
-                                get_pixel(img, x, y) * (1.0 - condition));
+    @set_buffer_pixel(img, x, y, sum * condition +
+                                 @get_pixel(img, x, y) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -301,11 +301,11 @@ fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
     let condition = (y >= anchor && y < img.height - anchor) as f64;
 
     for i in @range(-anchor, anchor) {
-      sum += mask.data(i + anchor) * get_buffer_pixel(img, x, y + i);
+      sum += mask.data(i + anchor) * @get_buffer_pixel(img, x, y + i);
     }
 
-    set_pixel(img, x, y, sum * condition +
-                         get_pixel(img, x, y) * (1.0 - condition));
+    @set_pixel(img, x, y, sum * condition +
+                          @get_pixel(img, x, y) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -389,24 +389,27 @@ fn sobel(img : image_struct) -> () {
   //_dy = opencv_sobel(img.image, 0, 1, 3, false);
 
   for x, y in @iterate(img) {
+    let up_index = (y - 1) * img.width + x;
+    let cur_index = y * img.width + x;
+    let down_index = (y + 1) * img.width + x;
     let mut sum_x = 0.0;
     let mut sum_y = 0.0;
     let condition = (x > 0 && x < img.width - 1 &&
                      y > 0 && y < img.height - 1) as f64;
 
-    sum_x += get_pixel(img, x - 1, y - 1);
-    sum_x += get_pixel(img, x - 1, y    ) * 2.0;
-    sum_x += get_pixel(img, x - 1, y + 1);
-    sum_x -= get_pixel(img, x + 1, y - 1);
-    sum_x -= get_pixel(img, x + 1, y    ) * 2.0;
-    sum_x -= get_pixel(img, x + 1, y + 1);
+    sum_x += img.data(up_index - 1);
+    sum_x += img.data(cur_index - 1) * 2.0;
+    sum_x += img.data(down_index - 1);
+    sum_x -= img.data(up_index + 1);
+    sum_x -= img.data(cur_index + 1) * 2.0;
+    sum_x -= img.data(down_index + 1);
 
-    sum_y += get_pixel(img, x - 1, y - 1);
-    sum_y += get_pixel(img, x,     y - 1) * 2.0;
-    sum_y += get_pixel(img, x + 1, y - 1);
-    sum_y -= get_pixel(img, x - 1, y + 1);
-    sum_y -= get_pixel(img, x,     y + 1) * 2.0;
-    sum_y -= get_pixel(img, x + 1, y + 1);
+    sum_y += img.data(up_index - 1);
+    sum_y += img.data(up_index) * 2.0;
+    sum_y += img.data(up_index + 1);
+    sum_y -= img.data(down_index - 1);
+    sum_y -= img.data(down_index) * 2.0;
+    sum_y -= img.data(down_index + 1);
 
     sum_x *= condition;
     sum_y *= condition;

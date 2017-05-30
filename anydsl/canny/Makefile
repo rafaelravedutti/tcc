@@ -1,5 +1,5 @@
 # AnyDSL
-ANYDSL_PATH=/home/rafael/anydsl
+ANYDSL_PATH=/home/rafael/Utilities/anydsl
 
 # Impala
 IMPALA_PATH=${ANYDSL_PATH}/impala
@@ -14,7 +14,7 @@ THORIN_LIB=${THORIN_PATH}/build/lib
 THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
 # OpenCV
-OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc
+OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
 # Clang++ options
 CLANGPP_FLAGS=
@@ -34,7 +34,7 @@ IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runti
 all: canny
 
 main.ll: ${PLATFORM_TYPE}_device.impala dsl.impala main.impala
-	impala -emit-llvm ${IMPALA_LINK_FILES} $^
+	impala -emit-llvm -O3 -Othorin ${IMPALA_LINK_FILES} $^
 
 utils.ll: utils.c
 	clang -S -emit-llvm $^

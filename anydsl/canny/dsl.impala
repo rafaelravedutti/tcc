@@ -183,6 +183,37 @@ fn range(mut min : i32, max : i32, body : fn(int) -> ()) -> () {
   }
 }
 
+/* Iterates from min to max executing the higher-order function specified */
+fn step_range(mut min : i32, max : i32, step : i32, body : fn(int) -> ()) -> () {
+  while min <= max {
+    body(min);
+    min += step;
+  }
+}
+
+/* Naive implementation of iterate */
+fn naive_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
+  let mut i = 0;
+  let mut j = 0;
+
+  while(i < img.width) {
+    j = 0;
+
+    while(j < img.height) {
+      body(i, j);
+      j = j + 1;
+    }
+
+    i = i + 1;
+  }
+}
+
+/* Absolute function for integer */
+fn abs(a : i32) -> (i32) {
+  a * ((a >= 0) as i32) +
+  (-a) * ((a < 0) as i32)
+}
+
 /* Generates a 3x3 filter data structure given its coefficients */
 fn filter_3x3(mask : [[f64 * 3] * 3]) -> filter_struct {
   /* Allocates the filter data structure for a 3x3 filter */
@@ -246,7 +277,7 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
     /* Checks image boundaries */
     let condition = (x >= anchor && x < img.width - anchor) as f64;
 
-    for i in range(-anchor, anchor) {
+    for i in @range(-anchor, anchor) {
       sum += mask.data(i + anchor) * get_pixel(img, x + i, y);
     }
 
@@ -263,13 +294,13 @@ fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   /* Applies the filter in rows */
-  for x, y in iterate(img) {
+  for x, y in @iterate(img) {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
     let condition = (y >= anchor && y < img.height - anchor) as f64;
 
-    for i in range(-anchor, anchor) {
+    for i in @range(-anchor, anchor) {
       sum += mask.data(i + anchor) * get_pixel(img, x, y + i);
     }
 
@@ -286,7 +317,7 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   /* Applies the filter in blocks */
-  for x, y in iterate(img) {
+  for x, y in @iterate(img) {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
@@ -357,7 +388,7 @@ fn sobel(img : image_struct) -> () {
   //_dx = opencv_sobel(img.image, 1, 0, 3, false);
   //_dy = opencv_sobel(img.image, 0, 1, 3, false);
 
-  for x, y in iterate(img) {
+  for x, y in @iterate(img) {
     let mut sum_x = 0.0;
     let mut sum_y = 0.0;
     let condition = (x > 0 && x < img.width - 1 &&
@@ -398,7 +429,7 @@ fn non_maximum_supression(img : image_struct) -> () {
   let offsets = [[1, 1], [-1, 1], [0, 1], [0, 1], [1, 0], [1, 0], [1, 0]];
 
   /* Go through the image */
-  for x, y in iterate(img) {
+  for x, y in @iterate(img) {
     let value = get_pixel(img, x, y);     /* Pixel value at (x, y) */
     let xs = img.dx(y * img.width + x) as i32;
     let ys = img.dy(y * img.width + x) as i32;
@@ -521,9 +552,9 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   let sobel_time = impala_time();
   @sobel(img);
   let nms_time = impala_time();
-  @non_maximum_supression(img);
+  non_maximum_supression(img);
   let hysteresis_time = impala_time();
-  @hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
+  hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
 
   show_profile_statistics(
     sobel_time - gaussian_time,

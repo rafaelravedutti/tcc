@@ -1,26 +1,30 @@
 /* Iterate over image on CPU architectures */
 fn iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
-  for i in parallel(4, 0, img.width) {
+  let block_size = 20; /* Pixels per block */
+
+  for i in step_range(0, img.height - (block_size + 1), block_size) {
+    for j in step_range(0, img.width - (block_size + 1), block_size) {
+      for k in range(0, block_size - 1) {
+        for l in range(0, block_size - 1) {
+          let x = j + l;
+          let y = i + k;
+
+          body(x, y);
+        }
+      }
+    }
+  }
+
+  for i in range(img.width - block_size, img.width - 1) {
     for j in range(0, img.height - 1) {
       body(i, j);
     }
   }
-}
 
-/* Naive implementation of iterate */
-fn naive_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
-  let mut i = 0;
-  let mut j = 0;
-
-  while(i < img.width) {
-    j = 0;
-
-    while(j < img.height) {
-      body(i, j);
-      j = j + 1;
+  for i in range(img.height - block_size, img.height - 1) {
+    for j in range(0, img.width - (block_size + 1)) {
+      body(j, i);
     }
-
-    i = i + 1;
   }
 }
 
@@ -37,12 +41,6 @@ fn pow(a : f64, b : f64) -> (f64) {
 /* Base-e exponential function */
 fn exp(a : f64) -> (f64) {
   cpu_intrinsics.exp(a)
-}
-
-/* Absolute function */
-fn abs(a : i32) -> (i32) {
-  a * ((a >= 0) as i32) +
-  (-a) * ((a < 0) as i32)
 }
 
 /* Absolute function */

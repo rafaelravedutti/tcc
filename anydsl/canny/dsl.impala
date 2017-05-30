@@ -271,7 +271,7 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
   let anchor = mask.size / 2;
 
   /* Applies the filter in columns */
-  for x, y in iterate(img) {
+  for x, y in @iterate(img) {
     let mut sum = 0.0;
 
     /* Checks image boundaries */
@@ -286,7 +286,7 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
   }
 
   /* Copies result from buffer to image data */
-  sync_image_data(img);
+  //sync_image_data(img);
 }
 
 /* Apply 2D filter convolution with separable kernels (tiling) */
@@ -301,15 +301,15 @@ fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
     let condition = (y >= anchor && y < img.height - anchor) as f64;
 
     for i in @range(-anchor, anchor) {
-      sum += mask.data(i + anchor) * get_pixel(img, x, y + i);
+      sum += mask.data(i + anchor) * get_buffer_pixel(img, x, y + i);
     }
 
-    set_buffer_pixel(img, x, y, sum * condition +
-                                get_pixel(img, x, y) * (1.0 - condition));
+    set_pixel(img, x, y, sum * condition +
+                         get_pixel(img, x, y) * (1.0 - condition));
   }
 
   /* Copies result from buffer to image data */
-  sync_image_data(img);
+  //sync_image_data(img);
 }
 
 /* Apply 2D filter convolution with non-separable kernels (blocks) */
@@ -420,7 +420,7 @@ fn sobel(img : image_struct) -> () {
     set_buffer_pixel(img, x, y, sum_x * sum_x + sum_y * sum_y);
   }
 
-  sync_image_data(img);
+  //sync_image_data(img);
 }
 
 /* Non-maximum supression */
@@ -430,7 +430,7 @@ fn non_maximum_supression(img : image_struct) -> () {
 
   /* Go through the image */
   for x, y in @iterate(img) {
-    let value = get_pixel(img, x, y);     /* Pixel value at (x, y) */
+    let value = get_buffer_pixel(img, x, y);     /* Pixel value at (x, y) */
     let xs = img.dx(y * img.width + x) as i32;
     let ys = img.dy(y * img.width + x) as i32;
     let mx = abs(xs);
@@ -455,21 +455,20 @@ fn non_maximum_supression(img : image_struct) -> () {
     /* Checks if first neighboor's position is valid */
     nb1_value = ((nb1_x >= 0 && nb1_x < img.width &&
                   nb1_y >= 0 && nb1_y < img.height) as f64) *
-                  get_pixel(img, nb1_x, nb1_y);
+                  get_buffer_pixel(img, nb1_x, nb1_y);
 
     /* Checks if second neighboor's position is valid */
     nb2_value = ((nb2_x >= 0 && nb2_x < img.width &&
                   nb2_y >= 0 && nb2_y < img.height) as f64) * 
-                  get_pixel(img, nb2_x, nb2_y);
+                  get_buffer_pixel(img, nb2_x, nb2_y);
 
     /* If the pixel value is less or equal than one of the neighboors' values,
        it's not the local maximum so sets it to zero */
-    set_buffer_pixel(img, x, y,
-                     value * ((value > nb1_value && value > nb2_value) as f64));
+    set_pixel(img, x, y, value * ((value > nb1_value && value > nb2_value) as f64));
   }
 
   /* Copy buffer data to image data */
-  sync_image_data(img);
+  //sync_image_data(img);
 }
 
 /* Hysteresis */
@@ -498,7 +497,7 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
                          ((value > high_threshold) as f64) * 14.0);
   }
 
-  for x, y in @naive_iterate(img) {
+  for x, y in @iterate(img) {
     let value = get_pixel(img, x, y);
 
     push_conditional(x, y, 
@@ -520,9 +519,11 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
-        sum += weak_condition * get_pixel(img, x + i, y + j);
+        sum += get_pixel(img, x + i, y + j);
       }
     }
+
+    sum *= weak_condition;
 
     let sum_condition = ((sum > 10.0) as i32);
 

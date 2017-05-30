@@ -1,10 +1,15 @@
 /* Iterates over an image on GPU architectures */
-fn iterate(img : Image, body: fn(int,int) -> ()) -> () {
+fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
+  let acc = cuda_accelerator(0);
   let grid = (img.width, img.height, 1);
   let block = (128, 1, 1);
 
-  with acc(grid, block) {
-    let x = bidx() * bdimx() + tidx();
-    let y = bidy() * bdimy() + tidy();
+  with acc.exec(grid, block) @{
+    let x = acc.bidx() * acc.bdimx() + acc.tidx();
+    let y = acc.bidy() * acc.bdimy() + acc.tidy();
   }
+}
+
+fn exp(a : f64) -> f64 {
+  cuda_intrinsics.exp(a)
 }

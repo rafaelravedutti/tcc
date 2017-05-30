@@ -1,5 +1,5 @@
 # AnyDSL
-ANYDSL_PATH=/home/rafael/anydsl
+ANYDSL_PATH=/home/rafael/Utilities/anydsl
 
 # Impala
 IMPALA_PATH=${ANYDSL_PATH}/impala
@@ -14,7 +14,7 @@ THORIN_LIB=${THORIN_PATH}/build/lib
 THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
 # OpenCV
-OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc
+OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
 # Clang++ options
 CLANGPP_FLAGS=
@@ -23,18 +23,15 @@ CLANGPP_FLAGS=
 PLATFORM_TYPE=cpu
 
 # Target platform (may be cpu, cuda, opencl, spir, nvvm, ...)
-TARGET_PLATFORM=opencl
-
-# Platform compilation flags
-PLATFORM_FLAGS=-lOpenCL
+TARGET_PLATFORM=cuda
 
 # Impala files to link
-IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_thorin.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_cpu.impala
+IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_thorin.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_cpu.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_nvvm.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_opencl.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_cuda.impala
 
 all: canny
 
 main.ll: ${PLATFORM_TYPE}_device.impala dsl.impala main.impala
-	impala -emit-llvm ${IMPALA_LINK_FILES} $^
+	impala -emit-llvm -g -O3 ${IMPALA_LINK_FILES} $^
 
 utils.ll: utils.c
 	clang -S -emit-llvm $^

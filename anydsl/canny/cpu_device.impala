@@ -1,6 +1,6 @@
 /* Iterate over image on CPU architectures */
 fn iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
-  let block_size = 20; /* Pixels per block */
+  let block_size = 32; /* Pixels per block */
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
     for j in step_range(0, img.width - (block_size + 1), block_size) {

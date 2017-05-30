@@ -31,7 +31,7 @@ IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runti
 all: canny
 
 main.ll: ${PLATFORM_TYPE}_device.impala dsl.impala main.impala
-	impala -emit-llvm -g -O3 ${IMPALA_LINK_FILES} $^
+	impala -emit-llvm -g -Othorin -O3 ${IMPALA_LINK_FILES} $^
 
 utils.ll: utils.c
 	clang -S -emit-llvm $^

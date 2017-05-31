@@ -10,6 +10,6 @@ fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   }
 }
 
-fn exp(a : f64) -> f64 {
-  cuda_intrinsics.exp(a)
+fn exp(a : f32) -> f32 {
+  cuda_intrinsics.expf(a)
 }

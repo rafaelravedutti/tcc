@@ -13,17 +13,21 @@ THORIN_COMMON=${THORIN_RUNTIME}/runtime.cpp
 THORIN_LIB=${THORIN_PATH}/build/lib
 THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
+# Runtime
+RUNTIME_LIB=${ANYDSL_PATH}/runtime/build/lib/libruntime.so
+
 # OpenCV
 OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
-# Clang++ options
-CLANGPP_FLAGS=
-
 # Device type (gpu or cpu)
-PLATFORM_TYPE=cpu
+PLATFORM_TYPE=gpu
 
-# Target platform (may be cpu, cuda, opencl, spir, nvvm, ...)
-TARGET_PLATFORM=cuda
+# Compilation flags
+ifeq ($(PLATFORM_TYPE), cpu)
+	CLANG_FLAGS=-Ofast -msse2
+else
+	CLANG_FLAGS=
+endif
 
 # Impala files to link
 IMPALA_LINK_FILES=${ANYDSL_PATH}/runtime/src/runtime.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_thorin.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_cpu.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_nvvm.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_opencl.impala ${ANYDSL_PATH}/runtime/platforms/intrinsics_cuda.impala
@@ -42,8 +46,8 @@ opencv_runtime.ll: opencv_runtime.cpp
 runtime.ll: ${ANYDSL_PATH}/runtime/src/runtime.cpp
 	clang++ -std=c++11 -S -emit-llvm $^
 
-canny: main.ll utils.ll opencv_runtime.ll runtime.ll
-	clang++ -Ofast -msse2 -lm ${OPENCV_LIBS} -lpthread $^ -o $@
+canny: main.ll utils.ll opencv_runtime.ll ${RUNTIME_LIB}
+	clang++ ${CLANG_FLAGS} -lm -lOpenCL ${OPENCV_LIBS} -lpthread $^ -o $@
 
 clean:
 	rm -f main.bc main.cl main.cu main.ll utils.ll runtime.ll opencv_runtime.ll canny

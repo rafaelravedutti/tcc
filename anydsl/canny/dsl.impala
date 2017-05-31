@@ -1,20 +1,20 @@
 /* Image data structure */
 struct image_struct {
-  image : &mut[f64],          /* Image data */
-  data : &mut[f64],           /* Image data */
-  buffer : &mut[f64],         /* Auxiliary buffer */
-  dx : &mut[f64],             /* Gx matrix */
-  dy : &mut[f64],             /* Gy matrix */
+  image : &mut[f32],          /* Image data */
+  data : &mut[f32],           /* Image data */
+  buffer : &mut[f32],         /* Auxiliary buffer */
+  dx : &mut[f32],             /* Gx matrix */
+  dy : &mut[f32],             /* Gy matrix */
   width : i32,                /* Image width */
   height : i32,               /* Image height */
   loaded : bool,              /* Is the image data loaded from a file? */
-  extended_data: &mut[f64],   /* Data with increased dimensions */
-  extended_buffer: &mut[f64], /* Buffer with increased dimensions */
+  extended_data: &mut[f32],   /* Data with increased dimensions */
+  extended_buffer: &mut[f32], /* Buffer with increased dimensions */
 };
 
 /* Filter data structure */
 struct filter_struct {
-  data : &mut[f64],       /* Filter coefficients */
+  data : &mut[f32],       /* Filter coefficients */
   size : i32,             /* Filter size */
 };
 
@@ -24,26 +24,26 @@ extern "C" {
   fn display_usage(command : &[u8]) -> ();
 
   /* Memory allocation functions */
-  fn allocate_double_matrix(width : i32, height : i32) -> (&mut[f64]);
+  fn allocate_double_matrix(width : i32, height : i32) -> (&mut[f32]);
   fn allocate_uchar_matrix(width : i32, height : i32) -> (&mut[u8]);
-  fn free_double_matrix(&mut[f64]) -> ();
+  fn free_double_matrix(&mut[f32]) -> ();
   fn free_uchar_matrix(image : &[u8]) -> ();
 
   /* OpenCV functions for result comparison */
   fn opencv_gaussian(
-    img : &mut[f64], mask_size : u8, display : bool
-  ) -> (&mut[f64]);
+    img : &mut[f32], mask_size : u8, display : bool
+  ) -> (&mut[f32]);
   fn opencv_sobel(
-    img : &mut[f64], sx : i32, sy : i32, aperture_size : i32, display : bool
-  ) -> (&mut[f64]);
+    img : &mut[f32], sx : i32, sy : i32, aperture_size : i32, display : bool
+  ) -> (&mut[f32]);
   fn opencv_canny(
-    filename : &[u8], low_threshold : f64, high_threshold: f64
-  ) -> (&mut[f64]);
+    filename : &[u8], low_threshold : f32, high_threshold: f32
+  ) -> (&mut[f32]);
 
   /* OpenCV utils */
-  fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[f64]);
-  fn display_image(img : &mut[f64], title : &[u8], wait : bool) -> ();
-  fn write_image(img : &mut[f64], title : &[u8]) -> ();
+  fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[f32]);
+  fn display_image(img : &mut[f32], title : &[u8], wait : bool) -> ();
+  fn write_image(img : &mut[f32], title : &[u8]) -> ();
 
   /* Stack functions */
   fn stack_init() -> ();
@@ -57,8 +57,8 @@ extern "C" {
   fn impala_print(string : &[u8]) -> ();
   fn print_uchar_matrix(&[u8], width : i32, height : i32) -> ();
   fn print_integer(value : i32) -> ();
-  fn print_f64(value : f64) -> ();
-  fn print_angle_test(angle : f64, result : i32) -> ();
+  fn print_f32(value : f32) -> ();
+  fn print_angle_test(angle : f32, result : i32) -> ();
   fn show_statistics(
     corrects : i32, false_positives : i32, false_negatives : i32
   ) -> ();
@@ -79,11 +79,11 @@ fn image(filename : &[u8]) -> image_struct {
 
   /* Stores the image to structure data */
   res.extended_data = allocate_double_matrix(res.width + 2, res.height + 2);
-  res.data = &mut res.extended_data(res.width + 3) as &mut [f64];
+  res.data = &mut res.extended_data(res.width + 3) as &mut [f32];
 
   /* Knowing its size, allocates the buffer and directions pointers */
   res.extended_buffer = allocate_double_matrix(res.width + 2, res.height + 2);
-  res.buffer = &mut res.extended_buffer(res.width + 3) as &mut [f64];
+  res.buffer = &mut res.extended_buffer(res.width + 3) as &mut [f32];
   res.dx = allocate_double_matrix(res.width, res.height);
   res.dy = allocate_double_matrix(res.width, res.height);
 
@@ -112,22 +112,22 @@ fn destroy_image(img : image_struct) -> () {
 }
 
 /* Sets image pixel at (x, y) coordinates */
-fn set_pixel(img : image_struct, x : i32, y : i32, value : f64) -> () {
+fn set_pixel(img : image_struct, x : i32, y : i32, value : f32) -> () {
   img.data(y * img.width + x) = value;
 }
 
 /* Gets image pixel at (x, y) coordinates */
-fn get_pixel(img : image_struct, x : i32, y : i32) -> (f64) {
+fn get_pixel(img : image_struct, x : i32, y : i32) -> (f32) {
   img.data(y * img.width + x)
 }
 
 /* Sets buffer pixel at (x, y) coordinates */
-fn set_buffer_pixel(img : image_struct, x : i32, y : i32, value : f64) -> () {
+fn set_buffer_pixel(img : image_struct, x : i32, y : i32, value : f32) -> () {
   img.buffer(y * img.width + x) = value;
 }
 
 /* Gets buffer pixel at (x, y) coordinates */
-fn get_buffer_pixel(img : image_struct, x : i32, y : i32) -> (f64) {
+fn get_buffer_pixel(img : image_struct, x : i32, y : i32) -> (f32) {
   img.buffer(y * img.width + x)
 }
 
@@ -146,21 +146,21 @@ fn sync_image_buffer(img : image_struct) -> () {
 }
 
 /* Copies OpenCV loaded image to image structure data */
-fn copy_image_to_data(image : &mut[f64], img : image_struct) -> () {
+fn copy_image_to_data(image : &mut[f32], img : image_struct) -> () {
   for x, y in iterate(img) {
     img.data(y * img.width + x) = image(y * img.width + x);
   }
 }
 
 /* Copies image structure data to OpenCV matrix */
-fn copy_data_to_image(img : image_struct, image : &mut[f64]) -> () {
+fn copy_data_to_image(img : image_struct, image : &mut[f32]) -> () {
   for x, y in iterate(img) {
     image(y * img.width + x) = img.data(y * img.width + x);
   }
 }
 
 /* Copies image structure buffer to OpenCV matrix */
-fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
+fn copy_buffer_to_image(img : image_struct, image : &mut[f32]) -> () {
   for x, y in iterate(img) {
     image(y * img.width + x) = img.buffer(y * img.width + x);
   }
@@ -168,11 +168,11 @@ fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
 
 /* Performs angle roundness and returns the index to its offsets, this is used
    by the non-maximum supression algorithm */
-fn round_angle(angle : f64) -> (i32) {
-  let ang = angle + 3.14159 * ((angle < 0.0) as f64);
+fn round_angle(angle : f32) -> (i32) {
+  let ang = angle + 3.14159f * ((angle < 0.0f) as f32);
 
   /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
-  (((ang + 0.3926991) / 0.785398) as i32) % 4
+  (((ang + 0.3926991f) / 0.785398f) as i32) % 4
 }
 
 /* Iterates from min to max executing the higher-order function specified */
@@ -215,7 +215,7 @@ fn abs(a : i32) -> (i32) {
 }
 
 /* Generates a 3x3 filter data structure given its coefficients */
-fn filter_3x3(mask : [[f64 * 3] * 3]) -> filter_struct {
+fn filter_3x3(mask : [[f32 * 3] * 3]) -> filter_struct {
   /* Allocates the filter data structure for a 3x3 filter */
   let result = filter_struct {
     data: allocate_double_matrix(3, 3),
@@ -233,7 +233,7 @@ fn filter_3x3(mask : [[f64 * 3] * 3]) -> filter_struct {
 }
 
 /* Generates a 5x5 filter data structure given its coefficients */
-fn filter_5x5(mask : [[f64 * 5] * 5]) -> filter_struct {
+fn filter_5x5(mask : [[f32 * 5] * 5]) -> filter_struct {
   /* Allocates the filter data structure for a 5x5 filter */
   let result = filter_struct {
     data: allocate_double_matrix(5, 5),
@@ -251,7 +251,7 @@ fn filter_5x5(mask : [[f64 * 5] * 5]) -> filter_struct {
 }
 
 /* Generates a 5x1 filter data structure given its coefficients */
-fn filter_5x1(mask : [f64 * 5]) -> filter_struct {
+fn filter_5x1(mask : [f32 * 5]) -> filter_struct {
   /* Allocates the filter data structure for a 5x1 filter */
   let result = filter_struct {
     data: allocate_double_matrix(5, 1),
@@ -272,17 +272,17 @@ fn apply_2d_row_convolution(img : image_struct, mask : filter_struct) -> () {
 
   /* Applies the filter in columns */
   for x, y in @iterate(img) {
-    let mut sum = 0.0;
+    let mut sum = 0.0f;
 
     /* Checks image boundaries */
-    let condition = (x >= anchor && x < img.width - anchor) as f64;
+    let condition = (x >= anchor && x < img.width - anchor) as f32;
 
     for i in @range(-anchor, anchor) {
       sum += mask.data(i + anchor) * @get_pixel(img, x + i, y);
     }
 
     @set_buffer_pixel(img, x, y, sum * condition +
-                                 @get_pixel(img, x, y) * (1.0 - condition));
+                                 @get_pixel(img, x, y) * (1.0f - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -295,17 +295,17 @@ fn apply_2d_column_convolution(img : image_struct, mask : filter_struct) -> () {
 
   /* Applies the filter in rows */
   for x, y in @iterate(img) {
-    let mut sum = 0.0;
+    let mut sum = 0.0f;
 
     /* Checks image boundaries */
-    let condition = (y >= anchor && y < img.height - anchor) as f64;
+    let condition = (y >= anchor && y < img.height - anchor) as f32;
 
     for i in @range(-anchor, anchor) {
       sum += mask.data(i + anchor) * @get_buffer_pixel(img, x, y + i);
     }
 
     @set_pixel(img, x, y, sum * condition +
-                          @get_pixel(img, x, y) * (1.0 - condition));
+                          @get_pixel(img, x, y) * (1.0f - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -318,11 +318,11 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 
   /* Applies the filter in blocks */
   for x, y in @iterate(img) {
-    let mut sum = 0.0;
+    let mut sum = 0.0f;
 
     /* Checks image boundaries */
     let condition = ( x >= anchor && x < img.width - anchor &&
-                      y >= anchor && y < img.height - anchor  ) as f64;
+                      y >= anchor && y < img.height - anchor  ) as f32;
 
     for i in range(-anchor, anchor) {
       for j in range(-anchor, anchor) {
@@ -332,7 +332,7 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
     }
 
     set_buffer_pixel(img, x, y, sum * condition +
-                                get_pixel(img, x, y) * (1.0 - condition));
+                                get_pixel(img, x, y) * (1.0f - condition));
   }
 
   /* Copies result from buffer to image data */
@@ -343,22 +343,22 @@ fn apply_2d_block_convolution(img : image_struct, mask : filter_struct) -> () {
 fn gaussian_blur(img : image_struct) -> () {
   /* Generates the separable Gaussian kernel based on the
      OpenCV source code */
-  let mut mask_xy : [[f64 * 5] * 5];
-  let mut mask_x : [f64 * 5];
-  let mut mask_y : [f64 * 5];
-  let mut sum_x = 0.0;
-  let mut sum_y = 0.0;
-  let anchor = 2.0;
-  let pi = 3.14159;
-  let sigma = 1.1;
-  let prod = 1.0 / (2.0 * pi * sigma * sigma);
-  let denom = 2.0 * sigma * sigma;
+  let mut mask_xy : [[f32 * 5] * 5];
+  let mut mask_x : [f32 * 5];
+  let mut mask_y : [f32 * 5];
+  let mut sum_x = 0.0f;
+  let mut sum_y = 0.0f;
+  let anchor = 2.0f;
+  let pi = 3.14159f;
+  let sigma = 1.1f;
+  let prod = 1.0f / (2.0f * pi * sigma * sigma);
+  let denom = 2.0f * sigma * sigma;
 
   for i in range(0, 4) {
-    let x = (i as f64) - anchor;
+    let x = (i as f32) - anchor;
 
     for j in range(0, 4) {
-      let y = (j as f64) - anchor;
+      let y = (j as f32) - anchor;
 
       mask_xy(i)(j) = prod * exp(-((x * x + y * y) / denom));
     }
@@ -369,8 +369,8 @@ fn gaussian_blur(img : image_struct) -> () {
     sum_y += mask_y(i);
   }
 
-  sum_x = 1.0 / sum_x;
-  sum_y = 1.0 / sum_y;
+  sum_x = 1.0f / sum_x;
+  sum_y = 1.0f / sum_y;
 
   for i in range(0, 4) {
     mask_x(i) *= sum_x;
@@ -392,23 +392,23 @@ fn sobel(img : image_struct) -> () {
     let up_index = (y - 1) * img.width + x;
     let cur_index = y * img.width + x;
     let down_index = (y + 1) * img.width + x;
-    let mut sum_x = 0.0;
-    let mut sum_y = 0.0;
+    let mut sum_x = 0.0f;
+    let mut sum_y = 0.0f;
     let condition = (x > 0 && x < img.width - 1 &&
-                     y > 0 && y < img.height - 1) as f64;
+                     y > 0 && y < img.height - 1) as f32;
 
     sum_x += img.data(up_index - 1);
-    sum_x += img.data(cur_index - 1) * 2.0;
+    sum_x += img.data(cur_index - 1) * 2.0f;
     sum_x += img.data(down_index - 1);
     sum_x -= img.data(up_index + 1);
-    sum_x -= img.data(cur_index + 1) * 2.0;
+    sum_x -= img.data(cur_index + 1) * 2.0f;
     sum_x -= img.data(down_index + 1);
 
     sum_y += img.data(up_index - 1);
-    sum_y += img.data(up_index) * 2.0;
+    sum_y += img.data(up_index) * 2.0f;
     sum_y += img.data(up_index + 1);
     sum_y -= img.data(down_index - 1);
-    sum_y -= img.data(down_index) * 2.0;
+    sum_y -= img.data(down_index) * 2.0f;
     sum_y -= img.data(down_index + 1);
 
     sum_x *= condition;
@@ -452,22 +452,18 @@ fn non_maximum_supression(img : image_struct) -> () {
     let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
     let nb2_x = x - offsets(index)(0);    /* Second neighboor x coordinate */
     let nb2_y = y - offsets(index)(1);    /* Second neighboor y coordinate */
-    let mut nb1_value = 0.0;              /* First neighboor value */
-    let mut nb2_value = 0.0;              /* Second neighboor value */
+    let mut nb1_value = 0.0f;              /* First neighboor value */
+    let mut nb2_value = 0.0f;              /* Second neighboor value */
 
     /* Checks if first neighboor's position is valid */
-    nb1_value = ((nb1_x >= 0 && nb1_x < img.width &&
-                  nb1_y >= 0 && nb1_y < img.height) as f64) *
-                  get_buffer_pixel(img, nb1_x, nb1_y);
+    nb1_value = get_buffer_pixel(img, nb1_x, nb1_y);
 
     /* Checks if second neighboor's position is valid */
-    nb2_value = ((nb2_x >= 0 && nb2_x < img.width &&
-                  nb2_y >= 0 && nb2_y < img.height) as f64) * 
-                  get_buffer_pixel(img, nb2_x, nb2_y);
+    nb2_value = get_buffer_pixel(img, nb2_x, nb2_y);
 
     /* If the pixel value is less or equal than one of the neighboors' values,
        it's not the local maximum so sets it to zero */
-    set_pixel(img, x, y, value * ((value > nb1_value && value > nb2_value) as f64));
+    set_pixel(img, x, y, value * ((value > nb1_value && value > nb2_value) as f32));
   }
 
   /* Copy buffer data to image data */
@@ -475,7 +471,7 @@ fn non_maximum_supression(img : image_struct) -> () {
 }
 
 /* Hysteresis */
-fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
+fn hysteresis(img : image_struct, low_threshold : f32, high_threshold: f32) -> () {
   /* Initialize the stack */
   stack_init();
 
@@ -496,15 +492,15 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
   for x, y in @iterate(img) {
     let value = get_pixel(img, x, y);
 
-    set_pixel(img, x, y, ((value > low_threshold) as f64) * 1.0 +
-                         ((value > high_threshold) as f64) * 14.0);
+    set_pixel(img, x, y, ((value > low_threshold) as f32) * 1.0f +
+                         ((value > high_threshold) as f32) * 14.0f);
   }
 
   for x, y in @iterate(img) {
     let value = get_pixel(img, x, y);
 
     push_conditional(x, y, 
-                      (value > 0.5 && value < 1.5) as i32);
+                      (value > 0.5f && value < 1.5f) as i32);
   }
 
   /* Go through the image and looks for the weak edges to see if they
@@ -517,8 +513,8 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
   while pop(&mut x, &mut y) != 0 {
     let pixel_value = get_pixel(img, x, y);
-    let weak_condition = (pixel_value > 0.5 && pixel_value < 1.5) as f64;
-    let mut sum = 0.0;
+    let weak_condition = (pixel_value > 0.5f && pixel_value < 1.5f) as f32;
+    let mut sum = 0.0f;
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
@@ -528,14 +524,14 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
     sum *= weak_condition;
 
-    let sum_condition = ((sum > 10.0) as i32);
+    let sum_condition = ((sum > 10.0f) as i32);
 
-    set_pixel(img, x, y, pixel_value + (sum_condition as f64) * 14.0);
+    set_pixel(img, x, y, pixel_value + (sum_condition as f32) * 14.0f);
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
         let nb_value = get_pixel(img, x + i, y + j);
-        let nb_weak_condition = (nb_value > 0.5 && nb_value < 1.5) as i32;
+        let nb_weak_condition = (nb_value > 0.5f && nb_value < 1.5f) as i32;
 
         push_conditional(x + i, y + j, sum_condition & nb_weak_condition);
       }
@@ -545,12 +541,12 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
   /* Sets strong edges pixels to 255 and other pixels to 0 to
      get the final result */
   for x, y in iterate(img) {
-    set_pixel(img, x, y, ((get_pixel(img, x, y) > 10.0) as f64) * 255.0);
+    set_pixel(img, x, y, ((get_pixel(img, x, y) > 10.0f) as f32) * 255.0f);
   }
 }
 
 /* Canny */
-fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
+fn canny(img : image_struct, low_threshold : f32, high_threshold: f32) -> () {
   let gaussian_time = impala_time();
   @gaussian_blur(img);
   let sobel_time = impala_time();
@@ -572,7 +568,7 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
 
 /* Compare the result with the reference (OpenCV Canny) and display
    the statistics */
-fn compare_results(img : image_struct, reference : &mut[f64]) -> () {
+fn compare_results(img : image_struct, reference : &mut[f32]) -> () {
   let mut corrects = 0;
   let mut false_positives = 0;
   let mut false_negatives = 0;
@@ -582,18 +578,18 @@ fn compare_results(img : image_struct, reference : &mut[f64]) -> () {
     let pixel_value = get_pixel(img, x, y) as i32;
     let pixel_reference = uchar_reference(y * img.width + x) as i32;
 
-    set_pixel(img, x, y, 0.0);
-    set_buffer_pixel(img, x, y, 0.0);
+    set_pixel(img, x, y, 0.0f);
+    set_buffer_pixel(img, x, y, 0.0f);
 
     if pixel_value != 0 {
       if pixel_reference != 0 {
         corrects++;
       } else {
-        set_pixel(img, x, y, 255.0);
+        set_pixel(img, x, y, 255.0f);
         false_positives++;
       }
     } else if pixel_reference != 0 {
-      set_buffer_pixel(img, x, y, 255.0);
+      set_buffer_pixel(img, x, y, 255.0f);
       false_negatives++;
     }
   }

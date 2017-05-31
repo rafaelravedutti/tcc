@@ -18,16 +18,16 @@ void display_usage(const char *command) {
 }
 
 /* Double matrix allocation */
-double *allocate_double_matrix(int width, int height) {
+float *allocate_double_matrix(int width, int height) {
   if(width > 0 && height > 0) {
-    return (double *) malloc(width * height * sizeof(double));
+    return (float *) malloc(width * height * sizeof(float));
   }
 
   return NULL;
 }
 
 /* Double matrix deallocation */
-void free_double_matrix(double *data) {
+void free_double_matrix(float *data) {
   free(data);
 }
 

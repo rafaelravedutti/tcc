@@ -9,9 +9,9 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
   /* Load image from file */
   let img = image(filename);
   /* Low threshold */
-  let low_threshold = 40.0;
+  let low_threshold = 40.0f;
   /* High threshold */
-  let high_threshold = 120.0;
+  let high_threshold = 120.0f;
   /* Apply OpenCV canny to blurred image */
   let mut opencv_time = impala_time();
   let opencv_result = opencv_canny(

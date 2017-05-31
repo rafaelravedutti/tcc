@@ -6,7 +6,7 @@
 
 static std::list<cv::Mat> mat_list;
 
-typedef double pixel_t;
+typedef float pixel_t;
 
 extern "C" {
   pixel_t *load_image(const char *path, int *width, int *height);
@@ -38,7 +38,7 @@ pixel_t *load_image(const char *path, int *width, int *height) {
   img_mat = cv::imread(path, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
-    img_mat.convertTo(img_mat, CV_64FC1);
+    img_mat.convertTo(img_mat, CV_32FC1);
 
     *width = img_mat.cols;
     *height = img_mat.rows;
@@ -98,7 +98,7 @@ pixel_t *opencv_sobel(pixel_t *img, int sx, int sy, int aperture_size, bool disp
   if(found != 0) {
     buffer.create(img_mat.size(), img_mat.type());
 
-    cv::Sobel(img_mat, buffer, CV_64F, sx, sy, aperture_size, 1, 0, cv::BORDER_REPLICATE);
+    cv::Sobel(img_mat, buffer, CV_32F, sx, sy, aperture_size, 1, 0, cv::BORDER_REPLICATE);
 
     if(display) {
       cv::namedWindow("sobel_result", cv::WINDOW_NORMAL);

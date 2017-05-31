@@ -43,7 +43,7 @@ runtime.ll: ${ANYDSL_PATH}/runtime/src/runtime.cpp
 	clang++ -std=c++11 -S -emit-llvm $^
 
 canny: main.ll utils.ll opencv_runtime.ll runtime.ll
-	clang++ -msse3 -O3 -lm ${OPENCV_LIBS} -lpthread $^ -o $@
+	clang++ -Ofast -msse2 -lm ${OPENCV_LIBS} -lpthread $^ -o $@
 
 clean:
 	rm -f main.bc main.cl main.cu main.ll utils.ll runtime.ll opencv_runtime.ll canny

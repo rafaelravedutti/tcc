@@ -389,27 +389,43 @@ fn sobel(img : image_struct) -> () {
   //_dy = opencv_sobel(img.image, 0, 1, 3, false);
 
   for x, y in @iterate(img) {
-    let up_index = (y - 1) * img.width + x;
-    let cur_index = y * img.width + x;
-    let down_index = (y + 1) * img.width + x;
+    let up_index = &mut img.data((y - 1) * img.width + x) as &mut[f32];
+    let cur_index = &mut img.data(y * img.width + x) as &mut[f32];
+    let down_index = &mut img.data((y + 1) * img.width + x) as &mut[f32];
     let mut sum_x = 0.0f;
     let mut sum_y = 0.0f;
     let condition = (x > 0 && x < img.width - 1 &&
                      y > 0 && y < img.height - 1) as f32;
 
-    sum_x += img.data(up_index - 1);
-    sum_x += img.data(cur_index - 1) * 2.0f;
-    sum_x += img.data(down_index - 1);
-    sum_x -= img.data(up_index + 1);
-    sum_x -= img.data(cur_index + 1) * 2.0f;
-    sum_x -= img.data(down_index + 1);
+/*
+    sum_x += get_pixel(img, x - 1, y - 1);
+    sum_x += get_pixel(img, x - 1, y    ) * 2.0f;
+    sum_x += get_pixel(img, x - 1, y + 1);
+    sum_x -= get_pixel(img, x + 1, y - 1);
+    sum_x -= get_pixel(img, x + 1, y    ) * 2.0f;
+    sum_x -= get_pixel(img, x + 1, y + 1);
 
-    sum_y += img.data(up_index - 1);
-    sum_y += img.data(up_index) * 2.0f;
-    sum_y += img.data(up_index + 1);
-    sum_y -= img.data(down_index - 1);
-    sum_y -= img.data(down_index) * 2.0f;
-    sum_y -= img.data(down_index + 1);
+    sum_y += get_pixel(img, x - 1, y - 1);
+    sum_y += get_pixel(img, x,     y - 1) * 2.0f;
+    sum_y += get_pixel(img, x + 1, y - 1);
+    sum_y -= get_pixel(img, x - 1, y + 1);
+    sum_y -= get_pixel(img, x,     y + 1) * 2.0f;
+    sum_y -= get_pixel(img, x + 1, y + 1);
+*/
+
+    sum_x += cur_index(-1) * 2.0f;
+    sum_x -= cur_index(1) * 2.0f;
+    sum_x += down_index(-1);
+    sum_x -= down_index(1);
+    sum_x += up_index(-1);
+    sum_x -= up_index(1);
+
+    sum_y += up_index(-1);
+    sum_y += up_index(0) * 2.0f;
+    sum_y += up_index(1);
+    sum_y -= down_index(-1);
+    sum_y -= down_index(0) * 2.0f;
+    sum_y -= down_index(1);
 
     sum_x *= condition;
     sum_y *= condition;

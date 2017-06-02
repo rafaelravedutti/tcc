@@ -406,6 +406,7 @@ fn sobel(img : image_struct) -> () {
       read(arr_in, (y + 1) * img.width + (x + 1))
     );
 
+    /* Boundary condition */
     let condition = (
       ((x - img.width - 3) > 0 && (x - img.width - 3) < img.width - 1) &&
       (y > 0 && y < img.height - 1)

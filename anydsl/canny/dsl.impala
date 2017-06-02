@@ -85,8 +85,8 @@ fn image(filename : &[u8]) -> image_struct {
   impala_print("Allocating directions...");
 
   /* Allocate Sobel directions */
-  res.dx = alloc_cpu(res.width * res.height * sizeof[f64]());
-  res.dy = alloc_cpu(res.width * res.height * sizeof[f64]());
+  res.dx = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
+  res.dy = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
 
   /* Set image as loaded */
   res.loaded = true;
@@ -98,6 +98,10 @@ fn image(filename : &[u8]) -> image_struct {
 
   impala_print("Content copied!");
 
+  for x, y in iterate(res) {
+    /* Only to compile CUDA kernels */
+  }
+
   res
 }
 
@@ -105,9 +109,11 @@ fn image(filename : &[u8]) -> image_struct {
 fn destroy_image(img : image_struct) -> () {
   /* If the image is loaded, then doesn't free its data (it must be free
      after the cv::Mat destructor call) */
+  /*
   if !img.loaded {
-    //release(img.image);
+    release(img.image);
   }
+  */
 
   /* Free buffer and directions pointers */
   release(img.extended_data);
@@ -315,47 +321,113 @@ fn gaussian_blur(img : image_struct) -> () {
     mask_y(i) *= sum_y;
   }
 
-  /* Applies the separable kernel in rows and columns */
-  //apply_2d_block_convolution(img, filter_5x5(mask_xy));
-
-  impala_print("Row convolution...");
   apply_2d_row_convolution(img, filter_5x1(mask_x));
-  impala_print("Column convolution...");
   apply_2d_column_convolution(img, filter_5x1(mask_y));
 }
 
 /* Sobel filter */
 fn sobel(img : image_struct) -> () {
-  for x, y in @iterate(img) {
-    let up_index = (y - 1) * img.width + x;
-    let cur_index = y * img.width + x;
-    let down_index = (y + 1) * img.width + x;
-    let mut sum_x = 0.0;
-    let mut sum_y = 0.0;
-    let condition = (x > 0 && x < img.width - 1 &&
-                     y > 0 && y < img.height - 1) as f64;
+  for x, y, arr_in, arr_out, dx, dy in @sobel_iterate(img, false) {
+    /* dx(x,y) = 0.0 */
+    write(dx, y * img.width + x, 0.0);
 
-    sum_x += img.data(up_index - 1);
-    sum_x += img.data(cur_index - 1) * 2.0;
-    sum_x += img.data(down_index - 1);
-    sum_x -= img.data(up_index + 1);
-    sum_x -= img.data(cur_index + 1) * 2.0;
-    sum_x -= img.data(down_index + 1);
+    /* dx(x,y) -= arr_in(x - 1, y - 1) */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) -
+      read(arr_in, (y - 1) * img.width + (x - 1))
+    );
 
-    sum_y += img.data(up_index - 1);
-    sum_y += img.data(up_index) * 2.0;
-    sum_y += img.data(up_index + 1);
-    sum_y -= img.data(down_index - 1);
-    sum_y -= img.data(down_index) * 2.0;
-    sum_y -= img.data(down_index + 1);
+    /* dx(x,y) -= arr_in(x - 1, y) * 2.0 */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) -
+      read(arr_in, y * img.width + (x - 1)) * 2.0
+    );
 
-    sum_x *= condition;
-    sum_y *= condition;
+    /* dx(x,y) -= arr_in(x - 1, y + 1) */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) -
+      read(arr_in, (y + 1) * img.width + (x - 1))
+    );
 
-    write(img.dx, y * img.width + x, sum_x);
-    write(img.dy, y * img.width + x, sum_y);
+    /* dx(x,y) += arr_in(x + 1, y - 1) */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) +
+      read(arr_in, (y - 1) * img.width + (x + 1))
+    );
 
-    set_buffer_pixel(img, x, y, sum_x * sum_x + sum_y * sum_y);
+    /* dx(x,y) += arr_in(x + 1, y) * 2.0 */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) +
+      read(arr_in, y * img.width + (x + 1)) * 2.0
+    );
+
+    /* dx(x,y) += arr_in(x + 1, y + 1) */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) +
+      read(arr_in, (y + 1) * img.width + (x + 1))
+    );
+
+    /* dy(x,y) = 0.0 */
+    write(dy, y * img.width + x, 0.0);
+
+    /* dy(x,y) -= arr_in(x - 1, y - 1) */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) -
+      read(arr_in, (y - 1) * img.width + (x - 1))
+    );
+
+    /* dy(x,y) -= arr_in(x, y - 1) * 2.0 */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) -
+      read(arr_in, (y - 1) * img.width + x) * 2.0
+    );
+
+    /* dy(x,y) -= arr_in(x + 1, y - 1) */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) -
+      read(arr_in, (y - 1) * img.width + (x + 1))
+    );
+
+    /* dy(x,y) += arr_in(x - 1, y + 1) */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) +
+      read(arr_in, (y + 1) * img.width + (x - 1))
+    );
+
+    /* dy(x,y) += arr_in(x, y + 1) * 2.0 */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) +
+      read(arr_in, (y + 1) * img.width + x) * 2.0
+    );
+
+    /* dy(x,y) += arr_in(x + 1, y + 1) */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) +
+      read(arr_in, (y + 1) * img.width + (x + 1))
+    );
+
+    let condition = (
+      ((x - img.width - 3) > 0 && (x - img.width - 3) < img.width - 1) &&
+      (y > 0 && y < img.height - 1)
+    ) as f64;
+
+    /* dx(x,y) = dx(x,y) * condition */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) * condition
+    );
+
+    /* dy(x,y) = dy(x,y) * condition */
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) * condition
+    );
+
+    /* arr_out(x,y) = dx(x,y) * dx(x,y) + dy(x,y) * dy(x,y) */
+    write(arr_out, y * img.width + x,
+      cuda_intrinsics.sqrt(
+        read(dx, y * img.width + x) * read(dx, y * img.width + x) +
+        read(dy, y * img.width + x) * read(dy, y * img.width + x)
+      )
+    );
   }
 
   //sync_image_data(img);
@@ -487,9 +559,9 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 /* Canny */
 fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   let gaussian_time = impala_time();
-  @gaussian_blur(img);
+  gaussian_blur(img);
   let sobel_time = impala_time();
-  //@sobel(img);
+  sobel(img);
   let nms_time = impala_time();
   //@non_maximum_supression(img);
   let hysteresis_time = impala_time();

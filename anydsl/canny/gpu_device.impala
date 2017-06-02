@@ -3,7 +3,7 @@ fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   let dev_id = runtime_device(1, 0);
   let acc = cuda_accelerator(0);
   let grid = (img.width, img.height, 1);
-  let block = (128, 1, 1);
+  let block = (1, 1, 1);
 
   with acc.exec(grid, block) @{
     let x = acc.bidx() * acc.bdimx() + acc.tidx();
@@ -13,27 +13,28 @@ fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   }
 }
 
-fn read(buf: &[i8], i: i32) -> f64 {
-  bitcast[&[1][f64]](buf)(i)
+fn read(buf: Buffer, i: i32) -> f64 {
+  bitcast[&[1][f64]](buf.data)(i)
 }
 
-fn write(buf: &[i8], i: i32, v: f64) -> () {
-  bitcast[&mut[1][f64]](buf)(i) = v
+fn write(buf: Buffer, i: i32, v: f64) -> () {
+  bitcast[&mut[1][f64]](buf.data)(i) = v
 }
 
-fn gpu_iterate(
+fn stencil_iterate(
   img : image_struct,
+  filter : filter_struct,
   buffer_to_data : bool,
-  body: fn(int, int, &[i8], &[i8]) -> ()) -> () {
+  body: fn(int, int, Buffer, Buffer, Buffer) -> ()) -> () {
 
-  let dev_id = runtime_device(1, 0);
   let acc = cuda_accelerator(0);
-  let grid = (img.width, img.height, 1);
+  let grid = (img.width - (img.width % 128), img.height, 1);
   let block = (128, 1, 1);
   let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
 
   let arr_in_ext = acc.alloc(size);
   let arr_out_ext = acc.alloc(size);
+  let mask = acc.alloc(filter.size * sizeof[f64]());
 
   if buffer_to_data {
     copy(img.extended_buffer, arr_in_ext, size);
@@ -41,15 +42,18 @@ fn gpu_iterate(
     copy(img.extended_data, arr_in_ext, size);
   }
 
-  let arr_in = arr_in_ext.data(img.width + 3) as &[i8];
-  let arr_out = arr_out_ext.data(img.width + 3) as &[i8];
+  copy(filter.data, mask, filter.size * sizeof[f64]());
+
+  impala_print("Kernel executing...");
 
   with acc.exec(grid, block) @{
-    let x = acc.bidx() * acc.bdimx() + acc.tidx();
+    let x = acc.bidx() * acc.bdimx() + acc.tidx() + img.width + 3;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    body(x, y, arr_in, arr_out);
+    body(x, y, arr_in_ext, arr_out_ext, mask);
   }
+
+  impala_print("Kernel executed!");
 
   if buffer_to_data {
     copy(arr_out_ext, img.extended_data, size);

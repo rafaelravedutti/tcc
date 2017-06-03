@@ -178,7 +178,7 @@ fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
 }
 
 /* Performs angle roundness and returns the index to its offsets, this is used
-   by the non-maximum supression algorithm */
+   by the non-maximum suppression algorithm */
 fn round_angle(angle : f64) -> (i32) {
   let ang = angle + 3.14159 * ((angle < 0.0) as f64);
 
@@ -426,8 +426,8 @@ fn sobel(img : image_struct) -> () {
 
 //write_int(indexes, y * img.width + x, (cond1 << 2) + (cond2 << 1) + cond3);
 
-/* Non-maximum supression */
-fn non_maximum_supression(
+/* Non-maximum suppression */
+fn non_maximum_suppression(
   img : image_struct,
   low_threshold : f64,
   high_threshold : f64
@@ -552,7 +552,7 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   let sobel_time = impala_time();
   sobel(img);
   let nms_time = impala_time();
-  non_maximum_supression(img,
+  non_maximum_suppression(img,
     low_threshold * low_threshold,
     high_threshold * high_threshold
   );

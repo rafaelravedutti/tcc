@@ -17,7 +17,7 @@ THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
 
 # Device type (gpu or cpu)
-PLATFORM_TYPE=gpu
+PLATFORM_TYPE=cpu
 
 # Compilation flags
 ifeq ($(PLATFORM_TYPE), cpu)

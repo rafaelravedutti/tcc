@@ -67,28 +67,18 @@ fn image(filename : &[u8]) -> image_struct {
   /* Loads image using OpenCV */
   res.image = load_image(filename, pwidth, pheight);
 
-  impala_print("Allocating data...");
-
   /* Stores the image to structure data */
   res.data = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
 
-  impala_print("Allocating buffer...");
-
   /* Knowing its size, allocates the buffer and directions pointers */
   res.buffer = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
-
-  impala_print("Allocating directions...");
 
   /* Allocate Sobel directions */
   res.dx = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
   res.dy = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
 
-  impala_print("Copying content to result...");
-
   /* Copy image content to data */
   copy_image_to_data(res.image, res);
-
-  impala_print("Content copied!");
 
   for x, y in fake_iterate(res) {
     /* Only to compile cuda kernels */
@@ -251,7 +241,7 @@ fn gaussian_blur(img : image_struct) -> () {
 
 /* Sobel filter */
 fn sobel(img : image_struct) -> () {
-  for x, y, arr_in, arr_out, dx, dy in @sobel_iterate(img, false) {
+  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, false, false) {
     /* dx(x,y) = 0.0 */
     write(dx, y * img.width + x, 0.0);
 
@@ -364,7 +354,7 @@ fn non_maximum_suppression(
   let offsets = [[1, 1], [-1, 1], [0, 1], [0, 1], [1, 0], [1, 0], [1, 0]];
 
   /* Go through the image */
-  for x, y, arr_in, arr_out, dx, dy in @nms_iterate(img, true) {
+  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, true, true) {
     let xs = read(dx, y * img.width + x) as i32;
     let ys = read(dy, y * img.width + x) as i32;
     let mx = abs(xs);

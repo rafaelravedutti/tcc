@@ -333,7 +333,7 @@ fn sobel(img : image_struct) -> () {
     /* Boundary condition */
     let condition = (
       (x > img.width * 2 + 5 && x < img.width * 3 + 4) &&
-      (y > 0 && y < img.height - 1)
+      (y > 1 && y < img.height - 2)
     ) as f64;
 
     /* dx(x,y) = dx(x,y) * condition */
@@ -395,7 +395,7 @@ fn non_maximum_suppression(
       If the pixel value is less or equal than one of the neighboors' values,
       it's not the local maximum so sets it to zero,
 
-      If not, use the following connditions:
+      If not, use the following conditions:
       
       - If pixel value is in the [0,low_threshold] interval, it
       becomes 0 (not an edge)

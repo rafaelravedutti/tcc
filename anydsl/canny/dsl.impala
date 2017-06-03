@@ -70,18 +70,18 @@ fn image(filename : &[u8]) -> image_struct {
   impala_print("Allocating data...");
 
   /* Stores the image to structure data */
-  res.data = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
+  res.data = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
 
   impala_print("Allocating buffer...");
 
   /* Knowing its size, allocates the buffer and directions pointers */
-  res.buffer = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
+  res.buffer = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
 
   impala_print("Allocating directions...");
 
   /* Allocate Sobel directions */
-  res.dx = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
-  res.dy = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
+  res.dx = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
+  res.dy = alloc_cpu((res.width + 4) * (res.height + 4) * sizeof[f64]());
 
   impala_print("Copying content to result...");
 
@@ -108,27 +108,33 @@ fn destroy_image(img : image_struct) -> () {
 
 /* Copies OpenCV loaded image to image structure data */
 fn copy_image_to_data(image : &mut[f64], img : image_struct) -> () {
+  let offset = img.width * 2 + 5;
+
   for x in range(0, img.width - 1) {
     for y in range(0, img.height - 1) {
-      write(img.data, y * img.width + x + img.width + 3, image(y * img.width + x));
+      write(img.data, y * img.width + x + offset, image(y * img.width + x));
     }
   }
 }
 
 /* Copies image structure data to OpenCV matrix */
 fn copy_data_to_image(img : image_struct, image : &mut[f64]) -> () {
+  let offset = img.width * 2 + 5;
+
   for x in range(0, img.width - 1) {
     for y in range(0, img.height - 1) {
-      image(y * img.width + x) = read(img.data, y * img.width + x + img.width + 3);
+      image(y * img.width + x) = read(img.data, y * img.width + x + offset);
     }
   }
 }
 
 /* Copies image structure buffer to OpenCV matrix */
 fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
+  let offset = img.width * 2 + 5;
+
   for x in range(0, img.width - 1) {
     for y in range(0, img.height - 1) {
-      image(y * img.width + x) = read(img.buffer, y * img.width + x + img.width + 3);
+      image(y * img.width + x) = read(img.buffer, y * img.width + x + offset);
     }
   }
 }
@@ -195,7 +201,7 @@ fn apply_2d_column_convolution(img : image_struct, filter : filter_struct) -> ()
     for i in @range(-2, 2) {
       write(arr_out, y * img.width + x,
         read(arr_out, y * img.width + x) +
-        read(mask, i + 2) * read(arr_in, (y + 1) * img.width + x)
+        read(mask, i + 2) * read(arr_in, (y + i) * img.width + x)
       );
     }
   }
@@ -497,24 +503,25 @@ fn compare_results(img : image_struct, reference : &mut[f64]) -> () {
   let mut false_positives = 0;
   let mut false_negatives = 0;
   let uchar_reference = reference as &mut[u8];
+  let offset = img.width * 2 + 5;
 
   for x in range(0, img.width - 1) {
     for y in range(0, img.height - 1) {
-      let pixel_value = read(img.data, y * img.width + x + 3) as i32;
+      let pixel_value = read(img.data, y * img.width + x + offset) as i32;
       let pixel_reference = uchar_reference(y * img.width + x) as i32;
 
-      write(img.data, y * img.width + x + 3, 0.0);
-      write(img.buffer, y * img.width + x + 3, 0.0);
+      write(img.data, y * img.width + x + offset, 0.0);
+      write(img.buffer, y * img.width + x + offset, 0.0);
 
       if pixel_value != 0 {
         if pixel_reference != 0 {
           corrects++;
         } else {
-          write(img.data, y * img.width + x + 3, 255.0);
+          write(img.data, y * img.width + x + offset, 255.0);
           false_positives++;
         }
       } else if pixel_reference != 0 {
-        write(img.buffer, y * img.width + x + 3, 255.0);
+        write(img.buffer, y * img.width + x + offset, 255.0);
         false_negatives++;
       }
     }

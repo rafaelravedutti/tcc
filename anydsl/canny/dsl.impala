@@ -463,8 +463,22 @@ fn non_maximum_suppression(
       read(arr_in, y * img.width + x) > read(arr_in, nb2_y * img.width + nb2_x)
     ) as f64;
 
-    /* If the pixel value is less or equal than one of the neighboors' values,
-       it's not the local maximum so sets it to zero */
+    /*
+      If the pixel value is less or equal than one of the neighboors' values,
+      it's not the local maximum so sets it to zero,
+
+      If not, use the following connditions:
+      
+      - If pixel value is in the [0,low_threshold] interval, it
+      becomes 0 (not an edge)
+
+      - If pixel value is in the ]low_threshold,high_threshold] interval,
+      it becomes 1 (weak edge)
+
+      - If pixel value is in the ]high_threshold, 255[ interval, it becomes
+      15 (strong edge) 
+    */
+
     write(arr_out, y * img.width + x, (
       (((read(arr_in, y * img.width + x) > low_threshold) as f64) * 1.0) + 
       (((read(arr_in, y * img.width + x) > high_threshold) as f64) * 14.0)
@@ -473,24 +487,11 @@ fn non_maximum_suppression(
 }
 
 /* Hysteresis */
-fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
+fn hysteresis(img : image_struct) -> () {
   /* Initialize the stack */
   stack_init();
 
-  /*
-     Go through the image and sets pixel value according to the
-     following conditions:
-
-     If pixel value is in the [0,low_threshold] interval, it
-     becomes 0 (not an edge)
-
-     If pixel value is in the ]low_threshold,high_threshold] interval,
-     it becomes 1 (weak edge)
-
-     If pixel value is in the ]high_threshold, 255[ interval, it becomes
-     15 (strong edge)
-  */
-
+  /* Push weak edges to the stack */
   for x, y in naive_iterate(img) {
     let value = read(img.extended_data, y * img.width + x);
 
@@ -557,7 +558,7 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
     high_threshold * high_threshold
   );
   let hysteresis_time = impala_time();
-  hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
+  hysteresis(img);
 
   show_profile_statistics(
     sobel_time - gaussian_time,

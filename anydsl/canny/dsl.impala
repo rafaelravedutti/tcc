@@ -332,7 +332,7 @@ fn sobel(img : image_struct) -> () {
 
     /* Boundary condition */
     let condition = (
-      (x > img.width + 3 && x < img.width * 2 + 2) &&
+      (x > img.width * 2 + 5 && x < img.width * 3 + 4) &&
       (y > 0 && y < img.height - 1)
     ) as f64;
 

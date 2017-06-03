@@ -22,12 +22,13 @@ fn fake_iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
 
 fn serial_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
   let block_size = 20; /* Pixels per block */
+  let offset = img.width * 2 + 5;
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
     for j in step_range(0, img.width - (block_size + 1), block_size) {
       for k in range(0, block_size - 1) {
         for l in range(0, block_size - 1) {
-          let x = j + l + img.width + 3;
+          let x = j + l + offset;
           let y = i + k;
 
           body(x, y);
@@ -38,13 +39,13 @@ fn serial_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
 
   for i in range(img.width - block_size, img.width - 1) {
     for j in range(0, img.height - 1) {
-      body(i + img.width + 3, j);
+      body(i + offset, j);
     }
   }
 
   for i in range(img.height - block_size, img.height - 1) {
     for j in range(0, img.width - (block_size + 1)) {
-      body(j + img.width + 3, i);
+      body(j + offset, i);
     }
   }
 }
@@ -60,6 +61,7 @@ fn stencil_iterate(
   let grid = grid_config(img);
   let block = block_config(img);
   let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
+  let offset = img.width * 2 + 5;
 
   let arr_in = acc.alloc(size);
   let arr_out = acc.alloc(size);
@@ -74,7 +76,7 @@ fn stencil_iterate(
   copy(filter.data, mask, filter.size * sizeof[f64]());
 
   with acc.exec(grid, block) @{
-    let x = acc.bidx() * acc.bdimx() + acc.tidx() + img.width + 3;
+    let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
     body(x, y, arr_in, arr_out, mask);
@@ -99,6 +101,7 @@ fn sobel_iterate(
   let grid = grid_config(img);
   let block = block_config(img);
   let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
+  let offset = img.width * 2 + 5;
 
   let arr_in = acc.alloc(size);
   let arr_out = acc.alloc(size);
@@ -112,7 +115,7 @@ fn sobel_iterate(
   }
 
   with acc.exec(grid, block) @{
-    let x = acc.bidx() * acc.bdimx() + acc.tidx() + img.width + 3;
+    let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
     body(x, y, arr_in, arr_out, dx, dy);
@@ -142,6 +145,7 @@ fn nms_iterate(
   let grid = grid_config(img);
   let block = block_config(img);
   let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
+  let offset = img.width * 2 + 5;
 
   let arr_in = acc.alloc(size);
   let arr_out = acc.alloc(size);
@@ -158,7 +162,7 @@ fn nms_iterate(
   copy(img.dy, dy, size);
 
   with acc.exec(grid, block) @{
-    let x = acc.bidx() * acc.bdimx() + acc.tidx() + img.width + 3;
+    let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
     body(x, y, arr_in, arr_out, dx, dy);

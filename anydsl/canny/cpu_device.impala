@@ -1,12 +1,19 @@
+/* Fake iteration */
+fn fake_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
+  /* Does nothing */
+  body(0, 0);
+}
+
 /* Iterate over image on CPU architectures */
-fn iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
+fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
   let block_size = 20; /* Pixels per block */
+  let offset = img.width * 2 + 5;
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
     for j in step_range(0, img.width - (block_size + 1), block_size) {
       for k in range(0, block_size - 1) {
-        for l in range(0, block_size - 1) {
-          let x = j + l;
+        for l in range(0, block_size - 1) @{
+          let x = j + l + offset;
           let y = i + k;
 
           body(x, y);
@@ -17,43 +24,68 @@ fn iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
 
   for i in range(img.width - block_size, img.width - 1) {
     for j in range(0, img.height - 1) {
-      body(i, j);
+      body(i + offset, j);
     }
   }
 
   for i in range(img.height - block_size, img.height - 1) {
     for j in range(0, img.width - (block_size + 1)) {
-      body(j, i);
+      body(j + offset, i);
     }
   }
 }
 
-/* Square root function */
-fn sqrt(a : f64) -> (f64) {
-  cpu_intrinsics.sqrt(a)
+fn stencil_iterate(
+  img : image_struct,
+  filter : filter_struct,
+  buffer_to_data : bool,
+  body : fn(int, int, Buffer, Buffer, Buffer) -> ()) -> () {
+  let mut arr_in : Buffer;
+  let mut arr_out : Buffer;
+
+  if buffer_to_data {
+    arr_in = img.buffer;
+    arr_out = img.data;
+  } else {
+    arr_in = img.data;
+    arr_out = img.buffer;
+  }
+
+  for x, y in serial_iterate(img) @{
+    body(x, y, arr_in, arr_out, filter.data);
+  }
 }
 
-/* Power function */
-fn pow(a : f64, b : f64) -> (f64) {
-  cpu_intrinsics.pow(a, b)
+fn gradient_iterate(
+  img : image_struct,
+  buffer_to_data : bool,
+  copy_magnitudes : bool,
+  body: fn(int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
+  let mut arr_in : Buffer;
+  let mut arr_out : Buffer;
+
+  if buffer_to_data {
+    arr_in = img.buffer;
+    arr_out = img.data;
+  } else {
+    arr_in = img.data;
+    arr_out = img.buffer;
+  }
+
+  for x, y in serial_iterate(img) @{
+    body(x, y, arr_in, arr_out, img.dx, img.dy);
+  }
+}
+
+fn read(buf: Buffer, i: i32) -> f64 {
+  bitcast[&[1][f64]](buf.data)(i)
+}
+
+fn write(buf: Buffer, i: i32, v: f64) -> () {
+  bitcast[&mut[1][f64]](buf.data)(i) = v
 }
 
 /* Base-e exponential function */
 fn exp(a : f64) -> (f64) {
   cpu_intrinsics.exp(a)
-}
-
-/* Absolute function */
-fn fabs(a : f64) -> (f64) {
-  cpu_intrinsics.fabs(a)
-}
-
-/* Arctangent function */
-fn atan(x : f64) -> (f64) {
-  cpu_intrinsics.atan(x)
-}
-
-/* Arctangent of y/x function */
-fn atan2(y : f64, x : f64) -> (f64) {
-  cpu_intrinsics.atan2(y, x)
 }

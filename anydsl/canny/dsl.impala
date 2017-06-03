@@ -1,21 +1,18 @@
 /* Image data structure */
 struct image_struct {
   image : &mut[f64],          /* Image data */
-  data : &mut[f64],           /* Image data */
-  buffer : &mut[f64],         /* Auxiliary buffer */
+  data: Buffer,               /* Data with increased dimensions */
+  buffer: Buffer,             /* Buffer with increased dimensions */
   dx : Buffer,                /* Gx matrix */
   dy : Buffer,                /* Gy matrix */
   width : i32,                /* Image width */
-  height : i32,               /* Image height */
-  loaded : bool,              /* Is the image data loaded from a file? */
-  extended_data: Buffer,      /* Data with increased dimensions */
-  extended_buffer: Buffer,    /* Buffer with increased dimensions */
+  height : i32                /* Image height */
 };
 
 /* Filter data structure */
 struct filter_struct {
-  data : Buffer,       /* Filter coefficients */
-  size : i32,             /* Filter size */
+  data : Buffer,              /* Filter coefficients */
+  size : i32                  /* Filter size */
 };
 
 /* Functions implemented in C/C++ files */
@@ -73,23 +70,18 @@ fn image(filename : &[u8]) -> image_struct {
   impala_print("Allocating data...");
 
   /* Stores the image to structure data */
-  res.extended_data = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
-  res.data = res.extended_data.data(res.width + 3) as &mut[f64];
+  res.data = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
 
   impala_print("Allocating buffer...");
 
   /* Knowing its size, allocates the buffer and directions pointers */
-  res.extended_buffer = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
-  res.buffer = res.extended_buffer.data(res.width + 3) as &mut[f64];
+  res.buffer = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
 
   impala_print("Allocating directions...");
 
   /* Allocate Sobel directions */
   res.dx = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
   res.dy = alloc_cpu((res.width + 2) * (res.height + 2) * sizeof[f64]());
-
-  /* Set image as loaded */
-  res.loaded = true;
 
   impala_print("Copying content to result...");
 
@@ -98,8 +90,8 @@ fn image(filename : &[u8]) -> image_struct {
 
   impala_print("Content copied!");
 
-  for x, y in iterate(res) {
-    /* Only to compile CUDA kernels */
+  for x, y in fake_iterate(res) {
+    /* Only to compile cuda kernels */
   }
 
   res
@@ -107,83 +99,38 @@ fn image(filename : &[u8]) -> image_struct {
 
 /* Destroys image structure to free memory space */
 fn destroy_image(img : image_struct) -> () {
-  /* If the image is loaded, then doesn't free its data (it must be free
-     after the cv::Mat destructor call) */
-  /*
-  if !img.loaded {
-    release(img.image);
-  }
-  */
-
   /* Free buffer and directions pointers */
-  release(img.extended_data);
-  release(img.extended_buffer);
+  release(img.data);
+  release(img.buffer);
   release(img.dx);
   release(img.dy);
 }
 
-/* Sets image pixel at (x, y) coordinates */
-fn set_pixel(img : image_struct, x : i32, y : i32, value : f64) -> () {
-  img.data(y * img.width + x) = value;
-}
-
-/* Gets image pixel at (x, y) coordinates */
-fn get_pixel(img : image_struct, x : i32, y : i32) -> (f64) {
-  img.data(y * img.width + x)
-}
-
-/* Sets buffer pixel at (x, y) coordinates */
-fn set_buffer_pixel(img : image_struct, x : i32, y : i32, value : f64) -> () {
-  img.buffer(y * img.width + x) = value;
-}
-
-/* Gets buffer pixel at (x, y) coordinates */
-fn get_buffer_pixel(img : image_struct, x : i32, y : i32) -> (f64) {
-  img.buffer(y * img.width + x)
-}
-
-/* Copies buffer data to image data */
-fn sync_image_data(img : image_struct) -> () {
-  for x, y in iterate(img) {
-    img.data(y * img.width + x) = img.buffer(y * img.width + x);
-  }
-}
-
-/* Copies image data to buffer data */
-fn sync_image_buffer(img : image_struct) -> () {
-  for x, y in iterate(img) {
-    img.buffer(y * img.width + x) = img.data(y * img.width + x);
-  }
-}
-
 /* Copies OpenCV loaded image to image structure data */
 fn copy_image_to_data(image : &mut[f64], img : image_struct) -> () {
-  for x, y in @naive_iterate(img) {
-    write(img.extended_data, y * img.width + x, image(y * img.width + x));
+  for x in range(0, img.width - 1) {
+    for y in range(0, img.height - 1) {
+      write(img.data, y * img.width + x + img.width + 3, image(y * img.width + x));
+    }
   }
 }
 
 /* Copies image structure data to OpenCV matrix */
 fn copy_data_to_image(img : image_struct, image : &mut[f64]) -> () {
-  for x, y in @naive_iterate(img) {
-    image(y * img.width + x) = read(img.extended_data, y * img.width + x);
+  for x in range(0, img.width - 1) {
+    for y in range(0, img.height - 1) {
+      image(y * img.width + x) = read(img.data, y * img.width + x + img.width + 3);
+    }
   }
 }
 
 /* Copies image structure buffer to OpenCV matrix */
 fn copy_buffer_to_image(img : image_struct, image : &mut[f64]) -> () {
-  for x, y in @naive_iterate(img) {
-    image(y * img.width + x) = read(img.extended_buffer, y * img.width + x);
+  for x in range(0, img.width - 1) {
+    for y in range(0, img.height - 1) {
+      image(y * img.width + x) = read(img.buffer, y * img.width + x + img.width + 3);
+    }
   }
-}
-
-/* Performs angle roundness and returns the index to its offsets, this is used
-   by the non-maximum suppression algorithm */
-fn round_angle(angle : f64) -> (i32) {
-  let ang = angle + 3.14159 * ((angle < 0.0) as f64);
-
-  /* In degrees: ((abs(angle) + 22.5) / 45) % 4 */
-  (((ang + 0.3926991) / 0.785398) as i32) % 4
 }
 
 /* Iterates from min to max executing the higher-order function specified */
@@ -199,23 +146,6 @@ fn step_range(mut min : i32, max : i32, step : i32, body : fn(int) -> ()) -> () 
   while min <= max {
     body(min);
     min += step;
-  }
-}
-
-/* Naive implementation of iterate */
-fn naive_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
-  let mut i = 0;
-  let mut j = 0;
-
-  while(i < img.width) {
-    j = 0;
-
-    while(j < img.height) {
-      body(i + img.width + 3, j);
-      j = j + 1;
-    }
-
-    i = i + 1;
   }
 }
 
@@ -245,15 +175,12 @@ fn filter_5x1(mask : [f64 * 5]) -> filter_struct {
 fn apply_2d_row_convolution(img : image_struct, filter : filter_struct) -> () {
   /* Applies the filter in columns */
   for x, y, arr_in, arr_out, mask in @stencil_iterate(img, filter, false) {
-    /* Checks image boundaries */
-    let condition = (x > 0 && x < img.width - 1) as f64;
-
     write(arr_out, y * img.width + x, 0.0);
 
-    for i in @range(-1, 1) {
+    for i in @range(-2, 2) {
       write(arr_out, y * img.width + x,
         read(arr_out, y * img.width + x) +
-        read(mask, i + 1) * read(arr_in, y * img.width + x + i)
+        read(mask, i + 2) * read(arr_in, y * img.width + x + i)
       );
     }
   }
@@ -263,15 +190,12 @@ fn apply_2d_row_convolution(img : image_struct, filter : filter_struct) -> () {
 fn apply_2d_column_convolution(img : image_struct, filter : filter_struct) -> () {
   /* Applies the filter in rows */
   for x, y, arr_in, arr_out, mask in @stencil_iterate(img, filter, true) {
-    /* Checks image boundaries */
-    let condition = (y > 0 && y < img.height - 1) as f64;
-
     write(arr_out, y * img.width + x, 0.0);
 
-    for i in @range(-1, 1) {
+    for i in @range(-2, 2) {
       write(arr_out, y * img.width + x,
         read(arr_out, y * img.width + x) +
-        read(mask, i + 1) * read(arr_in, (y + 1) * img.width + x)
+        read(mask, i + 2) * read(arr_in, (y + 1) * img.width + x)
       );
     }
   }
@@ -402,7 +326,7 @@ fn sobel(img : image_struct) -> () {
 
     /* Boundary condition */
     let condition = (
-      ((x - img.width - 3) > 0 && (x - img.width - 3) < img.width - 1) &&
+      (x > img.width + 3 && x < img.width * 2 + 2) &&
       (y > 0 && y < img.height - 1)
     ) as f64;
 
@@ -424,8 +348,6 @@ fn sobel(img : image_struct) -> () {
   }
 }
 
-//write_int(indexes, y * img.width + x, (cond1 << 2) + (cond2 << 1) + cond3);
-
 /* Non-maximum suppression */
 fn non_maximum_suppression(
   img : image_struct,
@@ -436,7 +358,7 @@ fn non_maximum_suppression(
   let offsets = [[1, 1], [-1, 1], [0, 1], [0, 1], [1, 0], [1, 0], [1, 0]];
 
   /* Go through the image */
-  for x, y, arr_in, arr_out, indexes, dx, dy in @nms_iterate(img, true) {
+  for x, y, arr_in, arr_out, dx, dy in @nms_iterate(img, true) {
     let xs = read(dx, y * img.width + x) as i32;
     let ys = read(dy, y * img.width + x) as i32;
     let mx = abs(xs);
@@ -492,8 +414,8 @@ fn hysteresis(img : image_struct) -> () {
   stack_init();
 
   /* Push weak edges to the stack */
-  for x, y in naive_iterate(img) {
-    let value = read(img.extended_data, y * img.width + x);
+  for x, y in serial_iterate(img) {
+    let value = read(img.data, y * img.width + x);
 
     push_conditional(x, y, 
                       (value > 0.5 && value < 1.5) as i32);
@@ -509,15 +431,15 @@ fn hysteresis(img : image_struct) -> () {
 
   while pop(&mut x, &mut y) != 0 @{
     let weak_condition = (
-      read(img.extended_data, y * img.width + x) > 0.5 &&
-      read(img.extended_data, y * img.width + x) < 1.5
+      read(img.data, y * img.width + x) > 0.5 &&
+      read(img.data, y * img.width + x) < 1.5
     ) as f64;
 
     let mut sum = 0.0;
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
-        sum += read(img.extended_data, (y + j) * img.width + x + i);
+        sum += read(img.data, (y + j) * img.width + x + i);
       }
     }
 
@@ -525,12 +447,12 @@ fn hysteresis(img : image_struct) -> () {
 
     let sum_condition = ((sum > 10.0) as i32);
 
-    write(img.extended_data, y * img.width + x,
-      read(img.extended_data, y * img.width + x) + (sum_condition as f64) * 14.0);
+    write(img.data, y * img.width + x,
+      read(img.data, y * img.width + x) + (sum_condition as f64) * 14.0);
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
-        let nb_value = read(img.extended_data, (y + j) * img.width + x + i);
+        let nb_value = read(img.data, (y + j) * img.width + x + i);
         let nb_weak_condition = (nb_value > 0.5 && nb_value < 1.5) as i32;
 
         push_conditional(x + i, y + j, sum_condition & nb_weak_condition);
@@ -540,9 +462,9 @@ fn hysteresis(img : image_struct) -> () {
 
   /* Sets strong edges pixels to 255 and other pixels to 0 to
      get the final result */
-  for x, y in naive_iterate(img) {
-    write(img.extended_data, y * img.width + x, 
-      ((read(img.extended_data, y * img.width + x) > 10.0) as f64) * 255.0);
+  for x, y in serial_iterate(img) {
+    write(img.data, y * img.width + x, 
+      ((read(img.data, y * img.width + x) > 10.0) as f64) * 255.0);
   }
 }
 
@@ -576,23 +498,25 @@ fn compare_results(img : image_struct, reference : &mut[f64]) -> () {
   let mut false_negatives = 0;
   let uchar_reference = reference as &mut[u8];
 
-  for x, y in naive_iterate(img) {
-    let pixel_value = read(img.extended_data, y * img.width + x) as i32;
-    let pixel_reference = uchar_reference(y * img.width + x) as i32;
+  for x in range(0, img.width - 1) {
+    for y in range(0, img.height - 1) {
+      let pixel_value = read(img.data, y * img.width + x + 3) as i32;
+      let pixel_reference = uchar_reference(y * img.width + x) as i32;
 
-    write(img.extended_data, y * img.width + x, 0.0);
-    write(img.extended_buffer, y * img.width + x, 0.0);
+      write(img.data, y * img.width + x + 3, 0.0);
+      write(img.buffer, y * img.width + x + 3, 0.0);
 
-    if pixel_value != 0 {
-      if pixel_reference != 0 {
-        corrects++;
-      } else {
-        write(img.extended_data, y * img.width + x, 255.0);
-        false_positives++;
+      if pixel_value != 0 {
+        if pixel_reference != 0 {
+          corrects++;
+        } else {
+          write(img.data, y * img.width + x + 3, 255.0);
+          false_positives++;
+        }
+      } else if pixel_reference != 0 {
+        write(img.buffer, y * img.width + x + 3, 255.0);
+        false_negatives++;
       }
-    } else if pixel_reference != 0 {
-      write(img.extended_buffer, y * img.width + x, 255.0);
-      false_negatives++;
     }
   }
 

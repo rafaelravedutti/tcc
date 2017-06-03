@@ -7,7 +7,7 @@ fn block_config(img : image_struct) -> (i32, i32, i32) {
 }
 
 /* Iterates over an image on GPU architectures */
-fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
+fn fake_iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
   let block = block_config(img);
@@ -20,6 +20,36 @@ fn iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   }
 }
 
+fn serial_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
+  let block_size = 20; /* Pixels per block */
+
+  for i in step_range(0, img.height - (block_size + 1), block_size) {
+    for j in step_range(0, img.width - (block_size + 1), block_size) {
+      for k in range(0, block_size - 1) {
+        for l in range(0, block_size - 1) {
+          let x = j + l + img.width + 3;
+          let y = i + k;
+
+          body(x, y);
+        }
+      }
+    }
+  }
+
+  for i in range(img.width - block_size, img.width - 1) {
+    for j in range(0, img.height - 1) {
+      body(i + img.width + 3, j);
+    }
+  }
+
+  for i in range(img.height - block_size, img.height - 1) {
+    for j in range(0, img.width - (block_size + 1)) {
+      body(j + img.width + 3, i);
+    }
+  }
+}
+
+/* Iterate for stencils */
 fn stencil_iterate(
   img : image_struct,
   filter : filter_struct,
@@ -36,9 +66,9 @@ fn stencil_iterate(
   let mask = acc.alloc(filter.size * sizeof[f64]());
 
   if buffer_to_data {
-    copy(img.extended_buffer, arr_in, size);
+    copy(img.buffer, arr_in, size);
   } else {
-    copy(img.extended_data, arr_in, size);
+    copy(img.data, arr_in, size);
   }
 
   copy(filter.data, mask, filter.size * sizeof[f64]());
@@ -51,9 +81,9 @@ fn stencil_iterate(
   }
 
   if buffer_to_data {
-    copy(arr_out, img.extended_data, size);
+    copy(arr_out, img.data, size);
   } else {
-    copy(arr_out, img.extended_buffer, size);
+    copy(arr_out, img.buffer, size);
   }
 
   release(arr_in);
@@ -76,9 +106,9 @@ fn sobel_iterate(
   let dy = acc.alloc(size);
 
   if buffer_to_data {
-    copy(img.extended_buffer, arr_in, size);
+    copy(img.buffer, arr_in, size);
   } else {
-    copy(img.extended_data, arr_in, size);
+    copy(img.data, arr_in, size);
   }
 
   with acc.exec(grid, block) @{
@@ -89,9 +119,9 @@ fn sobel_iterate(
   }
 
   if buffer_to_data {
-    copy(arr_out, img.extended_data, size);
+    copy(arr_out, img.data, size);
   } else {
-    copy(arr_out, img.extended_buffer, size);
+    copy(arr_out, img.buffer, size);
   }
 
   copy(dx, img.dx, size);
@@ -106,7 +136,7 @@ fn sobel_iterate(
 fn nms_iterate(
   img : image_struct,
   buffer_to_data : bool,
-  body: fn(int, int, Buffer, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
+  body: fn(int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
 
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
@@ -115,14 +145,13 @@ fn nms_iterate(
 
   let arr_in = acc.alloc(size);
   let arr_out = acc.alloc(size);
-  let indexes = acc.alloc((img.width + 2) * (img.height + 2) * sizeof[i32]());
   let dx = acc.alloc(size);
   let dy = acc.alloc(size);
 
   if buffer_to_data {
-    copy(img.extended_buffer, arr_in, size);
+    copy(img.buffer, arr_in, size);
   } else {
-    copy(img.extended_data, arr_in, size);
+    copy(img.data, arr_in, size);
   }
 
   copy(img.dx, dx, size);
@@ -132,18 +161,17 @@ fn nms_iterate(
     let x = acc.bidx() * acc.bdimx() + acc.tidx() + img.width + 3;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    body(x, y, arr_in, arr_out, indexes, dx, dy);
+    body(x, y, arr_in, arr_out, dx, dy);
   }
 
   if buffer_to_data {
-    copy(arr_out, img.extended_data, size);
+    copy(arr_out, img.data, size);
   } else {
-    copy(arr_out, img.extended_buffer, size);
+    copy(arr_out, img.buffer, size);
   }
 
   release(dx);
   release(dy);
-  release(indexes);
   release(arr_in);
   release(arr_out);
 }

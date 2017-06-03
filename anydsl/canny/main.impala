@@ -4,8 +4,6 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
     display_usage(argv(0));
   }
 
-  impala_print("Loading image...");
-
   /* Name of file to use for test */
   let filename = argv(1);
   /* Load image from file */
@@ -24,9 +22,6 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
   /* Write OpenCV result */
   write_image(opencv_result, "opencv_result.png");
 
-  /* Performs OpenCV gaussian */
-  impala_print("Performing canny...");
-
   /* Copy blurred image data to the image structure, then apply
      the Canny filter written in AnyDSL */ 
   let mut anydsl_time = impala_time();
@@ -35,8 +30,6 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
 
   /* Copy content to write */
   copy_data_to_image(img, img.image);
-
-  impala_print("Writing result...");
 
   /* Writes the result */
   write_image(img.image, "anydsl_result.png");
@@ -47,15 +40,11 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
   /* Show time statistics */
   show_time_statistics(opencv_time, anydsl_time);
 
-  impala_print("Generating statistics...");
-
   /* Display the false positives and false negatives masks */
   copy_data_to_image(img, img.image);
   write_image(img.image, "false_positives.png");
   copy_buffer_to_image(img, img.image);
   write_image(img.image, "false_negatives.png");
-
-  impala_print("Destroying image...");
 
   /* Destroys the image structure to free memory space */
   destroy_image(img);

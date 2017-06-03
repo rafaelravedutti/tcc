@@ -211,7 +211,7 @@ fn naive_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
     j = 0;
 
     while(j < img.height) {
-      body(i, j);
+      body(i + img.width + 3, j);
       j = j + 1;
     }
 
@@ -257,9 +257,6 @@ fn apply_2d_row_convolution(img : image_struct, filter : filter_struct) -> () {
       );
     }
   }
-
-  /* Copies result from buffer to image data */
-  //sync_image_data(img);
 }
 
 /* Apply 2D filter convolution with separable kernels (tiling) */
@@ -278,9 +275,6 @@ fn apply_2d_column_convolution(img : image_struct, filter : filter_struct) -> ()
       );
     }
   }
-
-  /* Copies result from buffer to image data */
-  //sync_image_data(img);
 }
 
 /* Gaussian filter */
@@ -424,26 +418,27 @@ fn sobel(img : image_struct) -> () {
 
     /* arr_out(x,y) = dx(x,y) * dx(x,y) + dy(x,y) * dy(x,y) */
     write(arr_out, y * img.width + x,
-      cuda_intrinsics.sqrt(
-        read(dx, y * img.width + x) * read(dx, y * img.width + x) +
-        read(dy, y * img.width + x) * read(dy, y * img.width + x)
-      )
+      read(dx, y * img.width + x) * read(dx, y * img.width + x) +
+      read(dy, y * img.width + x) * read(dy, y * img.width + x)
     );
   }
-
-  //sync_image_data(img);
 }
 
+//write_int(indexes, y * img.width + x, (cond1 << 2) + (cond2 << 1) + cond3);
+
 /* Non-maximum supression */
-fn non_maximum_supression(img : image_struct) -> () {
+fn non_maximum_supression(
+  img : image_struct,
+  low_threshold : f64,
+  high_threshold : f64
+) -> () {
   /* Offsets for the angles */
   let offsets = [[1, 1], [-1, 1], [0, 1], [0, 1], [1, 0], [1, 0], [1, 0]];
 
   /* Go through the image */
-  for x, y in @iterate(img) {
-    let value = get_buffer_pixel(img, x, y);     /* Pixel value at (x, y) */
-    let xs = read(img.dx, y * img.width + x) as i32;
-    let ys = read(img.dy, y * img.width + x) as i32;
+  for x, y, arr_in, arr_out, indexes, dx, dy in @nms_iterate(img, true) {
+    let xs = read(dx, y * img.width + x) as i32;
+    let ys = read(dy, y * img.width + x) as i32;
     let mx = abs(xs);
     let my = abs(ys) << 15;
 
@@ -455,31 +450,26 @@ fn non_maximum_supression(img : image_struct) -> () {
     let cond3 = (xs ^ ys < 0) as i32;
 
     let index = (cond1 << 2) + (cond2 << 1) + cond3;
-
     let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
     let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
     let nb2_x = x - offsets(index)(0);    /* Second neighboor x coordinate */
     let nb2_y = y - offsets(index)(1);    /* Second neighboor y coordinate */
-    let mut nb1_value = 0.0;              /* First neighboor value */
-    let mut nb2_value = 0.0;              /* Second neighboor value */
 
-    /* Checks if first neighboor's position is valid */
-    nb1_value = ((nb1_x >= 0 && nb1_x < img.width &&
-                  nb1_y >= 0 && nb1_y < img.height) as f64) *
-                  get_buffer_pixel(img, nb1_x, nb1_y);
+    let nb1_cond = (
+      read(arr_in, y * img.width + x) > read(arr_in, nb1_y * img.width + nb1_x)
+    ) as f64;
 
-    /* Checks if second neighboor's position is valid */
-    nb2_value = ((nb2_x >= 0 && nb2_x < img.width &&
-                  nb2_y >= 0 && nb2_y < img.height) as f64) * 
-                  get_buffer_pixel(img, nb2_x, nb2_y);
+    let nb2_cond = (
+      read(arr_in, y * img.width + x) > read(arr_in, nb2_y * img.width + nb2_x)
+    ) as f64;
 
     /* If the pixel value is less or equal than one of the neighboors' values,
        it's not the local maximum so sets it to zero */
-    set_pixel(img, x, y, value * ((value > nb1_value && value > nb2_value) as f64));
+    write(arr_out, y * img.width + x, (
+      (((read(arr_in, y * img.width + x) > low_threshold) as f64) * 1.0) + 
+      (((read(arr_in, y * img.width + x) > high_threshold) as f64) * 14.0)
+    ) * nb1_cond * nb2_cond);
   }
-
-  /* Copy buffer data to image data */
-  //sync_image_data(img);
 }
 
 /* Hysteresis */
@@ -501,15 +491,8 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
      15 (strong edge)
   */
 
-  for x, y in @iterate(img) {
-    let value = get_pixel(img, x, y);
-
-    set_pixel(img, x, y, ((value > low_threshold) as f64) * 1.0 +
-                         ((value > high_threshold) as f64) * 14.0);
-  }
-
-  for x, y in @naive_iterate(img) {
-    let value = get_pixel(img, x, y);
+  for x, y in naive_iterate(img) {
+    let value = read(img.extended_data, y * img.width + x);
 
     push_conditional(x, y, 
                       (value > 0.5 && value < 1.5) as i32);
@@ -523,14 +506,17 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
   let mut x = 0;
   let mut y = 0;
 
-  while pop(&mut x, &mut y) != 0 {
-    let pixel_value = get_pixel(img, x, y);
-    let weak_condition = (pixel_value > 0.5 && pixel_value < 1.5) as f64;
+  while pop(&mut x, &mut y) != 0 @{
+    let weak_condition = (
+      read(img.extended_data, y * img.width + x) > 0.5 &&
+      read(img.extended_data, y * img.width + x) < 1.5
+    ) as f64;
+
     let mut sum = 0.0;
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
-        sum += get_pixel(img, x + i, y + j);
+        sum += read(img.extended_data, (y + j) * img.width + x + i);
       }
     }
 
@@ -538,11 +524,12 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
     let sum_condition = ((sum > 10.0) as i32);
 
-    set_pixel(img, x, y, pixel_value + (sum_condition as f64) * 14.0);
+    write(img.extended_data, y * img.width + x,
+      read(img.extended_data, y * img.width + x) + (sum_condition as f64) * 14.0);
 
     for i in range(-1, 1) {
       for j in range(-1, 1) {
-        let nb_value = get_pixel(img, x + i, y + j);
+        let nb_value = read(img.extended_data, (y + j) * img.width + x + i);
         let nb_weak_condition = (nb_value > 0.5 && nb_value < 1.5) as i32;
 
         push_conditional(x + i, y + j, sum_condition & nb_weak_condition);
@@ -552,8 +539,9 @@ fn hysteresis(img : image_struct, low_threshold : f64, high_threshold: f64) -> (
 
   /* Sets strong edges pixels to 255 and other pixels to 0 to
      get the final result */
-  for x, y in iterate(img) {
-    set_pixel(img, x, y, ((get_pixel(img, x, y) > 10.0) as f64) * 255.0);
+  for x, y in naive_iterate(img) {
+    write(img.extended_data, y * img.width + x, 
+      ((read(img.extended_data, y * img.width + x) > 10.0) as f64) * 255.0);
   }
 }
 
@@ -564,9 +552,12 @@ fn canny(img : image_struct, low_threshold : f64, high_threshold: f64) -> () {
   let sobel_time = impala_time();
   sobel(img);
   let nms_time = impala_time();
-  //@non_maximum_supression(img);
+  non_maximum_supression(img,
+    low_threshold * low_threshold,
+    high_threshold * high_threshold
+  );
   let hysteresis_time = impala_time();
-  //@hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
+  hysteresis(img, low_threshold * low_threshold, high_threshold * high_threshold);
 
   show_profile_statistics(
     sobel_time - gaussian_time,
@@ -585,21 +576,21 @@ fn compare_results(img : image_struct, reference : &mut[f64]) -> () {
   let uchar_reference = reference as &mut[u8];
 
   for x, y in naive_iterate(img) {
-    let pixel_value = get_pixel(img, x, y) as i32;
+    let pixel_value = read(img.extended_data, y * img.width + x) as i32;
     let pixel_reference = uchar_reference(y * img.width + x) as i32;
 
-    set_pixel(img, x, y, 0.0);
-    set_buffer_pixel(img, x, y, 0.0);
+    write(img.extended_data, y * img.width + x, 0.0);
+    write(img.extended_buffer, y * img.width + x, 0.0);
 
     if pixel_value != 0 {
       if pixel_reference != 0 {
         corrects++;
       } else {
-        set_pixel(img, x, y, 255.0);
+        write(img.extended_data, y * img.width + x, 255.0);
         false_positives++;
       }
     } else if pixel_reference != 0 {
-      set_buffer_pixel(img, x, y, 255.0);
+      write(img.extended_buffer, y * img.width + x, 255.0);
       false_negatives++;
     }
   }

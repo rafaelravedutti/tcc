@@ -578,8 +578,6 @@ fn canny(img : image_struct, low_threshold : f32, high_threshold: f32) -> () {
     hysteresis_time - nms_time,
     impala_time() - hysteresis_time
   );
-
-  copy_data_to_image(img, img.image);
 }
 
 /* Compare the result with the reference (OpenCV Canny) and display

@@ -33,6 +33,8 @@ fn main(argc : i32, argv : &[&mut [u8]]) -> () {
   canny(img, low_threshold, high_threshold);
   anydsl_time = impala_time() - anydsl_time;
 
+  copy_data_to_image(img, img.image);
+
   /* Writes the result */
   write_image(img.image, "anydsl_result.png");
 

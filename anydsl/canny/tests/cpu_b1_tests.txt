@@ -1,0 +1,1300 @@
+-------------------------------------
+Gaussian time: 0.00385
+Sobel time: 0.01083
+Non-maximum supression time: 0.00503
+Hysteresis time: 0.00639
+-------------------------------------
+Correct pixels: 0.83 (18032/21644)
+False positives: 0.08 (1642/21644)
+False negatives: 0.09 (1970/21644)
+-------------------------------------
+OpenCV time: 1.26074
+AnyDSL time: 0.02614
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00372
+Sobel time: 0.01083
+Non-maximum supression time: 0.00459
+Hysteresis time: 0.00414
+-------------------------------------
+Correct pixels: 0.88 (16325/18527)
+False positives: 0.05 (962/18527)
+False negatives: 0.07 (1240/18527)
+-------------------------------------
+OpenCV time: 1.36766
+AnyDSL time: 0.02331
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.00637
+Non-maximum supression time: 0.00275
+Hysteresis time: 0.00216
+-------------------------------------
+Correct pixels: 0.71 (5487/7758)
+False positives: 0.18 (1411/7758)
+False negatives: 0.11 (860/7758)
+-------------------------------------
+OpenCV time: 0.84859
+AnyDSL time: 0.01339
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00353
+Sobel time: 0.01080
+Non-maximum supression time: 0.00453
+Hysteresis time: 0.00435
+-------------------------------------
+Correct pixels: 0.90 (24752/27537)
+False positives: 0.05 (1440/27537)
+False negatives: 0.05 (1345/27537)
+-------------------------------------
+OpenCV time: 1.37828
+AnyDSL time: 0.02325
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00327
+Sobel time: 0.00618
+Non-maximum supression time: 0.00269
+Hysteresis time: 0.00523
+-------------------------------------
+Correct pixels: 0.88 (32244/36527)
+False positives: 0.05 (1705/36527)
+False negatives: 0.07 (2578/36527)
+-------------------------------------
+OpenCV time: 1.38949
+AnyDSL time: 0.01740
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01128
+Non-maximum supression time: 0.00500
+Hysteresis time: 0.00265
+-------------------------------------
+Correct pixels: 0.81 (5475/6727)
+False positives: 0.14 (932/6727)
+False negatives: 0.05 (320/6727)
+-------------------------------------
+OpenCV time: 1.37902
+AnyDSL time: 0.02257
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00359
+Sobel time: 0.01081
+Non-maximum supression time: 0.00454
+Hysteresis time: 0.00459
+-------------------------------------
+Correct pixels: 0.85 (14876/17466)
+False positives: 0.07 (1298/17466)
+False negatives: 0.07 (1292/17466)
+-------------------------------------
+OpenCV time: 1.39887
+AnyDSL time: 0.02357
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00364
+Sobel time: 0.01219
+Non-maximum supression time: 0.00362
+Hysteresis time: 0.00273
+-------------------------------------
+Correct pixels: 0.75 (2513/3340)
+False positives: 0.13 (432/3340)
+False negatives: 0.12 (395/3340)
+-------------------------------------
+OpenCV time: 1.40321
+AnyDSL time: 0.02221
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00376
+Sobel time: 0.01092
+Non-maximum supression time: 0.00471
+Hysteresis time: 0.00549
+-------------------------------------
+Correct pixels: 0.88 (17086/19335)
+False positives: 0.04 (838/19335)
+False negatives: 0.07 (1411/19335)
+-------------------------------------
+OpenCV time: 1.27058
+AnyDSL time: 0.02492
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01096
+Non-maximum supression time: 0.00459
+Hysteresis time: 0.00371
+-------------------------------------
+Correct pixels: 0.88 (12611/14337)
+False positives: 0.05 (760/14337)
+False negatives: 0.07 (966/14337)
+-------------------------------------
+OpenCV time: 1.23677
+AnyDSL time: 0.02291
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00377
+Sobel time: 0.01145
+Non-maximum supression time: 0.00507
+Hysteresis time: 0.00381
+-------------------------------------
+Correct pixels: 0.86 (8735/10135)
+False positives: 0.08 (810/10135)
+False negatives: 0.06 (590/10135)
+-------------------------------------
+OpenCV time: 1.10175
+AnyDSL time: 0.02413
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00208
+Sobel time: 0.00659
+Non-maximum supression time: 0.00272
+Hysteresis time: 0.00231
+-------------------------------------
+Correct pixels: 0.79 (8460/10732)
+False positives: 0.09 (963/10732)
+False negatives: 0.12 (1309/10732)
+-------------------------------------
+OpenCV time: 0.85669
+AnyDSL time: 0.01374
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01088
+Non-maximum supression time: 0.00475
+Hysteresis time: 0.00446
+-------------------------------------
+Correct pixels: 0.87 (17761/20368)
+False positives: 0.05 (1112/20368)
+False negatives: 0.07 (1495/20368)
+-------------------------------------
+OpenCV time: 1.39184
+AnyDSL time: 0.02373
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00217
+Sobel time: 0.00624
+Non-maximum supression time: 0.00274
+Hysteresis time: 0.00242
+-------------------------------------
+Correct pixels: 0.87 (17317/19795)
+False positives: 0.06 (1154/19795)
+False negatives: 0.07 (1324/19795)
+-------------------------------------
+OpenCV time: 0.96455
+AnyDSL time: 0.01360
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00353
+Sobel time: 0.01069
+Non-maximum supression time: 0.00478
+Hysteresis time: 0.00402
+-------------------------------------
+Correct pixels: 0.81 (8891/10952)
+False positives: 0.13 (1422/10952)
+False negatives: 0.06 (639/10952)
+-------------------------------------
+OpenCV time: 1.36860
+AnyDSL time: 0.02305
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00278
+Sobel time: 0.01052
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00501
+-------------------------------------
+Correct pixels: 0.83 (9282/11184)
+False positives: 0.07 (837/11184)
+False negatives: 0.10 (1065/11184)
+-------------------------------------
+OpenCV time: 1.15508
+AnyDSL time: 0.02295
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00840
+Sobel time: 0.01211
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00485
+-------------------------------------
+Correct pixels: 0.89 (22649/25312)
+False positives: 0.04 (1113/25312)
+False negatives: 0.06 (1550/25312)
+-------------------------------------
+OpenCV time: 1.43037
+AnyDSL time: 0.03000
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00208
+Sobel time: 0.00629
+Non-maximum supression time: 0.00287
+Hysteresis time: 0.00209
+-------------------------------------
+Correct pixels: 0.65 (2865/4391)
+False positives: 0.23 (997/4391)
+False negatives: 0.12 (529/4391)
+-------------------------------------
+OpenCV time: 0.88719
+AnyDSL time: 0.01336
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01101
+Non-maximum supression time: 0.00461
+Hysteresis time: 0.00610
+-------------------------------------
+Correct pixels: 0.84 (16059/19066)
+False positives: 0.08 (1546/19066)
+False negatives: 0.08 (1461/19066)
+-------------------------------------
+OpenCV time: 1.34408
+AnyDSL time: 0.02536
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.00630
+Non-maximum supression time: 0.00306
+Hysteresis time: 0.00260
+-------------------------------------
+Correct pixels: 0.84 (14337/16989)
+False positives: 0.10 (1685/16989)
+False negatives: 0.06 (967/16989)
+-------------------------------------
+OpenCV time: 1.41579
+AnyDSL time: 0.01407
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01090
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00414
+-------------------------------------
+Correct pixels: 0.78 (5419/6921)
+False positives: 0.10 (724/6921)
+False negatives: 0.11 (778/6921)
+-------------------------------------
+OpenCV time: 1.38274
+AnyDSL time: 0.02336
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01091
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00387
+-------------------------------------
+Correct pixels: 0.88 (13121/14948)
+False positives: 0.05 (805/14948)
+False negatives: 0.07 (1022/14948)
+-------------------------------------
+OpenCV time: 1.43392
+AnyDSL time: 0.02309
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00205
+Sobel time: 0.00630
+Non-maximum supression time: 0.00306
+Hysteresis time: 0.00304
+-------------------------------------
+Correct pixels: 0.89 (22519/25445)
+False positives: 0.05 (1223/25445)
+False negatives: 0.07 (1703/25445)
+-------------------------------------
+OpenCV time: 1.13086
+AnyDSL time: 0.01448
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00833
+Sobel time: 0.01195
+Non-maximum supression time: 0.00455
+Hysteresis time: 0.00417
+-------------------------------------
+Correct pixels: 0.81 (8936/11098)
+False positives: 0.10 (1073/11098)
+False negatives: 0.10 (1089/11098)
+-------------------------------------
+OpenCV time: 1.22470
+AnyDSL time: 0.02904
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00366
+Sobel time: 0.01101
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00563
+-------------------------------------
+Correct pixels: 0.82 (13538/16567)
+False positives: 0.08 (1307/16567)
+False negatives: 0.10 (1722/16567)
+-------------------------------------
+OpenCV time: 1.46706
+AnyDSL time: 0.02493
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00213
+Sobel time: 0.00655
+Non-maximum supression time: 0.00275
+Hysteresis time: 0.00293
+-------------------------------------
+Correct pixels: 0.86 (21079/24423)
+False positives: 0.06 (1510/24423)
+False negatives: 0.08 (1834/24423)
+-------------------------------------
+OpenCV time: 1.11613
+AnyDSL time: 0.01440
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00366
+Sobel time: 0.01138
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00732
+-------------------------------------
+Correct pixels: 0.88 (24600/27939)
+False positives: 0.05 (1343/27939)
+False negatives: 0.07 (1996/27939)
+-------------------------------------
+OpenCV time: 1.36782
+AnyDSL time: 0.02700
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00355
+Sobel time: 0.01068
+Non-maximum supression time: 0.00457
+Hysteresis time: 0.00664
+-------------------------------------
+Correct pixels: 0.82 (16868/20599)
+False positives: 0.08 (1622/20599)
+False negatives: 0.10 (2109/20599)
+-------------------------------------
+OpenCV time: 1.07108
+AnyDSL time: 0.02549
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00211
+Sobel time: 0.00656
+Non-maximum supression time: 0.00275
+Hysteresis time: 0.00306
+-------------------------------------
+Correct pixels: 0.84 (19242/22775)
+False positives: 0.08 (1752/22775)
+False negatives: 0.08 (1781/22775)
+-------------------------------------
+OpenCV time: 1.37017
+AnyDSL time: 0.01452
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01118
+Non-maximum supression time: 0.00522
+Hysteresis time: 0.00216
+-------------------------------------
+Correct pixels: 0.86 (1609/1871)
+False positives: 0.11 (215/1871)
+False negatives: 0.03 (47/1871)
+-------------------------------------
+OpenCV time: 1.44297
+AnyDSL time: 0.02220
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01086
+Non-maximum supression time: 0.00457
+Hysteresis time: 0.00625
+-------------------------------------
+Correct pixels: 0.83 (14332/17304)
+False positives: 0.08 (1358/17304)
+False negatives: 0.09 (1614/17304)
+-------------------------------------
+OpenCV time: 1.37717
+AnyDSL time: 0.02532
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00222
+Sobel time: 0.00627
+Non-maximum supression time: 0.00276
+Hysteresis time: 0.00502
+-------------------------------------
+Correct pixels: 0.85 (31598/37110)
+False positives: 0.06 (2331/37110)
+False negatives: 0.09 (3181/37110)
+-------------------------------------
+OpenCV time: 1.34770
+AnyDSL time: 0.01631
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00209
+Sobel time: 0.00636
+Non-maximum supression time: 0.00269
+Hysteresis time: 0.00183
+-------------------------------------
+Correct pixels: 0.81 (5018/6182)
+False positives: 0.13 (815/6182)
+False negatives: 0.06 (349/6182)
+-------------------------------------
+OpenCV time: 0.92603
+AnyDSL time: 0.01300
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00306
+Sobel time: 0.01099
+Non-maximum supression time: 0.00479
+Hysteresis time: 0.00319
+-------------------------------------
+Correct pixels: 0.84 (4032/4815)
+False positives: 0.13 (602/4815)
+False negatives: 0.04 (181/4815)
+-------------------------------------
+OpenCV time: 1.14280
+AnyDSL time: 0.02206
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00368
+Sobel time: 0.01089
+Non-maximum supression time: 0.00469
+Hysteresis time: 0.00792
+-------------------------------------
+Correct pixels: 0.83 (20886/25075)
+False positives: 0.07 (1877/25075)
+False negatives: 0.09 (2312/25075)
+-------------------------------------
+OpenCV time: 1.35621
+AnyDSL time: 0.02722
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00358
+Sobel time: 0.01091
+Non-maximum supression time: 0.00455
+Hysteresis time: 0.00267
+-------------------------------------
+Correct pixels: 0.89 (7583/8567)
+False positives: 0.09 (805/8567)
+False negatives: 0.02 (179/8567)
+-------------------------------------
+OpenCV time: 1.22228
+AnyDSL time: 0.02174
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01101
+Non-maximum supression time: 0.00458
+Hysteresis time: 0.00488
+-------------------------------------
+Correct pixels: 0.86 (13615/15855)
+False positives: 0.05 (789/15855)
+False negatives: 0.09 (1451/15855)
+-------------------------------------
+OpenCV time: 1.42357
+AnyDSL time: 0.02415
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.00629
+Non-maximum supression time: 0.00277
+Hysteresis time: 0.00250
+-------------------------------------
+Correct pixels: 0.89 (13636/15345)
+False positives: 0.06 (945/15345)
+False negatives: 0.05 (764/15345)
+-------------------------------------
+OpenCV time: 0.89198
+AnyDSL time: 0.01366
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00370
+Sobel time: 0.01091
+Non-maximum supression time: 0.00462
+Hysteresis time: 0.00721
+-------------------------------------
+Correct pixels: 0.88 (28238/32025)
+False positives: 0.05 (1675/32025)
+False negatives: 0.07 (2112/32025)
+-------------------------------------
+OpenCV time: 1.36474
+AnyDSL time: 0.02646
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00841
+Sobel time: 0.01238
+Non-maximum supression time: 0.00465
+Hysteresis time: 0.00672
+-------------------------------------
+Correct pixels: 0.86 (19743/23001)
+False positives: 0.07 (1602/23001)
+False negatives: 0.07 (1656/23001)
+-------------------------------------
+OpenCV time: 1.37822
+AnyDSL time: 0.03220
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00368
+Sobel time: 0.01071
+Non-maximum supression time: 0.00466
+Hysteresis time: 0.00363
+-------------------------------------
+Correct pixels: 0.89 (10890/12202)
+False positives: 0.05 (649/12202)
+False negatives: 0.05 (663/12202)
+-------------------------------------
+OpenCV time: 1.42572
+AnyDSL time: 0.02271
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00369
+Sobel time: 0.01070
+Non-maximum supression time: 0.00458
+Hysteresis time: 0.00642
+-------------------------------------
+Correct pixels: 0.86 (19801/23052)
+False positives: 0.07 (1565/23052)
+False negatives: 0.07 (1686/23052)
+-------------------------------------
+OpenCV time: 0.92504
+AnyDSL time: 0.02542
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00215
+Sobel time: 0.00636
+Non-maximum supression time: 0.00270
+Hysteresis time: 0.00247
+-------------------------------------
+Correct pixels: 0.86 (14341/16611)
+False positives: 0.08 (1381/16611)
+False negatives: 0.05 (889/16611)
+-------------------------------------
+OpenCV time: 0.98584
+AnyDSL time: 0.01371
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00402
+Sobel time: 0.01059
+Non-maximum supression time: 0.00491
+Hysteresis time: 0.00459
+-------------------------------------
+Correct pixels: 0.73 (7699/10605)
+False positives: 0.14 (1531/10605)
+False negatives: 0.13 (1375/10605)
+-------------------------------------
+OpenCV time: 1.37781
+AnyDSL time: 0.02416
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00390
+Sobel time: 0.01087
+Non-maximum supression time: 0.00492
+Hysteresis time: 0.00624
+-------------------------------------
+Correct pixels: 0.81 (9327/11566)
+False positives: 0.07 (865/11566)
+False negatives: 0.12 (1374/11566)
+-------------------------------------
+OpenCV time: 1.42648
+AnyDSL time: 0.02596
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00359
+Sobel time: 0.01105
+Non-maximum supression time: 0.00457
+Hysteresis time: 0.00499
+-------------------------------------
+Correct pixels: 0.80 (9517/11960)
+False positives: 0.13 (1603/11960)
+False negatives: 0.07 (840/11960)
+-------------------------------------
+OpenCV time: 1.25673
+AnyDSL time: 0.02424
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01103
+Non-maximum supression time: 0.00461
+Hysteresis time: 0.00489
+-------------------------------------
+Correct pixels: 0.84 (11126/13281)
+False positives: 0.07 (938/13281)
+False negatives: 0.09 (1217/13281)
+-------------------------------------
+OpenCV time: 1.37500
+AnyDSL time: 0.02418
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00300
+Sobel time: 0.00639
+Non-maximum supression time: 0.00272
+Hysteresis time: 0.00205
+-------------------------------------
+Correct pixels: 0.90 (16002/17773)
+False positives: 0.05 (884/17773)
+False negatives: 0.05 (887/17773)
+-------------------------------------
+OpenCV time: 1.17530
+AnyDSL time: 0.01419
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.00669
+Non-maximum supression time: 0.00274
+Hysteresis time: 0.00278
+-------------------------------------
+Correct pixels: 0.78 (8977/11561)
+False positives: 0.11 (1233/11561)
+False negatives: 0.12 (1351/11561)
+-------------------------------------
+OpenCV time: 0.93472
+AnyDSL time: 0.01431
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00375
+Sobel time: 0.01083
+Non-maximum supression time: 0.00481
+Hysteresis time: 0.00259
+-------------------------------------
+Correct pixels: 0.87 (2604/3010)
+False positives: 0.10 (313/3010)
+False negatives: 0.03 (93/3010)
+-------------------------------------
+OpenCV time: 1.40965
+AnyDSL time: 0.02201
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01103
+Non-maximum supression time: 0.00459
+Hysteresis time: 0.00378
+-------------------------------------
+Correct pixels: 0.74 (5994/8093)
+False positives: 0.16 (1321/8093)
+False negatives: 0.10 (778/8093)
+-------------------------------------
+OpenCV time: 1.15903
+AnyDSL time: 0.02304
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00373
+Sobel time: 0.01387
+Non-maximum supression time: 0.00359
+Hysteresis time: 0.00593
+-------------------------------------
+Correct pixels: 0.84 (26447/31467)
+False positives: 0.07 (2327/31467)
+False negatives: 0.09 (2693/31467)
+-------------------------------------
+OpenCV time: 1.36799
+AnyDSL time: 0.02715
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01102
+Non-maximum supression time: 0.00458
+Hysteresis time: 0.00883
+-------------------------------------
+Correct pixels: 0.83 (24125/29100)
+False positives: 0.07 (2007/29100)
+False negatives: 0.10 (2968/29100)
+-------------------------------------
+OpenCV time: 1.41612
+AnyDSL time: 0.02812
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00364
+Sobel time: 0.01099
+Non-maximum supression time: 0.00459
+Hysteresis time: 0.00565
+-------------------------------------
+Correct pixels: 0.86 (17460/20265)
+False positives: 0.06 (1235/20265)
+False negatives: 0.08 (1570/20265)
+-------------------------------------
+OpenCV time: 1.37884
+AnyDSL time: 0.02491
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00368
+Sobel time: 0.01085
+Non-maximum supression time: 0.00473
+Hysteresis time: 0.00468
+-------------------------------------
+Correct pixels: 0.87 (16997/19469)
+False positives: 0.06 (1086/19469)
+False negatives: 0.07 (1386/19469)
+-------------------------------------
+OpenCV time: 1.38760
+AnyDSL time: 0.02397
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00358
+Sobel time: 0.01088
+Non-maximum supression time: 0.00456
+Hysteresis time: 0.00731
+-------------------------------------
+Correct pixels: 0.85 (24051/28371)
+False positives: 0.06 (1812/28371)
+False negatives: 0.09 (2508/28371)
+-------------------------------------
+OpenCV time: 1.28726
+AnyDSL time: 0.02637
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01085
+Non-maximum supression time: 0.00481
+Hysteresis time: 0.00771
+-------------------------------------
+Correct pixels: 0.84 (22883/27094)
+False positives: 0.08 (2047/27094)
+False negatives: 0.08 (2164/27094)
+-------------------------------------
+OpenCV time: 1.41502
+AnyDSL time: 0.02701
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01087
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00319
+-------------------------------------
+Correct pixels: 0.83 (2006/2404)
+False positives: 0.10 (229/2404)
+False negatives: 0.07 (169/2404)
+-------------------------------------
+OpenCV time: 1.39839
+AnyDSL time: 0.02237
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00223
+Sobel time: 0.00620
+Non-maximum supression time: 0.00270
+Hysteresis time: 0.00286
+-------------------------------------
+Correct pixels: 0.81 (10198/12524)
+False positives: 0.10 (1293/12524)
+False negatives: 0.08 (1033/12524)
+-------------------------------------
+OpenCV time: 1.03590
+AnyDSL time: 0.01401
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00208
+Sobel time: 0.00630
+Non-maximum supression time: 0.00439
+Hysteresis time: 0.00326
+-------------------------------------
+Correct pixels: 0.87 (8252/9440)
+False positives: 0.09 (828/9440)
+False negatives: 0.04 (360/9440)
+-------------------------------------
+OpenCV time: 1.21776
+AnyDSL time: 0.01606
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00249
+Sobel time: 0.00682
+Non-maximum supression time: 0.00296
+Hysteresis time: 0.00358
+-------------------------------------
+Correct pixels: 0.86 (16356/18916)
+False positives: 0.06 (1221/18916)
+False negatives: 0.07 (1339/18916)
+-------------------------------------
+OpenCV time: 1.12073
+AnyDSL time: 0.01589
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00208
+Sobel time: 0.00632
+Non-maximum supression time: 0.00277
+Hysteresis time: 0.00536
+-------------------------------------
+Correct pixels: 0.82 (13255/16203)
+False positives: 0.07 (1194/16203)
+False negatives: 0.11 (1754/16203)
+-------------------------------------
+OpenCV time: 1.09335
+AnyDSL time: 0.01656
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00209
+Sobel time: 0.00619
+Non-maximum supression time: 0.00449
+Hysteresis time: 0.00750
+-------------------------------------
+Correct pixels: 0.83 (20106/24294)
+False positives: 0.07 (1699/24294)
+False negatives: 0.10 (2489/24294)
+-------------------------------------
+OpenCV time: 0.98727
+AnyDSL time: 0.02031
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00212
+Sobel time: 0.00632
+Non-maximum supression time: 0.00273
+Hysteresis time: 0.00276
+-------------------------------------
+Correct pixels: 0.83 (8812/10595)
+False positives: 0.08 (797/10595)
+False negatives: 0.09 (986/10595)
+-------------------------------------
+OpenCV time: 0.97683
+AnyDSL time: 0.01396
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00211
+Sobel time: 0.00630
+Non-maximum supression time: 0.00276
+Hysteresis time: 0.00289
+-------------------------------------
+Correct pixels: 0.83 (14438/17364)
+False positives: 0.08 (1337/17364)
+False negatives: 0.09 (1589/17364)
+-------------------------------------
+OpenCV time: 0.94715
+AnyDSL time: 0.01409
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00210
+Sobel time: 0.00621
+Non-maximum supression time: 0.00266
+Hysteresis time: 0.00203
+-------------------------------------
+Correct pixels: 0.86 (9016/10478)
+False positives: 0.09 (906/10478)
+False negatives: 0.05 (556/10478)
+-------------------------------------
+OpenCV time: 0.94582
+AnyDSL time: 0.01305
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00366
+Sobel time: 0.01092
+Non-maximum supression time: 0.00458
+Hysteresis time: 0.00321
+-------------------------------------
+Correct pixels: 0.82 (3555/4344)
+False positives: 0.11 (477/4344)
+False negatives: 0.07 (312/4344)
+-------------------------------------
+OpenCV time: 1.03131
+AnyDSL time: 0.02241
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00210
+Sobel time: 0.00881
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00494
+-------------------------------------
+Correct pixels: 0.85 (10126/11945)
+False positives: 0.07 (819/11945)
+False negatives: 0.08 (1000/11945)
+-------------------------------------
+OpenCV time: 1.11575
+AnyDSL time: 0.02049
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.00619
+Non-maximum supression time: 0.00349
+Hysteresis time: 0.00842
+-------------------------------------
+Correct pixels: 0.89 (36727/41193)
+False positives: 0.05 (1858/41193)
+False negatives: 0.06 (2608/41193)
+-------------------------------------
+OpenCV time: 1.05398
+AnyDSL time: 0.02021
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00347
+Sobel time: 0.01104
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00561
+-------------------------------------
+Correct pixels: 0.88 (21597/24586)
+False positives: 0.05 (1339/24586)
+False negatives: 0.07 (1650/24586)
+-------------------------------------
+OpenCV time: 0.95392
+AnyDSL time: 0.02475
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00369
+Sobel time: 0.01087
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00574
+-------------------------------------
+Correct pixels: 0.75 (7589/10152)
+False positives: 0.10 (1022/10152)
+False negatives: 0.15 (1541/10152)
+-------------------------------------
+OpenCV time: 1.03869
+AnyDSL time: 0.02497
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.00632
+Non-maximum supression time: 0.00437
+Hysteresis time: 0.00357
+-------------------------------------
+Correct pixels: 0.76 (4183/5537)
+False positives: 0.18 (1008/5537)
+False negatives: 0.06 (346/5537)
+-------------------------------------
+OpenCV time: 1.09691
+AnyDSL time: 0.01637
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01099
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00528
+-------------------------------------
+Correct pixels: 0.83 (8740/10545)
+False positives: 0.07 (764/10545)
+False negatives: 0.10 (1041/10545)
+-------------------------------------
+OpenCV time: 1.03921
+AnyDSL time: 0.02454
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00207
+Sobel time: 0.01015
+Non-maximum supression time: 0.00460
+Hysteresis time: 0.00517
+-------------------------------------
+Correct pixels: 0.85 (14287/16885)
+False positives: 0.05 (778/16885)
+False negatives: 0.11 (1820/16885)
+-------------------------------------
+OpenCV time: 1.08923
+AnyDSL time: 0.02202
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00213
+Sobel time: 0.00625
+Non-maximum supression time: 0.00289
+Hysteresis time: 0.00409
+-------------------------------------
+Correct pixels: 0.89 (14876/16706)
+False positives: 0.06 (979/16706)
+False negatives: 0.05 (851/16706)
+-------------------------------------
+OpenCV time: 1.00198
+AnyDSL time: 0.01539
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01101
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00347
+-------------------------------------
+Correct pixels: 0.86 (4846/5637)
+False positives: 0.08 (436/5637)
+False negatives: 0.06 (355/5637)
+-------------------------------------
+OpenCV time: 0.97738
+AnyDSL time: 0.02280
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00346
+Sobel time: 0.01094
+Non-maximum supression time: 0.00461
+Hysteresis time: 0.00664
+-------------------------------------
+Correct pixels: 0.86 (21186/24656)
+False positives: 0.06 (1385/24656)
+False negatives: 0.08 (2085/24656)
+-------------------------------------
+OpenCV time: 1.03591
+AnyDSL time: 0.02568
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00210
+Sobel time: 0.00916
+Non-maximum supression time: 0.00455
+Hysteresis time: 0.00596
+-------------------------------------
+Correct pixels: 0.86 (26323/30433)
+False positives: 0.07 (2045/30433)
+False negatives: 0.07 (2065/30433)
+-------------------------------------
+OpenCV time: 1.07408
+AnyDSL time: 0.02179
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00362
+Sobel time: 0.01104
+Non-maximum supression time: 0.00473
+Hysteresis time: 0.00342
+-------------------------------------
+Correct pixels: 0.88 (7409/8419)
+False positives: 0.05 (424/8419)
+False negatives: 0.07 (586/8419)
+-------------------------------------
+OpenCV time: 1.26649
+AnyDSL time: 0.02284
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00362
+Sobel time: 0.01096
+Non-maximum supression time: 0.00463
+Hysteresis time: 0.00522
+-------------------------------------
+Correct pixels: 0.85 (13743/16138)
+False positives: 0.06 (1015/16138)
+False negatives: 0.09 (1380/16138)
+-------------------------------------
+OpenCV time: 1.18011
+AnyDSL time: 0.02446
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01095
+Non-maximum supression time: 0.00461
+Hysteresis time: 0.00505
+-------------------------------------
+Correct pixels: 0.84 (15311/18165)
+False positives: 0.07 (1311/18165)
+False negatives: 0.08 (1543/18165)
+-------------------------------------
+OpenCV time: 1.05036
+AnyDSL time: 0.02425
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01090
+Non-maximum supression time: 0.00469
+Hysteresis time: 0.00547
+-------------------------------------
+Correct pixels: 0.80 (11451/14344)
+False positives: 0.08 (1087/14344)
+False negatives: 0.13 (1806/14344)
+-------------------------------------
+OpenCV time: 1.00656
+AnyDSL time: 0.02470
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00359
+Sobel time: 0.00947
+Non-maximum supression time: 0.00274
+Hysteresis time: 0.00413
+-------------------------------------
+Correct pixels: 0.81 (14968/18539)
+False positives: 0.07 (1386/18539)
+False negatives: 0.12 (2185/18539)
+-------------------------------------
+OpenCV time: 1.06740
+AnyDSL time: 0.01997
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00206
+Sobel time: 0.00635
+Non-maximum supression time: 0.00351
+Hysteresis time: 0.00477
+-------------------------------------
+Correct pixels: 0.85 (12265/14484)
+False positives: 0.08 (1190/14484)
+False negatives: 0.07 (1029/14484)
+-------------------------------------
+OpenCV time: 0.97087
+AnyDSL time: 0.01673
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00210
+Sobel time: 0.00627
+Non-maximum supression time: 0.00407
+Hysteresis time: 0.00956
+-------------------------------------
+Correct pixels: 0.81 (23459/28893)
+False positives: 0.05 (1431/28893)
+False negatives: 0.14 (4003/28893)
+-------------------------------------
+OpenCV time: 0.92832
+AnyDSL time: 0.02204
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00367
+Sobel time: 0.01088
+Non-maximum supression time: 0.00471
+Hysteresis time: 0.00414
+-------------------------------------
+Correct pixels: 0.86 (8243/9615)
+False positives: 0.07 (655/9615)
+False negatives: 0.07 (717/9615)
+-------------------------------------
+OpenCV time: 1.13271
+AnyDSL time: 0.02347
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00214
+Sobel time: 0.00804
+Non-maximum supression time: 0.00458
+Hysteresis time: 0.00362
+-------------------------------------
+Correct pixels: 0.89 (10890/12183)
+False positives: 0.05 (636/12183)
+False negatives: 0.05 (657/12183)
+-------------------------------------
+OpenCV time: 0.94559
+AnyDSL time: 0.01842
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00212
+Sobel time: 0.00640
+Non-maximum supression time: 0.00270
+Hysteresis time: 0.00309
+-------------------------------------
+Correct pixels: 0.85 (8816/10387)
+False positives: 0.07 (706/10387)
+False negatives: 0.08 (865/10387)
+-------------------------------------
+OpenCV time: 0.91246
+AnyDSL time: 0.01434
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01091
+Non-maximum supression time: 0.00461
+Hysteresis time: 0.00271
+-------------------------------------
+Correct pixels: 0.69 (2763/4025)
+False positives: 0.23 (921/4025)
+False negatives: 0.08 (341/4025)
+-------------------------------------
+OpenCV time: 1.07048
+AnyDSL time: 0.02188
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00365
+Sobel time: 0.01091
+Non-maximum supression time: 0.00461
+Hysteresis time: 0.00424
+-------------------------------------
+Correct pixels: 0.92 (21872/23837)
+False positives: 0.04 (938/23837)
+False negatives: 0.04 (1027/23837)
+-------------------------------------
+OpenCV time: 1.13369
+AnyDSL time: 0.02344
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00360
+Sobel time: 0.01066
+Non-maximum supression time: 0.00457
+Hysteresis time: 0.00383
+-------------------------------------
+Correct pixels: 0.84 (10363/12318)
+False positives: 0.12 (1418/12318)
+False negatives: 0.04 (537/12318)
+-------------------------------------
+OpenCV time: 1.03411
+AnyDSL time: 0.02270
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00351
+Sobel time: 0.00947
+Non-maximum supression time: 0.00275
+Hysteresis time: 0.00229
+-------------------------------------
+Correct pixels: 0.92 (13886/15108)
+False positives: 0.04 (601/15108)
+False negatives: 0.04 (621/15108)
+-------------------------------------
+OpenCV time: 1.04978
+AnyDSL time: 0.01806
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00206
+Sobel time: 0.00630
+Non-maximum supression time: 0.00330
+Hysteresis time: 0.00544
+-------------------------------------
+Correct pixels: 0.89 (16957/19047)
+False positives: 0.05 (939/19047)
+False negatives: 0.06 (1151/19047)
+-------------------------------------
+OpenCV time: 1.02057
+AnyDSL time: 0.01715
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00315
+Sobel time: 0.01066
+Non-maximum supression time: 0.00458
+Hysteresis time: 0.00308
+-------------------------------------
+Correct pixels: 0.80 (2137/2671)
+False positives: 0.13 (346/2671)
+False negatives: 0.07 (188/2671)
+-------------------------------------
+OpenCV time: 0.91143
+AnyDSL time: 0.02151
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00209
+Sobel time: 0.00631
+Non-maximum supression time: 0.00272
+Hysteresis time: 0.00317
+-------------------------------------
+Correct pixels: 0.81 (15828/19428)
+False positives: 0.08 (1564/19428)
+False negatives: 0.10 (2036/19428)
+-------------------------------------
+OpenCV time: 0.94991
+AnyDSL time: 0.01432
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00362
+Sobel time: 0.01033
+Non-maximum supression time: 0.00273
+Hysteresis time: 0.00172
+-------------------------------------
+Correct pixels: 0.75 (4357/5793)
+False positives: 0.19 (1083/5793)
+False negatives: 0.06 (353/5793)
+-------------------------------------
+OpenCV time: 1.03223
+AnyDSL time: 0.01843
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00208
+Sobel time: 0.00628
+Non-maximum supression time: 0.00275
+Hysteresis time: 0.00549
+-------------------------------------
+Correct pixels: 0.80 (12435/15469)
+False positives: 0.10 (1513/15469)
+False negatives: 0.10 (1521/15469)
+-------------------------------------
+OpenCV time: 1.05638
+AnyDSL time: 0.01664
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00361
+Sobel time: 0.01080
+Non-maximum supression time: 0.00276
+Hysteresis time: 0.00177
+-------------------------------------
+Correct pixels: 0.78 (3698/4727)
+False positives: 0.17 (810/4727)
+False negatives: 0.05 (219/4727)
+-------------------------------------
+OpenCV time: 1.03334
+AnyDSL time: 0.01897
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00211
+Sobel time: 0.00632
+Non-maximum supression time: 0.00277
+Hysteresis time: 0.00182
+-------------------------------------
+Correct pixels: 0.67 (2878/4298)
+False positives: 0.19 (820/4298)
+False negatives: 0.14 (600/4298)
+-------------------------------------
+OpenCV time: 1.03867
+AnyDSL time: 0.01307
+-------------------------------------
+-------------------------------------
+Gaussian time: 0.00209
+Sobel time: 0.00633
+Non-maximum supression time: 0.00305
+Hysteresis time: 0.00420
+-------------------------------------
+Correct pixels: 0.83 (6845/8258)
+False positives: 0.07 (541/8258)
+False negatives: 0.11 (872/8258)
+-------------------------------------
+OpenCV time: 1.00051
+AnyDSL time: 0.01571
+-------------------------------------

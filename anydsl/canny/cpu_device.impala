@@ -6,7 +6,7 @@ fn fake_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
 
 /* Iterate over image on CPU architectures */
 fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
-  let block_size = 20; /* Pixels per block */
+  let block_size = 6; /* Pixels per block */
   let offset = img.width * 2 + 5;
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
@@ -77,12 +77,12 @@ fn gradient_iterate(
   }
 }
 
-fn read(buf: Buffer, i: i32) -> f64 {
-  bitcast[&[1][f64]](buf.data)(i)
+fn write(buf : Buffer, i : i32, v : f64) -> () {
+  (buf.data as &mut[f64])(i) = v
 }
 
-fn write(buf: Buffer, i: i32, v: f64) -> () {
-  bitcast[&mut[1][f64]](buf.data)(i) = v
+fn read(buf : Buffer, i : i32) -> f64 {
+  (buf.data as &mut[f64])(i)
 }
 
 /* Base-e exponential function */

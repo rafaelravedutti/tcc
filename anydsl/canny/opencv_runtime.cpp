@@ -16,9 +16,11 @@ extern "C" {
   pixel_t *load_image(const char *path, int *width, int *height);
   pixel_t *opencv_gaussian(pixel_t *img, unsigned char mask_size, bool display);
   pixel_t *opencv_sobel(pixel_t *img, int sx, int sy, int aperture_size, bool display);
-  pixel_t *opencv_canny(const char *filename, pixel_t low_threshold, pixel_t high_threshold);
+  pixel_t *opencv_canny(const char *filename, pixel_t low_threshold, pixel_t high_threshold, double *opencv_time);
   void display_image(pixel_t *img, const char *title, bool wait);
   void write_image(pixel_t *img, const char *filename);
+
+  double impala_time();
 }
 
 cv::Mat GetImageMat(pixel_t *img, int *found) {
@@ -122,7 +124,8 @@ pixel_t *opencv_sobel(pixel_t *img, int sx, int sy, int aperture_size, bool disp
 pixel_t *opencv_canny(
   const char *filename,
   pixel_t low_threshold,
-  pixel_t high_threshold 
+  pixel_t high_threshold,
+  double *opencv_time
 ) {
   cv::Mat img_mat, buffer;
   cv::cuda::GpuMat cuda_mat, result;
@@ -131,15 +134,23 @@ pixel_t *opencv_canny(
   img_mat = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
+
     canny_edg = cv::cuda::createCannyEdgeDetector(
       low_threshold, high_threshold, 3, true
     );
 
+
+    *opencv_time = impala_time();
+
     cuda_mat.upload(img_mat);
     canny_edg->detect(cuda_mat, result);
 
+    *opencv_time = impala_time() - *opencv_time;
+
     img_mat = cv::Mat(result);
     mat_list.push_back(img_mat);
+
+    cuda_mat.release();
 
     return img_mat.ptr<pixel_t>(0);
   }
@@ -152,7 +163,8 @@ pixel_t *opencv_canny(
 pixel_t *opencv_canny(
   const char *filename,
   pixel_t low_threshold,
-  pixel_t high_threshold 
+  pixel_t high_threshold,
+  double *opencv_time
 ) {
   cv::Mat img_mat, buffer;
 
@@ -161,8 +173,12 @@ pixel_t *opencv_canny(
   if(img_mat.data != NULL) {
     buffer.create(img_mat.size(), img_mat.type());
 
+    *opencv_time = impala_time();
+
     cv::GaussianBlur(img_mat, buffer, cv::Size(5, 5), 0, 0);
     cv::Canny(buffer, img_mat, low_threshold, high_threshold, 3, true);
+
+    *opencv_time = impala_time() - *opencv_time;
 
     mat_list.push_back(img_mat);
 

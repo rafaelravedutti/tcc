@@ -87,5 +87,5 @@ fn read(buf : Buffer, i : i32) -> f32 {
 
 /* Base-e exponential function */
 fn exp(a : f32) -> (f32) {
-  cpu_intrinsics.exp(a)
+  cpu_intrinsics.expf(a)
 }

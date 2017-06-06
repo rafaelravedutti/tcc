@@ -14,16 +14,18 @@ THORIN_LIB=${THORIN_PATH}/build/lib
 THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
 # OpenCV
-OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs
+OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_cudaimgproc
 
 # Device type (gpu or cpu)
-PLATFORM_TYPE=cpu
+PLATFORM_TYPE=gpu
 
 # Compilation flags
 ifeq ($(PLATFORM_TYPE), cpu)
 	CLANG_FLAGS=-O3 -msse2
+  OPENCV_RUNTIME_FLAGS=
 else
 	CLANG_FLAGS=
+  OPENCV_RUNTIME_FLAGS=-DDEVICE_TYPE_GPU
 endif
 
 # Impala files to link
@@ -38,7 +40,7 @@ utils.ll: utils.c
 	clang -S -emit-llvm $^
 
 opencv_runtime.ll: opencv_runtime.cpp
-	clang++ -S -emit-llvm $^
+	clang++ -S -emit-llvm ${OPENCV_RUNTIME_FLAGS} $^
 
 canny: main.ll utils.ll opencv_runtime.ll ${ANYDSL_PATH}/runtime/build/lib/libruntime.so
 	clang++ ${CLANG_FLAGS} -lm -lOpenCL ${OPENCV_LIBS} -lpthread $^ -o $@

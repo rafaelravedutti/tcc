@@ -4,6 +4,10 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#ifdef DEVICE_TYPE_GPU
+#include <opencv2/cudaimgproc.hpp>
+#endif
+
 static std::list<cv::Mat> mat_list;
 
 typedef double pixel_t;
@@ -113,6 +117,38 @@ pixel_t *opencv_sobel(pixel_t *img, int sx, int sy, int aperture_size, bool disp
   return NULL;
 }
 
+#ifdef DEVICE_TYPE_GPU
+
+pixel_t *opencv_canny(
+  const char *filename,
+  pixel_t low_threshold,
+  pixel_t high_threshold 
+) {
+  cv::Mat img_mat, buffer;
+  cv::cuda::GpuMat cuda_mat, result;
+  cv::Ptr<cv::cuda::CannyEdgeDetector> canny_edg;
+
+  img_mat = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
+
+  if(img_mat.data != NULL) {
+    canny_edg = cv::cuda::createCannyEdgeDetector(
+      low_threshold, high_threshold, 3, true
+    );
+
+    cuda_mat.upload(img_mat);
+    canny_edg->detect(cuda_mat, result);
+
+    img_mat = cv::Mat(result);
+    mat_list.push_back(img_mat);
+
+    return img_mat.ptr<pixel_t>(0);
+  }
+
+  return NULL;
+}
+
+#else
+
 pixel_t *opencv_canny(
   const char *filename,
   pixel_t low_threshold,
@@ -135,6 +171,8 @@ pixel_t *opencv_canny(
 
   return NULL;
 }
+
+#endif
 
 void display_image(pixel_t *img, const char *title, bool wait) {
   cv::Mat img_mat;

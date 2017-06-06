@@ -128,7 +128,7 @@ pixel_t *opencv_canny(
   pixel_t high_threshold,
   double *opencv_time
 ) {
-  cv::Mat img_mat, buffer;
+  cv::Mat img_mat;
   cv::cuda::GpuMat cuda_mat, result;
   cv::Ptr<cv::cuda::Filter> gaussian;
   cv::Ptr<cv::cuda::CannyEdgeDetector> canny_edg;
@@ -150,13 +150,13 @@ pixel_t *opencv_canny(
     gaussian->apply(cuda_mat, result);
     canny_edg->detect(result, cuda_mat);
 
-    *opencv_time = impala_time() - *opencv_time;
-
     img_mat = cv::Mat(cuda_mat);
     mat_list.push_back(img_mat);
 
     cuda_mat.release();
     result.release();
+
+    *opencv_time = impala_time() - *opencv_time;
 
     return img_mat.ptr<pixel_t>(0);
   }

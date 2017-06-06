@@ -1,15 +1,3 @@
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
--------------------------------------
-Gaussian time: 0.03997
-Sobel time: 0.04207
-Non-maximum supression time: 0.03625
-Hysteresis time: 0.05548
--------------------------------------
-OpenCV time: 0.03031
-AnyDSL time: 0.17394
--------------------------------------
-[rafael@rafael-pc canny]$ for i in $(find dataset/test_B4/ -type f); do ./canny $i; done
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17520
 Sobel time: 0.18136
@@ -19,7 +7,6 @@ Hysteresis time: 0.47087
 OpenCV time: 0.16955
 AnyDSL time: 0.98639
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17246
 Sobel time: 0.18359
@@ -29,7 +16,6 @@ Hysteresis time: 0.38629
 OpenCV time: 0.13980
 AnyDSL time: 0.90369
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17454
 Sobel time: 0.18839
@@ -39,7 +25,6 @@ Hysteresis time: 0.51619
 OpenCV time: 0.14257
 AnyDSL time: 1.04228
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16995
 Sobel time: 0.18419
@@ -49,7 +34,6 @@ Hysteresis time: 0.48020
 OpenCV time: 0.15351
 AnyDSL time: 0.99565
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17440
 Sobel time: 0.18741
@@ -59,7 +43,6 @@ Hysteresis time: 0.48776
 OpenCV time: 0.17310
 AnyDSL time: 1.00948
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17429
 Sobel time: 0.17958
@@ -69,7 +52,6 @@ Hysteresis time: 0.23304
 OpenCV time: 0.12273
 AnyDSL time: 0.74623
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17050
 Sobel time: 0.18294
@@ -79,7 +61,6 @@ Hysteresis time: 0.34222
 OpenCV time: 0.15011
 AnyDSL time: 0.85619
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16828
 Sobel time: 0.18576
@@ -89,7 +70,6 @@ Hysteresis time: 0.32730
 OpenCV time: 0.13405
 AnyDSL time: 0.84145
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17190
 Sobel time: 0.18153
@@ -99,7 +79,6 @@ Hysteresis time: 0.42302
 OpenCV time: 0.15992
 AnyDSL time: 0.93789
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17150
 Sobel time: 0.18453
@@ -109,7 +88,6 @@ Hysteresis time: 0.31815
 OpenCV time: 0.13606
 AnyDSL time: 0.83625
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17245
 Sobel time: 0.18185
@@ -119,7 +97,6 @@ Hysteresis time: 0.37763
 OpenCV time: 0.14562
 AnyDSL time: 0.89214
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17158
 Sobel time: 0.17923
@@ -129,7 +106,6 @@ Hysteresis time: 0.35022
 OpenCV time: 0.14100
 AnyDSL time: 0.86065
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17389
 Sobel time: 0.17917
@@ -139,7 +115,6 @@ Hysteresis time: 0.39387
 OpenCV time: 0.15215
 AnyDSL time: 0.90708
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17532
 Sobel time: 0.17551
@@ -149,7 +124,6 @@ Hysteresis time: 0.30705
 OpenCV time: 0.14483
 AnyDSL time: 0.81819
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17120
 Sobel time: 0.18486
@@ -159,7 +133,6 @@ Hysteresis time: 0.39447
 OpenCV time: 0.15200
 AnyDSL time: 0.90964
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17170
 Sobel time: 0.17796
@@ -169,7 +142,6 @@ Hysteresis time: 0.42433
 OpenCV time: 0.15371
 AnyDSL time: 0.93398
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17142
 Sobel time: 0.19323
@@ -179,7 +151,6 @@ Hysteresis time: 0.46998
 OpenCV time: 0.14877
 AnyDSL time: 0.99564
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17031
 Sobel time: 0.18701
@@ -189,7 +160,6 @@ Hysteresis time: 0.34982
 OpenCV time: 0.13941
 AnyDSL time: 0.86661
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17133
 Sobel time: 0.18632
@@ -199,7 +169,6 @@ Hysteresis time: 0.57734
 OpenCV time: 0.16855
 AnyDSL time: 1.09812
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17227
 Sobel time: 0.18391
@@ -209,7 +178,6 @@ Hysteresis time: 0.40081
 OpenCV time: 0.14898
 AnyDSL time: 0.91812
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17502
 Sobel time: 0.18516
@@ -219,7 +187,6 @@ Hysteresis time: 0.53463
 OpenCV time: 0.13882
 AnyDSL time: 1.06046
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17254
 Sobel time: 0.18016
@@ -229,7 +196,6 @@ Hysteresis time: 0.33788
 OpenCV time: 0.14808
 AnyDSL time: 0.85144
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17208
 Sobel time: 0.18291
@@ -239,10 +205,7 @@ Hysteresis time: 0.45699
 OpenCV time: 0.17368
 AnyDSL time: 0.97283
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
-Driver API function cuEventSynchronize() (700) [file /home/rafael/Utilities/anydsl/runtime/src/cuda_platform.cpp, line 205]: CUDA_ERROR_ILLEGAL_ADDRESS: an illegal memory access was encountered
 Aborted (core dumped)
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17484
 Sobel time: 0.19149
@@ -252,7 +215,6 @@ Hysteresis time: 0.70357
 OpenCV time: 0.15887
 AnyDSL time: 1.23330
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17149
 Sobel time: 0.18847
@@ -262,7 +224,6 @@ Hysteresis time: 0.47192
 OpenCV time: 0.16233
 AnyDSL time: 0.99389
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17289
 Sobel time: 0.18196
@@ -272,7 +233,6 @@ Hysteresis time: 0.61448
 OpenCV time: 0.19018
 AnyDSL time: 1.13140
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17212
 Sobel time: 0.17795
@@ -282,7 +242,6 @@ Hysteresis time: 0.48119
 OpenCV time: 0.17021
 AnyDSL time: 0.99496
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17149
 Sobel time: 0.18671
@@ -292,7 +251,6 @@ Hysteresis time: 0.47983
 OpenCV time: 0.16130
 AnyDSL time: 0.99900
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17318
 Sobel time: 0.18132
@@ -302,7 +260,6 @@ Hysteresis time: 0.24923
 OpenCV time: 0.11410
 AnyDSL time: 0.76453
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17349
 Sobel time: 0.18853
@@ -312,9 +269,6 @@ Hysteresis time: 0.76579
 OpenCV time: 0.16659
 AnyDSL time: 1.29107
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
-Segmentation fault (core dumped)
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17120
 Sobel time: 0.18365
@@ -324,7 +278,6 @@ Hysteresis time: 0.28455
 OpenCV time: 0.13494
 AnyDSL time: 0.79933
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17142
 Sobel time: 0.18560
@@ -334,7 +287,6 @@ Hysteresis time: 0.25477
 OpenCV time: 0.13046
 AnyDSL time: 0.77067
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17225
 Sobel time: 0.17768
@@ -344,7 +296,6 @@ Hysteresis time: 0.54400
 OpenCV time: 0.18020
 AnyDSL time: 1.05616
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17154
 Sobel time: 0.18220
@@ -354,7 +305,6 @@ Hysteresis time: 0.29971
 OpenCV time: 0.12385
 AnyDSL time: 0.81222
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17099
 Sobel time: 0.18636
@@ -364,7 +314,6 @@ Hysteresis time: 0.42300
 OpenCV time: 0.15747
 AnyDSL time: 0.94034
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17111
 Sobel time: 0.18368
@@ -374,7 +323,6 @@ Hysteresis time: 0.38450
 OpenCV time: 0.14508
 AnyDSL time: 0.89936
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17041
 Sobel time: 0.18273
@@ -384,7 +332,6 @@ Hysteresis time: 0.62290
 OpenCV time: 0.18882
 AnyDSL time: 1.13827
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17012
 Sobel time: 0.18246
@@ -394,7 +341,6 @@ Hysteresis time: 0.53710
 OpenCV time: 0.17467
 AnyDSL time: 1.04959
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17162
 Sobel time: 0.18174
@@ -404,7 +350,6 @@ Hysteresis time: 0.36830
 OpenCV time: 0.13580
 AnyDSL time: 0.88146
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17212
 Sobel time: 0.18076
@@ -414,7 +359,6 @@ Hysteresis time: 0.51183
 OpenCV time: 0.17028
 AnyDSL time: 1.02560
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17175
 Sobel time: 0.18391
@@ -424,7 +368,6 @@ Hysteresis time: 0.42151
 OpenCV time: 0.15103
 AnyDSL time: 0.93795
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16893
 Sobel time: 0.18103
@@ -434,7 +377,6 @@ Hysteresis time: 0.45138
 OpenCV time: 0.15177
 AnyDSL time: 0.96156
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17402
 Sobel time: 0.18881
@@ -444,10 +386,7 @@ Hysteresis time: 0.78460
 OpenCV time: 0.17516
 AnyDSL time: 1.31162
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
-Driver API function cuEventSynchronize() (700) [file /home/rafael/Utilities/anydsl/runtime/src/cuda_platform.cpp, line 205]: CUDA_ERROR_ILLEGAL_ADDRESS: an illegal memory access was encountered
 Aborted (core dumped)
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16936
 Sobel time: 0.18740
@@ -457,7 +396,6 @@ Hysteresis time: 0.43461
 OpenCV time: 0.15359
 AnyDSL time: 0.95090
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17022
 Sobel time: 0.18640
@@ -467,7 +405,6 @@ Hysteresis time: 0.36393
 OpenCV time: 0.15072
 AnyDSL time: 0.88055
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17181
 Sobel time: 0.18254
@@ -477,7 +414,6 @@ Hysteresis time: 0.45251
 OpenCV time: 0.15504
 AnyDSL time: 0.96858
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17105
 Sobel time: 0.18459
@@ -487,7 +423,6 @@ Hysteresis time: 0.25873
 OpenCV time: 0.11958
 AnyDSL time: 0.77341
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17226
 Sobel time: 0.18441
@@ -497,7 +432,6 @@ Hysteresis time: 0.30773
 OpenCV time: 0.14140
 AnyDSL time: 0.82409
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17214
 Sobel time: 0.18571
@@ -507,9 +441,6 @@ Hysteresis time: 0.61902
 OpenCV time: 0.18661
 AnyDSL time: 1.13917
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
-Segmentation fault (core dumped)
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17381
 Sobel time: 0.19069
@@ -519,7 +450,6 @@ Hysteresis time: 0.71188
 OpenCV time: 0.16136
 AnyDSL time: 1.23907
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17220
 Sobel time: 0.18397
@@ -529,7 +459,6 @@ Hysteresis time: 0.45101
 OpenCV time: 0.15891
 AnyDSL time: 0.96793
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16882
 Sobel time: 0.18177
@@ -539,7 +468,6 @@ Hysteresis time: 0.60696
 OpenCV time: 0.18830
 AnyDSL time: 1.11860
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17156
 Sobel time: 0.17860
@@ -549,7 +477,6 @@ Hysteresis time: 0.59191
 OpenCV time: 0.19307
 AnyDSL time: 1.10279
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17232
 Sobel time: 0.18910
@@ -559,7 +486,6 @@ Hysteresis time: 0.28446
 OpenCV time: 0.13599
 AnyDSL time: 0.80779
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17327
 Sobel time: 0.18966
@@ -569,7 +495,6 @@ Hysteresis time: 0.64396
 OpenCV time: 0.15744
 AnyDSL time: 1.17147
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17425
 Sobel time: 0.17902
@@ -579,7 +504,6 @@ Hysteresis time: 0.30879
 OpenCV time: 0.12999
 AnyDSL time: 0.82187
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17338
 Sobel time: 0.18112
@@ -589,7 +513,6 @@ Hysteresis time: 0.52727
 OpenCV time: 0.16489
 AnyDSL time: 1.04257
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17307
 Sobel time: 0.18521
@@ -599,7 +522,6 @@ Hysteresis time: 0.48852
 OpenCV time: 0.17041
 AnyDSL time: 1.00761
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16813
 Sobel time: 0.18367
@@ -609,7 +531,6 @@ Hysteresis time: 0.60332
 OpenCV time: 0.19035
 AnyDSL time: 1.11769
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17706
 Sobel time: 0.18489
@@ -619,7 +540,6 @@ Hysteresis time: 0.40767
 OpenCV time: 0.15975
 AnyDSL time: 0.93183
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17247
 Sobel time: 0.18412
@@ -629,7 +549,6 @@ Hysteresis time: 0.42304
 OpenCV time: 0.15818
 AnyDSL time: 0.94119
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17259
 Sobel time: 0.17996
@@ -639,7 +558,6 @@ Hysteresis time: 0.32289
 OpenCV time: 0.13820
 AnyDSL time: 0.83560
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17169
 Sobel time: 0.18354
@@ -649,7 +567,6 @@ Hysteresis time: 0.28463
 OpenCV time: 0.12913
 AnyDSL time: 0.79977
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17430
 Sobel time: 0.18398
@@ -659,7 +576,6 @@ Hysteresis time: 0.43564
 OpenCV time: 0.15485
 AnyDSL time: 0.95736
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17379
 Sobel time: 0.17889
@@ -669,7 +585,6 @@ Hysteresis time: 0.78743
 OpenCV time: 0.18538
 AnyDSL time: 1.30167
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17129
 Sobel time: 0.18730
@@ -679,7 +594,6 @@ Hysteresis time: 0.52417
 OpenCV time: 0.15766
 AnyDSL time: 1.04276
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17290
 Sobel time: 0.17491
@@ -689,7 +603,6 @@ Hysteresis time: 0.44301
 OpenCV time: 0.15985
 AnyDSL time: 0.95174
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17187
 Sobel time: 0.17731
@@ -699,7 +612,6 @@ Hysteresis time: 0.33742
 OpenCV time: 0.13454
 AnyDSL time: 0.84658
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17172
 Sobel time: 0.18599
@@ -709,7 +621,6 @@ Hysteresis time: 0.41352
 OpenCV time: 0.15857
 AnyDSL time: 0.93179
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17636
 Sobel time: 0.18322
@@ -719,7 +630,6 @@ Hysteresis time: 0.67378
 OpenCV time: 0.15856
 AnyDSL time: 1.19544
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.18203
 Sobel time: 0.19108
@@ -729,7 +639,6 @@ Hysteresis time: 0.45902
 OpenCV time: 0.14611
 AnyDSL time: 1.00260
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17244
 Sobel time: 0.18502
@@ -739,7 +648,6 @@ Hysteresis time: 0.32411
 OpenCV time: 0.14771
 AnyDSL time: 0.84144
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17249
 Sobel time: 0.18632
@@ -749,7 +657,6 @@ Hysteresis time: 0.60563
 OpenCV time: 0.17453
 AnyDSL time: 1.12584
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17070
 Sobel time: 0.18321
@@ -759,7 +666,6 @@ Hysteresis time: 0.52604
 OpenCV time: 0.16484
 AnyDSL time: 1.04157
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17055
 Sobel time: 0.18778
@@ -769,7 +675,6 @@ Hysteresis time: 0.27823
 OpenCV time: 0.13386
 AnyDSL time: 0.79664
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17490
 Sobel time: 0.18990
@@ -779,7 +684,6 @@ Hysteresis time: 0.67655
 OpenCV time: 0.15711
 AnyDSL time: 1.20367
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.18016
 Sobel time: 0.18448
@@ -789,7 +693,6 @@ Hysteresis time: 0.69501
 OpenCV time: 0.16086
 AnyDSL time: 1.22151
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17627
 Sobel time: 0.18121
@@ -799,7 +702,6 @@ Hysteresis time: 0.57370
 OpenCV time: 0.15559
 AnyDSL time: 1.08990
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17201
 Sobel time: 0.18667
@@ -809,7 +711,6 @@ Hysteresis time: 0.72660
 OpenCV time: 0.19247
 AnyDSL time: 1.24813
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17471
 Sobel time: 0.18027
@@ -819,7 +720,6 @@ Hysteresis time: 0.45756
 OpenCV time: 0.15161
 AnyDSL time: 0.97271
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17083
 Sobel time: 0.18569
@@ -829,7 +729,6 @@ Hysteresis time: 0.24989
 OpenCV time: 0.19680
 AnyDSL time: 0.76795
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17113
 Sobel time: 0.18406
@@ -839,7 +738,6 @@ Hysteresis time: 0.44409
 OpenCV time: 0.14034
 AnyDSL time: 0.96565
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16978
 Sobel time: 0.18678
@@ -849,7 +747,6 @@ Hysteresis time: 0.31457
 OpenCV time: 0.13954
 AnyDSL time: 0.83081
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17963
 Sobel time: 0.18282
@@ -859,7 +756,6 @@ Hysteresis time: 0.45583
 OpenCV time: 0.13364
 AnyDSL time: 0.98264
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17462
 Sobel time: 0.18837
@@ -869,7 +765,6 @@ Hysteresis time: 0.22547
 OpenCV time: 0.12425
 AnyDSL time: 0.74871
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.16902
 Sobel time: 0.18777
@@ -879,7 +774,6 @@ Hysteresis time: 0.34775
 OpenCV time: 0.14662
 AnyDSL time: 0.86513
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17047
 Sobel time: 0.17768
@@ -889,7 +783,6 @@ Hysteresis time: 0.32585
 OpenCV time: 0.13804
 AnyDSL time: 0.83519
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17410
 Sobel time: 0.18086
@@ -899,7 +792,6 @@ Hysteresis time: 0.38441
 OpenCV time: 0.15158
 AnyDSL time: 0.89928
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17233
 Sobel time: 0.18229
@@ -909,7 +801,6 @@ Hysteresis time: 0.46794
 OpenCV time: 0.16310
 AnyDSL time: 0.98261
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17250
 Sobel time: 0.17809
@@ -919,7 +810,6 @@ Hysteresis time: 0.42402
 OpenCV time: 0.12696
 AnyDSL time: 0.93493
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17459
 Sobel time: 0.19008
@@ -929,7 +819,6 @@ Hysteresis time: 0.70036
 OpenCV time: 0.16657
 AnyDSL time: 1.22850
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17340
 Sobel time: 0.18315
@@ -939,7 +828,6 @@ Hysteresis time: 0.29486
 OpenCV time: 0.13185
 AnyDSL time: 0.80921
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17072
 Sobel time: 0.17851
@@ -949,7 +837,6 @@ Hysteresis time: 0.43583
 OpenCV time: 0.16594
 AnyDSL time: 0.94555
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17397
 Sobel time: 0.18404
@@ -959,7 +846,6 @@ Hysteresis time: 0.32216
 OpenCV time: 0.12742
 AnyDSL time: 0.83943
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.18522
 Sobel time: 0.19188
@@ -969,7 +855,6 @@ Hysteresis time: 0.32805
 OpenCV time: 0.13714
 AnyDSL time: 0.86730
 -------------------------------------
-./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
 -------------------------------------
 Gaussian time: 0.17404
 Sobel time: 0.18932

@@ -134,11 +134,9 @@ pixel_t *opencv_canny(
   img_mat = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
-
     canny_edg = cv::cuda::createCannyEdgeDetector(
       low_threshold, high_threshold, 3, true
     );
-
 
     *opencv_time = impala_time();
 

@@ -1,9 +1,9 @@
 fn grid_config(img : image_struct) -> (i32, i32, i32) {
-  (img.width - (img.width % 256), img.height, 1)
+  (img.width - (img.width % 16), img.height, 1)
 }
 
 fn block_config(img : image_struct) -> (i32, i32, i32) {
-  (256, 4, 1)
+  (16, 1, 1)
 }
 
 /* Iterates over an image on GPU architectures */
@@ -61,12 +61,12 @@ fn stencil_iterate(
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
   let block = block_config(img);
-  let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
+  let size = (img.width + 2) * (img.height + 2) * sizeof[f32]();
   let offset = img.width * 2 + 5;
 
   let arr_in = acc.alloc(size);
   let arr_out = acc.alloc(size);
-  let mask = acc.alloc(filter.size * sizeof[f64]());
+  let mask = acc.alloc(filter.size * sizeof[f32]());
 
   if buffer_to_data {
     copy(img.buffer, arr_in, size);
@@ -74,7 +74,7 @@ fn stencil_iterate(
     copy(img.data, arr_in, size);
   }
 
-  copy(filter.data, mask, filter.size * sizeof[f64]());
+  copy(filter.data, mask, filter.size * sizeof[f32]());
 
   with acc.exec(grid, block) @{
     let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
@@ -102,7 +102,7 @@ fn gradient_iterate(
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
   let block = block_config(img);
-  let size = (img.width + 2) * (img.height + 2) * sizeof[f64]();
+  let size = (img.width + 2) * (img.height + 2) * sizeof[f32]();
   let offset = img.width * 2 + 5;
 
   let arr_in = acc.alloc(size);
@@ -145,14 +145,14 @@ fn gradient_iterate(
   release(arr_out);
 }
 
-fn read(buf: Buffer, i: i32) -> f64 {
-  bitcast[&[1][f64]](buf.data)(i)
+fn read(buf: Buffer, i: i32) -> f32 {
+  bitcast[&[1][f32]](buf.data)(i)
 }
 
-fn write(buf: Buffer, i: i32, v: f64) -> () {
-  bitcast[&mut[1][f64]](buf.data)(i) = v
+fn write(buf: Buffer, i: i32, v: f32) -> () {
+  bitcast[&mut[1][f32]](buf.data)(i) = v
 }
 
-fn exp(a : f64) -> f64 {
-  cuda_intrinsics.exp(a)
+fn exp(a : f32) -> f32 {
+  cuda_intrinsics.expf(a)
 }

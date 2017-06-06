@@ -11,7 +11,7 @@
 
 static std::list<cv::Mat> mat_list;
 
-typedef double pixel_t;
+typedef float pixel_t;
 
 extern "C" {
   pixel_t *load_image(const char *path, int *width, int *height);
@@ -45,7 +45,7 @@ pixel_t *load_image(const char *path, int *width, int *height) {
   img_mat = cv::imread(path, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
-    img_mat.convertTo(img_mat, CV_64FC1);
+    img_mat.convertTo(img_mat, CV_32FC1);
 
     *width = img_mat.cols;
     *height = img_mat.rows;
@@ -136,8 +136,6 @@ pixel_t *opencv_canny(
   img_mat = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
-    *opencv_time = impala_time();
-
     gaussian = cv::cuda::createGaussianFilter(
       img_mat.type(), img_mat.type(), cv::Size(5, 5), 1.1, 1.1
     );
@@ -145,6 +143,8 @@ pixel_t *opencv_canny(
     canny_edg = cv::cuda::createCannyEdgeDetector(
       low_threshold, high_threshold, 3, true
     );
+
+    *opencv_time = impala_time();
 
     cuda_mat.upload(img_mat);
     gaussian->apply(cuda_mat, result);

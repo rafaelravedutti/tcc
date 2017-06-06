@@ -5,6 +5,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #ifdef DEVICE_TYPE_GPU
+#include <opencv2/cudafilters.hpp>
 #include <opencv2/cudaimgproc.hpp>
 #endif
 
@@ -129,26 +130,33 @@ pixel_t *opencv_canny(
 ) {
   cv::Mat img_mat, buffer;
   cv::cuda::GpuMat cuda_mat, result;
+  cv::Ptr<cv::cuda::Filter> gaussian;
   cv::Ptr<cv::cuda::CannyEdgeDetector> canny_edg;
 
   img_mat = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
 
   if(img_mat.data != NULL) {
+    *opencv_time = impala_time();
+
+    gaussian = cv::cuda::createGaussianFilter(
+      img_mat.type(), img_mat.type(), cv::Size(5, 5), 1.1, 1.1
+    );
+
     canny_edg = cv::cuda::createCannyEdgeDetector(
       low_threshold, high_threshold, 3, true
     );
 
-    *opencv_time = impala_time();
-
     cuda_mat.upload(img_mat);
-    canny_edg->detect(cuda_mat, result);
+    gaussian->apply(cuda_mat, result);
+    canny_edg->detect(result, cuda_mat);
 
     *opencv_time = impala_time() - *opencv_time;
 
-    img_mat = cv::Mat(result);
+    img_mat = cv::Mat(cuda_mat);
     mat_list.push_back(img_mat);
 
     cuda_mat.release();
+    result.release();
 
     return img_mat.ptr<pixel_t>(0);
   }

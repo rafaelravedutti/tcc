@@ -1,9 +1,9 @@
 fn grid_config(img : image_struct) -> (i32, i32, i32) {
-  (img.width, img.height, 1)
+  (img.width - (img.width % 256), img.height, 1)
 }
 
 fn block_config(img : image_struct) -> (i32, i32, i32) {
-  (16 - (img.width % 16), 1, 1)
+  (256, 4, 1)
 }
 
 /* Iterates over an image on GPU architectures */

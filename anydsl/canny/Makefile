@@ -14,7 +14,7 @@ THORIN_LIB=${THORIN_PATH}/build/lib
 THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
 # OpenCV
-OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_cudaimgproc
+OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_cudaimgproc -lopencv_cudafilters
 
 # Device type (gpu or cpu)
 PLATFORM_TYPE=gpu
@@ -24,7 +24,7 @@ ifeq ($(PLATFORM_TYPE), cpu)
 	CLANG_FLAGS=-O3 -msse2
   OPENCV_RUNTIME_FLAGS=
 else
-	CLANG_FLAGS=
+	CLANG_FLAGS=-O3
   OPENCV_RUNTIME_FLAGS=-DDEVICE_TYPE_GPU
 endif
 
@@ -40,7 +40,7 @@ utils.ll: utils.c
 	clang -S -emit-llvm $^
 
 opencv_runtime.ll: opencv_runtime.cpp
-	clang++ -S -emit-llvm ${OPENCV_RUNTIME_FLAGS} $^
+	clang++ -O3 -S -emit-llvm ${OPENCV_RUNTIME_FLAGS} $^
 
 canny: main.ll utils.ll opencv_runtime.ll ${ANYDSL_PATH}/runtime/build/lib/libruntime.so
 	clang++ ${CLANG_FLAGS} -lm -lOpenCL ${OPENCV_LIBS} -lpthread $^ -o $@

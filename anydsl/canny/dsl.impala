@@ -28,7 +28,7 @@ extern "C" {
     img : &mut[f64], sx : i32, sy : i32, aperture_size : i32, display : bool
   ) -> (&mut[f64]);
   fn opencv_canny(
-    filename : &[u8], low_threshold : f64, high_threshold: f64
+    filename : &[u8], low_threshold : f64, high_threshold: f64, opencv_time : &f64
   ) -> (&mut[f64]);
 
   /* OpenCV utils */

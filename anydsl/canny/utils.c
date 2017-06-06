@@ -81,7 +81,6 @@ void impala_print(const char *string) {
 }
 
 /* Get current time */
-/* Obtém do tempo atual os segundos e milisegundos */
 double impala_time() {
   struct timeval tp;
   gettimeofday(&tp, NULL);

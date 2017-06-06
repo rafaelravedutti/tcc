@@ -5,8 +5,6 @@
 /* Stack length */
 #define STACK_LENGTH    (2 * 2073600)
 
-typedef int pixel_t;
-
 /* Stack */
 static int stack[STACK_LENGTH];
 static int stack_size = 0;
@@ -17,74 +15,33 @@ void display_usage(const char *command) {
   exit(-1);
 }
 
-/* Double matrix allocation */
-double *allocate_double_matrix(int width, int height) {
-  if(width > 0 && height > 0) {
-    return (double *) malloc(width * height * sizeof(double));
-  }
-
-  return NULL;
-}
-
-/* Double matrix deallocation */
-void free_double_matrix(double *data) {
-  free(data);
-}
-
-/* Image allocation */
-pixel_t *allocate_uchar_matrix(int width, int height) {
-  if(width > 0 && height > 0) {
-    return (pixel_t *) malloc(width * height * sizeof(pixel_t));
-  }
-
-  return NULL;
-}
-
-/* Image deallocation */
-void free_uchar_matrix(pixel_t *data) {
-  free(data);
-}
-
-/* Synthetical image printing */
-void print_uchar_matrix(pixel_t *data, int width, int height) {
-  unsigned int i, j;
-
-  for(j = 0; j < height; ++j) {
-    for(i = 0; i < width; ++i) {
-      fprintf(stdout, "%d ", data[j * width + i]);
-    }
-
-    fprintf(stdout, "\n");;
-  }
-
-  fprintf(stdout, "\n");
-}
-
-/* Integer printing */
-void print_integer(int value) {
-  fprintf(stdout, "%d\n", value);
-}
-
-/* Double printing */
-void print_f64(double value) {
-  fprintf(stdout, "%f\n", value);
-}
-
-/* Angle test printing */
-void print_angle_test(double angle, int result) {
-  fprintf(stdout, "ROUND(%.6f) = %d\n", angle, result);
-}
-
-/* Regular printing */
-void impala_print(const char *string) {
-  fprintf(stdout, "%s\n", string);
-}
-
 /* Get current time */
 double impala_time() {
   struct timeval tp;
   gettimeofday(&tp, NULL);
   return ((double)(tp.tv_sec + tp.tv_usec / 1000000.0));
+}
+
+/* Initialize stack */
+void stack_init() {
+  stack[0] = 0;
+  stack[1] = 0;
+  stack_size = 2;
+}
+
+/* Conditional push */
+void push_conditional(int x, int y, int condition) {
+  stack[stack_size] = x;
+  stack[stack_size + 1] = y;
+  stack_size += condition * 2;
+}
+
+/* Pop */
+int pop(int *x, int *y) {
+  *x = stack[stack_size - 2];
+  *y = stack[stack_size - 1];
+  stack_size -= (stack_size > 2) * 2;
+  return stack_size > 2;
 }
 
 /* Show statistics */
@@ -125,26 +82,4 @@ void show_time_statistics(double first_time, double second_time) {
                   "AnyDSL time: %.5f\n"
                   "-------------------------------------\n",
                   first_time, second_time);
-}
-
-/* Initialize stack */
-void stack_init() {
-  stack[0] = 0;
-  stack[1] = 0;
-  stack_size = 2;
-}
-
-/* Conditional push */
-void push_conditional(int x, int y, int condition) {
-  stack[stack_size] = x;
-  stack[stack_size + 1] = y;
-  stack_size += condition * 2;
-}
-
-/* Pop */
-int pop(int *x, int *y) {
-  *x = stack[stack_size - 2];
-  *y = stack[stack_size - 1];
-  stack_size -= (stack_size > 2) * 2;
-  return stack_size > 2;
 }

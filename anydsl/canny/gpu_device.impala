@@ -1,9 +1,17 @@
 fn grid_config(img : image_struct) -> (i32, i32, i32) {
-  (img.width - (img.width % 16), img.height, 1)
+  (256, 256, 1)
 }
 
 fn block_config(img : image_struct) -> (i32, i32, i32) {
-  (16, 1, 1)
+  (32, 16, 1)
+}
+
+fn read(buf: Buffer, i: i32) -> f32 {
+  bitcast[&[1][f32]](buf.data)(i)
+}
+
+fn write(buf: Buffer, i: i32, v: f32) -> () {
+  bitcast[&mut[1][f32]](buf.data)(i) = v
 }
 
 /* Iterates over an image on GPU architectures */
@@ -80,7 +88,9 @@ fn stencil_iterate(
     let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    body(x, y, arr_in, arr_out, mask);
+    if x > offset && x < img.width + offset && y > 1 && y < img.height - 2 {
+      body(x, y, arr_in, arr_out, mask);
+    }
   }
 
   if buffer_to_data {
@@ -125,7 +135,9 @@ fn gradient_iterate(
     let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    body(x, y, arr_in, arr_out, dx, dy);
+    if x > offset && x < img.width + offset && y > 1 && y < img.height - 2 {
+      body(x, y, arr_in, arr_out, dx, dy);
+    }
   }
 
   if buffer_to_data {
@@ -143,14 +155,6 @@ fn gradient_iterate(
   release(dy);
   release(arr_in);
   release(arr_out);
-}
-
-fn read(buf: Buffer, i: i32) -> f32 {
-  bitcast[&[1][f32]](buf.data)(i)
-}
-
-fn write(buf: Buffer, i: i32, v: f32) -> () {
-  bitcast[&mut[1][f32]](buf.data)(i) = v
 }
 
 fn exp(a : f32) -> f32 {

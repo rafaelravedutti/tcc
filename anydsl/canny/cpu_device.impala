@@ -4,9 +4,28 @@ fn fake_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
   body(0, 0);
 }
 
+/* Cache size */
+fn get_cpu_cache_size() -> int {
+  3072 * 1024
+}
+
+/* Stencil iterate block size */
+fn get_default_iterate_block_size() -> int {
+  16
+}
+
+/* Stencil iterate block size */
+fn get_stencil_iterate_block_size() -> int {
+  20
+}
+
+/* Sobel iterate block size */
+fn get_gradient_iterate_block_size() -> int {
+  4
+}
+
 /* Iterate over image on CPU architectures */
-fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
-  let block_size = 6; /* Pixels per block */
+fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int) -> ()) -> () {
   let offset = img.width * 2 + 5;
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
@@ -35,6 +54,14 @@ fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
   }
 }
 
+fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
+  let block_size = get_default_iterate_block_size();
+
+  for x, y in block_iterate(img, block_size) @{
+    body(x, y);
+  }
+}
+
 fn stencil_iterate(
   img : image_struct,
   filter : filter_struct,
@@ -51,7 +78,7 @@ fn stencil_iterate(
     arr_out = img.buffer;
   }
 
-  for x, y in serial_iterate(img) @{
+  for x, y in block_iterate(img, get_stencil_iterate_block_size()) @{
     body(x, y, arr_in, arr_out, filter.data);
   }
 }
@@ -72,7 +99,7 @@ fn gradient_iterate(
     arr_out = img.buffer;
   }
 
-  for x, y in serial_iterate(img) @{
+  for x, y in block_iterate(img, get_gradient_iterate_block_size()) @{
     body(x, y, arr_in, arr_out, img.dx, img.dy);
   }
 }

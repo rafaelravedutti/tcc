@@ -1,17 +1,9 @@
 # AnyDSL
-ANYDSL_PATH=/home/rafael/Utilities/anydsl
+ANYDSL_PATH=/home/rafael/Utilities/new_anydsl/anydsl
 
 # Impala
 IMPALA_PATH=${ANYDSL_PATH}/impala
 IMPALA_BIN=${IMPALA_PATH}/build/bin
-
-# Thorin
-THORIN_PATH=${ANYDSL_PATH}/thorin
-THORIN_RUNTIME=${THORIN_PATH}/runtime
-THORIN_SRC=${THORIN_PATH}/src
-THORIN_COMMON=${THORIN_RUNTIME}/runtime.cpp
-THORIN_LIB=${THORIN_PATH}/build/lib
-THORIN_FLAGS=-L${THORIN_LIB} -lthorin -lthorin_runtime -lpthread
 
 # OpenCV
 OPENCV_LIBS=-lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_cudaimgproc -lopencv_cudafilters

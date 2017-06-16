@@ -85,11 +85,11 @@ fn stencil_iterate(
   copy(filter.data, mask, filter.size * sizeof[f32]());
 
   with acc.exec(grid, block) @{
-    let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
+    let x = acc.bidx() * acc.bdimx() + acc.tidx();
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    if x > offset && x < img.width + offset && y > 1 && y < img.height - 2 {
-      body(x, y, arr_in, arr_out, mask);
+    if x > 1 && x < img.width - 2 && y > 1 && y < img.height - 2 @{
+      body(x + offset, y, arr_in, arr_out, mask);
     }
   }
 
@@ -132,11 +132,11 @@ fn gradient_iterate(
   }
 
   with acc.exec(grid, block) @{
-    let x = acc.bidx() * acc.bdimx() + acc.tidx() + offset;
+    let x = acc.bidx() * acc.bdimx() + acc.tidx();
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    if x > offset && x < img.width + offset && y > 1 && y < img.height - 2 {
-      body(x, y, arr_in, arr_out, dx, dy);
+    if x > 1 && x < img.width - 2 && y > 1 && y < img.height - 2 @{
+      body(x + offset, y, arr_in, arr_out, dx, dy);
     }
   }
 

@@ -13,7 +13,7 @@ PLATFORM_TYPE=gpu
 
 # Compilation flags
 ifeq ($(PLATFORM_TYPE), cpu)
-	CLANG_FLAGS=-O3 -msse2
+	CLANG_FLAGS=-O3
   OPENCV_RUNTIME_FLAGS=
 else
 	CLANG_FLAGS=-O3

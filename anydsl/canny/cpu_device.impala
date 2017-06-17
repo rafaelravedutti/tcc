@@ -27,6 +27,9 @@ fn get_gradient_iterate_block_size() -> int {
 /* Allocate image on device */
 fn alloc_gpu_image(img : image_struct) -> Buffer {
   /* Does nothing */
+  let mut tmp : Buffer;
+  tmp.device = 0;
+  tmp
 }
 
 /* Upload image */
@@ -55,7 +58,7 @@ fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int) -> ()
   for i in step_range(0, img.height - (block_size + 1), block_size) {
     for j in step_range(0, img.width - (block_size + 1), block_size) {
       for k in range(0, block_size - 1) {
-        for l in range(0, block_size - 1) @{
+        for l in vectorize(8, 4, 0, block_size - 1) @{
           let x = j + l + offset;
           let y = i + k;
 
@@ -111,6 +114,7 @@ fn gradient_iterate(
   img : image_struct,
   buffer_to_data : bool,
   copy_magnitudes : bool,
+  load_image : bool,
   body: fn(int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
   let mut arr_in : Buffer;
   let mut arr_out : Buffer;

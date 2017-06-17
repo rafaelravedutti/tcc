@@ -144,9 +144,10 @@ pixel_t *opencv_canny(
       low_threshold, high_threshold, 3, true
     );
 
+    cuda_mat.upload(img_mat);
+
     *opencv_time = impala_time();
 
-    cuda_mat.upload(img_mat);
     gaussian->apply(cuda_mat, result);
     canny_edg->detect(result, cuda_mat);
 

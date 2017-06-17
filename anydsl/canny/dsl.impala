@@ -64,7 +64,6 @@ fn image(filename : &[u8]) -> image_struct {
   let mut res : image_struct;     /* Image structure to store the image */
   let pwidth = &mut res.width;    /* Pointer to width */
   let pheight = &mut res.height;  /* Pointer to height */
-  let acc = cuda_accelerator(0);
 
   /* Loads image using OpenCV */
   res.image = load_image(filename, pwidth, pheight);

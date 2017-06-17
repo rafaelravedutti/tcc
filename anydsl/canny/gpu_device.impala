@@ -1,5 +1,7 @@
 fn grid_config(img : image_struct) -> (i32, i32, i32) {
-  (img.width, img.height, 1)
+  ( img.width + (128 - img.width % 128),
+    img.height + (4 - img.height % 4),
+    1 )
 }
 
 fn block_config(img : image_struct) -> (i32, i32, i32) {
@@ -30,7 +32,7 @@ fn fake_iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
 
 /* Serial iterate for use in case of data dependency issues */
 fn serial_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
-  let block_size = 20; /* Pixels per block */
+  let block_size = 7; /* Pixels per block */
   let offset = img.width * 2 + 5;
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
@@ -65,21 +67,21 @@ fn stencil_iterate(
   filter : filter_struct,
   buffer_to_data : bool,
   body: fn(int, int, Buffer, Buffer, Buffer) -> ()) -> () {
-
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
   let block = block_config(img);
-  let size = (img.width + 2) * (img.height + 2) * sizeof[f32]();
   let offset = img.width * 2 + 5;
 
-  let arr_in = acc.alloc(size);
-  let arr_out = acc.alloc(size);
+  let mut arr_in : Buffer;
+  let mut arr_out : Buffer;
   let mask = acc.alloc(filter.size * sizeof[f32]());
 
   if buffer_to_data {
-    copy(img.buffer, arr_in, size);
+    arr_in = img.gpu_buffer;
+    arr_out = img.gpu_data;
   } else {
-    copy(img.data, arr_in, size);
+    arr_in = img.gpu_data;
+    arr_out = img.gpu_buffer;
   }
 
   copy(filter.data, mask, filter.size * sizeof[f32]());
@@ -92,69 +94,50 @@ fn stencil_iterate(
       body(x + offset, y, arr_in, arr_out, mask);
     }
   }
-
-  if buffer_to_data {
-    copy(arr_out, img.data, size);
-  } else {
-    copy(arr_out, img.buffer, size);
-  }
-
-  release(arr_in);
-  release(arr_out);
 }
 
 fn gradient_iterate(
   img : image_struct,
   buffer_to_data : bool,
   copy_magnitudes : bool,
+  load_image : bool,
   body: fn(int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
-
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
   let block = block_config(img);
-  let size = (img.width + 2) * (img.height + 2) * sizeof[f32]();
   let offset = img.width * 2 + 5;
 
-  let arr_in = acc.alloc(size);
-  let arr_out = acc.alloc(size);
-  let dx = acc.alloc(size);
-  let dy = acc.alloc(size);
+  let mut arr_in : Buffer;
+  let mut arr_out : Buffer;
 
   if buffer_to_data {
-    copy(img.buffer, arr_in, size);
+    arr_in = img.gpu_buffer;
+    arr_out = img.gpu_data;
   } else {
-    copy(img.data, arr_in, size);
+    arr_in = img.gpu_data;
+    arr_out = img.gpu_buffer;
   }
 
-  if copy_magnitudes {
-    copy(img.dx, dx, size);
-    copy(img.dy, dy, size);
-  }
 
   with acc.exec(grid, block) @{
     let x = acc.bidx() * acc.bdimx() + acc.tidx();
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
     if x > 1 && x < img.width - 2 && y > 1 && y < img.height - 2 @{
-      body(x + offset, y, arr_in, arr_out, dx, dy);
+      body(x + offset, y, arr_in, arr_out, img.gpu_dx, img.gpu_dy);
     }
   }
 
-  if buffer_to_data {
-    copy(arr_out, img.data, size);
-  } else {
-    copy(arr_out, img.buffer, size);
+  if load_image {
+    copy(arr_out, img.data, (img.width + 4) * (img.height + 4) * sizeof[f32]());
   }
+}
 
-  if !copy_magnitudes {
-    copy(dx, img.dx, size);
-    copy(dy, img.dy, size);
-  }
-
-  release(dx);
-  release(dy);
-  release(arr_in);
-  release(arr_out);
+fn release_image_from_device(img : image_struct) -> () {
+  release(img.gpu_data);
+  release(img.gpu_buffer);
+  release(img.gpu_dx);
+  release(img.gpu_dy);
 }
 
 fn exp(a : f32) -> f32 {

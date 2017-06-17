@@ -1,12 +1,17 @@
 /* Image data structure */
 struct image_struct {
   image : &mut[f32],          /* Image data */
+  width : i32,                /* Image width */
+  height : i32,               /* Image height */
   data: Buffer,               /* Data with increased dimensions */
   buffer: Buffer,             /* Buffer with increased dimensions */
   dx : Buffer,                /* Gx matrix */
   dy : Buffer,                /* Gy matrix */
-  width : i32,                /* Image width */
-  height : i32                /* Image height */
+  gpu_data : Buffer,          /* Data at GPU */
+  gpu_buffer : Buffer,        /* Buffer at GPU */
+  gpu_dx : Buffer,            /* Gx matrix at GPU */
+  gpu_dy : Buffer,            /* Gy matrix at GPU */
+  offsets : Buffer            /* Offsets at GPU */
 };
 
 /* Filter data structure */
@@ -59,6 +64,7 @@ fn image(filename : &[u8]) -> image_struct {
   let mut res : image_struct;     /* Image structure to store the image */
   let pwidth = &mut res.width;    /* Pointer to width */
   let pheight = &mut res.height;  /* Pointer to height */
+  let acc = cuda_accelerator(0);
 
   /* Loads image using OpenCV */
   res.image = load_image(filename, pwidth, pheight);
@@ -76,6 +82,26 @@ fn image(filename : &[u8]) -> image_struct {
   /* Copy image content to data */
   copy_image_to_data(res.image, res);
 
+  /* GPU */
+  res.gpu_data = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
+  res.gpu_buffer = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
+  res.gpu_dx = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
+  res.gpu_dy = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
+  res.offsets = acc.alloc(14 * sizeof[f32]());
+
+  /* Offsets for the angles */
+  let offsets = [ 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 
+                  1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f    ];
+
+  let offsets_cpu = alloc_cpu(14 * sizeof[f32]());
+
+  for off in range(0, 13) {
+    write(offsets_cpu, off, offsets(off));
+  }
+
+  copy(offsets_cpu, res.offsets, 14 * sizeof[f32]());
+  copy(res.data, res.gpu_data, (res.width + 4) * (res.height + 4) * sizeof[f32]());
+
   for x, y in fake_iterate(res) {
     /* Only to compile cuda kernels */
   }
@@ -85,6 +111,9 @@ fn image(filename : &[u8]) -> image_struct {
 
 /* Destroys image structure to free memory space */
 fn destroy_image(img : image_struct) -> () {
+  /* Release image data from device */
+  release_image_from_device(img);
+
   /* Free buffer and directions pointers */
   release(img.data);
   release(img.buffer);
@@ -237,7 +266,7 @@ fn gaussian_blur(img : image_struct) -> () {
 
 /* Sobel filter */
 fn sobel(img : image_struct) -> () {
-  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, false, false) {
+  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, false, false, false) {
     /* dx(x,y) = 0.0f */
     write(dx, y * img.width + x, 0.0f);
 
@@ -346,13 +375,11 @@ fn non_maximum_suppression(
   low_threshold : f32,
   high_threshold : f32
 ) -> () {
-  /* Offsets for the angles */
-  let offsets = [[1, 1], [-1, 1], [0, 1], [0, 1], [1, 0], [1, 0], [1, 0]];
-
   /* Go through the image */
-  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, true, true) {
-    let xs = read(dx, y * img.width + x) as i32;
-    let ys = read(dy, y * img.width + x) as i32;
+  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, true, true, true) {
+    let pos = y * img.width + x;
+    let xs = read(dx, pos) as i32;
+    let ys = read(dy, pos) as i32;
     let mx = abs(xs);
     let my = abs(ys) << 15;
 
@@ -364,17 +391,17 @@ fn non_maximum_suppression(
     let cond3 = (xs ^ ys < 0) as i32;
 
     let index = (cond1 << 2) + (cond2 << 1) + cond3;
-    let nb1_x = x + offsets(index)(0);    /* First neighboor x coordinate */
-    let nb1_y = y + offsets(index)(1);    /* First neighboor y coordinate */
-    let nb2_x = x - offsets(index)(0);    /* Second neighboor x coordinate */
-    let nb2_y = y - offsets(index)(1);    /* Second neighboor y coordinate */
+    let nb1_x = x + (read(img.offsets, index * 2) as i32);
+    let nb1_y = y + (read(img.offsets, index * 2 + 1) as i32);
+    let nb2_x = x - (read(img.offsets, index * 2) as i32);
+    let nb2_y = y - (read(img.offsets, index * 2 + 1) as i32); 
 
     let nb1_cond = (
-      read(arr_in, y * img.width + x) > read(arr_in, nb1_y * img.width + nb1_x)
+      read(arr_in, pos) > read(arr_in, nb1_y * img.width + nb1_x)
     ) as f32;
 
     let nb2_cond = (
-      read(arr_in, y * img.width + x) > read(arr_in, nb2_y * img.width + nb2_x)
+      read(arr_in, pos) > read(arr_in, nb2_y * img.width + nb2_x)
     ) as f32;
 
     /*
@@ -394,8 +421,8 @@ fn non_maximum_suppression(
     */
 
     write(arr_out, y * img.width + x, (
-      (((read(arr_in, y * img.width + x) > low_threshold) as f32) * 1.0f) + 
-      (((read(arr_in, y * img.width + x) > high_threshold) as f32) * 14.0f)
+      (((read(arr_in, pos) > low_threshold) as f32) * 1.0f) + 
+      (((read(arr_in, pos) > high_threshold) as f32) * 14.0f)
     ) * nb1_cond * nb2_cond);
   }
 }
@@ -417,7 +444,6 @@ fn hysteresis(img : image_struct) -> () {
      have strong edges as neighboors, if that's the case, they are
      considered edges and are set as strong edges. This procedure is
      executed repeatedly until there are no more weak edges to be updated. */
-
   let mut x = 0;
   let mut y = 0;
 

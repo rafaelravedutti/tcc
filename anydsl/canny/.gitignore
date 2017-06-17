@@ -4,3 +4,5 @@ opencv_result.png
 false_negatives.png
 false_positives.png
 main.cu
+*.ll
+canny

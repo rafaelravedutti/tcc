@@ -1,9 +1,9 @@
 fn grid_config(img : image_struct) -> (i32, i32, i32) {
-  (256, 256, 1)
+  (img.width, img.height, 1)
 }
 
 fn block_config(img : image_struct) -> (i32, i32, i32) {
-  (32, 16, 1)
+  (128, 4, 1)
 }
 
 fn read(buf: Buffer, i: i32) -> f32 {

@@ -421,7 +421,7 @@ fn hysteresis(img : image_struct) -> () {
   let mut x = 0;
   let mut y = 0;
 
-  while pop(&mut x, &mut y) != 0 @{
+  while pop(&mut x, &mut y) != 0 {
     let weak_condition = (
       read(img.data, y * img.width + x) > 0.5f &&
       read(img.data, y * img.width + x) < 1.5f

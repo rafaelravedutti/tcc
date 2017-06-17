@@ -16,6 +16,36 @@ fn write(buf: Buffer, i: i32, v: f32) -> () {
   bitcast[&mut[1][f32]](buf.data)(i) = v
 }
 
+/* Allocate image on device */
+fn alloc_gpu_image(img : image_struct) -> Buffer {
+  let acc = cuda_accelerator(0);
+
+  acc.alloc((img.width + 4) * (img.height + 4) * sizeof[f32]())
+}
+
+/* Upload image */
+fn upload_image(img : image_struct) -> () {
+  copy(img.data, img.gpu_data, (img.width + 4) * (img.height + 4) * sizeof[f32]());
+}
+
+/* Get offsets */
+fn get_offsets() -> Buffer {
+  let acc = cuda_accelerator(0);
+  let offsets = [ 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f,
+                  1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f    ];
+ 
+  let offsets_cpu = alloc_cpu(14 * sizeof[f32]());
+  let offsets_gpu = acc.alloc(14 * sizeof[f32]());
+
+  for i in range(0, 13) {
+    write(offsets_cpu, i, offsets(i));
+  }
+
+  copy(offsets_cpu, offsets_gpu, 14 * sizeof[f32]());
+  release(offsets_cpu);
+  offsets_gpu
+}
+
 /* Iterates over an image on GPU architectures */
 fn fake_iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
   let acc = cuda_accelerator(0);
@@ -138,6 +168,7 @@ fn release_image_from_device(img : image_struct) -> () {
   release(img.gpu_buffer);
   release(img.gpu_dx);
   release(img.gpu_dy);
+  release(img.offsets);
 }
 
 fn exp(a : f32) -> f32 {

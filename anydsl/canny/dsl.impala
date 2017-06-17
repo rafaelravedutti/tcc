@@ -82,25 +82,15 @@ fn image(filename : &[u8]) -> image_struct {
   /* Copy image content to data */
   copy_image_to_data(res.image, res);
 
-  /* GPU */
-  res.gpu_data = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
-  res.gpu_buffer = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
-  res.gpu_dx = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
-  res.gpu_dy = acc.alloc((res.width + 4) * (res.height + 4) * sizeof[f32]());
-  res.offsets = acc.alloc(14 * sizeof[f32]());
+  /* Allocates data on GPU if necessary */
+  res.gpu_data = alloc_gpu_image(res);
+  res.gpu_buffer = alloc_gpu_image(res);
+  res.gpu_dx = alloc_gpu_image(res);
+  res.gpu_dy = alloc_gpu_image(res);
+  res.offsets = get_offsets();
 
-  /* Offsets for the angles */
-  let offsets = [ 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 
-                  1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f    ];
-
-  let offsets_cpu = alloc_cpu(14 * sizeof[f32]());
-
-  for off in range(0, 13) {
-    write(offsets_cpu, off, offsets(off));
-  }
-
-  copy(offsets_cpu, res.offsets, 14 * sizeof[f32]());
-  copy(res.data, res.gpu_data, (res.width + 4) * (res.height + 4) * sizeof[f32]());
+  /* Uploads image on GPU if necessary */
+  upload_image(res); 
 
   for x, y in fake_iterate(res) {
     /* Only to compile cuda kernels */

@@ -24,6 +24,30 @@ fn get_gradient_iterate_block_size() -> int {
   4
 }
 
+/* Allocate image on device */
+fn alloc_gpu_image(img : image_struct) -> Buffer {
+  /* Does nothing */
+}
+
+/* Upload image */
+fn upload_image(img : image_struct) -> () {
+  /* Does nothing */
+}
+
+/* Get offsets */
+fn get_offsets() -> Buffer {
+  let offsets = [ 1.0f, 1.0f, -1.0f, 1.0f, 0.0f, 1.0f, 0.0f,  
+                  1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f    ];
+
+  let offsets_cpu = alloc_cpu(14 * sizeof[f32]());
+
+  for i in range(0, 13) { 
+    write(offsets_cpu, i, offsets(i));
+  }
+  
+  offsets_cpu
+}
+
 /* Iterate over image on CPU architectures */
 fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int) -> ()) -> () {
   let offset = img.width * 2 + 5;
@@ -110,6 +134,10 @@ fn write(buf : Buffer, i : i32, v : f32) -> () {
 
 fn read(buf : Buffer, i : i32) -> f32 {
   (buf.data as &mut[f32])(i)
+}
+
+fn release_image_from_device(img : image_struct) -> () {
+  release(img.offsets);
 }
 
 /* Base-e exponential function */

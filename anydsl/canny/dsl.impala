@@ -7,11 +7,11 @@ struct image_struct {
   buffer: Buffer,             /* Buffer with increased dimensions */
   dx : Buffer,                /* Gx matrix */
   dy : Buffer,                /* Gy matrix */
+  offsets : Buffer,           /* Offsets for NMS */
   gpu_data : Buffer,          /* Data at GPU */
   gpu_buffer : Buffer,        /* Buffer at GPU */
   gpu_dx : Buffer,            /* Gx matrix at GPU */
-  gpu_dy : Buffer,            /* Gy matrix at GPU */
-  offsets : Buffer            /* Offsets at GPU */
+  gpu_dy : Buffer             /* Gy matrix at GPU */
 };
 
 /* Filter data structure */
@@ -28,26 +28,25 @@ extern "C" {
   /* OpenCV functions for result comparison */
   fn opencv_gaussian(
     img : &mut[f32], mask_size : u8, display : bool
-  ) -> (&mut[f32]);
+  ) -> &mut[f32];
   fn opencv_sobel(
     img : &mut[f32], sx : i32, sy : i32, aperture_size : i32, display : bool
-  ) -> (&mut[f32]);
+  ) -> &mut[f32];
   fn opencv_canny(
     filename : &[u8], low_threshold : f32, high_threshold: f32, opencv_time : &f64
-  ) -> (&mut[f32]);
+  ) -> &mut[f32];
 
   /* OpenCV utils */
-  fn load_image(path : &[u8], width : &i32, height : &i32) -> (&mut[f32]);
+  fn load_image(path : &[u8], width : &i32, height : &i32) -> &mut[f32];
   fn display_image(img : &mut[f32], title : &[u8], wait : bool) -> ();
   fn write_image(img : &mut[f32], title : &[u8]) -> ();
 
-  /* Stack functions */
-  fn stack_init() -> ();
-  fn push_conditional(x : i32, y : i32, condition : i32) -> ();
-  fn pop(x : &i32, y : &i32) -> i32;
-
   /* Time */
   fn impala_time() -> f64;
+
+  /* Alloc and Free */
+  fn alloc_int(size : i32) -> &mut[i32];
+  fn free_int(pointer : &[i32]) -> ();
 
   /* Printing functions */
   fn show_statistics(
@@ -334,22 +333,6 @@ fn sobel(img : image_struct) -> () {
       read(arr_in, (y + 1) * img.width + (x + 1))
     );
 
-    /* Boundary condition */
-    let condition = (
-      (x > img.width * 2 + 5 && x < img.width * 3 + 4) &&
-      (y > 1 && y < img.height - 2)
-    ) as f32;
-
-    /* dx(x,y) = dx(x,y) * condition */
-    write(dx, y * img.width + x,
-      read(dx, y * img.width + x) * condition
-    );
-
-    /* dy(x,y) = dy(x,y) * condition */
-    write(dy, y * img.width + x,
-      read(dy, y * img.width + x) * condition
-    );
-
     /* arr_out(x,y) = dx(x,y) * dx(x,y) + dy(x,y) * dy(x,y) */
     write(arr_out, y * img.width + x,
       read(dx, y * img.width + x) * read(dx, y * img.width + x) +
@@ -418,15 +401,24 @@ fn non_maximum_suppression(
 
 /* Hysteresis */
 fn hysteresis(img : image_struct) -> () {
+  let mut stack : &mut[i32];
+  let mut stack_size : i32;
+
+  /* Allocate stack */
+  stack = alloc_int(sizeof[i32]() * 3147200);
+
   /* Initialize the stack */
-  stack_init();
+  stack(0) = 0;
+  stack(1) = 0;
+  stack_size = 2;
 
   /* Push weak edges to the stack */
   for x, y in serial_iterate(img) {
     let value = read(img.data, y * img.width + x);
 
-    push_conditional(x, y, 
-                      (value > 0.5f && value < 1.5f) as i32);
+    stack(stack_size) = x;
+    stack(stack_size + 1) = y;
+    stack_size += ((value > 0.5f && value < 1.5f) as i32) * 2;
   }
 
   /* Go through the image and looks for the weak edges to see if they
@@ -436,7 +428,12 @@ fn hysteresis(img : image_struct) -> () {
   let mut x = 0;
   let mut y = 0;
 
-  while pop(&mut x, &mut y) != 0 {
+
+  while stack_size > 2 {
+    x = stack(stack_size - 2);
+    y = stack(stack_size - 1);
+    stack_size -= 2;
+
     let weak_condition = (
       read(img.data, y * img.width + x) > 0.5f &&
       read(img.data, y * img.width + x) < 1.5f
@@ -462,7 +459,9 @@ fn hysteresis(img : image_struct) -> () {
         let nb_value = read(img.data, (y + j) * img.width + x + i);
         let nb_weak_condition = (nb_value > 0.5f && nb_value < 1.5f) as i32;
 
-        push_conditional(x + i, y + j, sum_condition & nb_weak_condition);
+        stack(stack_size) = x + i;
+        stack(stack_size + 1) = y + j;
+        stack_size += (sum_condition & nb_weak_condition) * 2;
       }
     }
   }
@@ -473,6 +472,9 @@ fn hysteresis(img : image_struct) -> () {
     write(img.data, y * img.width + x, 
       ((read(img.data, y * img.width + x) > 10.0f) as f32) * 255.0f);
   }
+
+  /* Free stack */
+  free_int(stack);
 }
 
 /* Canny */

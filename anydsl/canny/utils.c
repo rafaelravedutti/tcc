@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-/* Stack length */
-#define STACK_LENGTH    (2 * 2073600)
+int *alloc_int(int size) {
+  return (int *) malloc(size);
+}
 
-/* Stack */
-static int stack[STACK_LENGTH];
-static int stack_size = 0;
+void free_int(int *ptr) {
+  free(ptr);
+}
 
 /* Show command usage */
 void display_usage(const char *command) {
@@ -20,28 +21,6 @@ double impala_time() {
   struct timeval tp;
   gettimeofday(&tp, NULL);
   return ((double)(tp.tv_sec + tp.tv_usec / 1000000.0));
-}
-
-/* Initialize stack */
-void stack_init() {
-  stack[0] = 0;
-  stack[1] = 0;
-  stack_size = 2;
-}
-
-/* Conditional push */
-void push_conditional(int x, int y, int condition) {
-  stack[stack_size] = x;
-  stack[stack_size + 1] = y;
-  stack_size += condition * 2;
-}
-
-/* Pop */
-int pop(int *x, int *y) {
-  *x = stack[stack_size - 2];
-  *y = stack[stack_size - 1];
-  stack_size -= (stack_size > 2) * 2;
-  return stack_size > 2;
 }
 
 /* Show statistics */

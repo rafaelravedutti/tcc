@@ -124,7 +124,7 @@ fn stencil_iterate(
     let x = acc.bidx() * acc.bdimx() + acc.tidx();
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    if x > 1 && x < img.width - 2 && y > 1 && y < img.height - 2 @{
+    if x > 1 && x < img.width - 1 && y > 1 && y < img.height - 1 @{
       body(x + offset, y, arr_in, arr_out, mask);
     }
   }
@@ -135,7 +135,7 @@ fn gradient_iterate(
   buffer_to_data : bool,
   copy_magnitudes : bool,
   load_image : bool,
-  body: fn(int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
+  body: fn(int, int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
   let acc = cuda_accelerator(0);
   let grid = grid_config(img);
   let block = block_config(img);
@@ -157,8 +157,8 @@ fn gradient_iterate(
     let x = acc.bidx() * acc.bdimx() + acc.tidx();
     let y = acc.bidy() * acc.bdimy() + acc.tidy();
 
-    if x > 1 && x < img.width - 2 && y > 1 && y < img.height - 2 @{
-      body(x + offset, y, arr_in, arr_out, img.gpu_dx, img.gpu_dy);
+    if x >= 0 && x < img.width && y >= 0 && y < img.height @{
+      body(x + offset, y, x, arr_in, arr_out, img.gpu_dx, img.gpu_dy);
     }
   }
 

@@ -254,7 +254,7 @@ fn gaussian_blur(img : image_struct) -> () {
 
 /* Sobel filter */
 fn sobel(img : image_struct) -> () {
-  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, false, false, false) {
+  for x, y, realx, arr_in, arr_out, dx, dy in @gradient_iterate(img, false, false, false) {
     /* dx(x,y) = 0.0f */
     write(dx, y * img.width + x, 0.0f);
 
@@ -333,6 +333,15 @@ fn sobel(img : image_struct) -> () {
       read(arr_in, (y + 1) * img.width + (x + 1))
     );
 
+    /* Evaluate boundary conditions */
+    write(dx, y * img.width + x,
+      read(dx, y * img.width + x) *
+      (realx > 0 && y > 0 && realx < img.width - 2 && y < img.height - 2) as f32);
+
+    write(dy, y * img.width + x,
+      read(dy, y * img.width + x) *
+      (realx > 0 && y > 0 && realx < img.width - 2 && y < img.height - 2) as f32);
+
     /* arr_out(x,y) = dx(x,y) * dx(x,y) + dy(x,y) * dy(x,y) */
     write(arr_out, y * img.width + x,
       read(dx, y * img.width + x) * read(dx, y * img.width + x) +
@@ -348,7 +357,7 @@ fn non_maximum_suppression(
   high_threshold : f32
 ) -> () {
   /* Go through the image */
-  for x, y, arr_in, arr_out, dx, dy in @gradient_iterate(img, true, true, true) {
+  for x, y, realx, arr_in, arr_out, dx, dy in @gradient_iterate(img, true, true, true) {
     let pos = y * img.width + x;
     let xs = read(dx, pos) as i32;
     let ys = read(dy, pos) as i32;
@@ -428,11 +437,10 @@ fn hysteresis(img : image_struct) -> () {
   let mut x = 0;
   let mut y = 0;
 
-
   while stack_size > 2 {
-    x = stack(stack_size - 2);
-    y = stack(stack_size - 1);
     stack_size -= 2;
+    x = stack(stack_size);
+    y = stack(stack_size + 1);
 
     let weak_condition = (
       read(img.data, y * img.width + x) > 0.5f &&

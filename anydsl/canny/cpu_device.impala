@@ -11,17 +11,17 @@ fn get_cpu_cache_size() -> int {
 
 /* Stencil iterate block size */
 fn get_default_iterate_block_size() -> int {
-  16
+  8
 }
 
 /* Stencil iterate block size */
 fn get_stencil_iterate_block_size() -> int {
-  20
+  10
 }
 
 /* Sobel iterate block size */
 fn get_gradient_iterate_block_size() -> int {
-  4
+  7 
 }
 
 /* Allocate image on device */
@@ -52,17 +52,18 @@ fn get_offsets() -> Buffer {
 }
 
 /* Iterate over image on CPU architectures */
-fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int) -> ()) -> () {
+fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int, int) -> ()) -> () {
   let offset = img.width * 2 + 5;
 
   for i in step_range(0, img.height - (block_size + 1), block_size) {
     for j in step_range(0, img.width - (block_size + 1), block_size) {
       for k in range(0, block_size - 1) {
-        for l in vectorize(8, 4, 0, block_size - 1) @{
-          let x = j + l + offset;
+        //for l in vectorize(8, 4, 0, block_size - 1) @{
+        for l in range(0, block_size - 1) @{
+          let x = j + l;
           let y = i + k;
 
-          body(x, y);
+          body(x + offset, y, x);
         }
       }
     }
@@ -70,13 +71,13 @@ fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int) -> ()
 
   for i in range(img.width - block_size, img.width - 1) {
     for j in range(0, img.height - 1) {
-      body(i + offset, j);
+      body(i + offset, j, i);
     }
   }
 
   for i in range(img.height - block_size, img.height - 1) {
     for j in range(0, img.width - (block_size + 1)) {
-      body(j + offset, i);
+      body(j + offset, i, j);
     }
   }
 }
@@ -84,7 +85,7 @@ fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int) -> ()
 fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
   let block_size = get_default_iterate_block_size();
 
-  for x, y in block_iterate(img, block_size) @{
+  for x, y, realx in block_iterate(img, block_size) @{
     body(x, y);
   }
 }
@@ -105,7 +106,7 @@ fn stencil_iterate(
     arr_out = img.buffer;
   }
 
-  for x, y in block_iterate(img, get_stencil_iterate_block_size()) @{
+  for x, y, realx in block_iterate(img, get_stencil_iterate_block_size()) @{
     body(x, y, arr_in, arr_out, filter.data);
   }
 }
@@ -115,7 +116,7 @@ fn gradient_iterate(
   buffer_to_data : bool,
   copy_magnitudes : bool,
   load_image : bool,
-  body: fn(int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
+  body: fn(int, int, int, Buffer, Buffer, Buffer, Buffer) -> ()) -> () {
   let mut arr_in : Buffer;
   let mut arr_out : Buffer;
 
@@ -127,8 +128,8 @@ fn gradient_iterate(
     arr_out = img.buffer;
   }
 
-  for x, y in block_iterate(img, get_gradient_iterate_block_size()) @{
-    body(x, y, arr_in, arr_out, img.dx, img.dy);
+  for x, y, realx in block_iterate(img, get_gradient_iterate_block_size()) @{
+    body(x, y, realx, arr_in, arr_out, img.dx, img.dy);
   }
 }
 

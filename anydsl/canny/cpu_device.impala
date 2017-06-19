@@ -24,6 +24,11 @@ fn get_gradient_iterate_block_size() -> int {
   7 
 }
 
+/* Image offset */
+fn get_image_offset(img : image_struct) -> i32 {
+  img.width * 2 + 5
+}
+
 /* Allocate image on device */
 fn alloc_gpu_image(img : image_struct) -> Buffer {
   /* Does nothing */
@@ -53,15 +58,14 @@ fn get_offsets() -> Buffer {
 
 /* Iterate over image on CPU architectures */
 fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int, int) -> ()) -> () {
-  let offset = img.width * 2 + 5;
+  let offset = get_image_offset(img);;
 
-  for i in step_range(0, img.height - (block_size + 1), block_size) {
+  for i in parallel(2, 0, (img.height - (block_size + 1)) / block_size) {
     for j in step_range(0, img.width - (block_size + 1), block_size) {
       for k in range(0, block_size - 1) {
-        //for l in vectorize(8, 4, 0, block_size - 1) @{
-        for l in range(0, block_size - 1) @{
+        for l in vectorize(8, 4, 0, block_size - 1) @{
           let x = j + l;
-          let y = i + k;
+          let y = i * block_size + k;
 
           body(x + offset, y, x);
         }
@@ -82,11 +86,20 @@ fn block_iterate(img : image_struct, block_size : i32, body : fn(int, int, int) 
   }
 }
 
-fn serial_iterate(img : image_struct, body : fn(int, int) -> ()) -> () {
+fn iterate(img : image_struct, serial : bool, body : fn(int, int) -> ()) -> () {
   let block_size = get_default_iterate_block_size();
+  let offset = get_image_offset(img);
 
-  for x, y, realx in block_iterate(img, block_size) @{
-    body(x, y);
+  if serial {
+    for y in range(0, img.height - 1) {
+      for x in range(0, img.width - 1) {
+        body(x + offset, y);
+      }
+    }
+  } else {
+    for x, y, realx in block_iterate(img, block_size) @{
+      body(x, y);
+    }
   }
 }
 

@@ -422,7 +422,7 @@ fn hysteresis(img : image_struct) -> () {
   stack_size = 2;
 
   /* Push weak edges to the stack */
-  for x, y in serial_iterate(img) {
+  for x, y in iterate(img, true) {
     let value = read(img.data, y * img.width + x);
 
     stack(stack_size) = x;
@@ -476,7 +476,7 @@ fn hysteresis(img : image_struct) -> () {
 
   /* Sets strong edges pixels to 255f and other pixels to 0 to
      get the final result */
-  for x, y in serial_iterate(img) {
+  for x, y in iterate(img, false) {
     write(img.data, y * img.width + x, 
       ((read(img.data, y * img.width + x) > 10.0f) as f32) * 255.0f);
   }

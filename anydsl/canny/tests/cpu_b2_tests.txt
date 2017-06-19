@@ -1,0 +1,1500 @@
+dataset/test_B2/105025.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02199
+Sobel time: 0.01593
+Non-maximum supression time: 0.00882
+Hysteresis time: 0.01420
+-------------------------------------
+Correct pixels: 0.81 (73110/90588)
+False positives: 0.11 (9839/90588)
+False negatives: 0.08 (7639/90588)
+-------------------------------------
+OpenCV time: 1.39325
+AnyDSL time: 0.06101
+-------------------------------------
+dataset/test_B2/182053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02488
+Sobel time: 0.01872
+Non-maximum supression time: 0.01171
+Hysteresis time: 0.00689
+-------------------------------------
+Correct pixels: 0.83 (65878/79696)
+False positives: 0.10 (8272/79696)
+False negatives: 0.07 (5546/79696)
+-------------------------------------
+OpenCV time: 1.40501
+AnyDSL time: 0.06227
+-------------------------------------
+dataset/test_B2/41033.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02172
+Sobel time: 0.01588
+Non-maximum supression time: 0.00937
+Hysteresis time: 0.00668
+-------------------------------------
+Correct pixels: 0.67 (23162/34502)
+False positives: 0.24 (8388/34502)
+False negatives: 0.09 (2952/34502)
+-------------------------------------
+OpenCV time: 1.25874
+AnyDSL time: 0.05371
+-------------------------------------
+dataset/test_B2/148026.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02280
+Sobel time: 0.01614
+Non-maximum supression time: 0.00938
+Hysteresis time: 0.00743
+-------------------------------------
+Correct pixels: 0.90 (100546/111647)
+False positives: 0.06 (6414/111647)
+False negatives: 0.04 (4687/111647)
+-------------------------------------
+OpenCV time: 1.24376
+AnyDSL time: 0.05581
+-------------------------------------
+dataset/test_B2/33039.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02157
+Sobel time: 0.01593
+Non-maximum supression time: 0.00915
+Hysteresis time: 0.01300
+-------------------------------------
+Correct pixels: 0.88 (131105/148260)
+False positives: 0.05 (8151/148260)
+False negatives: 0.06 (9004/148260)
+-------------------------------------
+OpenCV time: 1.31348
+AnyDSL time: 0.05975
+-------------------------------------
+dataset/test_B2/42049.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02160
+Sobel time: 0.02425
+Non-maximum supression time: 0.01192
+Hysteresis time: 0.00565
+-------------------------------------
+Correct pixels: 0.71 (22114/31161)
+False positives: 0.25 (7740/31161)
+False negatives: 0.04 (1307/31161)
+-------------------------------------
+OpenCV time: 1.41344
+AnyDSL time: 0.06348
+-------------------------------------
+dataset/test_B2/271035.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01824
+Sobel time: 0.01321
+Non-maximum supression time: 0.00626
+Hysteresis time: 0.00633
+-------------------------------------
+Correct pixels: 0.85 (60799/71647)
+False positives: 0.08 (5980/71647)
+False negatives: 0.07 (4868/71647)
+-------------------------------------
+OpenCV time: 1.41628
+AnyDSL time: 0.04412
+-------------------------------------
+dataset/test_B2/296007.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01380
+Sobel time: 0.00984
+Non-maximum supression time: 0.00546
+Hysteresis time: 0.00445
+-------------------------------------
+Correct pixels: 0.54 (11191/20691)
+False positives: 0.38 (7870/20691)
+False negatives: 0.08 (1630/20691)
+-------------------------------------
+OpenCV time: 1.09569
+AnyDSL time: 0.03362
+-------------------------------------
+dataset/test_B2/12084.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02927
+Sobel time: 0.01867
+Non-maximum supression time: 0.00928
+Hysteresis time: 0.01282
+-------------------------------------
+Correct pixels: 0.83 (69431/83673)
+False positives: 0.10 (8677/83673)
+False negatives: 0.07 (5565/83673)
+-------------------------------------
+OpenCV time: 1.43489
+AnyDSL time: 0.07011
+-------------------------------------
+dataset/test_B2/160068.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01490
+Sobel time: 0.01013
+Non-maximum supression time: 0.00532
+Hysteresis time: 0.00503
+-------------------------------------
+Correct pixels: 0.82 (51794/63244)
+False positives: 0.12 (7525/63244)
+False negatives: 0.06 (3925/63244)
+-------------------------------------
+OpenCV time: 1.38018
+AnyDSL time: 0.03544
+-------------------------------------
+dataset/test_B2/361010.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02251
+Sobel time: 0.01406
+Non-maximum supression time: 0.01119
+Hysteresis time: 0.00649
+-------------------------------------
+Correct pixels: 0.77 (36192/46712)
+False positives: 0.18 (8271/46712)
+False negatives: 0.05 (2249/46712)
+-------------------------------------
+OpenCV time: 1.39037
+AnyDSL time: 0.05448
+-------------------------------------
+dataset/test_B2/145086.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01553
+Sobel time: 0.01196
+Non-maximum supression time: 0.00534
+Hysteresis time: 0.00551
+-------------------------------------
+Correct pixels: 0.72 (35365/48805)
+False positives: 0.17 (8149/48805)
+False negatives: 0.11 (5291/48805)
+-------------------------------------
+OpenCV time: 1.20685
+AnyDSL time: 0.03841
+-------------------------------------
+dataset/test_B2/119082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01893
+Sobel time: 0.01591
+Non-maximum supression time: 0.00882
+Hysteresis time: 0.01019
+-------------------------------------
+Correct pixels: 0.84 (72445/86489)
+False positives: 0.10 (8336/86489)
+False negatives: 0.07 (5708/86489)
+-------------------------------------
+OpenCV time: 1.44688
+AnyDSL time: 0.05401
+-------------------------------------
+dataset/test_B2/97033.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02708
+Sobel time: 0.02029
+Non-maximum supression time: 0.01073
+Hysteresis time: 0.00698
+-------------------------------------
+Correct pixels: 0.84 (70196/83518)
+False positives: 0.10 (8401/83518)
+False negatives: 0.06 (4921/83518)
+-------------------------------------
+OpenCV time: 1.43563
+AnyDSL time: 0.06525
+-------------------------------------
+dataset/test_B2/210088.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01483
+Sobel time: 0.01794
+Non-maximum supression time: 0.00632
+Hysteresis time: 0.00684
+-------------------------------------
+Correct pixels: 0.81 (36722/45113)
+False positives: 0.13 (5822/45113)
+False negatives: 0.06 (2569/45113)
+-------------------------------------
+OpenCV time: 1.34166
+AnyDSL time: 0.04613
+-------------------------------------
+dataset/test_B2/8023.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02601
+Sobel time: 0.01589
+Non-maximum supression time: 0.00986
+Hysteresis time: 0.00818
+-------------------------------------
+Correct pixels: 0.73 (37661/51585)
+False positives: 0.18 (9310/51585)
+False negatives: 0.09 (4614/51585)
+-------------------------------------
+OpenCV time: 1.32571
+AnyDSL time: 0.06001
+-------------------------------------
+dataset/test_B2/58060.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01435
+Sobel time: 0.00952
+Non-maximum supression time: 0.00564
+Hysteresis time: 0.00604
+-------------------------------------
+Correct pixels: 0.87 (91728/105398)
+False positives: 0.07 (7791/105398)
+False negatives: 0.06 (5879/105398)
+-------------------------------------
+OpenCV time: 1.26365
+AnyDSL time: 0.03560
+-------------------------------------
+dataset/test_B2/260058.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01277
+Sobel time: 0.00976
+Non-maximum supression time: 0.00553
+Hysteresis time: 0.00465
+-------------------------------------
+Correct pixels: 0.55 (12474/22832)
+False positives: 0.35 (8050/22832)
+False negatives: 0.10 (2308/22832)
+-------------------------------------
+OpenCV time: 1.38550
+AnyDSL time: 0.03279
+-------------------------------------
+dataset/test_B2/156065.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01812
+Sobel time: 0.01146
+Non-maximum supression time: 0.00977
+Hysteresis time: 0.00766
+-------------------------------------
+Correct pixels: 0.81 (65247/80476)
+False positives: 0.12 (9460/80476)
+False negatives: 0.07 (5769/80476)
+-------------------------------------
+OpenCV time: 1.31314
+AnyDSL time: 0.04708
+-------------------------------------
+dataset/test_B2/157055.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01511
+Sobel time: 0.00960
+Non-maximum supression time: 0.00564
+Hysteresis time: 0.00581
+-------------------------------------
+Correct pixels: 0.82 (58500/71092)
+False positives: 0.12 (8886/71092)
+False negatives: 0.05 (3706/71092)
+-------------------------------------
+OpenCV time: 1.40973
+AnyDSL time: 0.03633
+-------------------------------------
+dataset/test_B2/43074.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01828
+Sobel time: 0.01669
+Non-maximum supression time: 0.00779
+Hysteresis time: 0.00658
+-------------------------------------
+Correct pixels: 0.68 (22766/33639)
+False positives: 0.23 (7783/33639)
+False negatives: 0.09 (3090/33639)
+-------------------------------------
+OpenCV time: 1.43406
+AnyDSL time: 0.04954
+-------------------------------------
+dataset/test_B2/62096.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.03490
+Sobel time: 0.01806
+Non-maximum supression time: 0.01019
+Hysteresis time: 0.00664
+-------------------------------------
+Correct pixels: 0.84 (53211/63716)
+False positives: 0.10 (6568/63716)
+False negatives: 0.06 (3937/63716)
+-------------------------------------
+OpenCV time: 1.38322
+AnyDSL time: 0.06985
+-------------------------------------
+dataset/test_B2/148089.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01254
+Sobel time: 0.00952
+Non-maximum supression time: 0.00539
+Hysteresis time: 0.00722
+-------------------------------------
+Correct pixels: 0.85 (91299/107068)
+False positives: 0.09 (9264/107068)
+False negatives: 0.06 (6505/107068)
+-------------------------------------
+OpenCV time: 1.06899
+AnyDSL time: 0.03474
+-------------------------------------
+dataset/test_B2/101087.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02185
+Sobel time: 0.01600
+Non-maximum supression time: 0.00881
+Hysteresis time: 0.00948
+-------------------------------------
+Correct pixels: 0.80 (37131/46159)
+False positives: 0.12 (5325/46159)
+False negatives: 0.08 (3703/46159)
+-------------------------------------
+OpenCV time: 1.27340
+AnyDSL time: 0.05620
+-------------------------------------
+dataset/test_B2/38092.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01812
+Sobel time: 0.01920
+Non-maximum supression time: 0.00764
+Hysteresis time: 0.01146
+-------------------------------------
+Correct pixels: 0.76 (55578/72864)
+False positives: 0.14 (10278/72864)
+False negatives: 0.10 (7008/72864)
+-------------------------------------
+OpenCV time: 1.33677
+AnyDSL time: 0.05661
+-------------------------------------
+dataset/test_B2/229036.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01249
+Sobel time: 0.00997
+Non-maximum supression time: 0.00540
+Hysteresis time: 0.00669
+-------------------------------------
+Correct pixels: 0.83 (85993/103092)
+False positives: 0.10 (10374/103092)
+False negatives: 0.07 (6725/103092)
+-------------------------------------
+OpenCV time: 1.35152
+AnyDSL time: 0.03460
+-------------------------------------
+dataset/test_B2/69040.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02156
+Sobel time: 0.01592
+Non-maximum supression time: 0.00904
+Hysteresis time: 0.01691
+-------------------------------------
+Correct pixels: 0.85 (99904/117411)
+False positives: 0.08 (9736/117411)
+False negatives: 0.07 (7771/117411)
+-------------------------------------
+OpenCV time: 1.31496
+AnyDSL time: 0.06353
+-------------------------------------
+dataset/test_B2/304074.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02445
+Sobel time: 0.01289
+Non-maximum supression time: 0.00727
+Hysteresis time: 0.01167
+-------------------------------------
+Correct pixels: 0.82 (68402/83403)
+False positives: 0.07 (6161/83403)
+False negatives: 0.11 (8840/83403)
+-------------------------------------
+OpenCV time: 1.37699
+AnyDSL time: 0.05636
+-------------------------------------
+dataset/test_B2/85048.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01251
+Sobel time: 0.00952
+Non-maximum supression time: 0.00557
+Hysteresis time: 0.00686
+-------------------------------------
+Correct pixels: 0.82 (78213/95288)
+False positives: 0.11 (10116/95288)
+False negatives: 0.07 (6959/95288)
+-------------------------------------
+OpenCV time: 1.35359
+AnyDSL time: 0.03452
+-------------------------------------
+dataset/test_B2/3096.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01891
+Sobel time: 0.01271
+Non-maximum supression time: 0.00537
+Hysteresis time: 0.00266
+-------------------------------------
+Correct pixels: 0.49 (6958/14172)
+False positives: 0.49 (6950/14172)
+False negatives: 0.02 (264/14172)
+-------------------------------------
+OpenCV time: 1.36401
+AnyDSL time: 0.03970
+-------------------------------------
+dataset/test_B2/208001.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01981
+Sobel time: 0.01694
+Non-maximum supression time: 0.00686
+Hysteresis time: 0.00939
+-------------------------------------
+Correct pixels: 0.82 (58578/71472)
+False positives: 0.09 (6236/71472)
+False negatives: 0.09 (6658/71472)
+-------------------------------------
+OpenCV time: 1.44433
+AnyDSL time: 0.05320
+-------------------------------------
+dataset/test_B2/291000.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02830
+Sobel time: 0.01428
+Non-maximum supression time: 0.00608
+Hysteresis time: 0.01292
+-------------------------------------
+Correct pixels: 0.84 (128370/153516)
+False positives: 0.09 (13081/153516)
+False negatives: 0.08 (12065/153516)
+-------------------------------------
+OpenCV time: 1.00910
+AnyDSL time: 0.06177
+-------------------------------------
+dataset/test_B2/241004.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02153
+Sobel time: 0.01606
+Non-maximum supression time: 0.00876
+Hysteresis time: 0.00699
+-------------------------------------
+Correct pixels: 0.70 (21222/30445)
+False positives: 0.25 (7743/30445)
+False negatives: 0.05 (1480/30445)
+-------------------------------------
+OpenCV time: 1.23437
+AnyDSL time: 0.05344
+-------------------------------------
+dataset/test_B2/189080.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02123
+Sobel time: 0.01618
+Non-maximum supression time: 0.00892
+Hysteresis time: 0.00710
+-------------------------------------
+Correct pixels: 0.76 (16975/22252)
+False positives: 0.21 (4598/22252)
+False negatives: 0.03 (679/22252)
+-------------------------------------
+OpenCV time: 1.43956
+AnyDSL time: 0.05350
+-------------------------------------
+dataset/test_B2/65033.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02436
+Sobel time: 0.01632
+Non-maximum supression time: 0.00835
+Hysteresis time: 0.01282
+-------------------------------------
+Correct pixels: 0.80 (85258/106908)
+False positives: 0.12 (12976/106908)
+False negatives: 0.08 (8674/106908)
+-------------------------------------
+OpenCV time: 1.40260
+AnyDSL time: 0.06191
+-------------------------------------
+dataset/test_B2/302008.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02623
+Sobel time: 0.01883
+Non-maximum supression time: 0.01032
+Hysteresis time: 0.00561
+-------------------------------------
+Correct pixels: 0.90 (30749/34332)
+False positives: 0.08 (2813/34332)
+False negatives: 0.02 (770/34332)
+-------------------------------------
+OpenCV time: 1.41201
+AnyDSL time: 0.06106
+-------------------------------------
+dataset/test_B2/216081.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02041
+Sobel time: 0.01601
+Non-maximum supression time: 0.00902
+Hysteresis time: 0.01085
+-------------------------------------
+Correct pixels: 0.81 (55697/68839)
+False positives: 0.11 (7717/68839)
+False negatives: 0.08 (5425/68839)
+-------------------------------------
+OpenCV time: 0.89410
+AnyDSL time: 0.05637
+-------------------------------------
+dataset/test_B2/385039.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.05049
+Sobel time: 0.02048
+Non-maximum supression time: 0.01574
+Hysteresis time: 0.00842
+-------------------------------------
+Correct pixels: 0.83 (55357/67068)
+False positives: 0.13 (8710/67068)
+False negatives: 0.04 (3001/67068)
+-------------------------------------
+OpenCV time: 0.89388
+AnyDSL time: 0.09534
+-------------------------------------
+dataset/test_B2/175043.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01452
+Sobel time: 0.01529
+Non-maximum supression time: 0.00926
+Hysteresis time: 0.01669
+-------------------------------------
+Correct pixels: 0.86 (114540/133606)
+False positives: 0.08 (10934/133606)
+False negatives: 0.06 (8132/133606)
+-------------------------------------
+OpenCV time: 1.43759
+AnyDSL time: 0.05582
+-------------------------------------
+dataset/test_B2/223061.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02150
+Sobel time: 0.01592
+Non-maximum supression time: 0.00880
+Hysteresis time: 0.01424
+-------------------------------------
+Correct pixels: 0.83 (80164/97009)
+False positives: 0.10 (10119/97009)
+False negatives: 0.07 (6726/97009)
+-------------------------------------
+OpenCV time: 1.37681
+AnyDSL time: 0.06054
+-------------------------------------
+dataset/test_B2/21077.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02143
+Sobel time: 0.01608
+Non-maximum supression time: 0.00890
+Hysteresis time: 0.00831
+-------------------------------------
+Correct pixels: 0.80 (44777/55657)
+False positives: 0.15 (8184/55657)
+False negatives: 0.05 (2696/55657)
+-------------------------------------
+OpenCV time: 1.35506
+AnyDSL time: 0.05480
+-------------------------------------
+dataset/test_B2/101085.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02128
+Sobel time: 0.01745
+Non-maximum supression time: 0.00884
+Hysteresis time: 0.01439
+-------------------------------------
+Correct pixels: 0.86 (80449/93402)
+False positives: 0.07 (6481/93402)
+False negatives: 0.07 (6472/93402)
+-------------------------------------
+OpenCV time: 1.30980
+AnyDSL time: 0.06203
+-------------------------------------
+dataset/test_B2/89072.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01226
+Sobel time: 0.00975
+Non-maximum supression time: 0.00549
+Hysteresis time: 0.00586
+-------------------------------------
+Correct pixels: 0.86 (58916/68691)
+False positives: 0.09 (6424/68691)
+False negatives: 0.05 (3351/68691)
+-------------------------------------
+OpenCV time: 1.26132
+AnyDSL time: 0.03345
+-------------------------------------
+dataset/test_B2/54082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01242
+Sobel time: 0.00971
+Non-maximum supression time: 0.00554
+Hysteresis time: 0.00633
+-------------------------------------
+Correct pixels: 0.75 (33055/44196)
+False positives: 0.15 (6469/44196)
+False negatives: 0.11 (4672/44196)
+-------------------------------------
+OpenCV time: 1.40620
+AnyDSL time: 0.03423
+-------------------------------------
+dataset/test_B2/69020.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02176
+Sobel time: 0.01584
+Non-maximum supression time: 0.00869
+Hysteresis time: 0.01427
+-------------------------------------
+Correct pixels: 0.72 (37820/52737)
+False positives: 0.18 (9347/52737)
+False negatives: 0.11 (5570/52737)
+-------------------------------------
+OpenCV time: 1.34186
+AnyDSL time: 0.06064
+-------------------------------------
+dataset/test_B2/42012.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01407
+Sobel time: 0.01596
+Non-maximum supression time: 0.00929
+Hysteresis time: 0.01053
+-------------------------------------
+Correct pixels: 0.79 (39296/49912)
+False positives: 0.15 (7252/49912)
+False negatives: 0.07 (3364/49912)
+-------------------------------------
+OpenCV time: 1.31305
+AnyDSL time: 0.04991
+-------------------------------------
+dataset/test_B2/163085.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02332
+Sobel time: 0.02892
+Non-maximum supression time: 0.01063
+Hysteresis time: 0.00617
+-------------------------------------
+Correct pixels: 0.78 (45595/58216)
+False positives: 0.13 (7597/58216)
+False negatives: 0.09 (5024/58216)
+-------------------------------------
+OpenCV time: 1.36753
+AnyDSL time: 0.06910
+-------------------------------------
+dataset/test_B2/24077.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02151
+Sobel time: 0.01605
+Non-maximum supression time: 0.00873
+Hysteresis time: 0.00854
+-------------------------------------
+Correct pixels: 0.86 (64968/75836)
+False positives: 0.10 (7560/75836)
+False negatives: 0.04 (3308/75836)
+-------------------------------------
+OpenCV time: 1.30501
+AnyDSL time: 0.05492
+-------------------------------------
+dataset/test_B2/170057.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02149
+Sobel time: 0.01589
+Non-maximum supression time: 0.00905
+Hysteresis time: 0.02270
+-------------------------------------
+Correct pixels: 0.71 (37630/52815)
+False positives: 0.19 (10099/52815)
+False negatives: 0.10 (5086/52815)
+-------------------------------------
+OpenCV time: 1.05903
+AnyDSL time: 0.06966
+-------------------------------------
+dataset/test_B2/45096.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01961
+Sobel time: 0.00982
+Non-maximum supression time: 0.00529
+Hysteresis time: 0.00327
+-------------------------------------
+Correct pixels: 0.63 (10442/16533)
+False positives: 0.35 (5705/16533)
+False negatives: 0.02 (386/16533)
+-------------------------------------
+OpenCV time: 1.35636
+AnyDSL time: 0.03804
+-------------------------------------
+dataset/test_B2/300091.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02203
+Sobel time: 0.01595
+Non-maximum supression time: 0.00909
+Hysteresis time: 0.00819
+-------------------------------------
+Correct pixels: 0.68 (25434/37474)
+False positives: 0.25 (9182/37474)
+False negatives: 0.08 (2858/37474)
+-------------------------------------
+OpenCV time: 1.42517
+AnyDSL time: 0.05534
+-------------------------------------
+dataset/test_B2/304034.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01252
+Sobel time: 0.00967
+Non-maximum supression time: 0.00564
+Hysteresis time: 0.00939
+-------------------------------------
+Correct pixels: 0.83 (107207/128514)
+False positives: 0.09 (11326/128514)
+False negatives: 0.08 (9981/128514)
+-------------------------------------
+OpenCV time: 1.34606
+AnyDSL time: 0.03727
+-------------------------------------
+dataset/test_B2/41069.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02343
+Sobel time: 0.01573
+Non-maximum supression time: 0.00870
+Hysteresis time: 0.01971
+-------------------------------------
+Correct pixels: 0.81 (98448/120826)
+False positives: 0.09 (10939/120826)
+False negatives: 0.09 (11439/120826)
+-------------------------------------
+OpenCV time: 1.30237
+AnyDSL time: 0.06763
+-------------------------------------
+dataset/test_B2/130026.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01908
+Sobel time: 0.01577
+Non-maximum supression time: 0.00870
+Hysteresis time: 0.01323
+-------------------------------------
+Correct pixels: 0.82 (71078/86648)
+False positives: 0.11 (9233/86648)
+False negatives: 0.07 (6337/86648)
+-------------------------------------
+OpenCV time: 1.40164
+AnyDSL time: 0.05684
+-------------------------------------
+dataset/test_B2/159008.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01236
+Sobel time: 0.00982
+Non-maximum supression time: 0.00532
+Hysteresis time: 0.00611
+-------------------------------------
+Correct pixels: 0.84 (69428/82683)
+False positives: 0.10 (8313/82683)
+False negatives: 0.06 (4942/82683)
+-------------------------------------
+OpenCV time: 1.16252
+AnyDSL time: 0.03369
+-------------------------------------
+dataset/test_B2/55073.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01755
+Sobel time: 0.01062
+Non-maximum supression time: 0.00577
+Hysteresis time: 0.00914
+-------------------------------------
+Correct pixels: 0.85 (97845/115569)
+False positives: 0.07 (8072/115569)
+False negatives: 0.08 (9652/115569)
+-------------------------------------
+OpenCV time: 1.37597
+AnyDSL time: 0.04316
+-------------------------------------
+dataset/test_B2/236037.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01356
+Sobel time: 0.01597
+Non-maximum supression time: 0.00906
+Hysteresis time: 0.01765
+-------------------------------------
+Correct pixels: 0.82 (93224/113664)
+False positives: 0.10 (11841/113664)
+False negatives: 0.08 (8599/113664)
+-------------------------------------
+OpenCV time: 1.31688
+AnyDSL time: 0.05630
+-------------------------------------
+dataset/test_B2/196073.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.04463
+Sobel time: 0.01633
+Non-maximum supression time: 0.01482
+Hysteresis time: 0.00427
+-------------------------------------
+Correct pixels: 0.51 (8024/15772)
+False positives: 0.45 (7072/15772)
+False negatives: 0.04 (676/15772)
+-------------------------------------
+OpenCV time: 1.38478
+AnyDSL time: 0.08024
+-------------------------------------
+dataset/test_B2/69015.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02156
+Sobel time: 0.01606
+Non-maximum supression time: 0.00885
+Hysteresis time: 0.01163
+-------------------------------------
+Correct pixels: 0.83 (42160/50963)
+False positives: 0.09 (4782/50963)
+False negatives: 0.08 (4021/50963)
+-------------------------------------
+OpenCV time: 1.36796
+AnyDSL time: 0.05817
+-------------------------------------
+dataset/test_B2/219090.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02173
+Sobel time: 0.01597
+Non-maximum supression time: 0.00883
+Hysteresis time: 0.00770
+-------------------------------------
+Correct pixels: 0.77 (34179/44489)
+False positives: 0.20 (8677/44489)
+False negatives: 0.04 (1633/44489)
+-------------------------------------
+OpenCV time: 1.34188
+AnyDSL time: 0.05430
+-------------------------------------
+dataset/test_B2/285079.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02156
+Sobel time: 0.01589
+Non-maximum supression time: 0.00883
+Hysteresis time: 0.01243
+-------------------------------------
+Correct pixels: 0.85 (66660/78216)
+False positives: 0.08 (6606/78216)
+False negatives: 0.06 (4950/78216)
+-------------------------------------
+OpenCV time: 1.26936
+AnyDSL time: 0.05878
+-------------------------------------
+dataset/test_B2/66053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02496
+Sobel time: 0.01592
+Non-maximum supression time: 0.01038
+Hysteresis time: 0.01359
+-------------------------------------
+Correct pixels: 0.77 (55159/71622)
+False positives: 0.14 (9717/71622)
+False negatives: 0.09 (6746/71622)
+-------------------------------------
+OpenCV time: 1.37702
+AnyDSL time: 0.06493
+-------------------------------------
+dataset/test_B2/376043.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02229
+Sobel time: 0.01002
+Non-maximum supression time: 0.00921
+Hysteresis time: 0.01432
+-------------------------------------
+Correct pixels: 0.82 (81628/99967)
+False positives: 0.09 (8533/99967)
+False negatives: 0.10 (9806/99967)
+-------------------------------------
+OpenCV time: 1.35361
+AnyDSL time: 0.05590
+-------------------------------------
+dataset/test_B2/103070.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01821
+Sobel time: 0.01108
+Non-maximum supression time: 0.00595
+Hysteresis time: 0.00647
+-------------------------------------
+Correct pixels: 0.72 (36032/49865)
+False positives: 0.19 (9722/49865)
+False negatives: 0.08 (4111/49865)
+-------------------------------------
+OpenCV time: 1.30759
+AnyDSL time: 0.04176
+-------------------------------------
+dataset/test_B2/16077.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01702
+Sobel time: 0.01592
+Non-maximum supression time: 0.00868
+Hysteresis time: 0.01202
+-------------------------------------
+Correct pixels: 0.79 (59002/74470)
+False positives: 0.13 (9392/74470)
+False negatives: 0.08 (6076/74470)
+-------------------------------------
+OpenCV time: 1.37815
+AnyDSL time: 0.05372
+-------------------------------------
+dataset/test_B2/102061.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02148
+Sobel time: 0.01600
+Non-maximum supression time: 0.00884
+Hysteresis time: 0.00829
+-------------------------------------
+Correct pixels: 0.84 (37092/43969)
+False positives: 0.11 (4673/43969)
+False negatives: 0.05 (2204/43969)
+-------------------------------------
+OpenCV time: 1.27752
+AnyDSL time: 0.05467
+-------------------------------------
+dataset/test_B2/14037.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02893
+Sobel time: 0.01504
+Non-maximum supression time: 0.01664
+Hysteresis time: 0.00931
+-------------------------------------
+Correct pixels: 0.65 (15330/23733)
+False positives: 0.29 (6909/23733)
+False negatives: 0.06 (1494/23733)
+-------------------------------------
+OpenCV time: 1.21415
+AnyDSL time: 0.07011
+-------------------------------------
+dataset/test_B2/109053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02578
+Sobel time: 0.02120
+Non-maximum supression time: 0.00594
+Hysteresis time: 0.01103
+-------------------------------------
+Correct pixels: 0.76 (41417/54412)
+False positives: 0.16 (8810/54412)
+False negatives: 0.08 (4185/54412)
+-------------------------------------
+OpenCV time: 1.40870
+AnyDSL time: 0.06405
+-------------------------------------
+dataset/test_B2/175032.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01228
+Sobel time: 0.00988
+Non-maximum supression time: 0.00580
+Hysteresis time: 0.01082
+-------------------------------------
+Correct pixels: 0.89 (148883/167087)
+False positives: 0.05 (8592/167087)
+False negatives: 0.06 (9612/167087)
+-------------------------------------
+OpenCV time: 1.49746
+AnyDSL time: 0.03891
+-------------------------------------
+dataset/test_B2/351093.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.04810
+Sobel time: 0.01707
+Non-maximum supression time: 0.00990
+Hysteresis time: 0.00978
+-------------------------------------
+Correct pixels: 0.85 (87949/103204)
+False positives: 0.09 (9360/103204)
+False negatives: 0.06 (5895/103204)
+-------------------------------------
+OpenCV time: 1.26639
+AnyDSL time: 0.08491
+-------------------------------------
+dataset/test_B2/86068.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01723
+Sobel time: 0.01349
+Non-maximum supression time: 0.00561
+Hysteresis time: 0.00733
+-------------------------------------
+Correct pixels: 0.68 (31832/47110)
+False positives: 0.20 (9438/47110)
+False negatives: 0.12 (5840/47110)
+-------------------------------------
+OpenCV time: 1.32252
+AnyDSL time: 0.04374
+-------------------------------------
+dataset/test_B2/296059.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01380
+Sobel time: 0.00972
+Non-maximum supression time: 0.00540
+Hysteresis time: 0.00477
+-------------------------------------
+Correct pixels: 0.63 (18032/28684)
+False positives: 0.32 (9149/28684)
+False negatives: 0.05 (1503/28684)
+-------------------------------------
+OpenCV time: 0.89962
+AnyDSL time: 0.03375
+-------------------------------------
+dataset/test_B2/76053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01321
+Sobel time: 0.00998
+Non-maximum supression time: 0.00531
+Hysteresis time: 0.00656
+-------------------------------------
+Correct pixels: 0.73 (35857/49344)
+False positives: 0.19 (9258/49344)
+False negatives: 0.09 (4229/49344)
+-------------------------------------
+OpenCV time: 1.05592
+AnyDSL time: 0.03512
+-------------------------------------
+dataset/test_B2/19021.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02180
+Sobel time: 0.01591
+Non-maximum supression time: 0.00885
+Hysteresis time: 0.01205
+-------------------------------------
+Correct pixels: 0.79 (58577/74490)
+False positives: 0.12 (8736/74490)
+False negatives: 0.10 (7177/74490)
+-------------------------------------
+OpenCV time: 1.45018
+AnyDSL time: 0.05868
+-------------------------------------
+dataset/test_B2/86000.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01210
+Sobel time: 0.00982
+Non-maximum supression time: 0.00552
+Hysteresis time: 0.00568
+-------------------------------------
+Correct pixels: 0.87 (60379/69407)
+False positives: 0.08 (5465/69407)
+False negatives: 0.05 (3563/69407)
+-------------------------------------
+OpenCV time: 1.02790
+AnyDSL time: 0.03319
+-------------------------------------
+dataset/test_B2/299086.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01436
+Sobel time: 0.00943
+Non-maximum supression time: 0.00558
+Hysteresis time: 0.00457
+-------------------------------------
+Correct pixels: 0.68 (19546/28759)
+False positives: 0.27 (7789/28759)
+False negatives: 0.05 (1424/28759)
+-------------------------------------
+OpenCV time: 1.36473
+AnyDSL time: 0.03400
+-------------------------------------
+dataset/test_B2/108070.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02449
+Sobel time: 0.01614
+Non-maximum supression time: 0.00868
+Hysteresis time: 0.01559
+-------------------------------------
+Correct pixels: 0.81 (85804/105735)
+False positives: 0.11 (11805/105735)
+False negatives: 0.08 (8126/105735)
+-------------------------------------
+OpenCV time: 1.42857
+AnyDSL time: 0.06497
+-------------------------------------
+dataset/test_B2/167083.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02153
+Sobel time: 0.01556
+Non-maximum supression time: 0.00718
+Hysteresis time: 0.01434
+-------------------------------------
+Correct pixels: 0.87 (106087/121624)
+False positives: 0.06 (7444/121624)
+False negatives: 0.07 (8093/121624)
+-------------------------------------
+OpenCV time: 1.18499
+AnyDSL time: 0.05868
+-------------------------------------
+dataset/test_B2/37073.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02153
+Sobel time: 0.01611
+Non-maximum supression time: 0.00895
+Hysteresis time: 0.00723
+-------------------------------------
+Correct pixels: 0.76 (30031/39710)
+False positives: 0.19 (7369/39710)
+False negatives: 0.06 (2310/39710)
+-------------------------------------
+OpenCV time: 1.34025
+AnyDSL time: 0.05389
+-------------------------------------
+dataset/test_B2/108082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02718
+Sobel time: 0.01927
+Non-maximum supression time: 0.01416
+Hysteresis time: 0.00921
+-------------------------------------
+Correct pixels: 0.80 (56054/69850)
+False positives: 0.13 (8840/69850)
+False negatives: 0.07 (4956/69850)
+-------------------------------------
+OpenCV time: 1.36295
+AnyDSL time: 0.07002
+-------------------------------------
+dataset/test_B2/241048.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02359
+Sobel time: 0.01233
+Non-maximum supression time: 0.00876
+Hysteresis time: 0.01280
+-------------------------------------
+Correct pixels: 0.80 (62775/78356)
+False positives: 0.12 (9634/78356)
+False negatives: 0.08 (5947/78356)
+-------------------------------------
+OpenCV time: 1.41051
+AnyDSL time: 0.05758
+-------------------------------------
+dataset/test_B2/295087.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02319
+Sobel time: 0.01598
+Non-maximum supression time: 0.00899
+Hysteresis time: 0.01245
+-------------------------------------
+Correct pixels: 0.74 (46813/63430)
+False positives: 0.15 (9435/63430)
+False negatives: 0.11 (7182/63430)
+-------------------------------------
+OpenCV time: 1.36742
+AnyDSL time: 0.06072
+-------------------------------------
+dataset/test_B2/38082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01896
+Sobel time: 0.01660
+Non-maximum supression time: 0.00749
+Hysteresis time: 0.01123
+-------------------------------------
+Correct pixels: 0.75 (61144/81723)
+False positives: 0.14 (11562/81723)
+False negatives: 0.11 (9017/81723)
+-------------------------------------
+OpenCV time: 1.39369
+AnyDSL time: 0.05436
+-------------------------------------
+dataset/test_B2/306005.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02547
+Sobel time: 0.01447
+Non-maximum supression time: 0.00786
+Hysteresis time: 0.00637
+-------------------------------------
+Correct pixels: 0.81 (50637/62430)
+False positives: 0.12 (7747/62430)
+False negatives: 0.06 (4046/62430)
+-------------------------------------
+OpenCV time: 1.40330
+AnyDSL time: 0.05422
+-------------------------------------
+dataset/test_B2/86016.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01691
+Sobel time: 0.01470
+Non-maximum supression time: 0.00883
+Hysteresis time: 0.01392
+-------------------------------------
+Correct pixels: 0.79 (94804/120019)
+False positives: 0.08 (9463/120019)
+False negatives: 0.13 (15752/120019)
+-------------------------------------
+OpenCV time: 1.29912
+AnyDSL time: 0.05451
+-------------------------------------
+dataset/test_B2/126007.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02183
+Sobel time: 0.01595
+Non-maximum supression time: 0.00871
+Hysteresis time: 0.00890
+-------------------------------------
+Correct pixels: 0.75 (34031/45094)
+False positives: 0.18 (8181/45094)
+False negatives: 0.06 (2882/45094)
+-------------------------------------
+OpenCV time: 1.36229
+AnyDSL time: 0.05547
+-------------------------------------
+dataset/test_B2/220075.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02157
+Sobel time: 0.01598
+Non-maximum supression time: 0.00866
+Hysteresis time: 0.00878
+-------------------------------------
+Correct pixels: 0.80 (44752/55942)
+False positives: 0.15 (8595/55942)
+False negatives: 0.05 (2595/55942)
+-------------------------------------
+OpenCV time: 1.26263
+AnyDSL time: 0.05506
+-------------------------------------
+dataset/test_B2/147091.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.03025
+Sobel time: 0.01645
+Non-maximum supression time: 0.00892
+Hysteresis time: 0.00566
+-------------------------------------
+Correct pixels: 0.76 (36360/47695)
+False positives: 0.16 (7802/47695)
+False negatives: 0.07 (3533/47695)
+-------------------------------------
+OpenCV time: 1.31711
+AnyDSL time: 0.06135
+-------------------------------------
+dataset/test_B2/167062.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01735
+Sobel time: 0.01849
+Non-maximum supression time: 0.00976
+Hysteresis time: 0.00432
+-------------------------------------
+Correct pixels: 0.57 (12049/20978)
+False positives: 0.36 (7473/20978)
+False negatives: 0.07 (1456/20978)
+-------------------------------------
+OpenCV time: 1.37671
+AnyDSL time: 0.05020
+-------------------------------------
+dataset/test_B2/134035.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.03205
+Sobel time: 0.01447
+Non-maximum supression time: 0.00805
+Hysteresis time: 0.00548
+-------------------------------------
+Correct pixels: 0.87 (88822/101548)
+False positives: 0.09 (9065/101548)
+False negatives: 0.04 (3661/101548)
+-------------------------------------
+OpenCV time: 1.44991
+AnyDSL time: 0.06012
+-------------------------------------
+dataset/test_B2/78004.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02442
+Sobel time: 0.01919
+Non-maximum supression time: 0.01002
+Hysteresis time: 0.00630
+-------------------------------------
+Correct pixels: 0.85 (42570/50115)
+False positives: 0.10 (5046/50115)
+False negatives: 0.05 (2499/50115)
+-------------------------------------
+OpenCV time: 1.39872
+AnyDSL time: 0.05997
+-------------------------------------
+dataset/test_B2/253027.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01241
+Sobel time: 0.00979
+Non-maximum supression time: 0.00546
+Hysteresis time: 0.00595
+-------------------------------------
+Correct pixels: 0.83 (56322/67570)
+False positives: 0.13 (8705/67570)
+False negatives: 0.04 (2543/67570)
+-------------------------------------
+OpenCV time: 1.10114
+AnyDSL time: 0.03368
+-------------------------------------
+dataset/test_B2/108005.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02176
+Sobel time: 0.01599
+Non-maximum supression time: 0.00901
+Hysteresis time: 0.01253
+-------------------------------------
+Correct pixels: 0.83 (68470/82701)
+False positives: 0.11 (9403/82701)
+False negatives: 0.06 (4828/82701)
+-------------------------------------
+OpenCV time: 1.35680
+AnyDSL time: 0.05937
+-------------------------------------
+dataset/test_B2/227092.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02681
+Sobel time: 0.01873
+Non-maximum supression time: 0.00913
+Hysteresis time: 0.00425
+-------------------------------------
+Correct pixels: 0.67 (8762/13095)
+False positives: 0.27 (3579/13095)
+False negatives: 0.06 (754/13095)
+-------------------------------------
+OpenCV time: 0.97492
+AnyDSL time: 0.05898
+-------------------------------------
+dataset/test_B2/87046.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.04745
+Sobel time: 0.01260
+Non-maximum supression time: 0.01022
+Hysteresis time: 0.00880
+-------------------------------------
+Correct pixels: 0.78 (64715/83030)
+False positives: 0.12 (10376/83030)
+False negatives: 0.10 (7939/83030)
+-------------------------------------
+OpenCV time: 1.43029
+AnyDSL time: 0.07915
+-------------------------------------
+dataset/test_B2/143090.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02236
+Sobel time: 0.01587
+Non-maximum supression time: 0.00910
+Hysteresis time: 0.00746
+-------------------------------------
+Correct pixels: 0.66 (18910/28692)
+False positives: 0.29 (8356/28692)
+False negatives: 0.05 (1426/28692)
+-------------------------------------
+OpenCV time: 1.19509
+AnyDSL time: 0.05485
+-------------------------------------
+dataset/test_B2/123074.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02263
+Sobel time: 0.01653
+Non-maximum supression time: 0.00913
+Hysteresis time: 0.01197
+-------------------------------------
+Correct pixels: 0.75 (51111/67711)
+False positives: 0.15 (10432/67711)
+False negatives: 0.09 (6168/67711)
+-------------------------------------
+OpenCV time: 1.35223
+AnyDSL time: 0.06031
+-------------------------------------
+dataset/test_B2/253055.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.01967
+Sobel time: 0.01080
+Non-maximum supression time: 0.00533
+Hysteresis time: 0.00387
+-------------------------------------
+Correct pixels: 0.65 (16045/24555)
+False positives: 0.30 (7465/24555)
+False negatives: 0.04 (1045/24555)
+-------------------------------------
+OpenCV time: 1.19752
+AnyDSL time: 0.03973
+-------------------------------------
+dataset/test_B2/106024.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02323
+Sobel time: 0.01543
+Non-maximum supression time: 0.00992
+Hysteresis time: 0.00698
+-------------------------------------
+Correct pixels: 0.55 (12645/22787)
+False positives: 0.34 (7669/22787)
+False negatives: 0.11 (2473/22787)
+-------------------------------------
+OpenCV time: 1.42517
+AnyDSL time: 0.05563
+-------------------------------------
+dataset/test_B2/197017.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.02157
+Sobel time: 0.01593
+Non-maximum supression time: 0.00901
+Hysteresis time: 0.00919
+-------------------------------------
+Correct pixels: 0.72 (28586/39898)
+False positives: 0.20 (8027/39898)
+False negatives: 0.08 (3285/39898)
+-------------------------------------
+OpenCV time: 1.37280
+AnyDSL time: 0.05577
+-------------------------------------

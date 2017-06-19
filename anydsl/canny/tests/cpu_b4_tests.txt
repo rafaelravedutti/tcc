@@ -1,0 +1,2923 @@
+[rafael@rafael-pc canny]$ for i in $(find dataset/test_B4/ -type f); do echo $i; ./canny $i; done
+dataset/test_B4/105025.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25244
+Sobel time: 0.15102
+Non-maximum supression time: 0.08088
+Hysteresis time: 0.22778
+-------------------------------------
+Correct pixels: 0.86 (1187565/1387352)
+False positives: 0.06 (86455/1387352)
+False negatives: 0.08 (113332/1387352)
+-------------------------------------
+OpenCV time: 1.54766
+AnyDSL time: 0.71243
+-------------------------------------
+dataset/test_B4/182053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25495
+Sobel time: 0.14992
+Non-maximum supression time: 0.07838
+Hysteresis time: 0.10728
+-------------------------------------
+Correct pixels: 0.88 (1072867/1220398)
+False positives: 0.05 (63646/1220398)
+False negatives: 0.07 (83885/1220398)
+-------------------------------------
+OpenCV time: 1.55093
+AnyDSL time: 0.59078
+-------------------------------------
+dataset/test_B4/41033.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24593
+Sobel time: 0.15171
+Non-maximum supression time: 0.07851
+Hysteresis time: 0.10901
+-------------------------------------
+Correct pixels: 0.81 (392275/482653)
+False positives: 0.12 (56117/482653)
+False negatives: 0.07 (34261/482653)
+-------------------------------------
+OpenCV time: 1.31217
+AnyDSL time: 0.58523
+-------------------------------------
+dataset/test_B4/148026.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24546
+Sobel time: 0.14759
+Non-maximum supression time: 0.07480
+Hysteresis time: 0.12956
+-------------------------------------
+Correct pixels: 0.93 (1627423/1751351)
+False positives: 0.03 (57294/1751351)
+False negatives: 0.04 (66634/1751351)
+-------------------------------------
+OpenCV time: 1.29673
+AnyDSL time: 0.59748
+-------------------------------------
+dataset/test_B4/33039.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24775
+Sobel time: 0.15299
+Non-maximum supression time: 0.07462
+Hysteresis time: 0.18462
+-------------------------------------
+Correct pixels: 0.90 (2117008/2342240)
+False positives: 0.04 (90623/2342240)
+False negatives: 0.06 (134609/2342240)
+-------------------------------------
+OpenCV time: 1.27105
+AnyDSL time: 0.66005
+-------------------------------------
+dataset/test_B4/42049.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25382
+Sobel time: 0.15232
+Non-maximum supression time: 0.07831
+Hysteresis time: 0.06979
+-------------------------------------
+Correct pixels: 0.84 (357464/424806)
+False positives: 0.11 (47199/424806)
+False negatives: 0.05 (20143/424806)
+-------------------------------------
+OpenCV time: 1.45001
+AnyDSL time: 0.55431
+-------------------------------------
+dataset/test_B4/271035.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25225
+Sobel time: 0.14877
+Non-maximum supression time: 0.07493
+Hysteresis time: 0.13942
+-------------------------------------
+Correct pixels: 0.89 (987802/1113656)
+False positives: 0.05 (51065/1113656)
+False negatives: 0.07 (74789/1113656)
+-------------------------------------
+OpenCV time: 1.62306
+AnyDSL time: 0.61545
+-------------------------------------
+dataset/test_B4/296007.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24816
+Sobel time: 0.15399
+Non-maximum supression time: 0.07859
+Hysteresis time: 0.10149
+-------------------------------------
+Correct pixels: 0.71 (192725/272972)
+False positives: 0.20 (53589/272972)
+False negatives: 0.10 (26658/272972)
+-------------------------------------
+OpenCV time: 1.20996
+AnyDSL time: 0.58229
+-------------------------------------
+dataset/test_B4/12084.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24727
+Sobel time: 0.14917
+Non-maximum supression time: 0.07993
+Hysteresis time: 0.18421
+-------------------------------------
+Correct pixels: 0.88 (1125067/1280811)
+False positives: 0.05 (69283/1280811)
+False negatives: 0.07 (86461/1280811)
+-------------------------------------
+OpenCV time: 1.35263
+AnyDSL time: 0.66081
+-------------------------------------
+dataset/test_B4/160068.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24829
+Sobel time: 0.15927
+Non-maximum supression time: 0.07835
+Hysteresis time: 0.10271
+-------------------------------------
+Correct pixels: 0.87 (845171/968853)
+False positives: 0.06 (60438/968853)
+False negatives: 0.07 (63244/968853)
+-------------------------------------
+OpenCV time: 1.28915
+AnyDSL time: 0.58870
+-------------------------------------
+dataset/test_B4/361010.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24773
+Sobel time: 0.15290
+Non-maximum supression time: 0.08395
+Hysteresis time: 0.11265
+-------------------------------------
+Correct pixels: 0.86 (594001/693480)
+False positives: 0.09 (64795/693480)
+False negatives: 0.05 (34684/693480)
+-------------------------------------
+OpenCV time: 1.31547
+AnyDSL time: 0.59735
+-------------------------------------
+dataset/test_B4/145086.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25038
+Sobel time: 0.15003
+Non-maximum supression time: 0.07936
+Hysteresis time: 0.12645
+-------------------------------------
+Correct pixels: 0.81 (587959/724090)
+False positives: 0.08 (54676/724090)
+False negatives: 0.11 (81455/724090)
+-------------------------------------
+OpenCV time: 1.49578
+AnyDSL time: 0.60626
+-------------------------------------
+dataset/test_B4/119082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24947
+Sobel time: 0.16302
+Non-maximum supression time: 0.07869
+Hysteresis time: 0.14342
+-------------------------------------
+Correct pixels: 0.89 (1175669/1324433)
+False positives: 0.05 (60500/1324433)
+False negatives: 0.07 (88264/1324433)
+-------------------------------------
+OpenCV time: 1.34514
+AnyDSL time: 0.63466
+-------------------------------------
+dataset/test_B4/97033.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21356
+Sobel time: 0.15802
+Non-maximum supression time: 0.08497
+Hysteresis time: 0.13853
+-------------------------------------
+Correct pixels: 0.89 (1137202/1274598)
+False positives: 0.05 (66111/1274598)
+False negatives: 0.06 (71285/1274598)
+-------------------------------------
+OpenCV time: 1.58399
+AnyDSL time: 0.59514
+-------------------------------------
+dataset/test_B4/210088.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24573
+Sobel time: 0.14859
+Non-maximum supression time: 0.07477
+Hysteresis time: 0.12284
+-------------------------------------
+Correct pixels: 0.88 (604366/683028)
+False positives: 0.06 (41433/683028)
+False negatives: 0.05 (37229/683028)
+-------------------------------------
+OpenCV time: 0.99706
+AnyDSL time: 0.59202
+-------------------------------------
+dataset/test_B4/8023.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25596
+Sobel time: 0.15000
+Non-maximum supression time: 0.07959
+Hysteresis time: 0.15287
+-------------------------------------
+Correct pixels: 0.80 (609251/764636)
+False positives: 0.10 (77361/764636)
+False negatives: 0.10 (78024/764636)
+-------------------------------------
+OpenCV time: 1.36283
+AnyDSL time: 0.63850
+-------------------------------------
+dataset/test_B4/58060.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24523
+Sobel time: 0.15788
+Non-maximum supression time: 0.07842
+Hysteresis time: 0.15234
+-------------------------------------
+Correct pixels: 0.90 (1483666/1642524)
+False positives: 0.04 (71101/1642524)
+False negatives: 0.05 (87757/1642524)
+-------------------------------------
+OpenCV time: 1.50828
+AnyDSL time: 0.63395
+-------------------------------------
+dataset/test_B4/260058.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25568
+Sobel time: 0.16734
+Non-maximum supression time: 0.09449
+Hysteresis time: 0.10110
+-------------------------------------
+Correct pixels: 0.71 (217740/306208)
+False positives: 0.18 (55266/306208)
+False negatives: 0.11 (33202/306208)
+-------------------------------------
+OpenCV time: 1.53567
+AnyDSL time: 0.61887
+-------------------------------------
+dataset/test_B4/156065.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24567
+Sobel time: 0.16325
+Non-maximum supression time: 0.07830
+Hysteresis time: 0.20315
+-------------------------------------
+Correct pixels: 0.86 (1061082/1228764)
+False positives: 0.07 (81276/1228764)
+False negatives: 0.07 (86406/1228764)
+-------------------------------------
+OpenCV time: 1.55683
+AnyDSL time: 0.69048
+-------------------------------------
+dataset/test_B4/157055.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25435
+Sobel time: 0.15127
+Non-maximum supression time: 0.07921
+Hysteresis time: 0.14470
+-------------------------------------
+Correct pixels: 0.89 (954652/1078183)
+False positives: 0.07 (71091/1078183)
+False negatives: 0.05 (52440/1078183)
+-------------------------------------
+OpenCV time: 1.52596
+AnyDSL time: 0.62961
+-------------------------------------
+dataset/test_B4/43074.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24524
+Sobel time: 0.14970
+Non-maximum supression time: 0.08016
+Hysteresis time: 0.10711
+-------------------------------------
+Correct pixels: 0.77 (376394/485867)
+False positives: 0.12 (59355/485867)
+False negatives: 0.10 (50118/485867)
+-------------------------------------
+OpenCV time: 1.35009
+AnyDSL time: 0.58243
+-------------------------------------
+dataset/test_B4/62096.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25043
+Sobel time: 0.15282
+Non-maximum supression time: 0.07878
+Hysteresis time: 0.10631
+-------------------------------------
+Correct pixels: 0.90 (868361/969990)
+False positives: 0.05 (48710/969990)
+False negatives: 0.05 (52919/969990)
+-------------------------------------
+OpenCV time: 1.07083
+AnyDSL time: 0.58842
+-------------------------------------
+dataset/test_B4/148089.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25602
+Sobel time: 0.14997
+Non-maximum supression time: 0.07845
+Hysteresis time: 0.18299
+-------------------------------------
+Correct pixels: 0.89 (1477511/1660510)
+False positives: 0.05 (84654/1660510)
+False negatives: 0.06 (98345/1660510)
+-------------------------------------
+OpenCV time: 1.11408
+AnyDSL time: 0.66751
+-------------------------------------
+dataset/test_B4/101087.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24916
+Sobel time: 0.14811
+Non-maximum supression time: 0.07502
+Hysteresis time: 0.12262
+-------------------------------------
+Correct pixels: 0.85 (603779/709506)
+False positives: 0.07 (47354/709506)
+False negatives: 0.08 (58373/709506)
+-------------------------------------
+OpenCV time: 1.23553
+AnyDSL time: 0.59499
+-------------------------------------
+dataset/test_B4/38092.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24914
+Sobel time: 0.15157
+Non-maximum supression time: 0.07845
+Hysteresis time: 0.18072
+-------------------------------------
+Correct pixels: 0.83 (910301/1102631)
+False positives: 0.08 (82745/1102631)
+False negatives: 0.10 (109585/1102631)
+-------------------------------------
+OpenCV time: 1.54460
+AnyDSL time: 0.65996
+-------------------------------------
+dataset/test_B4/229036.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24982
+Sobel time: 0.15400
+Non-maximum supression time: 0.07920
+Hysteresis time: 0.16955
+-------------------------------------
+Correct pixels: 0.88 (1394067/1578854)
+False positives: 0.05 (82616/1578854)
+False negatives: 0.06 (102171/1578854)
+-------------------------------------
+OpenCV time: 1.46053
+AnyDSL time: 0.65265
+-------------------------------------
+dataset/test_B4/69040.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/304074.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24801
+Sobel time: 0.15089
+Non-maximum supression time: 0.07677
+Hysteresis time: 0.21458
+-------------------------------------
+Correct pixels: 0.85 (1117980/1309690)
+False positives: 0.04 (57306/1309690)
+False negatives: 0.10 (134404/1309690)
+-------------------------------------
+OpenCV time: 1.36652
+AnyDSL time: 0.69032
+-------------------------------------
+dataset/test_B4/85048.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25780
+Sobel time: 0.15111
+Non-maximum supression time: 0.08166
+Hysteresis time: 0.17726
+-------------------------------------
+Correct pixels: 0.87 (1272976/1461499)
+False positives: 0.06 (85787/1461499)
+False negatives: 0.07 (102736/1461499)
+-------------------------------------
+OpenCV time: 1.39837
+AnyDSL time: 0.66791
+-------------------------------------
+dataset/test_B4/3096.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25030
+Sobel time: 0.14944
+Non-maximum supression time: 0.07860
+Hysteresis time: 0.05310
+-------------------------------------
+Correct pixels: 0.72 (118243/163132)
+False positives: 0.24 (39690/163132)
+False negatives: 0.03 (5199/163132)
+-------------------------------------
+OpenCV time: 1.50731
+AnyDSL time: 0.53156
+-------------------------------------
+dataset/test_B4/208001.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.19641
+Sobel time: 0.16203
+Non-maximum supression time: 0.07883
+Hysteresis time: 0.19454
+-------------------------------------
+Correct pixels: 0.86 (960886/1118676)
+False positives: 0.05 (57560/1118676)
+False negatives: 0.09 (100230/1118676)
+-------------------------------------
+OpenCV time: 1.34270
+AnyDSL time: 0.63188
+-------------------------------------
+dataset/test_B4/291000.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/241004.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25397
+Sobel time: 0.14902
+Non-maximum supression time: 0.08300
+Hysteresis time: 0.09054
+-------------------------------------
+Correct pixels: 0.83 (355180/429313)
+False positives: 0.12 (51273/429313)
+False negatives: 0.05 (22860/429313)
+-------------------------------------
+OpenCV time: 1.47869
+AnyDSL time: 0.57660
+-------------------------------------
+dataset/test_B4/189080.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.28224
+Sobel time: 0.17384
+Non-maximum supression time: 0.09109
+Hysteresis time: 0.08016
+-------------------------------------
+Correct pixels: 0.85 (280463/329645)
+False positives: 0.11 (37557/329645)
+False negatives: 0.04 (11625/329645)
+-------------------------------------
+OpenCV time: 1.51829
+AnyDSL time: 0.62745
+-------------------------------------
+dataset/test_B4/65033.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/302008.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24430
+Sobel time: 0.15056
+Non-maximum supression time: 0.07509
+Hysteresis time: 0.06943
+-------------------------------------
+Correct pixels: 0.93 (498139/533324)
+False positives: 0.04 (23389/533324)
+False negatives: 0.02 (11796/533324)
+-------------------------------------
+OpenCV time: 1.46571
+AnyDSL time: 0.53946
+-------------------------------------
+dataset/test_B4/216081.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25509
+Sobel time: 0.14955
+Non-maximum supression time: 0.07908
+Hysteresis time: 0.15207
+-------------------------------------
+Correct pixels: 0.86 (902420/1053080)
+False positives: 0.06 (64874/1053080)
+False negatives: 0.08 (85786/1053080)
+-------------------------------------
+OpenCV time: 1.35361
+AnyDSL time: 0.63591
+-------------------------------------
+dataset/test_B4/385039.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25105
+Sobel time: 0.15345
+Non-maximum supression time: 0.07848
+Hysteresis time: 0.11905
+-------------------------------------
+Correct pixels: 0.89 (897889/1013856)
+False positives: 0.07 (71032/1013856)
+False negatives: 0.04 (44935/1013856)
+-------------------------------------
+OpenCV time: 1.34460
+AnyDSL time: 0.60214
+-------------------------------------
+dataset/test_B4/175043.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24866
+Sobel time: 0.15155
+Non-maximum supression time: 0.07977
+Hysteresis time: 0.23871
+-------------------------------------
+Correct pixels: 0.89 (1855748/2087951)
+False positives: 0.05 (109809/2087951)
+False negatives: 0.06 (122394/2087951)
+-------------------------------------
+OpenCV time: 1.45133
+AnyDSL time: 0.71876
+-------------------------------------
+dataset/test_B4/223061.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24412
+Sobel time: 0.16757
+Non-maximum supression time: 0.07895
+Hysteresis time: 0.20387
+-------------------------------------
+Correct pixels: 0.87 (1297542/1496498)
+False positives: 0.06 (90730/1496498)
+False negatives: 0.07 (108226/1496498)
+-------------------------------------
+OpenCV time: 1.43116
+AnyDSL time: 0.69467
+-------------------------------------
+dataset/test_B4/21077.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.23192
+Sobel time: 0.15366
+Non-maximum supression time: 0.07908
+Hysteresis time: 0.11211
+-------------------------------------
+Correct pixels: 0.88 (731991/835366)
+False positives: 0.07 (60729/835366)
+False negatives: 0.05 (42646/835366)
+-------------------------------------
+OpenCV time: 1.42857
+AnyDSL time: 0.57683
+-------------------------------------
+dataset/test_B4/101085.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24266
+Sobel time: 0.15057
+Non-maximum supression time: 0.07510
+Hysteresis time: 0.20370
+-------------------------------------
+Correct pixels: 0.89 (1315712/1471224)
+False positives: 0.05 (68959/1471224)
+False negatives: 0.06 (86553/1471224)
+-------------------------------------
+OpenCV time: 1.55306
+AnyDSL time: 0.67212
+-------------------------------------
+dataset/test_B4/89072.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24269
+Sobel time: 0.15087
+Non-maximum supression time: 0.07489
+Hysteresis time: 0.13674
+-------------------------------------
+Correct pixels: 0.90 (961793/1069054)
+False positives: 0.05 (56639/1069054)
+False negatives: 0.05 (50622/1069054)
+-------------------------------------
+OpenCV time: 1.53697
+AnyDSL time: 0.60527
+-------------------------------------
+dataset/test_B4/54082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24940
+Sobel time: 0.15089
+Non-maximum supression time: 0.07507
+Hysteresis time: 0.14503
+-------------------------------------
+Correct pixels: 0.83 (555809/673215)
+False positives: 0.08 (53776/673215)
+False negatives: 0.09 (63630/673215)
+-------------------------------------
+OpenCV time: 1.03908
+AnyDSL time: 0.62050
+-------------------------------------
+dataset/test_B4/69020.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25377
+Sobel time: 0.14909
+Non-maximum supression time: 0.07942
+Hysteresis time: 0.20815
+-------------------------------------
+Correct pixels: 0.79 (614163/775339)
+False positives: 0.10 (74067/775339)
+False negatives: 0.11 (87109/775339)
+-------------------------------------
+OpenCV time: 1.41200
+AnyDSL time: 0.69051
+-------------------------------------
+*** Error in `./canny': munmap_chunk(): invalid pointer: 0x00007ff120e9a000 ***
+======= Backtrace: =========
+/usr/lib/libc.so.6(+0x722ab)[0x7ff1966c42ab]
+/usr/lib/libc.so.6(+0x7890e)[0x7ff1966ca90e]
+./canny[0x40487f]
+/usr/lib/libc.so.6(__libc_start_main+0xf1)[0x7ff196672511]
+./canny[0x40166a]
+======= Memory map: ========
+00400000-0040b000 r-xp 00000000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060a000-0060b000 r--p 0000a000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060b000-0060c000 rw-p 0000b000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+025ce000-05983000 rw-p 00000000 00:00 0                                  [heap]
+200000000-200100000 rw-s 11f310000 00:06 15439                           /dev/nvidiactl
+200100000-200104000 rw-s 11a7d4000 00:06 15439                           /dev/nvidiactl
+200104000-200120000 ---p 00000000 00:00 0 
+200120000-200520000 rw-s 11a788000 00:06 15439                           /dev/nvidiactl
+200520000-200524000 rw-s 122744000 00:06 15439                           /dev/nvidiactl
+200524000-200540000 ---p 00000000 00:00 0 
+200540000-200940000 rw-s 122712000 00:06 15439                           /dev/nvidiactl
+200940000-200944000 rw-s 1253a3000 00:06 15439                           /dev/nvidiactl
+200944000-200960000 ---p 00000000 00:00 0 
+200960000-200d60000 rw-s 125399000 00:06 15439                           /dev/nvidiactl
+200d60000-200d64000 rw-s 124813000 00:06 15439                           /dev/nvidiactl
+200d64000-200d80000 ---p 00000000 00:00 0 
+200d80000-201180000 rw-s 12490b000 00:06 15439                           /dev/nvidiactl
+201180000-201184000 rw-s 11b2b8000 00:06 15439                           /dev/nvidiactl
+201184000-2011a0000 ---p 00000000 00:00 0 
+2011a0000-2015a0000 rw-s 11b27c000 00:06 15439                           /dev/nvidiactl
+2015a0000-2015a4000 rw-s 11aa3c000 00:06 15439                           /dev/nvidiactl
+2015a4000-2015c0000 ---p 00000000 00:00 0 
+2015c0000-2019c0000 rw-s 11ab3c000 00:06 15439                           /dev/nvidiactl
+2019c0000-2019c4000 rw-s 9f262000 00:06 15439                            /dev/nvidiactl
+2019c4000-2019e0000 ---p 00000000 00:00 0 
+2019e0000-201de0000 rw-s aab38000 00:06 15439                            /dev/nvidiactl
+201de0000-201de4000 rw-s 02b04000 00:06 15439                            /dev/nvidiactl
+201de4000-201e00000 ---p 00000000 00:00 0 
+201e00000-202200000 rw-s 16301000 00:06 15439                            /dev/nvidiactl
+202200000-202204000 rw-s 8a9cb000 00:06 15439                            /dev/nvidiactl
+202204000-202220000 ---p 00000000 00:00 0 
+202220000-202620000 rw-s 5dfb2000 00:06 15439                            /dev/nvidiactl
+202620000-202624000 rw-s 977a1000 00:06 15439                            /dev/nvidiactl
+202624000-202640000 ---p 00000000 00:00 0 
+202640000-202a40000 rw-s 160e9000 00:06 15439                            /dev/nvidiactl
+202a40000-202a44000 rw-s 2d79d000 00:06 15439                            /dev/nvidiactl
+202a44000-202a60000 ---p 00000000 00:00 0 
+202a60000-202e60000 rw-s 0589f000 00:06 15439                            /dev/nvidiactl
+202e60000-202e64000 rw-s 160ef000 00:06 15439                            /dev/nvidiactl
+202e64000-202e80000 ---p 00000000 00:00 0 
+202e80000-203280000 rw-s 1badf000 00:06 15439                            /dev/nvidiactl
+203280000-203380000 rw-s 3b359000 00:06 15439                            /dev/nvidiactl
+203380000-203480000 rw-s 5f463000 00:06 15439                            /dev/nvidiactl
+203480000-203580000 rw-s 8dafe000 00:06 15439                            /dev/nvidiactl
+203580000-203680000 rw-s 51598000 00:06 15439                            /dev/nvidiactl
+203680000-203780000 rw-s 8f0d4000 00:06 15439                            /dev/nvidiactl
+203780000-203802000 rw-s b1496000 00:06 15439                            /dev/nvidiactl
+203802000-600000000 ---p 00000000 00:00 0 
+600000000-600100000 rw-s aabb3000 00:06 15439                            /dev/nvidiactl
+600100000-600104000 rw-s 4167c000 00:06 15439                            /dev/nvidiactl
+600104000-600120000 ---p 00000000 00:00 0 
+600120000-600520000 rw-s 9e5e8000 00:06 15439                            /dev/nvidiactl
+600520000-600524000 rw-s 68f0b000 00:06 15439                            /dev/nvidiactl
+600524000-600540000 ---p 00000000 00:00 0 
+600540000-600940000 rw-s 562c7000 00:06 15439                            /dev/nvidiactl
+600940000-600944000 rw-s 8bbda000 00:06 15439                            /dev/nvidiactl
+600944000-600960000 ---p 00000000 00:00 0 
+600960000-600d60000 rw-s 1d08e000 00:06 15439                            /dev/nvidiactl
+600d60000-600d64000 rw-s b5a89000 00:06 15439                            /dev/nvidiactl
+600d64000-600d80000 ---p 00000000 00:00 0 
+600d80000-601180000 rw-s 058cd000 00:06 15439                            /dev/nvidiactl
+601180000-601184000 rw-s 02bd9000 00:06 15439                            /dev/nvidiactl
+601184000-6011a0000 ---p 00000000 00:00 0 
+6011a0000-6015a0000 rw-s 16e45000 00:06 15439                            /dev/nvidiactl
+6015a0000-6015a4000 rw-s 89070000 00:06 15439                            /dev/nvidiactl
+6015a4000-6015c0000 ---p 00000000 00:00 0 
+6015c0000-6019c0000 rw-s 29134000 00:06 15439                            /dev/nvidiactl
+6019c0000-6019c4000 rw-s 990af000 00:06 15439                            /dev/nvidiactl
+6019c4000-6019e0000 ---p 00000000 00:00 0 
+6019e0000-601de0000 rw-s 08bad000 00:06 15439                            /dev/nvidiactl
+601de0000-601de4000 rw-s 5145a000 00:06 15439                            /dev/nvidiactl
+601de4000-601e00000 ---p 00000000 00:00 0 
+601e00000-602200000 rw-s 819e0000 00:06 15439                            /dev/nvidiactl
+602200000-602204000 rw-s 05843000 00:06 15439                            /dev/nvidiactl
+602204000-602220000 ---p 00000000 00:00 0 
+602220000-602620000 rw-s 8bba0000 00:06 15439                            /dev/nvidiactl
+602620000-602624000 rw-s aaba5000 00:06 15439                            /dev/nvidiactl
+602624000-602640000 ---p 00000000 00:00 0 
+602640000-602a40000 rw-s 18341000 00:06 15439                            /dev/nvidiactl
+602a40000-602a44000 rw-s 0548f000 00:06 15439                            /dev/nvidiactl
+602a44000-602a60000 ---p 00000000 00:00 0 
+602a60000-602e60000 rw-s 0af5b000 00:06 15439                            /dev/nvidiactl
+602e60000-602e64000 rw-s aaac8000 00:06 15439                            /dev/nvidiactl
+602e64000-602e80000 ---p 00000000 00:00 0 
+602e80000-603280000 rw-s 4ca74000 00:06 15439                            /dev/nvidiactl
+603280000-603380000 rw-s 04fd7000 00:06 15439                            /dev/nvidiactl
+603380000-603480000 rw-s 2900c000 00:06 15439                            /dev/nvidiactl
+603480000-603580000 rw-s 411df000 00:06 15439                            /dev/nvidiactl
+603580000-603680000 rw-s 06c91000 00:06 15439                            /dev/nvidiactl
+603680000-603780000 rw-s 03c66000 00:06 15439                            /dev/nvidiactl
+603780000-603802000 rw-s 3f598000 00:06 15439                            /dev/nvidiactl
+603802000-603820000 ---p 00000000 00:00 0 
+603820000-603920000 rw-s 8bb31000 00:06 15439                            /dev/nvidiactl
+603920000-603924000 rw-s b14ec000 00:06 15439                            /dev/nvidiactl
+603924000-603940000 ---p 00000000 00:00 0 
+603940000-603d40000 rw-s b14f9000 00:06 15439                            /dev/nvidiactl
+603d40000-603d44000 rw-s c3828000 00:06 15439                            /dev/nvidiactl
+603d44000-603d60000 ---p 00000000 00:00 0 
+603d60000-604160000 rw-s c3834000 00:06 15439                            /dev/nvidiactl
+604160000-604164000 rw-s 23d41000 00:06 15439                            /dev/nvidiactl
+604164000-604180000 ---p 00000000 00:00 0 
+604180000-604580000 rw-s 23d58000 00:06 15439                            /dev/nvidiactl
+604580000-604584000 rw-s 501fb000 00:06 15439                            /dev/nvidiactl
+604584000-6045a0000 ---p 00000000 00:00 0 
+6045a0000-6049a0000 rw-s 563e7000 00:06 15439                            /dev/nvidiactl
+6049a0000-6049a4000 rw-s 58176000 00:06 15439                            /dev/nvidiactl
+6049a4000-6049c0000 ---p 00000000 00:00 0 
+6049c0000-604dc0000 rw-s 8b26c000 00:06 15439                            /dev/nvidiactl
+604dc0000-604dc4000 rw-s 2f58f000 00:06 15439                            /dev/nvidiactl
+604dc4000-604de0000 ---p 00000000 00:00 0 
+604de0000-6051e0000 rw-s 2f59b000 00:06 15439                            /dev/nvidiactl
+6051e0000-6051e4000 rw-s 5f5eb000 00:06 15439                            /dev/nvidiactl
+6051e4000-605200000 ---p 00000000 00:00 0 
+605200000-605600000 rw-s 5ede1000 00:06 15439                            /dev/nvidiactl
+605600000-605604000 rw-s 05125000 00:06 15439                            /dev/nvidiactl
+605604000-605620000 ---p 00000000 00:00 0 
+605620000-605a20000 rw-s 05132000 00:06 15439                            /dev/nvidiactl
+605a20000-605a24000 rw-s 13da1000 00:06 15439                            /dev/nvidiactl
+605a24000-605a40000 ---p 00000000 00:00 0 
+605a40000-605e40000 rw-s 13db8000 00:06 15439                            /dev/nvidiactl
+605e40000-605e44000 rw-s 1d28b000 00:06 15439                            /dev/nvidiactl
+605e44000-605e60000 ---p 00000000 00:00 0 
+605e60000-606260000 rw-s 1d297000 00:06 15439                            /dev/nvidiactl
+606260000-606264000 rw-s 4d324000 00:06 15439                            /dev/nvidiactl
+606264000-606280000 ---p 00000000 00:00 0 
+606280000-606680000 rw-s 4d331000 00:06 15439                            /dev/nvidiactl
+606680000-606684000 rw-s 417de000 00:06 15439                            /dev/nvidiactl
+606684000-6066a0000 ---p 00000000 00:00 0 
+6066a0000-606aa0000 rw-s 417f4000 00:06 15439                            /dev/nvidiactl
+606aa0000-606ba0000 rw-s 16fbf000 00:06 15439                            /dev/nvidiactl
+606ba0000-606ca0000 rw-s 068c9000 00:06 15439                            /dev/nvidiactl
+606ca0000-606da0000 rw-s c3858000 00:06 15439                            /dev/nvidiactl
+606da0000-606ea0000 rw-s 87551000 00:06 15439                            /dev/nvidiactl
+606ea0000-606fa0000 rw-s 3f5d7000 00:06 15439                            /dev/nvidiactl
+606fa0000-607022000 rw-s 1635b000 00:06 15439                            /dev/nvidiactl
+607022000-a00000000 ---p 00000000 00:00 0 
+7ff114000000-7ff114021000 rw-p 00000000 00:00 0 
+7ff114021000-7ff118000000 ---p 00000000 00:00 0 
+7ff118000000-7ff1180d0000 rw-p 00000000 00:00 0 
+7ff1180d0000-7ff11c000000 ---p 00000000 00:00 0 
+7ff11c000000-7ff11c021000 rw-p 00000000 00:00 0 
+7ff11c021000-7ff120000000 ---p 00000000 00:00 0 
+7ff120e99000-7ff123466000 rw-p 00000000 00:00 0 
+7ff128000000-7ff128021000 rw-p 00000000 00:00 0 
+7ff128021000-7ff12c000000 ---p 00000000 00:00 0 
+7ff12c230000-7ff12c231000 ---p 00000000 00:00 0 
+7ff12c231000-7ff12ca31000 rwxp 00000000 00:00 0 
+7ff12ca31000-7ff12ca32000 ---p 00000000 00:00 0 
+7ff12ca32000-7ff12d232000 rwxp 00000000 00:00 0 
+7ff12d232000-7ff12d233000 ---p 00000000 00:00 0 
+7ff12d233000-7ff12da33000 rwxp 00000000 00:00 0 
+7ff130000000-7ff130021000 rw-p 00000000 00:00 0 
+7ff130021000-7ff134000000 ---p 00000000 00:00 0 
+7ff1347d3000-7ff1347d4000 ---p 00000000 00:00 0 
+7ff1347d4000-7ff134fd4000 rwxp 00000000 00:00 0 
+7ff134fd4000-7ff134fd5000 ---p 00000000 00:00 0 
+7ff134fd5000-7ff1357d5000 rwxp 00000000 00:00 0 
+7ff1357d5000-7ff1357d6000 ---p 00000000 00:00 0 
+7ff1357d6000-7ff135fd6000 rwxp 00000000 00:00 0 
+7ff135fd6000-7ff135fd7000 ---p 00000000 00:00 0 
+7ff135fd7000-7ff136feb000 rwxp 00000000 00:00 0 
+7ff136feb000-7ff136fec000 ---p 00000000 00:00 0 
+7ff136fec000-7ff138000000 rwxp 00000000 00:00 0 
+7ff138000000-7ff138021000 rw-p 00000000 00:00 0 
+7ff138021000-7ff13c000000 ---p 00000000 00:00 0 
+7ff13c116000-7ff13c117000 ---p 00000000 00:00 0 
+7ff13c117000-7ff13c517000 rwxp 00000000 00:00 0 
+7ff13c517000-7ff13c518000 ---p 00000000 00:00 0 
+7ff13c518000-7ff13cd18000 rwxp 00000000 00:00 0 
+7ff13cd18000-7ff13d4fc000 r-xp 00000000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7ff13d4fc000-7ff13d6fc000 ---p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7ff13d6fc000-7ff13d7f2000 rw-p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7ff13d7f2000-7ff13d7fb000 rw-p 00000000 00:00 0 
+7ff13d7fb000-7ff13d7fc000 ---p 00000000 00:00 0 
+7ff13d7fc000-7ff13dffc000 rwxp 00000000 00:00 0 
+7ff13dffc000-7ff13dffd000 ---p 00000000 00:00 0 
+7ff13dffd000-7ff13e7fd000 rwxp 00000000 00:00 0 
+7ff13e7fd000-7ff13e7fe000 ---p 00000000 00:00 0 
+7ff13e7fe000-7ff13effe000 rwxp 00000000 00:00 0 
+7ff13effe000-7ff13efff000 ---p 00000000 00:00 0 
+7ff13efff000-7ff13f7ff000 rwxp 00000000 00:00 0 
+7ff13f7ff000-7ff13f800000 ---p 00000000 00:00 0 
+7ff13f800000-7ff140000000 rwxp 00000000 00:00 0 
+7ff140000000-7ff140021000 rw-p 00000000 00:00 0 
+7ff140021000-7ff144000000 ---p 00000000 00:00 0 
+7ff144000000-7ff144021000 rw-p 00000000 00:00 0 
+7ff144021000-7ff148000000 ---p 00000000 00:00 0 
+7ff148000000-7ff148021000 rw-p 00000000 00:00 0 
+7ff148021000-7ff14c000000 ---p 00000000 00:00 0 
+7ff14c000000-7ff14c021000 rw-p 00000000 00:00 0 
+7ff14c021000-7ff150000000 ---p 00000000 00:00 0 
+7ff150000000-7ff150021000 rw-p 00000000 00:00 0 
+7ff150021000-7ff154000000 ---p 00000000 00:00 0 
+7ff154106000-7ff154107000 ---p 00000000 00:00 0 
+7ff154107000-7ff154907000 rwxp 00000000 00:00 0 
+7ff154907000-7ff154908000 ---p 00000000 00:00 0 
+7ff154908000-7ff155108000 rwxp 00000000 00:00 0 
+7ff155108000-7ff155109000 ---p 00000000 00:00 0 
+7ff155109000-7ff15611d000 rwxp 00000000 00:00 0 
+7ff15611d000-7ff15611e000 ---p 00000000 00:00 0 
+7ff15611e000-7ff157132000 rwxp 00000000 00:00 0 
+7ff157132000-7ff15af2d000 r-xp 00000000 08:02 16825155                   /usr/lib/libamdocl64.so
+7ff15af2d000-7ff15b12d000 ---p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7ff15b12d000-7ff15b538000 rw-p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7ff15b538000-7ff15b616000 rw-p 00000000 00:00 0 
+7ff15b616000-7ff15bccf000 r-xp 00000000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7ff15bccf000-7ff15bece000 ---p 006b9000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7ff15bece000-7ff15bff2000 rw-p 006b8000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7ff15bff2000-7ff15c000000 rw-p 00000000 00:00 0 
+7ff15c000000-7ff15c021000 rw-p 00000000 00:00 0 
+7ff15c021000-7ff160000000 ---p 00000000 00:00 0 
+7ff1602aa000-7ff163980000 r-xp 00000000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7ff163980000-7ff163b80000 ---p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7ff163b80000-7ff163f2c000 rw-p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7ff163f2c000-7ff164000000 rw-p 00000000 00:00 0 
+7ff164000000-7ff164021000 rw-p 00000000 00:00 0 
+7ff164021000-7ff168000000 ---p 00000000 00:00 0 
+7ff1683de000-7ff1685de000 rw-p 00000000 00:00 0 
+7ff1685de000-7ff1685fc000 r-xp 00000000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7ff1685fc000-7ff1687fb000 ---p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7ff1687fb000-7ff1687fc000 r--p 0001d000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7ff1687fc000-7ff1687fd000 rw-p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7ff1687fd000-7ff16a86c000 r-xp 00000000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7ff16a86c000-7ff16aa6c000 ---p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7ff16aa6c000-7ff16ad7e000 rw-p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7ff16ad7e000-7ff16ae0f000 rw-p 00000000 00:00 0 
+7ff16ae0f000-7ff16ae10000 ---p 00000000 00:00 0 
+7ff16ae10000-7ff16b610000 rwxp 00000000 00:00 0 
+7ff16b610000-7ff16b611000 ---p 00000000 00:00 0 
+7ff16b611000-7ff16be11000 rwxp 00000000 00:00 0 
+7ff16be11000-7ff16e3c4000 rw-p 00000000 00:00 0 
+7ff16e530000-7ff16e531000 ---p 00000000 00:00 0 
+7ff16e531000-7ff16ed31000 rwxp 00000000 00:00 0 
+7ff16ed31000-7ff16ed45000 r-xp 00000000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7ff16ed45000-7ff16ef44000 ---p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7ff16ef44000-7ff16ef45000 r--p 00013000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7ff16ef45000-7ff16ef46000 rw-p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7ff16ef46000-7ff16f04d000 r-xp 00000000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7ff16f04d000-7ff16f24c000 ---p 00107000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7ff16f24c000-7ff16f24e000 r--p 00106000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7ff16f24e000-7ff16f255000 rw-p 00108000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7ff16f255000-7ff16f268000 r-xp 00000000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7ff16f268000-7ff16f467000 ---p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7ff16f467000-7ff16f468000 r--p 00012000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7ff16f468000-7ff16f469000 rw-p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7ff16f469000-7ff16f46d000 r-xp 00000000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7ff16f46d000-7ff16f66c000 ---p 00004000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7ff16f66c000-7ff16f66d000 rw-p 00003000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7ff16f66d000-7ff16f671000 r-xp 00000000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7ff16f671000-7ff16f870000 ---p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7ff16f870000-7ff16f871000 r--p 00003000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7ff16f871000-7ff16f872000 rw-p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7ff16f872000-7ff16f8b3000 r-xp 00000000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7ff16f8b3000-7ff16fab2000 ---p 00041000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7ff16fab2000-7ff16fab6000 r--p 00040000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7ff16fab6000-7ff16fab7000 rw-p 00044000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7ff16fab7000-7ff16fab8000 rw-p 00000000 00:00 0 
+7ff16fab8000-7ff16fabf000 r-xp 00000000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7ff16fabf000-7ff16fcbe000 ---p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7ff16fcbe000-7ff16fcbf000 r--p 00006000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7ff16fcbf000-7ff16fcc0000 rw-p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7ff16fcc0000-7ff16fcea000 r-xp 00000000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7ff16fcea000-7ff16fee9000 ---p 0002a000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7ff16fee9000-7ff16feeb000 r--p 00029000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7ff16feeb000-7ff16feec000 rw-p 0002b000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7ff16feec000-7ff16fefc000 r-xp 00000000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7ff16fefc000-7ff1700fc000 ---p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7ff1700fc000-7ff1700fd000 r--p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7ff1700fd000-7ff1700fe000 rw-p 00011000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7ff1700fe000-7ff17011e000 rw-p 00000000 00:00 0 
+7ff17011e000-7ff170123000 r-xp 00000000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7ff170123000-7ff170322000 ---p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7ff170322000-7ff170323000 r--p 00004000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7ff170323000-7ff170324000 rw-p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7ff170324000-7ff170326000 r-xp 00000000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7ff170326000-7ff170526000 ---p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7ff170526000-7ff170527000 r--p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7ff170527000-7ff170528000 rw-p 00003000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7ff170528000-7ff170596000 r-xp 00000000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7ff170596000-7ff170795000 ---p 0006e000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7ff170795000-7ff1707bd000 r--p 0006d000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7ff1707bd000-7ff1707be000 rw-p 00095000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7ff1707be000-7ff1707de000 rw-p 00000000 00:00 0 
+7ff1707de000-7ff1707ed000 r-xp 00000000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7ff1707ed000-7ff1709ec000 ---p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7ff1709ec000-7ff1709ed000 r--p 0000e000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7ff1709ed000-7ff1709ee000 rw-p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7ff1709ee000-7ff170a38000 r-xp 00000000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7ff170a38000-7ff170c38000 ---p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7ff170c38000-7ff170c39000 r--p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7ff170c39000-7ff170c3a000 rw-p 0004b000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7ff170c3a000-7ff170c3c000 rw-p 00000000 00:00 0 
+7ff170c3c000-7ff170c4f000 r-xp 00000000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7ff170c4f000-7ff170e4e000 ---p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7ff170e4e000-7ff170e4f000 r--p 00012000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7ff170e4f000-7ff170e50000 rw-p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7ff170e50000-7ff170e52000 rw-p 00000000 00:00 0 
+7ff170e52000-7ff170e79000 r-xp 00000000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7ff170e79000-7ff171079000 ---p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7ff171079000-7ff17107b000 r--p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7ff17107b000-7ff17107c000 rw-p 00029000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7ff17107c000-7ff171084000 r-xp 00000000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7ff171084000-7ff171284000 ---p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7ff171284000-7ff171285000 r--p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7ff171285000-7ff171286000 rw-p 00009000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7ff171286000-7ff171318000 r-xp 00000000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7ff171318000-7ff171517000 ---p 00092000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7ff171517000-7ff171519000 r--p 00091000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7ff171519000-7ff17151a000 rw-p 00093000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7ff17151a000-7ff171568000 r-xp 00000000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7ff171568000-7ff171767000 ---p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7ff171767000-7ff171768000 r--p 0004d000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7ff171768000-7ff171769000 rw-p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7ff171769000-7ff17176a000 rw-p 00000000 00:00 0 
+7ff17176a000-7ff171798000 r-xp 00000000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7ff171798000-7ff171997000 ---p 0002e000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7ff171997000-7ff17199a000 r--p 0002d000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7ff17199a000-7ff17199b000 rw-p 00030000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7ff17199b000-7ff1719de000 r-xp 00000000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7ff1719de000-7ff171bdd000 ---p 00043000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7ff171bdd000-7ff171be7000 rw-p 00042000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7ff171be7000-7ff171bed000 rw-p 00000000 00:00 0 
+7ff171bed000-7ff17a7d6000 r-xp 00000000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7ff17a7d6000-7ff17a9d5000 ---p 08be9000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7ff17a9d5000-7ff17a9e4000 rw-p 08be8000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7ff17a9e4000-7ff17aa3c000 rw-p 00000000 00:00 0 
+7ff17aa3c000-7ff17aa42000 r-xp 00000000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7ff17aa42000-7ff17ac41000 ---p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7ff17ac41000-7ff17ac42000 r--p 00005000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7ff17ac42000-7ff17ac43000 rw-p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7ff17ac43000-7ff17ac5f000 r-xp 00000000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7ff17ac5f000-7ff17ae5f000 ---p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7ff17ae5f000-7ff17ae62000 r--p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7ff17ae62000-7ff17ae63000 rw-p 0001f000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7ff17ae63000-7ff17ae74000 r-xp 00000000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7ff17ae74000-7ff17b073000 ---p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7ff17b073000-7ff17b074000 r--p 00010000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7ff17b074000-7ff17b075000 rw-p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7ff17b075000-7ff17b09a000 r-xp 00000000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7ff17b09a000-7ff17b299000 ---p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7ff17b299000-7ff17b29a000 r--p 00024000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7ff17b29a000-7ff17b29b000 rw-p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7ff17b29b000-7ff17b30d000 r-xp 00000000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7ff17b30d000-7ff17b50c000 ---p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7ff17b50c000-7ff17b50d000 r--p 00071000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7ff17b50d000-7ff17b50e000 rw-p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7ff17b50e000-7ff17b515000 r-xp 00000000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7ff17b515000-7ff17b715000 ---p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7ff17b715000-7ff17b716000 r--p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7ff17b716000-7ff17b717000 rw-p 00008000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7ff17b717000-7ff17b787000 r-xp 00000000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7ff17b787000-7ff17b986000 ---p 00070000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7ff17b986000-7ff17b9a0000 r--p 0006f000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7ff17b9a0000-7ff17b9a1000 rw-p 00089000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7ff17b9a1000-7ff17b9a2000 rw-p 00000000 00:00 0 
+7ff17b9a2000-7ff17b9ab000 r-xp 00000000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7ff17b9ab000-7ff17bbab000 ---p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7ff17bbab000-7ff17bbac000 r--p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7ff17bbac000-7ff17bbad000 rw-p 0000a000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7ff17bbad000-7ff17bbb9000 r-xp 00000000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7ff17bbb9000-7ff17bdb9000 ---p 0000c000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7ff17bdb9000-7ff17bdba000 r--p 0000c000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7ff17bdba000-7ff17bdbb000 rw-p 0000d000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7ff17bdbb000-7ff17bde3000 r-xp 00000000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7ff17bde3000-7ff17bfe2000 ---p 00028000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7ff17bfe2000-7ff17bfe3000 r--p 00027000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7ff17bfe3000-7ff17bfe4000 rw-p 00028000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7ff17bfe4000-7ff17bfe6000 r-xp 00000000 08:02 16798553                   /usr/lib/libxcb-shm.so.0.0.0Aborted (core dumped)
+dataset/test_B4/42012.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.28112
+Sobel time: 0.19300
+Non-maximum supression time: 0.08823
+Hysteresis time: 0.15107
+-------------------------------------
+Correct pixels: 0.84 (645859/768059)
+False positives: 0.09 (70757/768059)
+False negatives: 0.07 (51443/768059)
+-------------------------------------
+OpenCV time: 1.53512
+AnyDSL time: 0.71349
+-------------------------------------
+dataset/test_B4/163085.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21510
+Sobel time: 0.15256
+Non-maximum supression time: 0.07839
+Hysteresis time: 0.15527
+-------------------------------------
+Correct pixels: 0.84 (747324/892457)
+False positives: 0.08 (67442/892457)
+False negatives: 0.09 (77691/892457)
+-------------------------------------
+OpenCV time: 1.56068
+AnyDSL time: 0.60139
+-------------------------------------
+dataset/test_B4/24077.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21134
+Sobel time: 0.15425
+Non-maximum supression time: 0.07859
+Hysteresis time: 0.11523
+-------------------------------------
+Correct pixels: 0.90 (1052496/1167960)
+False positives: 0.06 (66904/1167960)
+False negatives: 0.04 (48560/1167960)
+-------------------------------------
+OpenCV time: 1.44375
+AnyDSL time: 0.55968
+-------------------------------------
+dataset/test_B4/170057.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25048
+Sobel time: 0.15050
+Non-maximum supression time: 0.08412
+Hysteresis time: 0.15834
+-------------------------------------
+Correct pixels: 0.79 (613458/779743)
+False positives: 0.10 (79439/779743)
+False negatives: 0.11 (86846/779743)
+-------------------------------------
+OpenCV time: 1.57392
+AnyDSL time: 0.64351
+-------------------------------------
+dataset/test_B4/45096.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25114
+Sobel time: 0.14906
+Non-maximum supression time: 0.07896
+Hysteresis time: 0.06840
+-------------------------------------
+Correct pixels: 0.80 (167808/209918)
+False positives: 0.17 (36190/209918)
+False negatives: 0.03 (5920/209918)
+-------------------------------------
+OpenCV time: 1.50615
+AnyDSL time: 0.54768
+-------------------------------------
+dataset/test_B4/300091.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25124
+Sobel time: 0.15422
+Non-maximum supression time: 0.08304
+Hysteresis time: 0.10683
+-------------------------------------
+Correct pixels: 0.79 (424074/534291)
+False positives: 0.13 (67213/534291)
+False negatives: 0.08 (43004/534291)
+-------------------------------------
+OpenCV time: 1.49861
+AnyDSL time: 0.59541
+-------------------------------------
+dataset/test_B4/304034.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/41069.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/130026.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.20561
+Sobel time: 0.15922
+Non-maximum supression time: 0.07865
+Hysteresis time: 0.18633
+-------------------------------------
+Correct pixels: 0.86 (1158280/1339544)
+False positives: 0.06 (85385/1339544)
+False negatives: 0.07 (95879/1339544)
+-------------------------------------
+OpenCV time: 1.56575
+AnyDSL time: 0.63007
+-------------------------------------
+dataset/test_B4/159008.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25011
+Sobel time: 0.15427
+Non-maximum supression time: 0.07866
+Hysteresis time: 0.15017
+-------------------------------------
+Correct pixels: 0.89 (1129153/1266968)
+False positives: 0.05 (67034/1266968)
+False negatives: 0.06 (70781/1266968)
+-------------------------------------
+OpenCV time: 1.45078
+AnyDSL time: 0.63328
+-------------------------------------
+dataset/test_B4/55073.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/236037.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.23044
+Sobel time: 0.15404
+Non-maximum supression time: 0.07892
+Hysteresis time: 0.26687
+-------------------------------------
+Correct pixels: 0.86 (1514963/1771065)
+False positives: 0.07 (121928/1771065)
+False negatives: 0.08 (134174/1771065)
+-------------------------------------
+OpenCV time: 1.52972
+AnyDSL time: 0.73033
+-------------------------------------
+Segmentation fault (core dumped)
+dataset/test_B4/196073.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24492
+Sobel time: 0.15544
+Non-maximum supression time: 0.07955
+Hysteresis time: 0.09566
+-------------------------------------
+Correct pixels: 0.70 (128384/182966)
+False positives: 0.24 (43766/182966)
+False negatives: 0.06 (10816/182966)
+-------------------------------------
+OpenCV time: 1.39896
+AnyDSL time: 0.57578
+-------------------------------------
+dataset/test_B4/69015.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25654
+Sobel time: 0.14872
+Non-maximum supression time: 0.07546
+Hysteresis time: 0.16033
+-------------------------------------
+Correct pixels: 0.86 (692100/800979)
+False positives: 0.06 (47188/800979)
+False negatives: 0.08 (61691/800979)
+-------------------------------------
+OpenCV time: 1.15184
+AnyDSL time: 0.64112
+-------------------------------------
+dataset/test_B4/219090.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.20641
+Sobel time: 0.16386
+Non-maximum supression time: 0.07850
+Hysteresis time: 0.08895
+-------------------------------------
+Correct pixels: 0.87 (562181/649155)
+False positives: 0.09 (59795/649155)
+False negatives: 0.04 (27179/649155)
+-------------------------------------
+OpenCV time: 1.56360
+AnyDSL time: 0.53779
+-------------------------------------
+dataset/test_B4/285079.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24869
+Sobel time: 0.15316
+Non-maximum supression time: 0.07811
+Hysteresis time: 0.17646
+-------------------------------------
+Correct pixels: 0.88 (1081080/1221647)
+False positives: 0.05 (65927/1221647)
+False negatives: 0.06 (74640/1221647)
+-------------------------------------
+OpenCV time: 1.43918
+AnyDSL time: 0.65650
+-------------------------------------
+dataset/test_B4/66053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25500
+Sobel time: 0.14996
+Non-maximum supression time: 0.07829
+Hysteresis time: 0.19950
+-------------------------------------
+Correct pixels: 0.82 (903541/1102126)
+False positives: 0.08 (89071/1102126)
+False negatives: 0.10 (109514/1102126)
+-------------------------------------
+OpenCV time: 1.53555
+AnyDSL time: 0.68282
+-------------------------------------
+dataset/test_B4/376043.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24569
+Sobel time: 0.15271
+Non-maximum supression time: 0.07572
+Hysteresis time: 0.25060
+-------------------------------------
+Correct pixels: 0.85 (1324784/1567742)
+False positives: 0.06 (91436/1567742)
+False negatives: 0.10 (151522/1567742)
+-------------------------------------
+OpenCV time: 1.34531
+AnyDSL time: 0.72478
+-------------------------------------
+*** Error in `./canny': munmap_chunk(): invalid pointer: 0x00007f3bd0e9a000 ***
+======= Backtrace: =========
+/usr/lib/libc.so.6(+0x722ab)[0x7f3c464ca2ab]
+/usr/lib/libc.so.6(+0x7890e)[0x7f3c464d090e]
+./canny[0x40487f]
+/usr/lib/libc.so.6(__libc_start_main+0xf1)[0x7f3c46478511]
+./canny[0x40166a]
+======= Memory map: ========
+00400000-0040b000 r-xp 00000000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060a000-0060b000 r--p 0000a000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060b000-0060c000 rw-p 0000b000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+00f76000-0432d000 rw-p 00000000 00:00 0                                  [heap]
+200000000-200100000 rw-s 107693000 00:06 15439                           /dev/nvidiactl
+200100000-200104000 rw-s 13d79000 00:06 15439                            /dev/nvidiactl
+200104000-200120000 ---p 00000000 00:00 0 
+200120000-200520000 rw-s 4df56000 00:06 15439                            /dev/nvidiactl
+200520000-200524000 rw-s 9e6f1000 00:06 15439                            /dev/nvidiactl
+200524000-200540000 ---p 00000000 00:00 0 
+200540000-200940000 rw-s 38d48000 00:06 15439                            /dev/nvidiactl
+200940000-200944000 rw-s aaaf7000 00:06 15439                            /dev/nvidiactl
+200944000-200960000 ---p 00000000 00:00 0 
+200960000-200d60000 rw-s 2937b000 00:06 15439                            /dev/nvidiactl
+200d60000-200d64000 rw-s 03cd0000 00:06 15439                            /dev/nvidiactl
+200d64000-200d80000 ---p 00000000 00:00 0 
+200d80000-201180000 rw-s 3b300000 00:06 15439                            /dev/nvidiactl
+201180000-201184000 rw-s 06d0d000 00:06 15439                            /dev/nvidiactl
+201184000-2011a0000 ---p 00000000 00:00 0 
+2011a0000-2015a0000 rw-s 06cb5000 00:06 15439                            /dev/nvidiactl
+2015a0000-2015a4000 rw-s 50014000 00:06 15439                            /dev/nvidiactl
+2015a4000-2015c0000 ---p 00000000 00:00 0 
+2015c0000-2019c0000 rw-s 5baa0000 00:06 15439                            /dev/nvidiactl
+2019c0000-2019c4000 rw-s 1438b000 00:06 15439                            /dev/nvidiactl
+2019c4000-2019e0000 ---p 00000000 00:00 0 
+2019e0000-201de0000 rw-s 3af40000 00:06 15439                            /dev/nvidiactl
+201de0000-201de4000 rw-s 96453000 00:06 15439                            /dev/nvidiactl
+201de4000-201e00000 ---p 00000000 00:00 0 
+201e00000-202200000 rw-s 5edcb000 00:06 15439                            /dev/nvidiactl
+202200000-202204000 rw-s 08453000 00:06 15439                            /dev/nvidiactl
+202204000-202220000 ---p 00000000 00:00 0 
+202220000-202620000 rw-s 36530000 00:06 15439                            /dev/nvidiactl
+202620000-202624000 rw-s 4df93000 00:06 15439                            /dev/nvidiactl
+202624000-202640000 ---p 00000000 00:00 0 
+202640000-202a40000 rw-s 9e15f000 00:06 15439                            /dev/nvidiactl
+202a40000-202a44000 rw-s 9e1ab000 00:06 15439                            /dev/nvidiactl
+202a44000-202a60000 ---p 00000000 00:00 0 
+202a60000-202e60000 rw-s 0fd2f000 00:06 15439                            /dev/nvidiactl
+202e60000-202e64000 rw-s 1e1e2000 00:06 15439                            /dev/nvidiactl
+202e64000-202e80000 ---p 00000000 00:00 0 
+202e80000-203280000 rw-s 3f44e000 00:06 15439                            /dev/nvidiactl
+203280000-203380000 rw-s 3f528000 00:06 15439                            /dev/nvidiactl
+203380000-203480000 rw-s 0342a000 00:06 15439                            /dev/nvidiactl
+203480000-203580000 rw-s 991b5000 00:06 15439                            /dev/nvidiactl
+203580000-203680000 rw-s 8a80f000 00:06 15439                            /dev/nvidiactl
+203680000-203780000 rw-s 69162000 00:06 15439                            /dev/nvidiactl
+203780000-203802000 rw-s 4167a000 00:06 15439                            /dev/nvidiactl
+203802000-600000000 ---p 00000000 00:00 0 
+600000000-600100000 rw-s 0508c000 00:06 15439                            /dev/nvidiactl
+600100000-600104000 rw-s 1d3d5000 00:06 15439                            /dev/nvidiactl
+600104000-600120000 ---p 00000000 00:00 0 
+600120000-600520000 rw-s 4d359000 00:06 15439                            /dev/nvidiactl
+600520000-600524000 rw-s b5b04000 00:06 15439                            /dev/nvidiactl
+600524000-600540000 ---p 00000000 00:00 0 
+600540000-600940000 rw-s 56388000 00:06 15439                            /dev/nvidiactl
+600940000-600944000 rw-s 161ac000 00:06 15439                            /dev/nvidiactl
+600944000-600960000 ---p 00000000 00:00 0 
+600960000-600d60000 rw-s 98a68000 00:06 15439                            /dev/nvidiactl
+600d60000-600d64000 rw-s 86ea3000 00:06 15439                            /dev/nvidiactl
+600d64000-600d80000 ---p 00000000 00:00 0 
+600d80000-601180000 rw-s aaba7000 00:06 15439                            /dev/nvidiactl
+601180000-601184000 rw-s 8daeb000 00:06 15439                            /dev/nvidiactl
+601184000-6011a0000 ---p 00000000 00:00 0 
+6011a0000-6015a0000 rw-s 16ff7000 00:06 15439                            /dev/nvidiactl
+6015a0000-6015a4000 rw-s 3f532000 00:06 15439                            /dev/nvidiactl
+6015a4000-6015c0000 ---p 00000000 00:00 0 
+6015c0000-6019c0000 rw-s 3e9d8000 00:06 15439                            /dev/nvidiactl
+6019c0000-6019c4000 rw-s 3b34b000 00:06 15439                            /dev/nvidiactl
+6019c4000-6019e0000 ---p 00000000 00:00 0 
+6019e0000-601de0000 rw-s 16177000 00:06 15439                            /dev/nvidiactl
+601de0000-601de4000 rw-s 56886000 00:06 15439                            /dev/nvidiactl
+601de4000-601e00000 ---p 00000000 00:00 0 
+601e00000-602200000 rw-s 86e64000 00:06 15439                            /dev/nvidiactl
+602200000-602204000 rw-s 5bf09000 00:06 15439                            /dev/nvidiactl
+602204000-602220000 ---p 00000000 00:00 0 
+602220000-602620000 rw-s 9e0b6000 00:06 15439                            /dev/nvidiactl
+602620000-602624000 rw-s 1bac3000 00:06 15439                            /dev/nvidiactl
+602624000-602640000 ---p 00000000 00:00 0 
+602640000-602a40000 rw-s 17791000 00:06 15439                            /dev/nvidiactl
+602a40000-602a44000 rw-s 5bb7c000 00:06 15439                            /dev/nvidiactl
+602a44000-602a60000 ---p 00000000 00:00 0 
+602a60000-602e60000 rw-s 06948000 00:06 15439                            /dev/nvidiactl
+602e60000-602e64000 rw-s 8ba15000 00:06 15439                            /dev/nvidiactl
+602e64000-602e80000 ---p 00000000 00:00 0 
+602e80000-603280000 rw-s 4b181000 00:06 15439                            /dev/nvidiactl
+603280000-603380000 rw-s 164f5000 00:06 15439                            /dev/nvidiactl
+603380000-603480000 rw-s 30f69000 00:06 15439                            /dev/nvidiactl
+603480000-603580000 rw-s 3d735000 00:06 15439                            /dev/nvidiactl
+603580000-603680000 rw-s 75217000 00:06 15439                            /dev/nvidiactl
+603680000-603780000 rw-s 5bb9d000 00:06 15439                            /dev/nvidiactl
+603780000-603802000 rw-s 30f9f000 00:06 15439                            /dev/nvidiactl
+603802000-603820000 ---p 00000000 00:00 0 
+603820000-603920000 rw-s aacb5000 00:06 15439                            /dev/nvidiactl
+603920000-603924000 rw-s 085af000 00:06 15439                            /dev/nvidiactl
+603924000-603940000 ---p 00000000 00:00 0 
+603940000-603d40000 rw-s 085bb000 00:06 15439                            /dev/nvidiactl
+603d40000-603d44000 rw-s 1660d000 00:06 15439                            /dev/nvidiactl
+603d44000-603d60000 ---p 00000000 00:00 0 
+603d60000-604160000 rw-s 16619000 00:06 15439                            /dev/nvidiactl
+604160000-604164000 rw-s 06cc5000 00:06 15439                            /dev/nvidiactl
+604164000-604180000 ---p 00000000 00:00 0 
+604180000-604580000 rw-s 06cd1000 00:06 15439                            /dev/nvidiactl
+604580000-604584000 rw-s 501e1000 00:06 15439                            /dev/nvidiactl
+604584000-6045a0000 ---p 00000000 00:00 0 
+6045a0000-6049a0000 rw-s 501ed000 00:06 15439                            /dev/nvidiactl
+6049a0000-6049a4000 rw-s 4b1da000 00:06 15439                            /dev/nvidiactl
+6049a4000-6049c0000 ---p 00000000 00:00 0 
+6049c0000-604dc0000 rw-s 8bab0000 00:06 15439                            /dev/nvidiactl
+604dc0000-604dc4000 rw-s 5ba94000 00:06 15439                            /dev/nvidiactl
+604dc4000-604de0000 ---p 00000000 00:00 0 
+604de0000-6051e0000 rw-s 580e0000 00:06 15439                            /dev/nvidiactl
+6051e0000-6051e4000 rw-s 32835000 00:06 15439                            /dev/nvidiactl
+6051e4000-605200000 ---p 00000000 00:00 0 
+605200000-605600000 rw-s 98bec000 00:06 15439                            /dev/nvidiactl
+605600000-605604000 rw-s 5edaf000 00:06 15439                            /dev/nvidiactl
+605604000-605620000 ---p 00000000 00:00 0 
+605620000-605a20000 rw-s 5edbc000 00:06 15439                            /dev/nvidiactl
+605a20000-605a24000 rw-s 3288c000 00:06 15439                            /dev/nvidiactl
+605a24000-605a40000 ---p 00000000 00:00 0 
+605a40000-605e40000 rw-s 328a6000 00:06 15439                            /dev/nvidiactl
+605e40000-605e44000 rw-s 8f0b9000 00:06 15439                            /dev/nvidiactl
+605e44000-605e60000 ---p 00000000 00:00 0 
+605e60000-606260000 rw-s 56286000 00:06 15439                            /dev/nvidiactl
+606260000-606264000 rw-s 53253000 00:06 15439                            /dev/nvidiactl
+606264000-606280000 ---p 00000000 00:00 0 
+606280000-606680000 rw-s 53269000 00:06 15439                            /dev/nvidiactl
+606680000-606684000 rw-s 161f7000 00:06 15439                            /dev/nvidiactl
+606684000-6066a0000 ---p 00000000 00:00 0 
+6066a0000-606aa0000 rw-s 90083000 00:06 15439                            /dev/nvidiactl
+606aa0000-606ba0000 rw-s 1626f000 00:06 15439                            /dev/nvidiactl
+606ba0000-606ca0000 rw-s 3286f000 00:06 15439                            /dev/nvidiactl
+606ca0000-606da0000 rw-s 2d6f0000 00:06 15439                            /dev/nvidiactl
+606da0000-606ea0000 rw-s 17630000 00:06 15439                            /dev/nvidiactl
+606ea0000-606fa0000 rw-s 533b1000 00:06 15439                            /dev/nvidiactl
+606fa0000-607022000 rw-s 86efa000 00:06 15439                            /dev/nvidiactl
+607022000-a00000000 ---p 00000000 00:00 0 
+7f3bc0000000-7f3bc0237000 rw-p 00000000 00:00 0 
+7f3bc0237000-7f3bc4000000 ---p 00000000 00:00 0 
+7f3bc4000000-7f3bc4021000 rw-p 00000000 00:00 0 
+7f3bc4021000-7f3bc8000000 ---p 00000000 00:00 0 
+7f3bcc000000-7f3bcc021000 rw-p 00000000 00:00 0 
+7f3bcc021000-7f3bd0000000 ---p 00000000 00:00 0 
+7f3bd0e99000-7f3bd3466000 rw-p 00000000 00:00 0 
+7f3bd8000000-7f3bd8021000 rw-p 00000000 00:00 0 
+7f3bd8021000-7f3bdc000000 ---p 00000000 00:00 0 
+7f3bdc230000-7f3bdc231000 ---p 00000000 00:00 0 
+7f3bdc231000-7f3bdca31000 rwxp 00000000 00:00 0 
+7f3bdca31000-7f3bdca32000 ---p 00000000 00:00 0 
+7f3bdca32000-7f3bdd232000 rwxp 00000000 00:00 0 
+7f3bdd232000-7f3bdd233000 ---p 00000000 00:00 0 
+7f3bdd233000-7f3bdda33000 rwxp 00000000 00:00 0 
+7f3be0000000-7f3be0021000 rw-p 00000000 00:00 0 
+7f3be0021000-7f3be4000000 ---p 00000000 00:00 0 
+7f3be47d3000-7f3be47d4000 ---p 00000000 00:00 0 
+7f3be47d4000-7f3be4fd4000 rwxp 00000000 00:00 0 
+7f3be4fd4000-7f3be4fd5000 ---p 00000000 00:00 0 
+7f3be4fd5000-7f3be57d5000 rwxp 00000000 00:00 0 
+7f3be57d5000-7f3be57d6000 ---p 00000000 00:00 0 
+7f3be57d6000-7f3be5fd6000 rwxp 00000000 00:00 0 
+7f3be5fd6000-7f3be5fd7000 ---p 00000000 00:00 0 
+7f3be5fd7000-7f3be6feb000 rwxp 00000000 00:00 0 
+7f3be6feb000-7f3be6fec000 ---p 00000000 00:00 0 
+7f3be6fec000-7f3be8000000 rwxp 00000000 00:00 0 
+7f3be8000000-7f3be8021000 rw-p 00000000 00:00 0 
+7f3be8021000-7f3bec000000 ---p 00000000 00:00 0 
+7f3bec116000-7f3bec117000 ---p 00000000 00:00 0 
+7f3bec117000-7f3bec517000 rwxp 00000000 00:00 0 
+7f3bec517000-7f3bec518000 ---p 00000000 00:00 0 
+7f3bec518000-7f3becd18000 rwxp 00000000 00:00 0 
+7f3becd18000-7f3bed4fc000 r-xp 00000000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7f3bed4fc000-7f3bed6fc000 ---p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7f3bed6fc000-7f3bed7f2000 rw-p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7f3bed7f2000-7f3bed7fb000 rw-p 00000000 00:00 0 
+7f3bed7fb000-7f3bed7fc000 ---p 00000000 00:00 0 
+7f3bed7fc000-7f3bedffc000 rwxp 00000000 00:00 0 
+7f3bedffc000-7f3bedffd000 ---p 00000000 00:00 0 
+7f3bedffd000-7f3bee7fd000 rwxp 00000000 00:00 0 
+7f3bee7fd000-7f3bee7fe000 ---p 00000000 00:00 0 
+7f3bee7fe000-7f3beeffe000 rwxp 00000000 00:00 0 
+7f3beeffe000-7f3beefff000 ---p 00000000 00:00 0 
+7f3beefff000-7f3bef7ff000 rwxp 00000000 00:00 0 
+7f3bef7ff000-7f3bef800000 ---p 00000000 00:00 0 
+7f3bef800000-7f3bf0000000 rwxp 00000000 00:00 0 
+7f3bf0000000-7f3bf0021000 rw-p 00000000 00:00 0 
+7f3bf0021000-7f3bf4000000 ---p 00000000 00:00 0 
+7f3bf4000000-7f3bf4021000 rw-p 00000000 00:00 0 
+7f3bf4021000-7f3bf8000000 ---p 00000000 00:00 0 
+7f3bf8000000-7f3bf8021000 rw-p 00000000 00:00 0 
+7f3bf8021000-7f3bfc000000 ---p 00000000 00:00 0 
+7f3bfc000000-7f3bfc021000 rw-p 00000000 00:00 0 
+7f3bfc021000-7f3c00000000 ---p 00000000 00:00 0 
+7f3c00000000-7f3c00021000 rw-p 00000000 00:00 0 
+7f3c00021000-7f3c04000000 ---p 00000000 00:00 0 
+7f3c04106000-7f3c04107000 ---p 00000000 00:00 0 
+7f3c04107000-7f3c04907000 rwxp 00000000 00:00 0 
+7f3c04907000-7f3c04908000 ---p 00000000 00:00 0 
+7f3c04908000-7f3c05108000 rwxp 00000000 00:00 0 
+7f3c05108000-7f3c05109000 ---p 00000000 00:00 0 
+7f3c05109000-7f3c0611d000 rwxp 00000000 00:00 0 
+7f3c0611d000-7f3c0611e000 ---p 00000000 00:00 0 
+7f3c0611e000-7f3c07132000 rwxp 00000000 00:00 0 
+7f3c07132000-7f3c0af2d000 r-xp 00000000 08:02 16825155                   /usr/lib/libamdocl64.so
+7f3c0af2d000-7f3c0b12d000 ---p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7f3c0b12d000-7f3c0b538000 rw-p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7f3c0b538000-7f3c0b616000 rw-p 00000000 00:00 0 
+7f3c0b616000-7f3c0bccf000 r-xp 00000000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7f3c0bccf000-7f3c0bece000 ---p 006b9000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7f3c0bece000-7f3c0bff2000 rw-p 006b8000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7f3c0bff2000-7f3c0c000000 rw-p 00000000 00:00 0 
+7f3c0c000000-7f3c0c021000 rw-p 00000000 00:00 0 
+7f3c0c021000-7f3c10000000 ---p 00000000 00:00 0 
+7f3c102aa000-7f3c13980000 r-xp 00000000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7f3c13980000-7f3c13b80000 ---p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7f3c13b80000-7f3c13f2c000 rw-p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7f3c13f2c000-7f3c14000000 rw-p 00000000 00:00 0 
+7f3c14000000-7f3c14021000 rw-p 00000000 00:00 0 
+7f3c14021000-7f3c18000000 ---p 00000000 00:00 0 
+7f3c181e4000-7f3c183e4000 rw-p 00000000 00:00 0 
+7f3c183e4000-7f3c18402000 r-xp 00000000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f3c18402000-7f3c18601000 ---p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f3c18601000-7f3c18602000 r--p 0001d000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f3c18602000-7f3c18603000 rw-p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f3c18603000-7f3c1a672000 r-xp 00000000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7f3c1a672000-7f3c1a872000 ---p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7f3c1a872000-7f3c1ab84000 rw-p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7f3c1ab84000-7f3c1ac15000 rw-p 00000000 00:00 0 
+7f3c1ac15000-7f3c1ac16000 ---p 00000000 00:00 0 
+7f3c1ac16000-7f3c1b416000 rwxp 00000000 00:00 0 
+7f3c1b416000-7f3c1b417000 ---p 00000000 00:00 0 
+7f3c1b417000-7f3c1bc17000 rwxp 00000000 00:00 0 
+7f3c1bc17000-7f3c1e1ca000 rw-p 00000000 00:00 0 
+7f3c1e336000-7f3c1e337000 ---p 00000000 00:00 0 
+7f3c1e337000-7f3c1eb37000 rwxp 00000000 00:00 0 
+7f3c1eb37000-7f3c1eb4b000 r-xp 00000000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f3c1eb4b000-7f3c1ed4a000 ---p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f3c1ed4a000-7f3c1ed4b000 r--p 00013000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f3c1ed4b000-7f3c1ed4c000 rw-p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f3c1ed4c000-7f3c1ee53000 r-xp 00000000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f3c1ee53000-7f3c1f052000 ---p 00107000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f3c1f052000-7f3c1f054000 r--p 00106000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f3c1f054000-7f3c1f05b000 rw-p 00108000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f3c1f05b000-7f3c1f06e000 r-xp 00000000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f3c1f06e000-7f3c1f26d000 ---p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f3c1f26d000-7f3c1f26e000 r--p 00012000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f3c1f26e000-7f3c1f26f000 rw-p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f3c1f26f000-7f3c1f273000 r-xp 00000000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7f3c1f273000-7f3c1f472000 ---p 00004000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7f3c1f472000-7f3c1f473000 rw-p 00003000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7f3c1f473000-7f3c1f477000 r-xp 00000000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f3c1f477000-7f3c1f676000 ---p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f3c1f676000-7f3c1f677000 r--p 00003000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f3c1f677000-7f3c1f678000 rw-p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f3c1f678000-7f3c1f6b9000 r-xp 00000000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f3c1f6b9000-7f3c1f8b8000 ---p 00041000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f3c1f8b8000-7f3c1f8bc000 r--p 00040000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f3c1f8bc000-7f3c1f8bd000 rw-p 00044000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f3c1f8bd000-7f3c1f8be000 rw-p 00000000 00:00 0 
+7f3c1f8be000-7f3c1f8c5000 r-xp 00000000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f3c1f8c5000-7f3c1fac4000 ---p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f3c1fac4000-7f3c1fac5000 r--p 00006000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f3c1fac5000-7f3c1fac6000 rw-p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f3c1fac6000-7f3c1faf0000 r-xp 00000000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f3c1faf0000-7f3c1fcef000 ---p 0002a000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f3c1fcef000-7f3c1fcf1000 r--p 00029000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f3c1fcf1000-7f3c1fcf2000 rw-p 0002b000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f3c1fcf2000-7f3c1fd02000 r-xp 00000000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f3c1fd02000-7f3c1ff02000 ---p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f3c1ff02000-7f3c1ff03000 r--p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f3c1ff03000-7f3c1ff04000 rw-p 00011000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f3c1ff04000-7f3c1ff24000 rw-p 00000000 00:00 0 
+7f3c1ff24000-7f3c1ff29000 r-xp 00000000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f3c1ff29000-7f3c20128000 ---p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f3c20128000-7f3c20129000 r--p 00004000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f3c20129000-7f3c2012a000 rw-p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f3c2012a000-7f3c2012c000 r-xp 00000000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f3c2012c000-7f3c2032c000 ---p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f3c2032c000-7f3c2032d000 r--p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f3c2032d000-7f3c2032e000 rw-p 00003000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f3c2032e000-7f3c2039c000 r-xp 00000000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f3c2039c000-7f3c2059b000 ---p 0006e000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f3c2059b000-7f3c205c3000 r--p 0006d000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f3c205c3000-7f3c205c4000 rw-p 00095000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f3c205c4000-7f3c205e4000 rw-p 00000000 00:00 0 
+7f3c205e4000-7f3c205f3000 r-xp 00000000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f3c205f3000-7f3c207f2000 ---p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f3c207f2000-7f3c207f3000 r--p 0000e000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f3c207f3000-7f3c207f4000 rw-p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f3c207f4000-7f3c2083e000 r-xp 00000000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f3c2083e000-7f3c20a3e000 ---p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f3c20a3e000-7f3c20a3f000 r--p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f3c20a3f000-7f3c20a40000 rw-p 0004b000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f3c20a40000-7f3c20a42000 rw-p 00000000 00:00 0 
+7f3c20a42000-7f3c20a55000 r-xp 00000000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f3c20a55000-7f3c20c54000 ---p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f3c20c54000-7f3c20c55000 r--p 00012000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f3c20c55000-7f3c20c56000 rw-p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f3c20c56000-7f3c20c58000 rw-p 00000000 00:00 0 
+7f3c20c58000-7f3c20c7f000 r-xp 00000000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f3c20c7f000-7f3c20e7f000 ---p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f3c20e7f000-7f3c20e81000 r--p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f3c20e81000-7f3c20e82000 rw-p 00029000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f3c20e82000-7f3c20e8a000 r-xp 00000000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f3c20e8a000-7f3c2108a000 ---p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f3c2108a000-7f3c2108b000 r--p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f3c2108b000-7f3c2108c000 rw-p 00009000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f3c2108c000-7f3c2111e000 r-xp 00000000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f3c2111e000-7f3c2131d000 ---p 00092000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f3c2131d000-7f3c2131f000 r--p 00091000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f3c2131f000-7f3c21320000 rw-p 00093000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f3c21320000-7f3c2136e000 r-xp 00000000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f3c2136e000-7f3c2156d000 ---p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f3c2156d000-7f3c2156e000 r--p 0004d000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f3c2156e000-7f3c2156f000 rw-p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f3c2156f000-7f3c21570000 rw-p 00000000 00:00 0 
+7f3c21570000-7f3c2159e000 r-xp 00000000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f3c2159e000-7f3c2179d000 ---p 0002e000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f3c2179d000-7f3c217a0000 r--p 0002d000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f3c217a0000-7f3c217a1000 rw-p 00030000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f3c217a1000-7f3c217e4000 r-xp 00000000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7f3c217e4000-7f3c219e3000 ---p 00043000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7f3c219e3000-7f3c219ed000 rw-p 00042000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7f3c219ed000-7f3c219f3000 rw-p 00000000 00:00 0 
+7f3c219f3000-7f3c2a5dc000 r-xp 00000000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7f3c2a5dc000-7f3c2a7db000 ---p 08be9000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7f3c2a7db000-7f3c2a7ea000 rw-p 08be8000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7f3c2a7ea000-7f3c2a842000 rw-p 00000000 00:00 0 
+7f3c2a842000-7f3c2a848000 r-xp 00000000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f3c2a848000-7f3c2aa47000 ---p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f3c2aa47000-7f3c2aa48000 r--p 00005000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f3c2aa48000-7f3c2aa49000 rw-p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f3c2aa49000-7f3c2aa65000 r-xp 00000000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f3c2aa65000-7f3c2ac65000 ---p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f3c2ac65000-7f3c2ac68000 r--p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f3c2ac68000-7f3c2ac69000 rw-p 0001f000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f3c2ac69000-7f3c2ac7a000 r-xp 00000000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f3c2ac7a000-7f3c2ae79000 ---p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f3c2ae79000-7f3c2ae7a000 r--p 00010000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f3c2ae7a000-7f3c2ae7b000 rw-p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f3c2ae7b000-7f3c2aea0000 r-xp 00000000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f3c2aea0000-7f3c2b09f000 ---p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f3c2b09f000-7f3c2b0a0000 r--p 00024000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f3c2b0a0000-7f3c2b0a1000 rw-p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f3c2b0a1000-7f3c2b113000 r-xp 00000000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f3c2b113000-7f3c2b312000 ---p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f3c2b312000-7f3c2b313000 r--p 00071000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f3c2b313000-7f3c2b314000 rw-p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f3c2b314000-7f3c2b31b000 r-xp 00000000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f3c2b31b000-7f3c2b51b000 ---p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f3c2b51b000-7f3c2b51c000 r--p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f3c2b51c000-7f3c2b51d000 rw-p 00008000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f3c2b51d000-7f3c2b58d000 r-xp 00000000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f3c2b58d000-7f3c2b78c000 ---p 00070000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f3c2b78c000-7f3c2b7a6000 r--p 0006f000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f3c2b7a6000-7f3c2b7a7000 rw-p 00089000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f3c2b7a7000-7f3c2b7a8000 rw-p 00000000 00:00 0 
+7f3c2b7a8000-7f3c2b7b1000 r-xp 00000000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f3c2b7b1000-7f3c2b9b1000 ---p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f3c2b9b1000-7f3c2b9b2000 r--p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f3c2b9b2000-7f3c2b9b3000 rw-p 0000a000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f3c2b9b3000-7f3c2b9bf000 r-xp 00000000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f3c2b9bf000-7f3c2bbbf000 ---p 0000c000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f3c2bbbf000-7f3c2bbc0000 r--p 0000c000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f3c2bbc0000-7f3c2bbc1000 rw-p 0000d000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f3c2bbc1000-7f3c2bbe9000 r-xp 00000000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f3c2bbe9000-7f3c2bde8000 ---p 00028000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f3c2bde8000-7f3c2bde9000 r--p 00027000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f3c2bde9000-7f3c2bdea000 rw-p 00028000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f3c2bdea000-7f3c2bdec000 r-xp 00000000 08:02 16798553                   /usr/lib/libxcb-shm.so.0.0.0
+7f3c2bdec000-7f3c2bfec000 ---p 00002000 08:02 16798553                   /usr/lib/libxcb-shm.so.0.0.0
+7f3c2bfec000-7f3c2bfed000 r--p 00002000 08:02 16798553                   /usr/lib/libxcb-shm.so.0.0.0
+7f3c2bfed000-7f3c2bfee000 rw-p 00003000 08:02 16798553                   /usr/lib/libxcb-shm.so.0.0.0
+7f3c2bfee000-7f3c2c000000 r-xp 00000000 08:02 16788540                   /usr/lib/libEGL.so.1.0.0
+7f3c2c000000-7f3c2c1ff000 ---p 00012000 08:02 16788540                   /usr/lib/libEGL.so.1.0.0
+7f3c2c1ff000-7f3c2c200000 r--p 00011000 08:02 16788540                   /usr/lib/libEGL.so.1.0.0
+7f3c2c200000-7f3c2c201000 rw-p 00012000 08:02 16788540                   /usr/lib/libEGL.so.1.0.0
+7f3c2c201000-7f3c2c2c0000 r-xp 00000000 08:02 16802297                   /usr/lib/libfreetype.so.6.14.0
+7f3c2c2c0000-7f3c2c4c0000 ---p 000bf000 08:02 16802297                   /usr/lib/libfreetype.so.6.14.0
+7f3c2c4c0000-7f3c2c4c7000 r--p 000bf000 08:02 16802297                   /usr/lib/libfreetype.so.6.14.0Aborted (core dumped)
+dataset/test_B4/103070.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25209
+Sobel time: 0.15265
+Non-maximum supression time: 0.07849
+Hysteresis time: 0.16190
+-------------------------------------
+Correct pixels: 0.81 (587939/729033)
+False positives: 0.10 (75354/729033)
+False negatives: 0.09 (65740/729033)
+-------------------------------------
+OpenCV time: 1.13914
+AnyDSL time: 0.64523
+-------------------------------------
+dataset/test_B4/16077.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24348
+Sobel time: 0.15251
+Non-maximum supression time: 0.07808
+Hysteresis time: 0.16502
+-------------------------------------
+Correct pixels: 0.85 (960237/1127347)
+False positives: 0.07 (74375/1127347)
+False negatives: 0.08 (92735/1127347)
+-------------------------------------
+OpenCV time: 1.58668
+AnyDSL time: 0.63917
+-------------------------------------
+dataset/test_B4/102061.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24927
+Sobel time: 0.14922
+Non-maximum supression time: 0.07555
+Hysteresis time: 0.09411
+-------------------------------------
+Correct pixels: 0.89 (606444/679098)
+False positives: 0.06 (38308/679098)
+False negatives: 0.05 (34346/679098)
+-------------------------------------
+OpenCV time: 1.55864
+AnyDSL time: 0.56824
+-------------------------------------
+dataset/test_B4/14037.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24989
+Sobel time: 0.15037
+Non-maximum supression time: 0.07800
+Hysteresis time: 0.08935
+-------------------------------------
+Correct pixels: 0.79 (259645/327067)
+False positives: 0.13 (41653/327067)
+False negatives: 0.08 (25769/327067)
+-------------------------------------
+OpenCV time: 0.99124
+AnyDSL time: 0.56770
+-------------------------------------
+dataset/test_B4/109053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25008
+Sobel time: 0.14943
+Non-maximum supression time: 0.07948
+Hysteresis time: 0.16387
+-------------------------------------
+Correct pixels: 0.84 (679316/812872)
+False positives: 0.09 (70064/812872)
+False negatives: 0.08 (63492/812872)
+-------------------------------------
+OpenCV time: 1.11921
+AnyDSL time: 0.64293
+-------------------------------------
+dataset/test_B4/175032.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21027
+Sobel time: 0.14828
+Non-maximum supression time: 0.07943
+Hysteresis time: 0.28851
+-------------------------------------
+Correct pixels: 0.91 (2408039/2655460)
+False positives: 0.04 (105743/2655460)
+False negatives: 0.05 (141678/2655460)
+-------------------------------------
+OpenCV time: 1.06082
+AnyDSL time: 0.72657
+-------------------------------------
+*** Error in `./canny': munmap_chunk(): invalid pointer: 0x00007fb374e9a000 ***
+======= Backtrace: =========
+/usr/lib/libc.so.6(+0x722ab)[0x7fb3ea0742ab]
+/usr/lib/libc.so.6(+0x7890e)[0x7fb3ea07a90e]
+./canny[0x40487f]
+/usr/lib/libc.so.6(__libc_start_main+0xf1)[0x7fb3ea022511]
+./canny[0x40166a]
+======= Memory map: ========
+00400000-0040b000 r-xp 00000000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060a000-0060b000 r--p 0000a000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060b000-0060c000 rw-p 0000b000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+014be000-04a3c000 rw-p 00000000 00:00 0                                  [heap]
+200000000-200100000 rw-s 160df000 00:06 15439                            /dev/nvidiactl
+200100000-200104000 rw-s 891ee000 00:06 15439                            /dev/nvidiactl
+200104000-200120000 ---p 00000000 00:00 0 
+200120000-200520000 rw-s 5bbde000 00:06 15439                            /dev/nvidiactl
+200520000-200524000 rw-s 5bba1000 00:06 15439                            /dev/nvidiactl
+200524000-200540000 ---p 00000000 00:00 0 
+200540000-200940000 rw-s 5bbe5000 00:06 15439                            /dev/nvidiactl
+200940000-200944000 rw-s 16ee8000 00:06 15439                            /dev/nvidiactl
+200944000-200960000 ---p 00000000 00:00 0 
+200960000-200d60000 rw-s 88506000 00:06 15439                            /dev/nvidiactl
+200d60000-200d64000 rw-s 9e7f5000 00:06 15439                            /dev/nvidiactl
+200d64000-200d80000 ---p 00000000 00:00 0 
+200d80000-201180000 rw-s 097c9000 00:06 15439                            /dev/nvidiactl
+201180000-201184000 rw-s 9e01d000 00:06 15439                            /dev/nvidiactl
+201184000-2011a0000 ---p 00000000 00:00 0 
+2011a0000-2015a0000 rw-s 05861000 00:06 15439                            /dev/nvidiactl
+2015a0000-2015a4000 rw-s aabfc000 00:06 15439                            /dev/nvidiactl
+2015a4000-2015c0000 ---p 00000000 00:00 0 
+2015c0000-2019c0000 rw-s 16350000 00:06 15439                            /dev/nvidiactl
+2019c0000-2019c4000 rw-s 5f443000 00:06 15439                            /dev/nvidiactl
+2019c4000-2019e0000 ---p 00000000 00:00 0 
+2019e0000-201de0000 rw-s 02bdf000 00:06 15439                            /dev/nvidiactl
+201de0000-201de4000 rw-s ac722000 00:06 15439                            /dev/nvidiactl
+201de4000-201e00000 ---p 00000000 00:00 0 
+201e00000-202200000 rw-s 9e00e000 00:06 15439                            /dev/nvidiactl
+202200000-202204000 rw-s 08a73000 00:06 15439                            /dev/nvidiactl
+202204000-202220000 ---p 00000000 00:00 0 
+202220000-202620000 rw-s 291c8000 00:06 15439                            /dev/nvidiactl
+202620000-202624000 rw-s 08a1b000 00:06 15439                            /dev/nvidiactl
+202624000-202640000 ---p 00000000 00:00 0 
+202640000-202a40000 rw-s 39d0f000 00:06 15439                            /dev/nvidiactl
+202a40000-202a44000 rw-s 97aba000 00:06 15439                            /dev/nvidiactl
+202a44000-202a60000 ---p 00000000 00:00 0 
+202a60000-202e60000 rw-s 3d946000 00:06 15439                            /dev/nvidiactl
+202e60000-202e64000 rw-s 9e519000 00:06 15439                            /dev/nvidiactl
+202e64000-202e80000 ---p 00000000 00:00 0 
+202e80000-203280000 rw-s 8b35d000 00:06 15439                            /dev/nvidiactl
+203280000-203380000 rw-s 6b72a000 00:06 15439                            /dev/nvidiactl
+203380000-203480000 rw-s 4cb2a000 00:06 15439                            /dev/nvidiactl
+203480000-203580000 rw-s 059d5000 00:06 15439                            /dev/nvidiactl
+203580000-203680000 rw-s 6b7c7000 00:06 15439                            /dev/nvidiactl
+203680000-203780000 rw-s 976ea000 00:06 15439                            /dev/nvidiactl
+203780000-203802000 rw-s 9907d000 00:06 15439                            /dev/nvidiactl
+203802000-600000000 ---p 00000000 00:00 0 
+600000000-600100000 rw-s 38ccd000 00:06 15439                            /dev/nvidiactl
+600100000-600104000 rw-s 9fd74000 00:06 15439                            /dev/nvidiactl
+600104000-600120000 ---p 00000000 00:00 0 
+600120000-600520000 rw-s 61178000 00:06 15439                            /dev/nvidiactl
+600520000-600524000 rw-s 82d4b000 00:06 15439                            /dev/nvidiactl
+600524000-600540000 ---p 00000000 00:00 0 
+600540000-600940000 rw-s 2f527000 00:06 15439                            /dev/nvidiactl
+600940000-600944000 rw-s 051e5000 00:06 15439                            /dev/nvidiactl
+600944000-600960000 ---p 00000000 00:00 0 
+600960000-600d60000 rw-s 4ca43000 00:06 15439                            /dev/nvidiactl
+600d60000-600d64000 rw-s 888de000 00:06 15439                            /dev/nvidiactl
+600d64000-600d80000 ---p 00000000 00:00 0 
+600d80000-601180000 rw-s 5688a000 00:06 15439                            /dev/nvidiactl
+601180000-601184000 rw-s 81817000 00:06 15439                            /dev/nvidiactl
+601184000-6011a0000 ---p 00000000 00:00 0 
+6011a0000-6015a0000 rw-s 06c45000 00:06 15439                            /dev/nvidiactl
+6015a0000-6015a4000 rw-s 06de0000 00:06 15439                            /dev/nvidiactl
+6015a4000-6015c0000 ---p 00000000 00:00 0 
+6015c0000-6019c0000 rw-s 06dec000 00:06 15439                            /dev/nvidiactl
+6019c0000-6019c4000 rw-s 5ba17000 00:06 15439                            /dev/nvidiactl
+6019c4000-6019e0000 ---p 00000000 00:00 0 
+6019e0000-601de0000 rw-s 36543000 00:06 15439                            /dev/nvidiactl
+601de0000-601de4000 rw-s 23d20000 00:06 15439                            /dev/nvidiactl
+601de4000-601e00000 ---p 00000000 00:00 0 
+601e00000-602200000 rw-s 23d2e000 00:06 15439                            /dev/nvidiactl
+602200000-602204000 rw-s 050bb000 00:06 15439                            /dev/nvidiactl
+602204000-602220000 ---p 00000000 00:00 0 
+602220000-602620000 rw-s 1ccc8000 00:06 15439                            /dev/nvidiactl
+602620000-602624000 rw-s 177a7000 00:06 15439                            /dev/nvidiactl
+602624000-602640000 ---p 00000000 00:00 0 
+602640000-602a40000 rw-s 177b3000 00:06 15439                            /dev/nvidiactl
+602a40000-602a44000 rw-s 23c7e000 00:06 15439                            /dev/nvidiactl
+602a44000-602a60000 ---p 00000000 00:00 0 
+602a60000-602e60000 rw-s 5662a000 00:06 15439                            /dev/nvidiactl
+602e60000-602e64000 rw-s 9e118000 00:06 15439                            /dev/nvidiactl
+602e64000-602e80000 ---p 00000000 00:00 0 
+602e80000-603280000 rw-s 875c5000 00:06 15439                            /dev/nvidiactl
+603280000-603380000 rw-s 1660d000 00:06 15439                            /dev/nvidiactl
+603380000-603480000 rw-s 039d7000 00:06 15439                            /dev/nvidiactl
+603480000-603580000 rw-s 23dba000 00:06 15439                            /dev/nvidiactl
+603580000-603680000 rw-s 1bb1f000 00:06 15439                            /dev/nvidiactl
+603680000-603780000 rw-s 5bb95000 00:06 15439                            /dev/nvidiactl
+603780000-603802000 rw-s 4ca6b000 00:06 15439                            /dev/nvidiactl
+603802000-603820000 ---p 00000000 00:00 0 
+603820000-603920000 rw-s 17da4000 00:06 15439                            /dev/nvidiactl
+603920000-603924000 rw-s 1620d000 00:06 15439                            /dev/nvidiactl
+603924000-603940000 ---p 00000000 00:00 0 
+603940000-603d40000 rw-s 16219000 00:06 15439                            /dev/nvidiactl
+603d40000-603d44000 rw-s 75206000 00:06 15439                            /dev/nvidiactl
+603d44000-603d60000 ---p 00000000 00:00 0 
+603d60000-604160000 rw-s 7521c000 00:06 15439                            /dev/nvidiactl
+604160000-604164000 rw-s 501ff000 00:06 15439                            /dev/nvidiactl
+604164000-604180000 ---p 00000000 00:00 0 
+604180000-604580000 rw-s 03cac000 00:06 15439                            /dev/nvidiactl
+604580000-604584000 rw-s 98b39000 00:06 15439                            /dev/nvidiactl
+604584000-6045a0000 ---p 00000000 00:00 0 
+6045a0000-6049a0000 rw-s 2924f000 00:06 15439                            /dev/nvidiactl
+6049a0000-6049a4000 rw-s 3a392000 00:06 15439                            /dev/nvidiactl
+6049a4000-6049c0000 ---p 00000000 00:00 0 
+6049c0000-604dc0000 rw-s 3a39e000 00:06 15439                            /dev/nvidiactl
+604dc0000-604dc4000 rw-s 68cab000 00:06 15439                            /dev/nvidiactl
+604dc4000-604de0000 ---p 00000000 00:00 0 
+604de0000-6051e0000 rw-s 068c1000 00:06 15439                            /dev/nvidiactl
+6051e0000-6051e4000 rw-s 5de04000 00:06 15439                            /dev/nvidiactl
+6051e4000-605200000 ---p 00000000 00:00 0 
+605200000-605600000 rw-s 5de10000 00:06 15439                            /dev/nvidiactl
+605600000-605604000 rw-s 17ca5000 00:06 15439                            /dev/nvidiactl
+605604000-605620000 ---p 00000000 00:00 0 
+605620000-605a20000 rw-s 17cbc000 00:06 15439                            /dev/nvidiactl
+605a20000-605a24000 rw-s 9e3c1000 00:06 15439                            /dev/nvidiactl
+605a24000-605a40000 ---p 00000000 00:00 0 
+605a40000-605e40000 rw-s 9e3cd000 00:06 15439                            /dev/nvidiactl
+605e40000-605e44000 rw-s 5deb1000 00:06 15439                            /dev/nvidiactl
+605e44000-605e60000 ---p 00000000 00:00 0 
+605e60000-606260000 rw-s 5debd000 00:06 15439                            /dev/nvidiactl
+606260000-606264000 rw-s 567ca000 00:06 15439                            /dev/nvidiactl
+606264000-606280000 ---p 00000000 00:00 0 
+606280000-606680000 rw-s 567d6000 00:06 15439                            /dev/nvidiactl
+606680000-606684000 rw-s 2d7a6000 00:06 15439                            /dev/nvidiactl
+606684000-6066a0000 ---p 00000000 00:00 0 
+6066a0000-606aa0000 rw-s 2d7b2000 00:06 15439                            /dev/nvidiactl
+606aa0000-606ba0000 rw-s 1654f000 00:06 15439                            /dev/nvidiactl
+606ba0000-606ca0000 rw-s 884e3000 00:06 15439                            /dev/nvidiactl
+606ca0000-606da0000 rw-s 3e967000 00:06 15439                            /dev/nvidiactl
+606da0000-606ea0000 rw-s 14269000 00:06 15439                            /dev/nvidiactl
+606ea0000-606fa0000 rw-s ac66d000 00:06 15439                            /dev/nvidiactl
+606fa0000-607022000 rw-s 18272000 00:06 15439                            /dev/nvidiactl
+607022000-a00000000 ---p 00000000 00:00 0 
+7fb364000000-7fb3644dc000 rw-p 00000000 00:00 0 
+7fb3644dc000-7fb368000000 ---p 00000000 00:00 0 
+7fb368000000-7fb368021000 rw-p 00000000 00:00 0 
+7fb368021000-7fb36c000000 ---p 00000000 00:00 0 
+7fb370000000-7fb370021000 rw-p 00000000 00:00 0 
+7fb370021000-7fb374000000 ---p 00000000 00:00 0 
+7fb374e99000-7fb377466000 rw-p 00000000 00:00 0 
+7fb37c000000-7fb37c021000 rw-p 00000000 00:00 0 
+7fb37c021000-7fb380000000 ---p 00000000 00:00 0 
+7fb380230000-7fb380231000 ---p 00000000 00:00 0 
+7fb380231000-7fb380a31000 rwxp 00000000 00:00 0 
+7fb380a31000-7fb380a32000 ---p 00000000 00:00 0 
+7fb380a32000-7fb381232000 rwxp 00000000 00:00 0 
+7fb381232000-7fb381233000 ---p 00000000 00:00 0 
+7fb381233000-7fb381a33000 rwxp 00000000 00:00 0 
+7fb384000000-7fb384021000 rw-p 00000000 00:00 0 
+7fb384021000-7fb388000000 ---p 00000000 00:00 0 
+7fb3883d2000-7fb3883d3000 ---p 00000000 00:00 0 
+7fb3883d3000-7fb3887d3000 rwxp 00000000 00:00 0 
+7fb3887d3000-7fb3887d4000 ---p 00000000 00:00 0 
+7fb3887d4000-7fb388fd4000 rwxp 00000000 00:00 0 
+7fb388fd4000-7fb388fd5000 ---p 00000000 00:00 0 
+7fb388fd5000-7fb3897d5000 rwxp 00000000 00:00 0 
+7fb3897d5000-7fb3897d6000 ---p 00000000 00:00 0 
+7fb3897d6000-7fb389fd6000 rwxp 00000000 00:00 0 
+7fb389fd6000-7fb389fd7000 ---p 00000000 00:00 0 
+7fb389fd7000-7fb38afeb000 rwxp 00000000 00:00 0 
+7fb38afeb000-7fb38afec000 ---p 00000000 00:00 0 
+7fb38afec000-7fb38c000000 rwxp 00000000 00:00 0 
+7fb38c000000-7fb38c021000 rw-p 00000000 00:00 0 
+7fb38c021000-7fb390000000 ---p 00000000 00:00 0 
+7fb390317000-7fb390517000 rw-p 00000000 00:00 0 
+7fb390517000-7fb390518000 ---p 00000000 00:00 0 
+7fb390518000-7fb390d18000 rwxp 00000000 00:00 0 
+7fb390d18000-7fb3914fc000 r-xp 00000000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7fb3914fc000-7fb3916fc000 ---p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7fb3916fc000-7fb3917f2000 rw-p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7fb3917f2000-7fb3917fb000 rw-p 00000000 00:00 0 
+7fb3917fb000-7fb3917fc000 ---p 00000000 00:00 0 
+7fb3917fc000-7fb391ffc000 rwxp 00000000 00:00 0 
+7fb391ffc000-7fb391ffd000 ---p 00000000 00:00 0 
+7fb391ffd000-7fb3927fd000 rwxp 00000000 00:00 0 
+7fb3927fd000-7fb3927fe000 ---p 00000000 00:00 0 
+7fb3927fe000-7fb392ffe000 rwxp 00000000 00:00 0 
+7fb392ffe000-7fb392fff000 ---p 00000000 00:00 0 
+7fb392fff000-7fb3937ff000 rwxp 00000000 00:00 0 
+7fb3937ff000-7fb393800000 ---p 00000000 00:00 0 
+7fb393800000-7fb394000000 rwxp 00000000 00:00 0 
+7fb394000000-7fb394021000 rw-p 00000000 00:00 0 
+7fb394021000-7fb398000000 ---p 00000000 00:00 0 
+7fb398000000-7fb398021000 rw-p 00000000 00:00 0 
+7fb398021000-7fb39c000000 ---p 00000000 00:00 0 
+7fb39c000000-7fb39c021000 rw-p 00000000 00:00 0 
+7fb39c021000-7fb3a0000000 ---p 00000000 00:00 0 
+7fb3a0000000-7fb3a0021000 rw-p 00000000 00:00 0 
+7fb3a0021000-7fb3a4000000 ---p 00000000 00:00 0 
+7fb3a4000000-7fb3a4021000 rw-p 00000000 00:00 0 
+7fb3a4021000-7fb3a8000000 ---p 00000000 00:00 0 
+7fb3a8106000-7fb3a8107000 ---p 00000000 00:00 0 
+7fb3a8107000-7fb3a8907000 rwxp 00000000 00:00 0 
+7fb3a8907000-7fb3a8908000 ---p 00000000 00:00 0 
+7fb3a8908000-7fb3a9108000 rwxp 00000000 00:00 0 
+7fb3a9108000-7fb3a9109000 ---p 00000000 00:00 0 
+7fb3a9109000-7fb3aa11d000 rwxp 00000000 00:00 0 
+7fb3aa11d000-7fb3aa11e000 ---p 00000000 00:00 0 
+7fb3aa11e000-7fb3ab132000 rwxp 00000000 00:00 0 
+7fb3ab132000-7fb3aef2d000 r-xp 00000000 08:02 16825155                   /usr/lib/libamdocl64.so
+7fb3aef2d000-7fb3af12d000 ---p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7fb3af12d000-7fb3af538000 rw-p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7fb3af538000-7fb3af616000 rw-p 00000000 00:00 0 
+7fb3af616000-7fb3afccf000 r-xp 00000000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7fb3afccf000-7fb3afece000 ---p 006b9000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7fb3afece000-7fb3afff2000 rw-p 006b8000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7fb3afff2000-7fb3b0000000 rw-p 00000000 00:00 0 
+7fb3b0000000-7fb3b0021000 rw-p 00000000 00:00 0 
+7fb3b0021000-7fb3b4000000 ---p 00000000 00:00 0 
+7fb3b408b000-7fb3b40a9000 r-xp 00000000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7fb3b40a9000-7fb3b42a8000 ---p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7fb3b42a8000-7fb3b42a9000 r--p 0001d000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7fb3b42a9000-7fb3b42aa000 rw-p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7fb3b42aa000-7fb3b7980000 r-xp 00000000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7fb3b7980000-7fb3b7b80000 ---p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7fb3b7b80000-7fb3b7f2c000 rw-p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7fb3b7f2c000-7fb3b8000000 rw-p 00000000 00:00 0 
+7fb3b8000000-7fb3b8021000 rw-p 00000000 00:00 0 
+7fb3b8021000-7fb3bc000000 ---p 00000000 00:00 0 
+7fb3bc1ad000-7fb3be21c000 r-xp 00000000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7fb3be21c000-7fb3be41c000 ---p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7fb3be41c000-7fb3be72e000 rw-p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7fb3be72e000-7fb3be7bf000 rw-p 00000000 00:00 0 
+7fb3be7bf000-7fb3be7c0000 ---p 00000000 00:00 0 
+7fb3be7c0000-7fb3befc0000 rwxp 00000000 00:00 0 
+7fb3befc0000-7fb3befc1000 ---p 00000000 00:00 0 
+7fb3befc1000-7fb3bf7c1000 rwxp 00000000 00:00 0 
+7fb3bf7c1000-7fb3c1d74000 rw-p 00000000 00:00 0 
+7fb3c1ee0000-7fb3c1ee1000 ---p 00000000 00:00 0 
+7fb3c1ee1000-7fb3c26e1000 rwxp 00000000 00:00 0 
+7fb3c26e1000-7fb3c26f5000 r-xp 00000000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7fb3c26f5000-7fb3c28f4000 ---p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7fb3c28f4000-7fb3c28f5000 r--p 00013000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7fb3c28f5000-7fb3c28f6000 rw-p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7fb3c28f6000-7fb3c29fd000 r-xp 00000000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7fb3c29fd000-7fb3c2bfc000 ---p 00107000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7fb3c2bfc000-7fb3c2bfe000 r--p 00106000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7fb3c2bfe000-7fb3c2c05000 rw-p 00108000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7fb3c2c05000-7fb3c2c18000 r-xp 00000000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7fb3c2c18000-7fb3c2e17000 ---p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7fb3c2e17000-7fb3c2e18000 r--p 00012000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7fb3c2e18000-7fb3c2e19000 rw-p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7fb3c2e19000-7fb3c2e1d000 r-xp 00000000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7fb3c2e1d000-7fb3c301c000 ---p 00004000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7fb3c301c000-7fb3c301d000 rw-p 00003000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7fb3c301d000-7fb3c3021000 r-xp 00000000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7fb3c3021000-7fb3c3220000 ---p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7fb3c3220000-7fb3c3221000 r--p 00003000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7fb3c3221000-7fb3c3222000 rw-p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7fb3c3222000-7fb3c3263000 r-xp 00000000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7fb3c3263000-7fb3c3462000 ---p 00041000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7fb3c3462000-7fb3c3466000 r--p 00040000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7fb3c3466000-7fb3c3467000 rw-p 00044000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7fb3c3467000-7fb3c3468000 rw-p 00000000 00:00 0 
+7fb3c3468000-7fb3c346f000 r-xp 00000000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7fb3c346f000-7fb3c366e000 ---p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7fb3c366e000-7fb3c366f000 r--p 00006000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7fb3c366f000-7fb3c3670000 rw-p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7fb3c3670000-7fb3c369a000 r-xp 00000000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7fb3c369a000-7fb3c3899000 ---p 0002a000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7fb3c3899000-7fb3c389b000 r--p 00029000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7fb3c389b000-7fb3c389c000 rw-p 0002b000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7fb3c389c000-7fb3c38ac000 r-xp 00000000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7fb3c38ac000-7fb3c3aac000 ---p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7fb3c3aac000-7fb3c3aad000 r--p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7fb3c3aad000-7fb3c3aae000 rw-p 00011000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7fb3c3aae000-7fb3c3ace000 rw-p 00000000 00:00 0 
+7fb3c3ace000-7fb3c3ad3000 r-xp 00000000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7fb3c3ad3000-7fb3c3cd2000 ---p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7fb3c3cd2000-7fb3c3cd3000 r--p 00004000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7fb3c3cd3000-7fb3c3cd4000 rw-p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7fb3c3cd4000-7fb3c3cd6000 r-xp 00000000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7fb3c3cd6000-7fb3c3ed6000 ---p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7fb3c3ed6000-7fb3c3ed7000 r--p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7fb3c3ed7000-7fb3c3ed8000 rw-p 00003000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7fb3c3ed8000-7fb3c3f46000 r-xp 00000000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7fb3c3f46000-7fb3c4145000 ---p 0006e000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7fb3c4145000-7fb3c416d000 r--p 0006d000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7fb3c416d000-7fb3c416e000 rw-p 00095000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7fb3c416e000-7fb3c418e000 rw-p 00000000 00:00 0 
+7fb3c418e000-7fb3c419d000 r-xp 00000000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7fb3c419d000-7fb3c439c000 ---p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7fb3c439c000-7fb3c439d000 r--p 0000e000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7fb3c439d000-7fb3c439e000 rw-p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7fb3c439e000-7fb3c43e8000 r-xp 00000000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7fb3c43e8000-7fb3c45e8000 ---p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7fb3c45e8000-7fb3c45e9000 r--p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7fb3c45e9000-7fb3c45ea000 rw-p 0004b000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7fb3c45ea000-7fb3c45ec000 rw-p 00000000 00:00 0 
+7fb3c45ec000-7fb3c45ff000 r-xp 00000000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7fb3c45ff000-7fb3c47fe000 ---p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7fb3c47fe000-7fb3c47ff000 r--p 00012000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7fb3c47ff000-7fb3c4800000 rw-p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7fb3c4800000-7fb3c4802000 rw-p 00000000 00:00 0 
+7fb3c4802000-7fb3c4829000 r-xp 00000000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7fb3c4829000-7fb3c4a29000 ---p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7fb3c4a29000-7fb3c4a2b000 r--p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7fb3c4a2b000-7fb3c4a2c000 rw-p 00029000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7fb3c4a2c000-7fb3c4a34000 r-xp 00000000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7fb3c4a34000-7fb3c4c34000 ---p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7fb3c4c34000-7fb3c4c35000 r--p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7fb3c4c35000-7fb3c4c36000 rw-p 00009000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7fb3c4c36000-7fb3c4cc8000 r-xp 00000000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7fb3c4cc8000-7fb3c4ec7000 ---p 00092000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7fb3c4ec7000-7fb3c4ec9000 r--p 00091000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7fb3c4ec9000-7fb3c4eca000 rw-p 00093000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7fb3c4eca000-7fb3c4f18000 r-xp 00000000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7fb3c4f18000-7fb3c5117000 ---p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7fb3c5117000-7fb3c5118000 r--p 0004d000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7fb3c5118000-7fb3c5119000 rw-p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7fb3c5119000-7fb3c511a000 rw-p 00000000 00:00 0 
+7fb3c511a000-7fb3c5148000 r-xp 00000000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7fb3c5148000-7fb3c5347000 ---p 0002e000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7fb3c5347000-7fb3c534a000 r--p 0002d000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7fb3c534a000-7fb3c534b000 rw-p 00030000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7fb3c534b000-7fb3c538e000 r-xp 00000000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7fb3c538e000-7fb3c558d000 ---p 00043000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7fb3c558d000-7fb3c5597000 rw-p 00042000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7fb3c5597000-7fb3c559d000 rw-p 00000000 00:00 0 
+7fb3c559d000-7fb3ce186000 r-xp 00000000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7fb3ce186000-7fb3ce385000 ---p 08be9000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7fb3ce385000-7fb3ce394000 rw-p 08be8000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7fb3ce394000-7fb3ce3ec000 rw-p 00000000 00:00 0 
+7fb3ce3ec000-7fb3ce3f2000 r-xp 00000000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7fb3ce3f2000-7fb3ce5f1000 ---p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7fb3ce5f1000-7fb3ce5f2000 r--p 00005000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7fb3ce5f2000-7fb3ce5f3000 rw-p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7fb3ce5f3000-7fb3ce60f000 r-xp 00000000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7fb3ce60f000-7fb3ce80f000 ---p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7fb3ce80f000-7fb3ce812000 r--p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7fb3ce812000-7fb3ce813000 rw-p 0001f000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7fb3ce813000-7fb3ce824000 r-xp 00000000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7fb3ce824000-7fb3cea23000 ---p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7fb3cea23000-7fb3cea24000 r--p 00010000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7fb3cea24000-7fb3cea25000 rw-p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7fb3cea25000-7fb3cea4a000 r-xp 00000000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7fb3cea4a000-7fb3cec49000 ---p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7fb3cec49000-7fb3cec4a000 r--p 00024000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7fb3cec4a000-7fb3cec4b000 rw-p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7fb3cec4b000-7fb3cecbd000 r-xp 00000000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7fb3cecbd000-7fb3ceebc000 ---p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7fb3ceebc000-7fb3ceebd000 r--p 00071000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7fb3ceebd000-7fb3ceebe000 rw-p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7fb3ceebe000-7fb3ceec5000 r-xp 00000000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7fb3ceec5000-7fb3cf0c5000 ---p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7fb3cf0c5000-7fb3cf0c6000 r--p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7fb3cf0c6000-7fb3cf0c7000 rw-p 00008000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7fb3cf0c7000-7fb3cf137000 r-xp 00000000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7fb3cf137000-7fb3cf336000 ---p 00070000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7fb3cf336000-7fb3cf350000 r--p 0006f000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7fb3cf350000-7fb3cf351000 rw-p 00089000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7fb3cf351000-7fb3cf352000 rw-p 00000000 00:00 0 
+7fb3cf352000-7fb3cf35b000 r-xp 00000000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7fb3cf35b000-7fb3cf55b000 ---p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7fb3cf55b000-7fb3cf55c000 r--p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7fb3cf55c000-7fb3cf55d000 rw-p 0000a000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0Aborted (core dumped)
+dataset/test_B4/351093.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21636
+Sobel time: 0.14914
+Non-maximum supression time: 0.07841
+Hysteresis time: 0.18700
+-------------------------------------
+Correct pixels: 0.89 (1421686/1593581)
+False positives: 0.05 (81805/1593581)
+False negatives: 0.06 (90090/1593581)
+-------------------------------------
+OpenCV time: 1.55050
+AnyDSL time: 0.63098
+-------------------------------------
+dataset/test_B4/86068.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25217
+Sobel time: 0.15347
+Non-maximum supression time: 0.07813
+Hysteresis time: 0.17869
+-------------------------------------
+Correct pixels: 0.75 (525148/696458)
+False positives: 0.11 (79882/696458)
+False negatives: 0.13 (91428/696458)
+-------------------------------------
+OpenCV time: 1.18830
+AnyDSL time: 0.66256
+-------------------------------------
+dataset/test_B4/296059.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24516
+Sobel time: 0.14929
+Non-maximum supression time: 0.07864
+Hysteresis time: 0.10183
+-------------------------------------
+Correct pixels: 0.77 (304238/395557)
+False positives: 0.17 (65948/395557)
+False negatives: 0.06 (25371/395557)
+-------------------------------------
+OpenCV time: 1.36642
+AnyDSL time: 0.57499
+-------------------------------------
+dataset/test_B4/76053.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25008
+Sobel time: 0.15156
+Non-maximum supression time: 0.07813
+Hysteresis time: 0.16261
+-------------------------------------
+Correct pixels: 0.81 (587887/726034)
+False positives: 0.10 (73114/726034)
+False negatives: 0.09 (65033/726034)
+-------------------------------------
+OpenCV time: 1.38487
+AnyDSL time: 0.64246
+-------------------------------------
+dataset/test_B4/19021.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25472
+Sobel time: 0.15831
+Non-maximum supression time: 0.07863
+Hysteresis time: 0.16683
+-------------------------------------
+Correct pixels: 0.84 (955703/1141896)
+False positives: 0.06 (73542/1141896)
+False negatives: 0.10 (112651/1141896)
+-------------------------------------
+OpenCV time: 1.51804
+AnyDSL time: 0.65857
+-------------------------------------
+dataset/test_B4/86000.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24028
+Sobel time: 0.15092
+Non-maximum supression time: 0.07510
+Hysteresis time: 0.12328
+-------------------------------------
+Correct pixels: 0.90 (981758/1085045)
+False positives: 0.05 (49607/1085045)
+False negatives: 0.05 (53680/1085045)
+-------------------------------------
+OpenCV time: 1.46268
+AnyDSL time: 0.58965
+-------------------------------------
+dataset/test_B4/299086.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25731
+Sobel time: 0.15289
+Non-maximum supression time: 0.07945
+Hysteresis time: 0.10388
+-------------------------------------
+Correct pixels: 0.81 (314528/389994)
+False positives: 0.13 (52482/389994)
+False negatives: 0.06 (22984/389994)
+-------------------------------------
+OpenCV time: 1.49089
+AnyDSL time: 0.59371
+-------------------------------------
+dataset/test_B4/108070.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25496
+Sobel time: 0.15000
+Non-maximum supression time: 0.08561
+Hysteresis time: 0.23154
+-------------------------------------
+Correct pixels: 0.85 (1383170/1622667)
+False positives: 0.07 (109257/1622667)
+False negatives: 0.08 (130240/1622667)
+-------------------------------------
+OpenCV time: 1.48360
+AnyDSL time: 0.72222
+-------------------------------------
+dataset/test_B4/167083.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.19868
+Sobel time: 0.16125
+Non-maximum supression time: 0.07611
+Hysteresis time: 0.18866
+-------------------------------------
+Correct pixels: 0.89 (1712962/1923019)
+False positives: 0.05 (88687/1923019)
+False negatives: 0.06 (121370/1923019)
+-------------------------------------
+OpenCV time: 1.20474
+AnyDSL time: 0.62479
+-------------------------------------
+dataset/test_B4/37073.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25160
+Sobel time: 0.15479
+Non-maximum supression time: 0.08840
+Hysteresis time: 0.09280
+-------------------------------------
+Correct pixels: 0.86 (487079/568529)
+False positives: 0.08 (46468/568529)
+False negatives: 0.06 (34982/568529)
+-------------------------------------
+OpenCV time: 1.39595
+AnyDSL time: 0.58773
+-------------------------------------
+dataset/test_B4/108082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24977
+Sobel time: 0.14934
+Non-maximum supression time: 0.07839
+Hysteresis time: 0.16805
+-------------------------------------
+Correct pixels: 0.85 (904730/1060827)
+False positives: 0.07 (78451/1060827)
+False negatives: 0.07 (77646/1060827)
+-------------------------------------
+OpenCV time: 1.42977
+AnyDSL time: 0.64567
+-------------------------------------
+dataset/test_B4/241048.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25362
+Sobel time: 0.14954
+Non-maximum supression time: 0.07818
+Hysteresis time: 0.17336
+-------------------------------------
+Correct pixels: 0.86 (1025167/1196701)
+False positives: 0.07 (81519/1196701)
+False negatives: 0.08 (90015/1196701)
+-------------------------------------
+OpenCV time: 1.63210
+AnyDSL time: 0.65479
+-------------------------------------
+dataset/test_B4/295087.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25171
+Sobel time: 0.14983
+Non-maximum supression time: 0.07928
+Hysteresis time: 0.17958
+-------------------------------------
+Correct pixels: 0.80 (761833/956060)
+False positives: 0.08 (79885/956060)
+False negatives: 0.12 (114342/956060)
+-------------------------------------
+OpenCV time: 1.06663
+AnyDSL time: 0.66049
+-------------------------------------
+dataset/test_B4/38082.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+Segmentation fault (core dumped)
+dataset/test_B4/306005.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25183
+Sobel time: 0.14937
+Non-maximum supression time: 0.07951
+Hysteresis time: 0.14772
+-------------------------------------
+Correct pixels: 0.87 (832130/954591)
+False positives: 0.06 (61600/954591)
+False negatives: 0.06 (60861/954591)
+-------------------------------------
+OpenCV time: 1.54935
+AnyDSL time: 0.62851
+-------------------------------------
+dataset/test_B4/86016.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21540
+Sobel time: 0.14936
+Non-maximum supression time: 0.08533
+Hysteresis time: 0.32415
+-------------------------------------
+Correct pixels: 0.82 (1542244/1875659)
+False positives: 0.05 (98141/1875659)
+False negatives: 0.13 (235274/1875659)
+-------------------------------------
+OpenCV time: 1.61285
+AnyDSL time: 0.77431
+-------------------------------------
+*** Error in `./canny': munmap_chunk(): invalid pointer: 0x00007f0560e9a000 ***
+======= Backtrace: =========
+/usr/lib/libc.so.6(+0x722ab)[0x7f05d60632ab]
+/usr/lib/libc.so.6(+0x7890e)[0x7f05d606990e]
+./canny[0x40487f]
+/usr/lib/libc.so.6(__libc_start_main+0xf1)[0x7f05d6011511]
+./canny[0x40166a]
+======= Memory map: ========
+00400000-0040b000 r-xp 00000000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060a000-0060b000 r--p 0000a000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+0060b000-0060c000 rw-p 0000b000 08:02 18351534                           /home/rafael/Utilities/repositories/tcc/anydsl/canny/canny
+01697000-04a4f000 rw-p 00000000 00:00 0                                  [heap]
+200000000-200100000 rw-s 120a80000 00:06 15439                           /dev/nvidiactl
+200100000-200104000 rw-s 12908e000 00:06 15439                           /dev/nvidiactl
+200104000-200120000 ---p 00000000 00:00 0 
+200120000-200520000 rw-s 12905a000 00:06 15439                           /dev/nvidiactl
+200520000-200524000 rw-s 107d50000 00:06 15439                           /dev/nvidiactl
+200524000-200540000 ---p 00000000 00:00 0 
+200540000-200940000 rw-s 107d3a000 00:06 15439                           /dev/nvidiactl
+200940000-200944000 rw-s 109a9c000 00:06 15439                           /dev/nvidiactl
+200944000-200960000 ---p 00000000 00:00 0 
+200960000-200d60000 rw-s 109a14000 00:06 15439                           /dev/nvidiactl
+200d60000-200d64000 rw-s 11e4c4000 00:06 15439                           /dev/nvidiactl
+200d64000-200d80000 ---p 00000000 00:00 0 
+200d80000-201180000 rw-s 11e448000 00:06 15439                           /dev/nvidiactl
+201180000-201184000 rw-s 87407000 00:06 15439                            /dev/nvidiactl
+201184000-2011a0000 ---p 00000000 00:00 0 
+2011a0000-2015a0000 rw-s 9e2fa000 00:06 15439                            /dev/nvidiactl
+2015a0000-2015a4000 rw-s 1d085000 00:06 15439                            /dev/nvidiactl
+2015a4000-2015c0000 ---p 00000000 00:00 0 
+2015c0000-2019c0000 rw-s 9e6eb000 00:06 15439                            /dev/nvidiactl
+2019c0000-2019c4000 rw-s 5006a000 00:06 15439                            /dev/nvidiactl
+2019c4000-2019e0000 ---p 00000000 00:00 0 
+2019e0000-201de0000 rw-s 82d56000 00:06 15439                            /dev/nvidiactl
+201de0000-201de4000 rw-s 16153000 00:06 15439                            /dev/nvidiactl
+201de4000-201e00000 ---p 00000000 00:00 0 
+201e00000-202200000 rw-s 017af000 00:06 15439                            /dev/nvidiactl
+202200000-202204000 rw-s 68e57000 00:06 15439                            /dev/nvidiactl
+202204000-202220000 ---p 00000000 00:00 0 
+202220000-202620000 rw-s 68e0f000 00:06 15439                            /dev/nvidiactl
+202620000-202624000 rw-s aab92000 00:06 15439                            /dev/nvidiactl
+202624000-202640000 ---p 00000000 00:00 0 
+202640000-202a40000 rw-s 9fe82000 00:06 15439                            /dev/nvidiactl
+202a40000-202a44000 rw-s 163cd000 00:06 15439                            /dev/nvidiactl
+202a44000-202a60000 ---p 00000000 00:00 0 
+202a60000-202e60000 rw-s 88985000 00:06 15439                            /dev/nvidiactl
+202e60000-202e64000 rw-s 03850000 00:06 15439                            /dev/nvidiactl
+202e64000-202e80000 ---p 00000000 00:00 0 
+202e80000-203280000 rw-s 8f044000 00:06 15439                            /dev/nvidiactl
+203280000-203380000 rw-s 53343000 00:06 15439                            /dev/nvidiactl
+203380000-203480000 rw-s 5de65000 00:06 15439                            /dev/nvidiactl
+203480000-203580000 rw-s 3d8a8000 00:06 15439                            /dev/nvidiactl
+203580000-203680000 rw-s 6b73a000 00:06 15439                            /dev/nvidiactl
+203680000-203780000 rw-s 68f0d000 00:06 15439                            /dev/nvidiactl
+203780000-203802000 rw-s 03490000 00:06 15439                            /dev/nvidiactl
+203802000-600000000 ---p 00000000 00:00 0 
+600000000-600100000 rw-s 33b93000 00:06 15439                            /dev/nvidiactl
+600100000-600104000 rw-s 0fd2b000 00:06 15439                            /dev/nvidiactl
+600104000-600120000 ---p 00000000 00:00 0 
+600120000-600520000 rw-s 03967000 00:06 15439                            /dev/nvidiactl
+600520000-600524000 rw-s 97bda000 00:06 15439                            /dev/nvidiactl
+600524000-600540000 ---p 00000000 00:00 0 
+600540000-600940000 rw-s 8885e000 00:06 15439                            /dev/nvidiactl
+600940000-600944000 rw-s 3f429000 00:06 15439                            /dev/nvidiactl
+600944000-600960000 ---p 00000000 00:00 0 
+600960000-600d60000 rw-s 86fbd000 00:06 15439                            /dev/nvidiactl
+600d60000-600d64000 rw-s 56396000 00:06 15439                            /dev/nvidiactl
+600d64000-600d80000 ---p 00000000 00:00 0 
+600d80000-601180000 rw-s 78932000 00:06 15439                            /dev/nvidiactl
+601180000-601184000 rw-s 16116000 00:06 15439                            /dev/nvidiactl
+601184000-6011a0000 ---p 00000000 00:00 0 
+6011a0000-6015a0000 rw-s 5143a000 00:06 15439                            /dev/nvidiactl
+6015a0000-6015a4000 rw-s 39cbd000 00:06 15439                            /dev/nvidiactl
+6015a4000-6015c0000 ---p 00000000 00:00 0 
+6015c0000-6019c0000 rw-s 5f5d9000 00:06 15439                            /dev/nvidiactl
+6019c0000-6019c4000 rw-s 291a7000 00:06 15439                            /dev/nvidiactl
+6019c4000-6019e0000 ---p 00000000 00:00 0 
+6019e0000-601de0000 rw-s 1629d000 00:06 15439                            /dev/nvidiactl
+601de0000-601de4000 rw-s 6c9c0000 00:06 15439                            /dev/nvidiactl
+601de4000-601e00000 ---p 00000000 00:00 0 
+601e00000-602200000 rw-s 6c9cc000 00:06 15439                            /dev/nvidiactl
+602200000-602204000 rw-s 98b0a000 00:06 15439                            /dev/nvidiactl
+602204000-602220000 ---p 00000000 00:00 0 
+602220000-602620000 rw-s 16141000 00:06 15439                            /dev/nvidiactl
+602620000-602624000 rw-s 1bb35000 00:06 15439                            /dev/nvidiactl
+602624000-602640000 ---p 00000000 00:00 0 
+602640000-602a40000 rw-s aad21000 00:06 15439                            /dev/nvidiactl
+602a40000-602a44000 rw-s 566d0000 00:06 15439                            /dev/nvidiactl
+602a44000-602a60000 ---p 00000000 00:00 0 
+602a60000-602e60000 rw-s 566dc000 00:06 15439                            /dev/nvidiactl
+602e60000-602e64000 rw-s 89007000 00:06 15439                            /dev/nvidiactl
+602e64000-602e80000 ---p 00000000 00:00 0 
+602e80000-603280000 rw-s 6b6c3000 00:06 15439                            /dev/nvidiactl
+603280000-603380000 rw-s 17355000 00:06 15439                            /dev/nvidiactl
+603380000-603480000 rw-s 1cc97000 00:06 15439                            /dev/nvidiactl
+603480000-603580000 rw-s 051ea000 00:06 15439                            /dev/nvidiactl
+603580000-603680000 rw-s 3cd2c000 00:06 15439                            /dev/nvidiactl
+603680000-603780000 rw-s 16360000 00:06 15439                            /dev/nvidiactl
+603780000-603802000 rw-s 1e184000 00:06 15439                            /dev/nvidiactl
+603802000-603820000 ---p 00000000 00:00 0 
+603820000-603920000 rw-s 1d01b000 00:06 15439                            /dev/nvidiactl
+603920000-603924000 rw-s 143b7000 00:06 15439                            /dev/nvidiactl
+603924000-603940000 ---p 00000000 00:00 0 
+603940000-603d40000 rw-s 05043000 00:06 15439                            /dev/nvidiactl
+603d40000-603d44000 rw-s 8a832000 00:06 15439                            /dev/nvidiactl
+603d44000-603d60000 ---p 00000000 00:00 0 
+603d60000-604160000 rw-s 16120000 00:06 15439                            /dev/nvidiactl
+604160000-604164000 rw-s 6902b000 00:06 15439                            /dev/nvidiactl
+604164000-604180000 ---p 00000000 00:00 0 
+604180000-604580000 rw-s 69037000 00:06 15439                            /dev/nvidiactl
+604580000-604584000 rw-s c2b44000 00:06 15439                            /dev/nvidiactl
+604584000-6045a0000 ---p 00000000 00:00 0 
+6045a0000-6049a0000 rw-s c2b52000 00:06 15439                            /dev/nvidiactl
+6049a0000-6049a4000 rw-s 4116e000 00:06 15439                            /dev/nvidiactl
+6049a4000-6049c0000 ---p 00000000 00:00 0 
+6049c0000-604dc0000 rw-s 4117a000 00:06 15439                            /dev/nvidiactl
+604dc0000-604dc4000 rw-s 61025000 00:06 15439                            /dev/nvidiactl
+604dc4000-604de0000 ---p 00000000 00:00 0 
+604de0000-6051e0000 rw-s 61031000 00:06 15439                            /dev/nvidiactl
+6051e0000-6051e4000 rw-s c2adf000 00:06 15439                            /dev/nvidiactl
+6051e4000-605200000 ---p 00000000 00:00 0 
+605200000-605600000 rw-s 6110b000 00:06 15439                            /dev/nvidiactl
+605600000-605604000 rw-s 36458000 00:06 15439                            /dev/nvidiactl
+605604000-605620000 ---p 00000000 00:00 0 
+605620000-605a20000 rw-s b5b25000 00:06 15439                            /dev/nvidiactl
+605a20000-605a24000 rw-s 06873000 00:06 15439                            /dev/nvidiactl
+605a24000-605a40000 ---p 00000000 00:00 0 
+605a40000-605e40000 rw-s 0687f000 00:06 15439                            /dev/nvidiactl
+605e40000-605e44000 rw-s 05943000 00:06 15439                            /dev/nvidiactl
+605e44000-605e60000 ---p 00000000 00:00 0 
+605e60000-606260000 rw-s 05959000 00:06 15439                            /dev/nvidiactl
+606260000-606264000 rw-s 08b9c000 00:06 15439                            /dev/nvidiactl
+606264000-606280000 ---p 00000000 00:00 0 
+606280000-606680000 rw-s 581a8000 00:06 15439                            /dev/nvidiactl
+606680000-606684000 rw-s 53235000 00:06 15439                            /dev/nvidiactl
+606684000-6066a0000 ---p 00000000 00:00 0 
+6066a0000-606aa0000 rw-s 29253000 00:06 15439                            /dev/nvidiactl
+606aa0000-606ba0000 rw-s 5bb7f000 00:06 15439                            /dev/nvidiactl
+606ba0000-606ca0000 rw-s 86f0d000 00:06 15439                            /dev/nvidiactl
+606ca0000-606da0000 rw-s 90090000 00:06 15439                            /dev/nvidiactl
+606da0000-606ea0000 rw-s 56752000 00:06 15439                            /dev/nvidiactl
+606ea0000-606fa0000 rw-s 36ff9000 00:06 15439                            /dev/nvidiactl
+606fa0000-607022000 rw-s 58107000 00:06 15439                            /dev/nvidiactl
+607022000-a00000000 ---p 00000000 00:00 0 
+7f0554000000-7f0554021000 rw-p 00000000 00:00 0 
+7f0554021000-7f0558000000 ---p 00000000 00:00 0 
+7f0558000000-7f0558165000 rw-p 00000000 00:00 0 
+7f0558165000-7f055c000000 ---p 00000000 00:00 0 
+7f055c000000-7f055c021000 rw-p 00000000 00:00 0 
+7f055c021000-7f0560000000 ---p 00000000 00:00 0 
+7f0560e99000-7f0563466000 rw-p 00000000 00:00 0 
+7f0568000000-7f0568021000 rw-p 00000000 00:00 0 
+7f0568021000-7f056c000000 ---p 00000000 00:00 0 
+7f056c230000-7f056c231000 ---p 00000000 00:00 0 
+7f056c231000-7f056ca31000 rwxp 00000000 00:00 0 
+7f056ca31000-7f056ca32000 ---p 00000000 00:00 0 
+7f056ca32000-7f056d232000 rwxp 00000000 00:00 0 
+7f056d232000-7f056d233000 ---p 00000000 00:00 0 
+7f056d233000-7f056da33000 rwxp 00000000 00:00 0 
+7f0570000000-7f0570021000 rw-p 00000000 00:00 0 
+7f0570021000-7f0574000000 ---p 00000000 00:00 0 
+7f05743d2000-7f05743d3000 ---p 00000000 00:00 0 
+7f05743d3000-7f05747d3000 rwxp 00000000 00:00 0 
+7f05747d3000-7f05747d4000 ---p 00000000 00:00 0 
+7f05747d4000-7f0574fd4000 rwxp 00000000 00:00 0 
+7f0574fd4000-7f0574fd5000 ---p 00000000 00:00 0 
+7f0574fd5000-7f05757d5000 rwxp 00000000 00:00 0 
+7f05757d5000-7f05757d6000 ---p 00000000 00:00 0 
+7f05757d6000-7f0575fd6000 rwxp 00000000 00:00 0 
+7f0575fd6000-7f0575fd7000 ---p 00000000 00:00 0 
+7f0575fd7000-7f0576feb000 rwxp 00000000 00:00 0 
+7f0576feb000-7f0576fec000 ---p 00000000 00:00 0 
+7f0576fec000-7f0578000000 rwxp 00000000 00:00 0 
+7f0578000000-7f0578021000 rw-p 00000000 00:00 0 
+7f0578021000-7f057c000000 ---p 00000000 00:00 0 
+7f057c317000-7f057c517000 rw-p 00000000 00:00 0 
+7f057c517000-7f057c518000 ---p 00000000 00:00 0 
+7f057c518000-7f057cd18000 rwxp 00000000 00:00 0 
+7f057cd18000-7f057d4fc000 r-xp 00000000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7f057d4fc000-7f057d6fc000 ---p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7f057d6fc000-7f057d7f2000 rw-p 007e4000 08:02 16836094                   /usr/lib/libnvidia-ptxjitcompiler.so.381.22
+7f057d7f2000-7f057d7fb000 rw-p 00000000 00:00 0 
+7f057d7fb000-7f057d7fc000 ---p 00000000 00:00 0 
+7f057d7fc000-7f057dffc000 rwxp 00000000 00:00 0 
+7f057dffc000-7f057dffd000 ---p 00000000 00:00 0 
+7f057dffd000-7f057e7fd000 rwxp 00000000 00:00 0 
+7f057e7fd000-7f057e7fe000 ---p 00000000 00:00 0 
+7f057e7fe000-7f057effe000 rwxp 00000000 00:00 0 
+7f057effe000-7f057efff000 ---p 00000000 00:00 0 
+7f057efff000-7f057f7ff000 rwxp 00000000 00:00 0 
+7f057f7ff000-7f057f800000 ---p 00000000 00:00 0 
+7f057f800000-7f0580000000 rwxp 00000000 00:00 0 
+7f0580000000-7f0580021000 rw-p 00000000 00:00 0 
+7f0580021000-7f0584000000 ---p 00000000 00:00 0 
+7f0584000000-7f0584021000 rw-p 00000000 00:00 0 
+7f0584021000-7f0588000000 ---p 00000000 00:00 0 
+7f0588000000-7f0588021000 rw-p 00000000 00:00 0 
+7f0588021000-7f058c000000 ---p 00000000 00:00 0 
+7f058c000000-7f058c021000 rw-p 00000000 00:00 0 
+7f058c021000-7f0590000000 ---p 00000000 00:00 0 
+7f0590000000-7f0590021000 rw-p 00000000 00:00 0 
+7f0590021000-7f0594000000 ---p 00000000 00:00 0 
+7f0594106000-7f0594107000 ---p 00000000 00:00 0 
+7f0594107000-7f0594907000 rwxp 00000000 00:00 0 
+7f0594907000-7f0594908000 ---p 00000000 00:00 0 
+7f0594908000-7f0595108000 rwxp 00000000 00:00 0 
+7f0595108000-7f0595109000 ---p 00000000 00:00 0 
+7f0595109000-7f059611d000 rwxp 00000000 00:00 0 
+7f059611d000-7f059611e000 ---p 00000000 00:00 0 
+7f059611e000-7f0597132000 rwxp 00000000 00:00 0 
+7f0597132000-7f059af2d000 r-xp 00000000 08:02 16825155                   /usr/lib/libamdocl64.so
+7f059af2d000-7f059b12d000 ---p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7f059b12d000-7f059b538000 rw-p 03dfb000 08:02 16825155                   /usr/lib/libamdocl64.so
+7f059b538000-7f059b616000 rw-p 00000000 00:00 0 
+7f059b616000-7f059bccf000 r-xp 00000000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7f059bccf000-7f059bece000 ---p 006b9000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7f059bece000-7f059bff2000 rw-p 006b8000 08:02 16820109                   /usr/lib/libnvidia-opencl.so.381.22
+7f059bff2000-7f059c000000 rw-p 00000000 00:00 0 
+7f059c000000-7f059c021000 rw-p 00000000 00:00 0 
+7f059c021000-7f05a0000000 ---p 00000000 00:00 0 
+7f05a008b000-7f05a00a9000 r-xp 00000000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f05a00a9000-7f05a02a8000 ---p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f05a02a8000-7f05a02a9000 r--p 0001d000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f05a02a9000-7f05a02aa000 rw-p 0001e000 08:02 16810056                   /usr/lib/libOpenCL.so.1.0.0
+7f05a02aa000-7f05a3980000 r-xp 00000000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7f05a3980000-7f05a3b80000 ---p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7f05a3b80000-7f05a3f2c000 rw-p 036d6000 08:02 10487988                   /opt/AMDAPP/SDK/lib/sdk/libamdocl64.so
+7f05a3f2c000-7f05a4000000 rw-p 00000000 00:00 0 
+7f05a4000000-7f05a4021000 rw-p 00000000 00:00 0 
+7f05a4021000-7f05a8000000 ---p 00000000 00:00 0 
+7f05a819c000-7f05aa20b000 r-xp 00000000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7f05aa20b000-7f05aa40b000 ---p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7f05aa40b000-7f05aa71d000 rw-p 0206f000 08:02 10487983                   /opt/AMDAPP/SDK/lib/libamdocl12cl64.so
+7f05aa71d000-7f05aa7ae000 rw-p 00000000 00:00 0 
+7f05aa7ae000-7f05aa7af000 ---p 00000000 00:00 0 
+7f05aa7af000-7f05aafaf000 rwxp 00000000 00:00 0 
+7f05aafaf000-7f05aafb0000 ---p 00000000 00:00 0 
+7f05aafb0000-7f05ab7b0000 rwxp 00000000 00:00 0 
+7f05ab7b0000-7f05add63000 rw-p 00000000 00:00 0 
+7f05adecf000-7f05aded0000 ---p 00000000 00:00 0 
+7f05aded0000-7f05ae6d0000 rwxp 00000000 00:00 0 
+7f05ae6d0000-7f05ae6e4000 r-xp 00000000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f05ae6e4000-7f05ae8e3000 ---p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f05ae8e3000-7f05ae8e4000 r--p 00013000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f05ae8e4000-7f05ae8e5000 rw-p 00014000 08:02 16796233                   /usr/lib/libgpg-error.so.0.22.0
+7f05ae8e5000-7f05ae9ec000 r-xp 00000000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f05ae9ec000-7f05aebeb000 ---p 00107000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f05aebeb000-7f05aebed000 r--p 00106000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f05aebed000-7f05aebf4000 rw-p 00108000 08:02 16805693                   /usr/lib/libgcrypt.so.20.1.6
+7f05aebf4000-7f05aec07000 r-xp 00000000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f05aec07000-7f05aee06000 ---p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f05aee06000-7f05aee07000 r--p 00012000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f05aee07000-7f05aee08000 rw-p 00013000 08:02 16819990                   /usr/lib/liblz4.so.1.7.5
+7f05aee08000-7f05aee0c000 r-xp 00000000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7f05aee0c000-7f05af00b000 ---p 00004000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7f05af00b000-7f05af00c000 rw-p 00003000 08:02 16779185                   /usr/lib/libcap.so.2.25
+7f05af00c000-7f05af010000 r-xp 00000000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f05af010000-7f05af20f000 ---p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f05af20f000-7f05af210000 r--p 00003000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f05af210000-7f05af211000 rw-p 00004000 08:02 16813545                   /usr/lib/libuuid.so.1.3.0
+7f05af211000-7f05af252000 r-xp 00000000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f05af252000-7f05af451000 ---p 00041000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f05af451000-7f05af455000 r--p 00040000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f05af455000-7f05af456000 rw-p 00044000 08:02 16821606                   /usr/lib/libblkid.so.1.1.0
+7f05af456000-7f05af457000 rw-p 00000000 00:00 0 
+7f05af457000-7f05af45e000 r-xp 00000000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f05af45e000-7f05af65d000 ---p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f05af65d000-7f05af65e000 r--p 00006000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f05af65e000-7f05af65f000 rw-p 00007000 08:02 16805102                   /usr/lib/libdatrie.so.1.3.3
+7f05af65f000-7f05af689000 r-xp 00000000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f05af689000-7f05af888000 ---p 0002a000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f05af888000-7f05af88a000 r--p 00029000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f05af88a000-7f05af88b000 rw-p 0002b000 08:02 16811185                   /usr/lib/libgraphite2.so.3.0.1
+7f05af88b000-7f05af89b000 r-xp 00000000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f05af89b000-7f05afa9b000 ---p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f05afa9b000-7f05afa9c000 r--p 00010000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f05afa9c000-7f05afa9d000 rw-p 00011000 08:02 16794901                   /usr/lib/libGLX.so.0.0.0
+7f05afa9d000-7f05afabd000 rw-p 00000000 00:00 0 
+7f05afabd000-7f05afac2000 r-xp 00000000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f05afac2000-7f05afcc1000 ---p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f05afcc1000-7f05afcc2000 r--p 00004000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f05afcc2000-7f05afcc3000 rw-p 00005000 08:02 16798478                   /usr/lib/libXdmcp.so.6.0.0
+7f05afcc3000-7f05afcc5000 r-xp 00000000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f05afcc5000-7f05afec5000 ---p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f05afec5000-7f05afec6000 r--p 00002000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f05afec6000-7f05afec7000 rw-p 00003000 08:02 16798482                   /usr/lib/libXau.so.6.0.0
+7f05afec7000-7f05aff35000 r-xp 00000000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f05aff35000-7f05b0134000 ---p 0006e000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f05b0134000-7f05b015c000 r--p 0006d000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f05b015c000-7f05b015d000 rw-p 00095000 08:02 16780736                   /usr/lib/libGLdispatch.so.0.0.0
+7f05b015d000-7f05b017d000 rw-p 00000000 00:00 0 
+7f05b017d000-7f05b018c000 r-xp 00000000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f05b018c000-7f05b038b000 ---p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f05b038b000-7f05b038c000 r--p 0000e000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f05b038c000-7f05b038d000 rw-p 0000f000 08:02 16783483                   /usr/lib/libbz2.so.1.0.6
+7f05b038d000-7f05b03d7000 r-xp 00000000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f05b03d7000-7f05b05d7000 ---p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f05b05d7000-7f05b05d8000 r--p 0004a000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f05b05d8000-7f05b05d9000 rw-p 0004b000 08:02 16825417                   /usr/lib/libmount.so.1.1.0
+7f05b05d9000-7f05b05db000 rw-p 00000000 00:00 0 
+7f05b05db000-7f05b05ee000 r-xp 00000000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f05b05ee000-7f05b07ed000 ---p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f05b07ed000-7f05b07ee000 r--p 00012000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f05b07ee000-7f05b07ef000 rw-p 00013000 08:02 16779232                   /usr/lib/libresolv-2.25.so
+7f05b07ef000-7f05b07f1000 rw-p 00000000 00:00 0 
+7f05b07f1000-7f05b0818000 r-xp 00000000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f05b0818000-7f05b0a18000 ---p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f05b0a18000-7f05b0a1a000 r--p 00027000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f05b0a1a000-7f05b0a1b000 rw-p 00029000 08:02 16780541                   /usr/lib/libexpat.so.1.6.2
+7f05b0a1b000-7f05b0a23000 r-xp 00000000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f05b0a23000-7f05b0c23000 ---p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f05b0c23000-7f05b0c24000 r--p 00008000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f05b0c24000-7f05b0c25000 rw-p 00009000 08:02 16805109                   /usr/lib/libthai.so.0.3.0
+7f05b0c25000-7f05b0cb7000 r-xp 00000000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f05b0cb7000-7f05b0eb6000 ---p 00092000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f05b0eb6000-7f05b0eb8000 r--p 00091000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f05b0eb8000-7f05b0eb9000 rw-p 00093000 08:02 16790087                   /usr/lib/libharfbuzz.so.0.10400.6
+7f05b0eb9000-7f05b0f07000 r-xp 00000000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f05b0f07000-7f05b1106000 ---p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f05b1106000-7f05b1107000 r--p 0004d000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f05b1107000-7f05b1108000 rw-p 0004e000 08:02 16787333                   /usr/lib/libdbus-1.so.3.14.11
+7f05b1108000-7f05b1109000 rw-p 00000000 00:00 0 
+7f05b1109000-7f05b1137000 r-xp 00000000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f05b1137000-7f05b1336000 ---p 0002e000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f05b1336000-7f05b1339000 r--p 0002d000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f05b1339000-7f05b133a000 rw-p 00030000 08:02 16822608                   /usr/lib/libatspi.so.0.0.1
+7f05b133a000-7f05b137d000 r-xp 00000000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7f05b137d000-7f05b157c000 ---p 00043000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7f05b157c000-7f05b1586000 rw-p 00042000 08:02 16836113                   /usr/lib/libnvidia-fatbinaryloader.so.381.22
+7f05b1586000-7f05b158c000 rw-p 00000000 00:00 0 
+7f05b158c000-7f05ba175000 r-xp 00000000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7f05ba175000-7f05ba374000 ---p 08be9000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7f05ba374000-7f05ba383000 rw-p 08be8000 08:02 10491133                   /opt/cuda/lib64/libcufft.so.8.0.61
+7f05ba383000-7f05ba3db000 rw-p 00000000 00:00 0 
+7f05ba3db000-7f05ba3e1000 r-xp 00000000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f05ba3e1000-7f05ba5e0000 ---p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f05ba5e0000-7f05ba5e1000 r--p 00005000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f05ba5e1000-7f05ba5e2000 rw-p 00006000 08:02 16807315                   /usr/lib/libIlmThread-2_2.so.12.0.0
+7f05ba5e2000-7f05ba5fe000 r-xp 00000000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f05ba5fe000-7f05ba7fe000 ---p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f05ba7fe000-7f05ba801000 r--p 0001c000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f05ba801000-7f05ba802000 rw-p 0001f000 08:02 16807312                   /usr/lib/libIex-2_2.so.12.0.0
+7f05ba802000-7f05ba813000 r-xp 00000000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f05ba813000-7f05baa12000 ---p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f05baa12000-7f05baa13000 r--p 00010000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f05baa13000-7f05baa14000 rw-p 00011000 08:02 16807314                   /usr/lib/libImath-2_2.so.12.0.0
+7f05baa14000-7f05baa39000 r-xp 00000000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f05baa39000-7f05bac38000 ---p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f05bac38000-7f05bac39000 r--p 00024000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f05bac39000-7f05bac3a000 rw-p 00025000 08:02 16788451                   /usr/lib/liblzma.so.5.2.3
+7f05bac3a000-7f05bacac000 r-xp 00000000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f05bacac000-7f05baeab000 ---p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f05baeab000-7f05baeac000 r--p 00071000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f05baeac000-7f05baead000 rw-p 00072000 08:02 16787361                   /usr/lib/libpcre.so.1.2.8
+7f05baead000-7f05baeb4000 r-xp 00000000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f05baeb4000-7f05bb0b4000 ---p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f05bb0b4000-7f05bb0b5000 r--p 00007000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f05bb0b5000-7f05bb0b6000 rw-p 00008000 08:02 16787485                   /usr/lib/libffi.so.6.0.4
+7f05bb0b6000-7f05bb126000 r-xp 00000000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f05bb126000-7f05bb325000 ---p 00070000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f05bb325000-7f05bb33f000 r--p 0006f000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f05bb33f000-7f05bb340000 rw-p 00089000 08:02 16796009                   /usr/lib/libGL.so.1.0.0
+7f05bb340000-7f05bb341000 rw-p 00000000 00:00 0 
+7f05bb341000-7f05bb34a000 r-xp 00000000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f05bb34a000-7f05bb54a000 ---p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f05bb54a000-7f05bb54b000 r--p 00009000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f05bb54b000-7f05bb54c000 rw-p 0000a000 08:02 16802970                   /usr/lib/libXrender.so.1.3.0
+7f05bb54c000-7f05bb558000 r-xp 00000000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f05bb558000-7f05bb758000 ---p 0000c000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f05bb758000-7f05bb759000 r--p 0000c000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f05bb759000-7f05bb75a000 rw-p 0000d000 08:02 16798549                   /usr/lib/libxcb-render.so.0.0.0
+7f05bb75a000-7f05bb782000 r-xp 00000000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f05bb782000-7f05bb981000 ---p 00028000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f05bb981000-7f05bb982000 r--p 00027000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f05bb982000-7f05bb983000 rw-p 00028000 08:02 16798539                   /usr/lib/libxcb.so.1.1.0
+7f05bb983000-7f05bb985000 r-xp 00000000 08:02 16798553                   /usr/lib/libxcb-shm.so.0.0.0Aborted (core dumped)
+dataset/test_B4/126007.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25199
+Sobel time: 0.14995
+Non-maximum supression time: 0.07871
+Hysteresis time: 0.11826
+-------------------------------------
+Correct pixels: 0.84 (557849/666548)
+False positives: 0.09 (63169/666548)
+False negatives: 0.07 (45530/666548)
+-------------------------------------
+OpenCV time: 1.39478
+AnyDSL time: 0.59898
+-------------------------------------
+dataset/test_B4/220075.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24325
+Sobel time: 0.15108
+Non-maximum supression time: 0.07851
+Hysteresis time: 0.11024
+-------------------------------------
+Correct pixels: 0.87 (732696/837454)
+False positives: 0.08 (63957/837454)
+False negatives: 0.05 (40801/837454)
+-------------------------------------
+OpenCV time: 1.45999
+AnyDSL time: 0.58316
+-------------------------------------
+dataset/test_B4/147091.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24594
+Sobel time: 0.15371
+Non-maximum supression time: 0.07879
+Hysteresis time: 0.09578
+-------------------------------------
+Correct pixels: 0.84 (594770/706908)
+False positives: 0.08 (54613/706908)
+False negatives: 0.08 (57525/706908)
+-------------------------------------
+OpenCV time: 1.40215
+AnyDSL time: 0.57433
+-------------------------------------
+dataset/test_B4/167062.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25093
+Sobel time: 0.15121
+Non-maximum supression time: 0.07864
+Hysteresis time: 0.06732
+-------------------------------------
+Correct pixels: 0.75 (204979/274996)
+False positives: 0.17 (45785/274996)
+False negatives: 0.09 (24232/274996)
+-------------------------------------
+OpenCV time: 1.51069
+AnyDSL time: 0.54819
+-------------------------------------
+dataset/test_B4/134035.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24771
+Sobel time: 0.15092
+Non-maximum supression time: 0.07850
+Hysteresis time: 0.13564
+-------------------------------------
+Correct pixels: 0.92 (1436266/1562662)
+False positives: 0.05 (72311/1562662)
+False negatives: 0.03 (54085/1562662)
+-------------------------------------
+OpenCV time: 1.53780
+AnyDSL time: 0.61284
+-------------------------------------
+dataset/test_B4/78004.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.22689
+Sobel time: 0.15093
+Non-maximum supression time: 0.08023
+Hysteresis time: 0.10167
+-------------------------------------
+Correct pixels: 0.90 (696950/777647)
+False positives: 0.05 (38894/777647)
+False negatives: 0.05 (41803/777647)
+-------------------------------------
+OpenCV time: 1.43288
+AnyDSL time: 0.55979
+-------------------------------------
+dataset/test_B4/253027.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21068
+Sobel time: 0.16057
+Non-maximum supression time: 0.08386
+Hysteresis time: 0.13399
+-------------------------------------
+Correct pixels: 0.89 (911622/1022306)
+False positives: 0.07 (69309/1022306)
+False negatives: 0.04 (41375/1022306)
+-------------------------------------
+OpenCV time: 1.38354
+AnyDSL time: 0.58921
+-------------------------------------
+dataset/test_B4/108005.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25356
+Sobel time: 0.15364
+Non-maximum supression time: 0.07864
+Hysteresis time: 0.17641
+-------------------------------------
+Correct pixels: 0.88 (1104908/1261810)
+False positives: 0.06 (77894/1261810)
+False negatives: 0.06 (79008/1261810)
+-------------------------------------
+OpenCV time: 1.55111
+AnyDSL time: 0.66236
+-------------------------------------
+dataset/test_B4/227092.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25292
+Sobel time: 0.14823
+Non-maximum supression time: 0.07725
+Hysteresis time: 0.08473
+-------------------------------------
+Correct pixels: 0.79 (142856/180203)
+False positives: 0.14 (25355/180203)
+False negatives: 0.07 (11992/180203)
+-------------------------------------
+OpenCV time: 1.45396
+AnyDSL time: 0.56326
+-------------------------------------
+dataset/test_B4/87046.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25019
+Sobel time: 0.15008
+Non-maximum supression time: 0.07875
+Hysteresis time: 0.17114
+-------------------------------------
+Correct pixels: 0.83 (1056244/1270340)
+False positives: 0.07 (93542/1270340)
+False negatives: 0.09 (120554/1270340)
+-------------------------------------
+OpenCV time: 1.44046
+AnyDSL time: 0.65024
+-------------------------------------
+dataset/test_B4/143090.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24816
+Sobel time: 0.14928
+Non-maximum supression time: 0.07839
+Hysteresis time: 0.07625
+-------------------------------------
+Correct pixels: 0.81 (320426/394047)
+False positives: 0.13 (50761/394047)
+False negatives: 0.06 (22860/394047)
+-------------------------------------
+OpenCV time: 1.14084
+AnyDSL time: 0.55215
+-------------------------------------
+dataset/test_B4/123074.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25480
+Sobel time: 0.14937
+Non-maximum supression time: 0.08044
+Hysteresis time: 0.19880
+-------------------------------------
+Correct pixels: 0.82 (841393/1023466)
+False positives: 0.09 (89479/1023466)
+False negatives: 0.09 (92594/1023466)
+-------------------------------------
+OpenCV time: 1.51719
+AnyDSL time: 0.68348
+-------------------------------------
+dataset/test_B4/253055.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.25211
+Sobel time: 0.15018
+Non-maximum supression time: 0.07872
+Hysteresis time: 0.08213
+-------------------------------------
+Correct pixels: 0.80 (272875/339532)
+False positives: 0.14 (49070/339532)
+False negatives: 0.05 (17587/339532)
+-------------------------------------
+OpenCV time: 1.42271
+AnyDSL time: 0.56325
+-------------------------------------
+dataset/test_B4/106024.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.24349
+Sobel time: 0.15246
+Non-maximum supression time: 0.08218
+Hysteresis time: 0.08592
+-------------------------------------
+Correct pixels: 0.72 (220016/306004)
+False positives: 0.16 (49896/306004)
+False negatives: 0.12 (36092/306004)
+-------------------------------------
+OpenCV time: 1.49348
+AnyDSL time: 0.56413
+-------------------------------------
+dataset/test_B4/197017.png
+./canny: /opt/cuda/lib64/libOpenCL.so.1: no version information available (required by /usr/lib/libruntime.so)
+-------------------------------------
+Gaussian time: 0.21873
+Sobel time: 0.14975
+Non-maximum supression time: 0.07890
+Hysteresis time: 0.12974
+-------------------------------------
+Correct pixels: 0.82 (470714/577402)
+False positives: 0.10 (55493/577402)
+False negatives: 0.09 (51195/577402)
+-------------------------------------
+OpenCV time: 1.54344
+AnyDSL time: 0.57721
+-------------------------------------

@@ -1,7 +1,8 @@
+set xtics ("B1 Dataset" 0.5, "B2 Dataset" 3.5, "B3 Dataset" 6.5, "B4 Dataset" 9.5)
 set style data histograms
 set style histogram rowstacked
-set boxwidth 0.5 relative
+set boxwidth 0.4 relative
 set style fill solid 1.0 border -1
 set yrange [0:50.0]
 set datafile separator " "
-plot 'gpu_results.dat' using 2 t "Other", '' using 3:xticlabels(1) t "Hysteresis"
+plot "gpu_results.dat" using 1 t "AnyDSL Parallel", '' using 2 t "AnyDSL Hysteresis", '' using 3 t "OpenCV"

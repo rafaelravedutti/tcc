@@ -1,0 +1,9 @@
+set xtics ("B1 Dataset" 0.1, "B2 Dataset" 1.1, "B3 Dataset" 2.1, "B4 Dataset" 3.1)
+set style data histograms
+set style cluster gap 1
+set boxwidth 0.7 relative
+set style fill solid 1.0 border -1
+set yrange [0:70.0]
+set datafile separator " "
+plot "cpu_results.dat" using 1 t "OpenCV", '' using 2 t "AnyDSL"
+

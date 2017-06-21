@@ -4,5 +4,6 @@ set style histogram rowstacked
 set boxwidth 0.4 relative
 set style fill solid 1.0 border -1
 set yrange [0:50.0]
+set ylabel "Time (seconds)"
 set datafile separator " "
 plot "gpu_results.dat" using 1 t "AnyDSL Parallel", '' using 2 t "AnyDSL Hysteresis", '' using 3 t "OpenCV"

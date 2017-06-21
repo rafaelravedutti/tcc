@@ -4,6 +4,7 @@ set style cluster gap 1
 set boxwidth 0.7 relative
 set style fill solid 1.0 border -1
 set yrange [0:70.0]
+set ylabel "Time (seconds)"
 set datafile separator " "
 plot "cpu_results.dat" using 1 t "OpenCV", '' using 2 t "AnyDSL"
 

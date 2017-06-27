@@ -65,7 +65,7 @@ fn fake_iterate(img : image_struct, body: fn(int,int) -> ()) -> () {
 }
 
 /* Serial iterate for use in case of data dependency issues */
-fn serial_iterate(img : image_struct, body: fn(int, int) -> ()) -> () {
+fn iterate(img : image_struct, serial : bool,  body: fn(int, int) -> ()) -> () {
   let block_size = 7; /* Pixels per block */
   let offset = get_image_offset(img);
 
